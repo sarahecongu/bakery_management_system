@@ -46,8 +46,12 @@
   include('products.php');
 
   ?>
-   <!--products  -->
+   <!--menu  -->
 
+<?php
+  include('menu.php');
+
+  ?>
    <?php
   include('footer.php');
 

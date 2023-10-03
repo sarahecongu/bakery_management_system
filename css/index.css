@@ -315,7 +315,52 @@
   color: #f8d53e;
 }
 
- 
+ /* menus */
+ .card{
+  width: 250px;
+  box-shadow:0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border: none;
+  
+  
+   
+  
+}  
+.card-img-top{
+  width: 230px;
+  padding: 10px;
+  margin: 10px;
+  border: 1px  solid peachpuff;
+  border-radius: 10px;
+  max-width: 100%;
+      
+}
+.card-body{
+  padding-top: 0.1rem;
+
+}
+
+.card-text{
+  font-size: 18px;
+  font-weight: 500;
+}
+.btn-dark:hover{
+  background-color: orange;
+  border-color: orange;
+  color: black;
+  
+
+}
+.form-control{
+  width: 500px;
+  border-radius: 30px;
+  margin-top: 30px;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-left: 450px;
+  
+}
+
 
  
   @media (min-width: 768px) {
@@ -330,3 +375,4 @@
       }
     }
     }
+
