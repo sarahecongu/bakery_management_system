@@ -29,6 +29,6 @@
 
   </div>
   <div  class="view">
-  <a href="">View More</a>
+  <a href="menu.php">View More</a>
 </div>
 </section>

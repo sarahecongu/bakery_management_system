@@ -14,50 +14,50 @@
 
 <body>
     <div class="container mt-4 w-50">
-        <div class="row justify-content-center wrapper" id="login-box">
+        <div class="row justify-content-center wrapper">
             <div class="col-lg-10 my-auto">
                 <div class="card-group">
                     <div class="card rounded-left p-4">
                         <h1 class="text-center font-weight-bold text-primary">Register</h1>
                         <hr class="my-3">
-                        <form action="" class="px-3" method="POST" id="register-form">
+                        <form action="" class="px-3" method="POST">
                             <!-- name -->
                         <div class="mb-3">
                                 <label for="firstname" class="form-label">First Name</label>
-                                <input type="firstname" class="form-control" id="firstname" placeholder="Enter firstname "
+                                <input type="firstname" class="form-control"  name="first_name" placeholder="Enter firstname "
                                     name="firstname" required>
                             </div>
                             <!-- second -->
                             <div class="mb-3">
                                 <label for="lastname" class="form-label">Last Name</label>
-                                <input type="lastname" class="form-control" id="lastname" placeholder="Enter lastname address"
+                                <input type="lastname" class="form-control" name="last_name" placeholder="Enter lastname address"
                                     name="lastname" required>
                             </div>
                             <!-- email -->
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email address"
+                                <input type="email" class="form-control" name="email" placeholder="Enter email address"
                                     name="email" required>
                             </div>
                             <!-- password -->
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="pwd" placeholder="Enter password"
+                                <input type="password" class="form-control" name="pwd" placeholder="Enter password"
                                     name="pwd" required>
                             </div>
                             <!-- confirm password -->
                             <div class="mb-3">
                                 <label for="confirmpwd" class="form-label"> Confirm Password</label>
-                                <input type="confirmpwd" class="form-control" id="confirmpwd" placeholder="Confrim Password"
+                                <input type="confirmpwd" class="form-control" name="confirmpwd" placeholder="Confrim Password"
                                     name="confirmpwd" required>
                             </div>
                             <div class="have account float-right">
-                                <a href="login.php" id="have account-link">Have Account?</a>
+                                <a href="login.php" name="have account-link">Have Account?</a>
                             </div>
                          
                             <!-- submit button -->
                             <div class="form-group">
-                                <input type="submit" value="Sign Up" id="register-btn"
+                                <input type="submit" value="register" name="register-btn"
                                     class="btn btn-primary btn-lg btn-block myBtn">
                             </div>
 
