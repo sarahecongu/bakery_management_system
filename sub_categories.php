@@ -10,6 +10,43 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./css/index.css">
   <title>Home Page</title>
+  <style>
+    .footer {
+  background-color: #361401;
+  color: #fff;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+
+.footer h4 {
+  color: #fff;
+}
+
+.footer p {
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  list-style: none;
+  padding: 0;
+}
+
+.social-icons li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.social-icons a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
+.social-icons a:hover {
+  color: #f8d53e;
+}
+
+  </style>
 </head>
 <body>
   <div class="fixed-top">
@@ -49,6 +86,10 @@
       </div>
     </div>
   </div>
+  <?php
+  include('footer.php');
+
+  ?>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

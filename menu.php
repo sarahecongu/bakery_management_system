@@ -21,30 +21,7 @@
   
     
   }
-/* logo */
-  .mt-30{
-    margin-top: 30px;
-  }
-  
-  .carousel-item {
-    height: 500px;
 
-  }
-.carousel-caption h5 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-
-  .carousel-caption p {
-    font-size: 1.2rem;
-    margin-bottom: 0;
-  }
-
-
-  .carousel-control-prev,
-  .carousel-control-next {
-    width: 5%;
-  }
 
 /* promotions */
 
@@ -65,14 +42,43 @@
     color: #333;
     display: none;
   }
-    .form-group {
-        max-width: 400px;
-        margin: 0 auto;
-    }
+  /* footer */
+  .footer {
+  background-color: #361401;
+  color: #fff;
+  padding: 20px 0;
+  margin-top: 40px;
+}
 
-    .form-control {
-        width: 100%;
-    }
+.footer h4 {
+  color: #fff;
+}
+
+.footer p {
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  list-style: none;
+  padding: 0;
+}
+
+.social-icons li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.social-icons a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
+.social-icons a:hover {
+  color: #f8d53e;
+}
+
+    
 </style>
 
 
@@ -94,10 +100,10 @@
   </div>
 
 
-<div class="container-box mx-auto">
+<div class="container-box ">
 <h4 class="text-center">Our Cake Products</h4>
 <div class="form-group">
-<input class="form-control"placeholder="Search for Products...">
+<input class="form-control mt-5"placeholder="Search for Products...">
 </div>
     
         <div class="row row-cols-1 row-cols-md-5 g-2 mt-2">
@@ -127,6 +133,10 @@
             ?>
         </div>
        
+   <?php
+  include('footer.php');
+
+  ?>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

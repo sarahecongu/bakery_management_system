@@ -16,6 +16,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
         <!-- Logo on the left -->
+      
         <a class="navbar-brand" href="#">BakePAL</a>
 
         <!-- Toggler button for collapsed menu on small screens -->
@@ -76,11 +77,16 @@
 <i class="fas fa-users"></i> User Management
   </a>
   <div class="collapse" id="collapseUser">
+    <hr>
   <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View user</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Branch</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Branch</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-users"></i> Manage Customers</a></li>
+    <!-- cashiers -->
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-users"></i> Manage Cashiers</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-users"></i> Manage Bakers</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-users"></i> Manage Deliverymen</a></li>
+
   </ul>
+  <hr>
 </div>
    <!-- products -->
    <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapseProduct" role="button" aria-expanded="false" aria-controls="collapseProduct">
@@ -88,9 +94,11 @@
   </a>
   <div class="collapse" id="collapseProduct">
   <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View user</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Branch</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Branch</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>View Products</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i>Add Products</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i>Edit Products</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i>Delete Products</a></li>
+
   </ul>
 </div>
     <!-- categories -->
@@ -99,20 +107,11 @@
   </a>
   <div class="collapse" id="collapseCategory">
   <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View user</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Branch</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Branch</a></li>
-  </ul>
-</div>
- <!-- customer -->
- <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapseCustomer" role="button" aria-expanded="false" aria-controls="collapseCustomer">
-    <i class="fas fa-user"></i> Customer Management
-  </a>
-  <div class="collapse" id="collapseCustomer">
-  <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View user</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Branch</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Branch</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>View Categories</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i>Add Categories</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i>Edit Categories</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i>Delete Categories</a></li>
+
   </ul>
 </div>
  <!--order -->
@@ -121,9 +120,7 @@
   </a>
   <div class="collapse" id="collapseOrder">
   <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View user</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Branch</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Branch</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View Orders</a></li>
   </ul>
 </div>
     <!-- vendor -->
@@ -132,33 +129,22 @@
   </a>
   <div class="collapse" id="collapseVendor">
   <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View user</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Branch</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Branch</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View Vendor</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i>Add Vendor</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i>Edit Vendor</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i>Delete Vendor</a></li>
   </ul>
 </div>
- <!-- supplier -->
- <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapseSupplier" role="button" aria-expanded="false" aria-controls="collapseSupplier">
-    <i class="fas fa-store"></i> Supplier Management
-  </a>
-  <div class="collapse" id="collapseSupplier">
-  <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View user</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Branch</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Branch</a></li>
-  </ul>
-</div>
-
-   
     <!-- inventory  -->
     <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapseInventory" role="button" aria-expanded="false" aria-controls="collapseInventory">
     <i class="fas fa-cogs"></i> Inventory Management
   </a>
   <div class="collapse" id="collapseInventory">
   <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View user</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Branch</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Branch</a></li>
+  <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>View ingredients</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i>Add ingredients</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i>Edit ingredients</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i>Delete ingredients</a></li>
   </ul>
 </div>
     
@@ -166,34 +152,17 @@
     <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapseSale" role="button" aria-expanded="false" aria-controls="collapseSale">
     <i class="fas fa-chart-bar"></i> Sales Managementt
   </a>
-  <div class="collapse" id="collapseSale">
-  <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View user</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Branch</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Branch</a></li>
-  </ul>
-</div>
-    
-    <!-- stock -->
-    <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapseStock" role="button" aria-expanded="false" aria-controls="collapseStock">
-    <i class="fas fa-box-open"></i> Stock Management
-  </a>
-  <div class="collapse" id="collapseStock">
-  <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View user</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Branch</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Branch</a></li>
-  </ul>
-</div>
+
  <!-- schedule -->
  <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapseSchedule" role="button" aria-expanded="false" aria-controls="collapseSchedule">
  <i class="fas fa-calendar-alt"></i> Schedule Management
   </a>
   <div class="collapse" id="collapseSchedule">
   <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View user</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Branch</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Branch</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View schedule</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i> Add schedule</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit schedule</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete schedule</a></li>
   </ul>
 </div>
  <!-- payment -->
@@ -202,9 +171,11 @@
   </a>
   <div class="collapse" id="collapsePayment">
   <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View user</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Branch</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Branch</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>View Payment Method</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i>Add Payment Method</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i>Edit Payment Method</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i>Delete Payment Method</a></li>
+
   </ul>
 </div>
   <!-- feedback -->
@@ -213,9 +184,10 @@
   </a>
   <div class="collapse" id="collapseFeedback">
   <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View user</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Branch</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Branch</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View Feedback</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i> Add Feedback</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Feedback</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Feedback</a></li>
   </ul>
 </div>
      <!-- promotions -->
@@ -224,9 +196,10 @@
   </a>
   <div class="collapse" id="collapsePromotion">
   <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View user</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Branch</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Branch</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View promotions</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i> Add promotions</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit promotions</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete promotions</a></li>
   </ul>
 </div>
     <!-- settings -->
@@ -235,9 +208,7 @@
   </a>
   <div class="collapse" id="collapseSetting">
   <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View user</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Branch</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Branch</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>profile</a></li>
   </ul>
 </div>
   
