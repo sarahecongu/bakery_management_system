@@ -76,6 +76,6 @@
   </div>
    <!-- view more -->
    <div class="viewer">
-  <a href="">View More</a>
+  <a href="sub_categories.php">View More</a>
    </div>
   </section>

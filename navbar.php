@@ -3,7 +3,7 @@
     <div class="container ">
       <!-- Logo on the left -->
       <a class="navbar-brand"  href="#" >
-        <img src="images/bakepal.png w-50" alt="">
+        <img src="images/bakepal.png w-50 rounded-circle" alt="">
       </a>
 
       <!-- Toggler button for collapsed menu on small screens -->
@@ -16,7 +16,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item ">
-            <a class="nav-link text-white font-weight-bold" href="#">Home</a>
+            <a class="nav-link text-white font-weight-bold" href="index.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white font-weight-bold" href="#">About Us</a>
