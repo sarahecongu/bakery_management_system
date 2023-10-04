@@ -96,61 +96,6 @@ body{
   </div>
 </div>
 </form>
-<!-- <table> -->
-<table class="table table-striped">
-  <thead class="bg-dark text-white">
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Profile</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Address</th>
-      <th scope="col">Created At</th>
-      <th scope="col">Updated At</th>
-      <th scope="col">Actions</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-
-      <td>
-      <a href="update_baker.php">Edit</a>
-        <a href="delete_baker.php">Delete</a>
-</td>
-      </tr>
-    
-  </tbody>
-  <!-- two -->
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-
-      <td>
-        <a href="update_baker.php">Edit</a>
-        <a href="delete_baker.php">Delete</a>
-</td>
-      </tr>
-    
-  </tbody>
-  
-</table>
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

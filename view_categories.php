@@ -63,23 +63,8 @@ body{
         <!-- firstname -->
         <form action="" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
-        <label class="form-label">First Name</label>
-        <input type="text" class="form-control" name="first_name" placeholder="Enter first name">
-        </div>
-        <!-- last name -->
-        <div class="mb-3">
-        <label class="form-label">Last Name</label>
-        <input type="text" class="form-control" name="last_name" placeholder="Enter Last name">
-        </div>
-        <!-- Address -->
-        <div class="mb-3">
-        <label class="form-label">Email address</label>
-        <input type="email" class="form-control" name="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
-            <!-- email -->
-            <div class="mb-3">
-        <label class="form-label">Address</label>
-        <input type="text" class="form-control" name="address" placeholder="Enter Location">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" placeholder="Category name">
         </div>
            <!-- image -->
         <div class="mb-3">
@@ -90,7 +75,7 @@ body{
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
-        <button type="button" class="btn btn-primary">Add Cashier</button>
+        <button type="button" class="btn btn-primary">Add Category</button>
       </div>
     </div>
   </div>
@@ -101,11 +86,8 @@ body{
   <thead class="bg-dark text-white">
     <tr>
       <th scope="col">Id</th>
-      <th scope="col">Profile</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Address</th>
+      <th scope="col">Image</th>
+      <th scope="col">Name</th>
       <th scope="col">Created At</th>
       <th scope="col">Updated At</th>
       <th scope="col">Actions</th>
@@ -119,10 +101,6 @@ body{
       <td>Otto</td>
       <td>@mdo</td>
       <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-
       <td>
       <a href="update_baker.php">Edit</a>
         <a href="delete_baker.php">Delete</a>
@@ -138,9 +116,7 @@ body{
       <td>Otto</td>
       <td>@mdo</td>
       <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+      <
 
       <td>
         <a href="update_baker.php">Edit</a>
