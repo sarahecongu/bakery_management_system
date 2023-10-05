@@ -1,20 +1,22 @@
 .navbar {
     background-color: #361401;
     color: white;
-    padding: 10px;
     
   }
   .navbar-brand img{
-    height: 200px; 
+    height: 100px; 
+    width: 150px;
+    
+    
   }
   
   .nav-link {
     color: white; 
-    margin-right: 10px; 
+ 
   }
   
   .nav-link:hover {
-    color: #240eec; 
+    color: #be6a0b; 
   }
   
   .navbar-toggler-icon {

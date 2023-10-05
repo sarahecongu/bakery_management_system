@@ -17,9 +17,30 @@
 .navbar {
      background-color: #361401;
      color: white;
-     padding: 10px;
-  
+   
+  }
+  .navbar-brand img{
+    height: 100px; 
+    width: 150px;
     
+    
+  }
+  
+  .nav-link {
+    color: white; 
+ 
+  }
+  
+  .nav-link:hover {
+    color: #be6a0b; 
+  }
+  
+  .navbar-toggler-icon {
+    background-color: white; 
+  }
+  
+  .navbar-toggler:focus {
+    outline: none;
   }
 
 /* promotions */

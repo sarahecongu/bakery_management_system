@@ -9,6 +9,8 @@
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./css/styles.css">
+  
+
     <title>Bans menu</title>
 </head>
 <body>
@@ -17,11 +19,33 @@
 .navbar {
      background-color: #361401;
      color: white;
-     padding: 10px;
-  
+     padding: 2px 0px;
+    }
+    .navbar-brand img{
+    height: 100px; 
+    width: 150px;
+    
     
   }
 
+  
+  .nav-link {
+    color: white; 
+    margin-right: 8px;
+ 
+  }
+  
+  .nav-link:hover {
+    color: #be6a0b; 
+  }
+  
+  .navbar-toggler-icon {
+    background-color: white; 
+  }
+  
+  .navbar-toggler:focus {
+    outline: none;
+  }
 /* promotions */
  .promotional-bar {
    background-color: orange;

@@ -17,8 +17,31 @@
      background-color: #361401;
      color: white;
      padding: 10px;
-  
+  }
+  .navbar-brand img{
+    height: 100px; 
+    width: 150px;
     
+    
+  }
+
+  
+  .nav-link {
+    color: white; 
+    margin-right: 8px;
+ 
+  }
+  
+  .nav-link:hover {
+    color: #be6a0b; 
+  }
+  
+  .navbar-toggler-icon {
+    background-color: white; 
+  }
+  
+  .navbar-toggler:focus {
+    outline: none;
   }
 
 /* promotions */
@@ -96,6 +119,7 @@
      <!-- navbar -->
   
 </div>
+
 <div class="container-box">
 <h4 class="text-center mt-5">Our Cake Products</h4>
 <div class="form-group text-center">
