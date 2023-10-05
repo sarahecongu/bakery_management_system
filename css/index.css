@@ -4,6 +4,28 @@
     padding: 10px;
     
   }
+  
+  .navbar-brand img {
+    height: 50px; /* Adjust the height of the logo */
+  }
+  
+  .navbar-nav .nav-link {
+    color: white; /* Set the color of the links */
+    margin-right: 10px; /* Add some space between the links */
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #ffc107; /* Change the color on hover */
+  }
+  
+  .navbar-toggler-icon {
+    background-color: white; /* Set the color of the toggler icon */
+  }
+  
+  .navbar-toggler:focus {
+    outline: none; /* Remove the outline on focus */
+  }
+  
 
 /* logo */
   .mt-30{
@@ -71,7 +93,7 @@
     position: relative;
     padding: 5px;
     box-sizing: border-box;
-    margin: 0 5px;
+    margin: 0 10px;
   }
   
   .card-content .image-wrapper img{
@@ -81,6 +103,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    height: 210px;
 
   }
   
@@ -92,10 +115,12 @@
     color: #000;
     background-color: peachpuff;
     position: relative;
+    max-height: 250px;
   }
   
   .carousel-inner-content {
     padding: 1em;
+    margin: 0 5px;
   }
   
   .carousel-item-content {
@@ -104,7 +129,7 @@
     flex: 0 0 25%;
     display: block;
     max-width: 200px;
-    max-height: 700px;
+    max-height: 500px;
   }
   
   .carousel-controls {
@@ -241,7 +266,7 @@
     justify-content: space-around;
     max-width: 1250px;
     max-height: 1200px;
-    margin: 0 -8px;
+    margin: 0 -10px;
   }
 
   .box {
@@ -322,6 +347,7 @@
   @media (min-width: 768px) {
     .carousel-inner-content {
       display: flex;
+      margin: 0 10px;
     }
 
     @media (min-width: 768px) {

@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark mb-5">
     <div class="container ">
       <!-- Logo on the left -->
-      <a class="navbar-brand"  href="#" >
+      <a class="navbar-brand"  href="" >
         <img src="images/bakepal.png w-50 rounded-circle" alt="">
       </a>
 
@@ -29,6 +29,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link text-white font-weight-bold" href="#"> Contact Us</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white font-weight" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
           </li>
         </ul>
       </div>

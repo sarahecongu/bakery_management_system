@@ -1,6 +1,5 @@
 <h4 class="text-center mt-4">Our Categories</h4>
-<section>
-<div id="carouselExampleControls" class="carousel-slide-content">
+<div class="carousel-slide-content ">
   <div class="carousel-inner-content">
     <div class="carousel-item-content active">
       <div class="card-content">
@@ -67,15 +66,10 @@
           <h5>Item Caption</h5>
         </div>
       </div>
-      
-    </div>
-
+      </div>
 </div>
- 
-  
-  </div>
+ </div>
    <!-- view more -->
    <div class="viewer">
   <a href="sub_categories.php">View More</a>
    </div>
-  </section>
