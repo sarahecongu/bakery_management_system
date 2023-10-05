@@ -27,7 +27,7 @@
 
 /* promotions */
  .promotional-bar {
-   background-color: #ffcc00;
+   background-color: orange;
    color: #333;
     padding: 8px;
     display: flex;
@@ -121,7 +121,7 @@
                         <p class="card-text">UGX 150,000</p>
                         <div class="card-body text-center mt-0">
 
-                            <div class="stars text-warning ">
+                            <div class="stars text-white ">
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>

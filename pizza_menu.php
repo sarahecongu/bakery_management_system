@@ -21,34 +21,11 @@
   
     
   }
-/* logo */
-  .mt-30{
-    margin-top: 30px;
-  }
-  
-  .carousel-item {
-    height: 500px;
 
-  }
-.carousel-caption h5 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-
-  .carousel-caption p {
-    font-size: 1.2rem;
-    margin-bottom: 0;
-  }
-
-
-  .carousel-control-prev,
-  .carousel-control-next {
-    width: 5%;
-  }
 
 /* promotions */
  .promotional-bar {
-   background-color: #ffcc00;
+   background-color: orange;
    color: #333;
     padding: 8px;
     display: flex;
@@ -135,14 +112,14 @@
             <?php 
             for ($i = 0; $i < 24; $i++) { 
                 echo '
-                <div class="col  mx-auto m-2">
+                <div class="col  mx-auto">
                     <div class="card text-center">
                         <img src="./images/CAKE2.jpg" class="card-img-top" alt="...">
                         <h5 class="card-title">Chocolate Cake</h5>
                         <p class="card-text">UGX 150,000</p>
                         <div class="card-body text-center mt-0">
 
-                            <div class="stars text-warning ">
+                            <div class="stars text-white ">
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
