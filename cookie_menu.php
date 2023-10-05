@@ -9,112 +9,19 @@
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./css/styles.css">
-    <title>menu</title>
+    <title>cookie_menu</title>
 </head>
 <body>
     
-</body>
-</html>
 
 
-<!-- // <!DOCTYPE html>
-// <html lang="en">
-// <head>
-//     <meta charset="UTF-8">
-//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-//     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-//   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-//     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-//     crossorigin="anonymous" referrerpolicy="no-referrer" />
-//   <link rel="stylesheet" href="./styles/styles.css">
-  
-
-//     <title>menu</title>
-//     <style>
-//         .navbar {
-//     background-color: #361401;
-//     color: white;
-//     padding: 10px;
-  
-    
-  }
-/* logo */
-  .mt-30{
-    margin-top: 30px;
-  }
-  
-  .carousel-item {
-    height: 500px;
-
-  }
-.carousel-caption h5 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-
-  .carousel-caption p {
-    font-size: 1.2rem;
-    margin-bottom: 0;
-  }
 
 
-  .carousel-control-prev,
-  .carousel-control-next {
-    width: 5%;
-  }
 
-// /* promotions */
-
-//   .promotional-bar {
-//     background-color: #ffcc00;
-//     color: #333;
-//     padding: 8px;
-//     display: flex;
-//     align-items: center;
-    
-//   }
-
-  .close-button {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: #333;
-    display: none;
-  }
-    .form-group {
-        max-width: 400px;
-        margin: 0 auto;
-    }
-
-    .form-control {
-        width: 100%;
-    }
-</style>
-
-
-//     </style> -->
-
-<div class="fixed-top">
-    <!--Promotions-->
-    <?php
-    include('promotions.php');
-    ?>
-
-     <!-- navbar -->
-    <?php
-    include('navbar.php');
-     ?>
-     <!-- navbar -->
-  
-</div>
-
-
-<div class="container-box ">
-<h4 class="text-center">Our Cake Products</h4>
+<div class="container-box mx-auto">
+<h4 class="text-center">Our Cookie  Products</h4>
 <div class="form-group">
-<input class="form-control mt-5"placeholder="Search for Products...">
+<input class="form-control"placeholder="Search for Products...">
 </div>
     
         <div class="row row-cols-1 row-cols-md-5 g-2 mt-2">
@@ -144,10 +51,6 @@
             ?>
         </div>
        
-   <?php
-  include('footer.php');
-
-  ?>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -157,5 +60,3 @@
     crossorigin="anonymous"></script>
 </body>
 </html>
-
-

@@ -46,7 +46,6 @@
   include('products.php');
 
   ?>
-   <!--menu  -->
 
    <?php
   include('footer.php');
