@@ -12,21 +12,104 @@
     <title>Cupcake menu</title>
 </head>
 <body>
+<style>
+.navbar {
+     background-color: #361401;
+     color: white;
+     padding: 10px;
+  
     
+  }
+
+/* promotions */
+ .promotional-bar {
+   background-color: #ffcc00;
+   color: #333;
+    padding: 8px;
+    display: flex;
+     align-items: center;
+    
+   }
+
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+    display: none;
+  }
+    .form-group {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+    .footer {
+  background-color: #361401;
+  color: #fff;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+
+.footer h4 {
+  color: #fff;
+}
+
+.footer p {
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  list-style: none;
+  padding: 0;
+}
+
+.social-icons li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.social-icons a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
+.social-icons a:hover {
+  color: #f8d53e;
+}
+</style>
+
+<div class="fixed-top">
+    <!--Promotions-->
+    <?php
+    include('promotions.php');
+    ?>
+
+     <!-- navbar -->
+    <?php
+    include('navbar.php');
+     ?>
+     <!-- navbar -->
+  
+</div>
 
 
 
 
 
-<div class="container-box mx-auto">
-<h4 class="text-center">Our Cupcake Products</h4>
-<div class="form-group">
-<input class="form-control"placeholder="Search for Products...">
+<div class="container-box">
+<h4 class="text-center mt-5">Our Cupcake Products</h4>
+<div class="form-group text-center">
+<input class="form-control mx-auto mt-5"placeholder="Search for Products...">
 </div>
     
         <div class="row row-cols-1 row-cols-md-5 g-2 mt-2">
             <?php 
-            for ($i = 0; $i < 10; $i++) { 
+            for ($i = 0; $i < 15; $i++) { 
                 echo '
                 <div class="col  mx-auto m-2">
                     <div class="card text-center">

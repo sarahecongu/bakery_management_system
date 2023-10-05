@@ -45,7 +45,7 @@
     width: 5%;
   }
 
-// /* promotions */
+/* promotions */
  .promotional-bar {
    background-color: #ffcc00;
    color: #333;
@@ -71,6 +71,40 @@
     .form-control {
         width: 100%;
     }
+    .footer {
+  background-color: #361401;
+  color: #fff;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+
+.footer h4 {
+  color: #fff;
+}
+
+.footer p {
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  list-style: none;
+  padding: 0;
+}
+
+.social-icons li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.social-icons a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
+.social-icons a:hover {
+  color: #f8d53e;
+}
 </style>
 
 <div class="fixed-top">
@@ -86,15 +120,13 @@
      <!-- navbar -->
   
 </div>
-
-
-<div class="container-box ">
-<h4 class="text-center">Our Cake Products</h4>
-<div class="form-group">
-<input class="form-control mt-5"placeholder="Search for Products...">
+<div class="container-box">
+<h4 class="text-center mt-5">Our Cake Products</h4>
+<div class="form-group text-center">
+<input class="form-control mx-auto mt-5"placeholder="Search for Products...">
 </div>
     
-        <div class="row row-cols-1 row-cols-md-5 g-2 mt-2">
+        <div class="row row-cols-1 row-cols-md-5 g-2 mt-4">
             <?php 
             for ($i = 0; $i < 24; $i++) { 
                 echo '

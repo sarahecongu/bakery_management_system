@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-dark ">
+<nav class="navbar navbar-expand-lg navbar-dark mb-5">
     <div class="container ">
       <!-- Logo on the left -->
       <a class="navbar-brand"  href="#" >
