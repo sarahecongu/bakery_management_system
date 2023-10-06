@@ -1,6 +1,6 @@
 
 <section class="products">
-  <h4 class="text-center mt-4">Our <span>Products</span></h4>
+  <h4 class="text-center mt-4">Our <span class="text-warning">Products</span></h4>
   <div class="product">
     <div class="wrapper">
       <?php

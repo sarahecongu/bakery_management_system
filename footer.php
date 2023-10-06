@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-md-6">
         <h4>Contact Us</h4>
-        <p>Email: example@example.com</p>
-        <p>Phone: 123-456-7890</p>
+        <p>Email: sarahatim@gmail.com</p>
+        <p>Phone: 0772979732</p>
       </div>
       <div class="col-md-6">
         <h4>Follow Us</h4>

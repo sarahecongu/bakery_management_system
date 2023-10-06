@@ -49,13 +49,15 @@ body{
   ADD CASHIER
 </button>
 </div>
-
+<div class="input-group flex-nowrap">
+  <input type="text" class="form-control" placeholder="searchbar......" aria-label="Username">
+</div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -74,7 +76,7 @@ body{
         <!-- Address -->
         <div class="mb-3">
         <label class="form-label">Email address</label>
-        <input type="email" class="form-control" name="exampleFormControlInput1" placeholder="name@example.com">
+        <input type="email" class="form-control" name="email" placeholder="Enter email">
         </div>
             <!-- email -->
             <div class="mb-3">
@@ -86,11 +88,10 @@ body{
         <label class="form-label">Image</label>
         <input type="file" class="form-control" name="image" placeholder="Enter profile pic">
         </div>
-
-      </div>
-      <div class="modal-footer">
+        <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
-        <button type="button" class="btn btn-primary">Add Cashier</button>
+        <button type="button" class="btn btn-primary">Add Category</button>
+      </div>
       </div>
     </div>
   </div>
@@ -124,31 +125,15 @@ body{
       <td>@mdo</td>
 
       <td>
-      <a href="update_baker.php">Edit</a>
-        <a href="delete_baker.php">Delete</a>
+      <a href="" class="mr-3" title="view"><i class="fas fa-eye"></i></a>
+      <a href="" class="mr-3" title="edit" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-edit"></i></a>
+        <a href="" class="mr-3" title="delete"><i class="fas fa-trash"></i></a>
 </td>
       </tr>
     
   </tbody>
   <!-- two -->
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-
-      <td>
-        <a href="update_baker.php">Edit</a>
-        <a href="delete_baker.php">Delete</a>
-</td>
-      </tr>
-    
-  </tbody>
+  
   
 </table>
 

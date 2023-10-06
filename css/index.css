@@ -4,8 +4,8 @@
     
   }
   .navbar-brand img{
-    height: 100px; 
-    width: 150px;
+    height: 70px; 
+    width: 100px;
     
     
   }
@@ -28,9 +28,9 @@
   }
   
 
-/* logo */
+
   .mt-30{
-    margin-top: 30px;
+    margin-top: 3rem;
   }
   
   .carousel-item {
@@ -226,7 +226,7 @@
   
   /* Ratings */
   .stars {
-    color: #d98715;
+    color: orange;
     margin-bottom: 5px 0;
   }
   
@@ -238,8 +238,8 @@
 
   /* Products */
   .btn-dark {
-    background-color: #343a40;
-    border-color: #343a40;
+    background-color: #000;
+    border-color: #000;
   }
 
   .btn-dark:hover {
@@ -301,10 +301,13 @@
 /* view */
 .viewer {
   float: right;
+  margin: 0 20px;
+
 }
 /* viewer */
-.view{
+.view {
   float: right;
+  margin: 0 15px;
 }
 /* footer */
 .footer {

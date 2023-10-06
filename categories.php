@@ -1,4 +1,4 @@
-<h4 class="text-center mt-4">Our Categories</h4>
+<h4 class="text-center mt-5">Our <span class="text-warning">Categories</span></h4>
 <div class="carousel-slide-content ">
   <div class="carousel-inner-content">
     <div class="carousel-item-content active">

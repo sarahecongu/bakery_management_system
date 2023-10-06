@@ -1,18 +1,16 @@
-<h4 class="text-center mt-4">Our Features</h4>
+<h4 class="text-center mt-5">Our <span class="text-warning">Features</span></h4>
 <div id="carouseFeatures" class="carousel-slide-features">
-  <div class="carousel-inner-features d-flex justify-content-center align-items-center">
+  <div class="carousel-inner-features d-flex justify-content-center align-items-center mt-5">
     <!-- items -->
     <div class="carousel-item-features active ">
-      <div class="card-features">
+      <div class="card-features ">
         <div class="image-wrappers">
-
-          <img src="images/delivery.png" class="d-block w-50 mx-auto" alt="...">
+        <img src="images/delivery.png" class="d-block w-50 mx-auto" alt="...">
         </div>
-
-        <div class="card-body-features pb-2">
-          <h5 class="card-title-features">Card-features title</h5>
-          <p class="card-text-features">Chocolate</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+      <div class="card-body-features pb-2">
+          <h5 class="card-title-features">Online Delivery</h5>
+          <p class="card-text-features">We deliver at your door</p>
+          <a href="#" class="btn btn-primary">Order Now</a>
         </div>
       </div>
     </div>
@@ -20,12 +18,12 @@
     <div class="carousel-item-features">
       <div class="card-features">
         <div class="image-wrappers">
-          <img src="images/health.jpg" class="d-block w-50 mx-auto" alt="...">
+          <img src="images/health2.jpg" class="d-block w-50 mx-auto" alt="...">
         </div>
         <div class="card-body-features pb-2">
-          <h5 class="card-title-features">Card-features title</h5>
-          <p class="card-text-features">Chocolate</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h5 class="card-title-features">Know Your Health</h5>
+          <p class="card-text-features">How Much Calories Do You Consume Day?</p>
+          <a href="#" class="btn btn-warning">Know More</a>
         </div>
       </div>
     </div>
@@ -33,12 +31,12 @@
     <div class="carousel-item-features">
       <div class="card-features">
         <div class="image-wrappers">
-          <img src="images/pay.jpg" class="d-block w-50 mx-auto" alt="...">
+          <img src="images/payme.jpg" class="d-block w-50 mx-auto" alt="...">
         </div>
         <div class="card-body-features pb-2">
-          <h5 class="card-title-features">Card-features title</h5>
-          <p class="card-text-features">Chocolate</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h5 class="card-title-features">Choose Payment</h5>
+          <p class="card-text-features">What Method do you prefer to pay??All Are Availabe</p>
+          <a href="#" class="btn btn-success">Choose Now</a>
         </div>
       </div>
     </div>
@@ -47,12 +45,12 @@
     <div class="carousel-item-features">
       <div class="card-features">
         <div class="image-wrappers">
-          <img src="images/delivery.png" class="d-block w-50 mx-auto" alt="...">
+          <img src="images/points.jpg" class="d-block w-50 mx-auto" alt="...">
         </div>
         <div class="card-body-features pb-2">
-          <h5 class="card-title-features">Card-features title</h5>
-          <p class="card-text-features">Chocolate</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h5 class="card-title-features">Customer Loyalty</h5>
+          <p class="card-text-features">our loyal customers</p>
+          <a href="#" class="btn btn-secondary">Know How Much!!</a>
         </div>
       </div>
     </div>

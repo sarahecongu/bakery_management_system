@@ -102,8 +102,9 @@ body{
       <td>@mdo</td>
       <td>@mdo</td>
       <td>
-      <a href="update_baker.php">Edit</a>
-        <a href="delete_baker.php">Delete</a>
+      <a href="View_category.php" class="mr-3">View</a>
+      <a href="update_category.php" class="mr-3">Edit</a>
+      <a href="delete_category.php" class="mr-3">Delete</a>
 </td>
       </tr>
     
@@ -119,8 +120,9 @@ body{
       <
 
       <td>
-        <a href="update_baker.php">Edit</a>
-        <a href="delete_baker.php">Delete</a>
+      <a href="View_category.php" class="mr-3">View</a>
+        <a href="update_category.php" class="mr-3">Edit</a>
+        <a href="delete_category.php" class="mr-3">Delete</a>
 </td>
       </tr>
     

@@ -9,105 +9,13 @@
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/index.css">
+
   
 
     <title>Bans menu</title>
 </head>
 <body>
-    
-<style>
-.navbar {
-     background-color: #361401;
-     color: white;
-     padding: 2px 0px;
-    }
-    .navbar-brand img{
-    height: 100px; 
-    width: 150px;
-    
-    
-  }
-
-  
-  .nav-link {
-    color: white; 
-    margin-right: 8px;
- 
-  }
-  
-  .nav-link:hover {
-    color: #be6a0b; 
-  }
-  
-  .navbar-toggler-icon {
-    background-color: white; 
-  }
-  
-  .navbar-toggler:focus {
-    outline: none;
-  }
-/* promotions */
- .promotional-bar {
-   background-color: orange;
-   color: #333;
-    padding: 8px;
-    display: flex;
-     align-items: center;
-    
-   }
-
-  .close-button {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: #333;
-    display: none;
-  }
-    .form-group {
-        max-width: 400px;
-        margin: 0 auto;
-    }
-
-    .form-control {
-        width: 100%;
-    }
-    .footer {
-  background-color: #361401;
-  color: #fff;
-  padding: 20px 0;
-  margin-top: 40px;
-}
-
-.footer h4 {
-  color: #fff;
-}
-
-.footer p {
-  margin-bottom: 10px;
-}
-
-.social-icons {
-  list-style: none;
-  padding: 0;
-}
-
-.social-icons li {
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.social-icons a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.5em;
-}
-
-.social-icons a:hover {
-  color: #f8d53e;
-}
-</style>
-
 <div class="fixed-top">
     <!--Promotions-->
     <?php
@@ -121,17 +29,13 @@
      <!-- navbar -->
   
 </div>
-
-
-
-
 <div class="container-box">
 <h4 class="text-center mt-5">Our Bans Products</h4>
 <div class="form-group text-center">
 <input class="form-control mx-auto mt-5"placeholder="Search for Products...">
 </div>
     
-        <div class="row row-cols-1 row-cols-md-5 g-2 mt-2">
+        <div class="row row-cols-1 row-cols-md-5 g-2 mt-4">
             <?php 
             for ($i = 0; $i < 10; $i++) { 
                 echo '
@@ -142,7 +46,7 @@
                         <p class="card-text">UGX 150,000</p>
                         <div class="card-body text-center mt-0">
 
-                            <div class="stars text-white ">
+                            <div class="stars text-warning">
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -159,6 +63,11 @@
         </div>
        
     </div>
+    
+   <?php
+  include('footer.php');
+
+  ?>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

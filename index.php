@@ -1,3 +1,8 @@
+<?php
+require_once('./config/dbh.php');
+// $dbobj = new Database();
+// print_r($dbobj);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
