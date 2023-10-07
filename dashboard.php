@@ -9,6 +9,32 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./css/dashboard.css">
     <title>Dashboard</title>
+    <style>
+  
+  .navbar-brand img{
+    height: 70px; 
+    width: 100px;
+    
+    
+  }
+  
+  .nav-link {
+    color: white; 
+ 
+  }
+  
+  .nav-link:hover {
+    color: #be6a0b; 
+  }
+  
+  .navbar-toggler-icon {
+    background-color: white; 
+  }
+  
+  .navbar-toggler:focus {
+    outline: none;
+  }
+    </style>
 </head>
 
 <body>
@@ -17,7 +43,9 @@
     <div class="container">
         <!-- Logo on the left -->
       
-        <a class="navbar-brand" href="#">BakePAL</a>
+        <a class="navbar-brand" href="#">
+          <img src="images/logos.png" alt="">
+        </a>
 
         <!-- Toggler button for collapsed menu on small screens -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarNav"
@@ -52,7 +80,7 @@
     <div class="row">
     <div class="admin-nav p-0 col-3">
     <img src="https://lh3.googleusercontent.com/a/ACg8ocKAKz4uG8EXeKwzlQ7lju4lwoVqXWCUqX3Oi6WVexokeDk=s432-c-no" alt="Admin Profile" class="profile-image">
-        <p class="text-center">Sarah A.E</p>
+        <p class="text-center">Sarah A.Econgu</p>
         <h4 class="text-center text-warning">Admin Dashboard</h4>
         <hr>
     <div class="list-group ">
@@ -222,8 +250,8 @@
 
     <!-- cards -->
    
-    <div class="col-lg-9 mt-4 p-4">
-    <h1 class="text-center">Summary</h1>
+    <div class="col-lg-9 mt-5 p-4">
+    <h1 class="text-center mt-5">Summary</h1>
         <div class="card-deck mt-3 gap-4 text-center font-weight-bold justify-content-center d-flex">
             <div class="card bg-primary shadow text-white">
                 <div class="card-header">Total users</div>

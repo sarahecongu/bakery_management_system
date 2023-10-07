@@ -66,7 +66,7 @@
   <h6 class="text-center mt-5">Our Categories</h6>
     <div class="carousel-inner-content-sub">
       <div class="carousel-item-content-sub active">
-        <div class="row">
+        <div class="row mt-5">
           <?php
           for ($i=0; $i < 24; $i++) { 
             echo '

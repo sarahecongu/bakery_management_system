@@ -14,8 +14,6 @@
     <title>menu</title>
 </head>
 <body>
->
-
 <div class="fixed-top">
     <!--Promotions-->
     <?php
