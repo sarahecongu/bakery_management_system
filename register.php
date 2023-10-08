@@ -1,3 +1,34 @@
+
+<?php
+session_start();
+require_once './includes/classes_autoload.inc.php';
+require_once './config/dbh.php'; 
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $email = $_POST['email'];
+    $password = $_POST['pwd'];
+
+    // Validate the data (you can add more validation as needed)
+    if (empty($first_name) || empty($last_name) || empty($email) || empty($password)) {
+        echo "All fields are required.";
+    }else{
+        $user = new User();
+
+        if ($user->Register($first_name, $last_name, $email, $password)) {
+            header("Location: login.php"); 
+            echo "successs";
+            
+        } else {
+            echo "Registration failed.";
+        }
+    }
+
+    
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +42,6 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>End Of year project</title>
 </head>
-
 <body>
     <div class="container mt-4 w-50">
         <div class="row justify-content-center wrapper">
@@ -21,44 +51,50 @@
                         <h1 class="text-center font-weight-bold text-primary">Register</h1>
                         <hr class="my-3">
                         <form action="" class="px-3" method="POST">
+                        
                             <!-- name -->
                         <div class="mb-3">
                                 <label for="firstname" class="form-label">First Name</label>
                                 <input type="firstname" class="form-control"  name="first_name" placeholder="Enter firstname "
-                                    name="firstname" required>
+                                    name="firstname" >
                             </div>
                             <!-- second -->
                             <div class="mb-3">
                                 <label for="lastname" class="form-label">Last Name</label>
                                 <input type="lastname" class="form-control" name="last_name" placeholder="Enter lastname address"
-                                    name="lastname" required>
+                                    name="lastname" >
                             </div>
                             <!-- email -->
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>
                                 <input type="email" class="form-control" name="email" placeholder="Enter email address"
-                                    name="email" required>
+                                    name="email" >
                             </div>
                             <!-- password -->
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" name="pwd" placeholder="Enter password"
-                                    name="pwd" required>
+                                    name="pwd" >
                             </div>
-                            <!-- confirm password -->
-                            <div class="mb-3">
-                                <label for="confirmpwd" class="form-label"> Confirm Password</label>
-                                <input type="confirmpwd" class="form-control" name="confirmpwd" placeholder="Confrim Password"
-                                    name="confirmpwd" required>
+                               <!-- password -->
+                               <!-- <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" name="cpwd" placeholder="Enter password"
+                                    name="cpwd">
+                            </div> -->
+                            <?php if(isset($error_message)) : ?>
+                            <div class="alert alert-danger" role="alert">
+                                <?php echo $error_message; ?>
                             </div>
+                        <?php endif; ?>
                             <div class="have account float-right">
                                 <a href="login.php" name="have account-link">Have Account?</a>
                             </div>
                          
                             <!-- submit button -->
                             <div class="form-group">
-                                <input type="submit" value="register" name="register-btn"
-                                    class="btn btn-primary btn-lg btn-block myBtn">
+                                <input type="submit" value="Sign Up" name="register"
+                                    class="btn btn-primary btn-md w-100 mt-4 btn-block myBtn">
                             </div>
 
                         </form>

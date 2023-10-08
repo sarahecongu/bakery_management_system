@@ -1,3 +1,24 @@
+<?php
+session_start();
+require_once './includes/classes_autoload.inc.php';
+require_once './config/dbh.php'; 
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['pwd'];
+
+    $user = new User();
+    $loginResult = $user->Login($email, $password);
+
+    if ($loginResult === true) {
+        header("Location: index.php"); // Redirect to index.php
+        exit();
+    } else {
+        echo $loginResult; // Display the error message
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,9 +33,9 @@
   
     <title>End Of year project</title>
 </head>
-<?php
-// include("navbar.php");
-?>
+
+
+
 <body>
     <div class="container mt-5 w-50 ">
         <div class="row justify-content-center wrapper" id="login-box">

@@ -28,7 +28,37 @@
           </li>
           <li class="nav-item">
             <a class="nav-link font-weight-bold" href="#"> Contact Us</i></a>
+
           </li>
+          <?php
+          try {
+            $user = new User();
+            $_SESSION['logged'] = 1;
+            if ($user->checkIsUserLoggedIn()) {
+              ?>
+              <li class="nav-item">
+            <a class="nav-link font-weight-bold" href="my-account.php">my account</i></a>
+            
+          </li>
+              <?php
+          
+            }else {
+             ?>
+             <li class="nav-item">
+            <a class="nav-link font-weight-bold" href="login.php">Login</i></a>
+            
+          </li>
+          <li class="nav-item">
+            <a class="nav-link font-weight-bold" href="register.php">Register</i></a>
+            
+          </li>
+             <?php 
+            }
+          } catch (PDOException $e) {
+         echo $e->getMessage();
+          }
+          ?>
+          
           <li class="nav-item">
             <a class="nav-link font-weight-bold" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
           </li>
