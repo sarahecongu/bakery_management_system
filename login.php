@@ -1,8 +1,24 @@
 <?php
 session_start();
-require_once './includes/classes_autoload.inc.php';
-require_once './config/dbh.php'; 
+require_once 'includes/core.php'; 
 $user = new User();
+class User {
+    public function checkIsEmailValid($email) {
+        // Add your email validation logic here
+        return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+    }
+
+    public function checkIsLoginFormEmpty($email, $password) {
+        // Check if both email and password are not empty
+        return !empty($email) && !empty($password);
+    }
+
+    public function Login($email, $password) {
+        // Add your login logic here
+        // Return true if login is successful, or an error message if it fails
+    }
+}
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim(htmlspecialchars($_POST['email']));

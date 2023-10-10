@@ -1,7 +1,5 @@
 <?php
-require_once('includes/core.php');
-
-
+include('includes/core.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +42,7 @@ require_once('includes/core.php');
   ?>
   <!--categories  -->
   <?php
-  include('categories.php');
+  include('product_categories.php');
   ?>
   <!--products  -->
   <?php

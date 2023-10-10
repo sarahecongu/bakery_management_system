@@ -14,13 +14,9 @@
   .navbar-brand img{
     height: 70px; 
     width: 100px;
-    
-    
   }
-  
   .nav-link {
     color: white; 
- 
   }
   
   .nav-link:hover {
@@ -138,10 +134,10 @@
   <div class="collapse" id="collapseCategory">
     <hr>
   <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>View Categories</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i>Add Categories</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i>Edit Categories</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i>Delete Categories</a></li>
+    <li><a class="list-group-item text-gray" href="categories.php"><i class="fas fa-eye"></i> View Categories</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i> Add Categories</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Categories</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Categories</a></li>
 
   </ul>
   <hr>
