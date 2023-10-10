@@ -149,7 +149,8 @@ body{
   <a href="" class="btn btn-success btn-sm mr-3" title="edit" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-edit"></i></a>
   <form action="categories.php" method="POST" class="d-inline-block">
     <button type="submit" name="category_delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete user?')">
-      <i class="bi bi-trash3"></i>
+    <i class="bi bi-trash3">del</i>
+     
     </button>
   </form>
 </td>
