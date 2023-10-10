@@ -1,6 +1,6 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,6 +66,11 @@ body{
         <label class="form-label">Name</label>
         <input type="text" class="form-control" name="name" placeholder="Category name">
         </div>
+        <!-- description -->
+        <div class="mb-3">
+        <label class="form-label">description</label>
+        <input type="text-area" class="form-control" name="description" placeholder=" description of the product">
+        </div>
            <!-- image -->
         <div class="mb-3">
         <label class="form-label">Image</label>
@@ -74,8 +79,8 @@ body{
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
-        <button type="button" class="btn btn-primary">Add Category</button>
+        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
+        <button type="submit" class="btn btn-primary">Add Category</button>
       </div>
     </div>
   </div>
@@ -88,6 +93,7 @@ body{
       <th scope="col">Id</th>
       <th scope="col">Image</th>
       <th scope="col">Name</th>
+      <th scope="col">Description</th>
       <th scope="col">Created At</th>
       <th scope="col">Updated At</th>
       <th scope="col">Actions</th>
@@ -95,37 +101,21 @@ body{
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>
-      <a href="View_category.php" class="mr-3">View</a>
-      <a href="update_category.php" class="mr-3">Edit</a>
-      <a href="delete_category.php" class="mr-3">Delete</a>
-</td>
-      </tr>
-    
-  </tbody>
-  <!-- two -->
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <
+  <?php foreach ($categories as $category): ?>
+      <tr>
+        <td><?php echo $category['id']; ?></td>
+        <td><?php echo $category['name']; ?></td>
+        <td><?php echo $category['description']; ?></td>
+        <td><?php echo $category['created_at']; ?></td>
+        <td><?php echo $category['updated_at']; ?></td>
 
-      <td>
-      <a href="View_category.php" class="mr-3">View</a>
-        <a href="update_category.php" class="mr-3">Edit</a>
-        <a href="delete_category.php" class="mr-3">Delete</a>
+        <td>
+      <a href="" class="mr-3" title="view"><i class="fas fa-eye"></i></a>
+      <a href="" class="mr-3" title="edit" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-edit"></i></a>
+        <a href="" class="mr-3" title="delete"><i class="fas fa-trash"></i></a>
 </td>
       </tr>
-    
+    <?php endforeach; ?>
   </tbody>
   
 </table>

@@ -10,7 +10,7 @@ body {
     background-color: #361401;
     color: white;
     width: 250px;
-    overflow-y: auto;
+    /* overflow-y: auto; */
     margin-right: 30px;
     scrollbar-width: thin;
 }

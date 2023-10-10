@@ -1,4 +1,10 @@
 
+<?php
+//  $user = new User();
+//  if ($user->checkIsUserLoggedIn()) {
+//    header('Location:my-account.php');
+//  }
+ ?>
 <nav class="navbar navbar-expand-lg navbar-dark">
       <!-- Logo on the left -->
       <a class="navbar-brand"  href="" >
@@ -31,9 +37,10 @@
 
           </li>
           <?php
+          
           try {
-            $user = new User();
-            $_SESSION['logged'] = 1;
+           
+            $_SESSION['user_type'] = 'customer';
             if ($user->checkIsUserLoggedIn()) {
               ?>
               <li class="nav-item">

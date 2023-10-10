@@ -5,28 +5,34 @@ require_once './includes/classes_autoload.inc.php';
 require_once './config/dbh.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
-    $email = $_POST['email'];
-    $password = $_POST['pwd'];
+    $first_name = trim(htmlspecialchars($_POST['first_name']));
+    $last_name = trim(htmlspecialchars($_POST['last_name']));
+    $email = trim(htmlspecialchars($_POST['email']));
+    $password = trim($_POST['pwd']);
 
     // Validate the data (you can add more validation as needed)
     if (empty($first_name) || empty($last_name) || empty($email) || empty($password)) {
         echo "All fields are required.";
-    }else{
-        $user = new User();
-
-        if ($user->Register($first_name, $last_name, $email, $password)) {
-            header("Location: login.php"); 
-            echo "successs";
-            
+    } else {
+        // Validate email
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "Invalid email format";
+        }
+        // Validate password
+        elseif (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $password)) {
+            echo "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character.";
         } else {
-            echo "Registration failed.";
+            $user = new User();
+            if ($user->Register($first_name, $last_name, $email, $password)) {
+                header("Location: login.php");
+                exit();
+            } else {
+                echo "Registration failed.";
+            }
         }
     }
-
-    
 }
+
 ?>
 
 <!DOCTYPE html>

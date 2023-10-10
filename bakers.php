@@ -1,148 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <title>Bakers</title>
-  <style>
-body{
-    background-color: #f8f9fa;
-  padding: 20px;
-}
-.modal-title {
-  font-size: 1.5rem;
-}
-.modal-body {
-  font-size: 1.2rem;
-}
-.modal-footer {
-  justify-content: space-between;
-}
-.table {
-  margin-top: 20px;
-}
-.table th, .table td {
-  padding: 8px 12px;
-}
-.table {
-  border-radius: 10px;
-}
-
-.btn {
-  margin: 5px;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./css/dashboard.css">
+    <title>Dashboard</title>
+    <style>
   
-}
-
-  </style>
-</head>
-<body>
-<!-- Button trigger modal -->
-<div class="text-center">
-<button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">
-  ADD CASHIER
-</button>
-</div>
-<div class="input-group flex-nowrap">
-  <input type="text" class="form-control" placeholder="searchbar......" aria-label="Username">
-</div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- form -->
-        <!-- firstname -->
-        <form action="" method="POST" enctype="multipart/form-data">
-        <div class="mb-3">
-        <label class="form-label">First Name</label>
-        <input type="text" class="form-control" name="first_name" placeholder="Enter first name">
-        </div>
-        <!-- last name -->
-        <div class="mb-3">
-        <label class="form-label">Last Name</label>
-        <input type="text" class="form-control" name="last_name" placeholder="Enter Last name">
-        </div>
-        <!-- Address -->
-        <div class="mb-3">
-        <label class="form-label">Email address</label>
-        <input type="email" class="form-control" name="email" placeholder="Enter email">
-        </div>
-            <!-- email -->
-            <div class="mb-3">
-        <label class="form-label">Address</label>
-        <input type="text" class="form-control" name="address" placeholder="Enter Location">
-        </div>
-           <!-- image -->
-        <div class="mb-3">
-        <label class="form-label">Image</label>
-        <input type="file" class="form-control" name="image" placeholder="Enter profile pic">
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
-        <button type="button" class="btn btn-primary">Add Category</button>
-      </div>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-<!-- <table> -->
-<table class="table table-striped">
-  <thead class="bg-dark text-white">
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Profile</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Address</th>
-      <th scope="col">Created At</th>
-      <th scope="col">Updated At</th>
-      <th scope="col">Actions</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-
-      <td>
-      <a href="" class="mr-3" title="view"><i class="fas fa-eye"></i></a>
-      <a href="" class="mr-3" title="edit" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-edit"></i></a>
-        <a href="" class="mr-3" title="delete"><i class="fas fa-trash"></i></a>
-</td>
-      </tr>
+  .navbar-brand img{
+    height: 70px; 
+    width: 100px;
     
-  </tbody>
-  <!-- two -->
+    
+  }
   
+  .nav-link {
+    color: white; 
+ 
+  }
   
-</table>
+  .nav-link:hover {
+    color: #be6a0b; 
+  }
+  
+  .navbar-toggler-icon {
+    background-color: white; 
+  }
+  
+  .navbar-toggler:focus {
+    outline: none;
+  }
+    </style>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <!-- Logo on the left -->
+      
+        <a class="navbar-brand" href="#">
+          <img src="images/logos.png" alt="">
+        </a>
+
+        <!-- Toggler button for collapsed menu on small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation links on the right -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item ">
+                    <a class="nav-link text-white font-weight-bold" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white font-weight-bold" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white font-weight-bold" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white font-weight-bold" href="#"> <i class="fas fa-bell"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script>
+
+<!-- sidebar -->
+<div class="container-fluid fixed-top mb-3">
+    <div class="row">
+    <div class="admin-nav p-0 col-3">
+    <img src="https://lh3.googleusercontent.com/a/ACg8ocKAKz4uG8EXeKwzlQ7lju4lwoVqXWCUqX3Oi6WVexokeDk=s432-c-no" alt="Admin Profile" class="profile-image">
+        <p class="text-center">Sarah A.Econgu</p>
+        <h4 class="text-center text-warning">Admin Dashboard</h4>
+        <hr>
+    <div class="list-group ">
+            <!-- dashboard -->
+            <a href="admin-dashboard.php" class="list-group-item admin-link">
+            <i class="fas fa-chart-line"></i>Baker's Dashboard
+            </a>
+            <!-- branch -->
+
+
+
+ <!--order -->
+ <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapseOrder" role="button" aria-expanded="false" aria-controls="collapseOrder">
+ <i class="fas fa-shopping-cart"></i> Order Management
+  </a>
+  <div class="collapse" id="collapseOrder">
+  <ul class="list-group text-gray">
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View Orders</a></li>
+  </ul>
+</div>
+
+    
+    <!-- sales -->
+    <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapseSale" role="button" aria-expanded="false" aria-controls="collapseSale">
+    <i class="fas fa-chart-bar"></i> Sales Management
+  </a>
+
+ <!-- schedule -->
+ <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapseSchedule" role="button" aria-expanded="false" aria-controls="collapseSchedule">
+ <i class="fas fa-calendar-alt"></i> Schedule Management
+  </a>
+  <div class="collapse" id="collapseSchedule">
+  <ul class="list-group text-gray">
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View schedule</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i> Add schedule</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit schedule</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete schedule</a></li>
+  </ul>
+</div>
+ <!-- payment -->
+ <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapsePayment" role="button" aria-expanded="false" aria-controls="collapsePayment">
+    <i class="fas fa-credit-card"></i> Payment Management
+  </a>
+  <div class="collapse" id="collapsePayment">
+  <ul class="list-group text-gray">
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>View Payment Method</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i>Add Payment Method</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i>Edit Payment Method</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i>Delete Payment Method</a></li>
+
+  </ul>
+</div>
+     <!-- promotions -->
+     <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapsePromotion" role="button" aria-expanded="false" aria-controls="collapsePromotion">
+     <i class="fas fa-gift"></i> Promotions Management
+  </a>
+  <div class="collapse" id="collapsePromotion">
+  <ul class="list-group text-gray">
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View promotions</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i> Add promotions</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit promotions</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete promotions</a></li>
+  </ul>
+</div>
+    <!-- settings -->
+    <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapseSetting" role="button" aria-expanded="false" aria-controls="collapseSetting">
+    <i class="fas fa-cogs"></i> Settings
+  </a>
+  <div class="collapse" id="collapseSetting">
+  <ul class="list-group text-gray">
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>profile</a></li>
+  </ul>
+</div>
+  
+    <!-- logout -->
+    <a href="admin-products.php" class="list-group-item admin-link">
+        <i class="fas fa-sign-out-alt"></i> Logout
+    </a>
+</div>
+
+    </div>
+
+    <!-- cards -->
+   
+    <div class="col-lg-9 mt-5 p-4">
+    <h1 class="text-center mt-5">Summary</h1>
+        <div class="card-deck mt-3 gap-4 text-center font-weight-bold justify-content-center d-flex">
+
+            <div class="card bg-warning text-white">
+                <div class="card-header">Total sales</div>
+                <div class="card-body">
+                    <h4>5</h4>
+                </div>
+            </div>
+           
+            <div class="card bg-info text-white">
+                <div class="card-header">Total Orders</div>
+                <div class="card-body">
+                    <h4>20</h4>
+                </div>
+            </div>
+  
+        </div>
+    </div>
+    </div>
+
+           
+ 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
-
 </html>
+    
+
+

@@ -2,23 +2,35 @@
 session_start();
 require_once './includes/classes_autoload.inc.php';
 require_once './config/dbh.php'; 
+$user = new User();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
-    $password = $_POST['pwd'];
+    $email = trim(htmlspecialchars($_POST['email']));
+    $password = trim($_POST['pwd']);
 
-    $user = new User();
-    $loginResult = $user->Login($email, $password);
-
-    if ($loginResult === true) {
-        header("Location: index.php"); // Redirect to index.php
-        exit();
+    if (!$user->checkIsEmailValid($email)) {
+        echo "Enter valid email";
+    } else if (!$user->checkIsLoginFormEmpty($email, $password)) {
+        echo "Fill in all fields";
     } else {
-        echo $loginResult; // Display the error message
+        $loginResult = $user->Login($email, $password);
+
+        if ($loginResult === true) {
+            header("Location: index.php"); 
+            exit();
+        } else {
+            echo $loginResult;
+        }
     }
 }
 
 ?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,13 +60,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>
                                 <input type="email" class="form-control" id="email" placeholder="Enter email address"
-                                    name="email" required>
+                                    name="email">
                             </div>
                             <!-- password -->
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="pwd" placeholder="Enter password"
-                                    name="pwd" required>
+                                    name="pwd" >
                             </div>
                             <!-- button -->
                             <div class="form-group d-flex">

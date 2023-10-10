@@ -1,8 +1,7 @@
 <?php
-require_once('./config/dbh.php');
-require_once('./includes/classes_autoload.inc.php');
-// $dbobj = new Database();
-// print_r($dbobj);
+require_once('includes/core.php');
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

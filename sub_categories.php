@@ -1,3 +1,6 @@
+<?php
+	include("includes/core.php");
+	?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +12,7 @@
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./css/index.css">
-  <title>Home Page</title>
+  <title>SUB CATEGORIES</title>
   <style>
     .footer {
   background-color: #361401;
@@ -60,28 +63,36 @@
     include('navbar.php');
     ?>
   </div>
-
-  
+<!-- categories -->
+<?php $categories = new Category();
+?>
   <div id="subControls" class="carousel-slide-content-sub mx-auto">
   <h6 class="text-center mt-5">Our Categories</h6>
     <div class="carousel-inner-content-sub">
       <div class="carousel-item-content-sub active">
         <div class="row mt-5">
-          <?php
-          for ($i=0; $i < 24; $i++) { 
-            echo '
-            <div class="col-md-2 mt-5 g-4 ">
-              <div class="card-content">
-                <div class="image-wrapper">
-                  <img src="images/slice.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="caption">
-                  <h5>Item Caption</h5>
-                </div>
-              </div>
-            </div>';
-          }
-          ?>
+        <?php
+      
+     foreach ($categories->all() as $category):
+    ?>
+    <div class="col-md-2 mt-5 g-4 ">
+  <div class="card-content">
+    <div class="image-wrapper">
+      <img src="images/<?php echo $category->image;?>" alt="dp">
+    </div>
+    <div class="caption">
+      <h6><?php echo $category->name ?></h6>
+      <h5><?php echo $category->description ?></h5>
+    </div>
+  </div>
+  </div>
+<?php
+  endforeach;
+?>
+
+
+         
+       
         </div>
       </div>
     </div>

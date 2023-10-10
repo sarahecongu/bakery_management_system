@@ -1,75 +1,184 @@
-<h4 class="text-center mt-5">Our <span class="text-warning">Categories</span></h4>
-<div class="carousel-slide-content ">
-  <div class="carousel-inner-content">
-    <div class="carousel-item-content active">
-      <div class="card-content">
-        <div class="image-wrapper">
-          <img src="images/slice.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="caption">
-          <h5>Item Caption</h5>
-        </div>
-      </div>
-    </div>
-    <!-- item 2 -->
-    <div class="carousel-item-content">
-      <div class="card-content">
-        <div class="image-wrapper">
-          <img src="images/slice.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="caption">
-          <h5>Item Caption</h5>
-        </div>
-      </div>
-    </div>
-    <!-- three -->
-    <div class="carousel-item-content">
-      <div class="card-content">
-        <div class="image-wrapper">
-          <img src="images/slice.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="caption">
-          <h5>Item Caption</h5>
-        </div>
-      </div>
-    </div>
+<?php
+	include('includes/core.php');
+// Check if form was submitted for adding a category
+if(isset($_POST['add_category'])) {
+    $name = $_POST['name'];
+    $description = $_POST['description'];
 
-    <!-- four -->
-    <div class="carousel-item-content">
-      <div class="card-content">
-        <div class="image-wrapper">
-          <img src="images/slice.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="caption">
-          <h5>Item Caption</h5>
-        </div>
-      </div>
-    </div>
-    <!-- four -->
-    <div class="carousel-item-content">
-      <div class="card-content">
-        <div class="image-wrapper">
-          <img src="images/slice.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="caption">
-          <h5>Item Caption</h5>
-        </div>
-      </div>
-    </div>
-    <!-- five -->
-    <div class="carousel-item-content">
-      <div class="card-content">
-        <div class="image-wrapper">
-          <img src="images/slice.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="caption">
-          <h5>Item Caption</h5>
-        </div>
-      </div>
-      </div>
+    // Check if an image was uploaded
+    if(isset($_FILES['image'])) {
+        $file_name = $_FILES['image']['name'];
+        $file_tmp = $_FILES['image']['tmp_name'];
+        $file_type = $_FILES['image']['type'];
+        $file_error = $_FILES['image']['error'];
+        
+        if($file_error === 0){
+            $destination = 'images/' . $file_name;
+            move_uploaded_file($file_tmp, $destination);
+        }
+    }
+
+    // Assuming you have a function in your Category class to add a category
+    $result = $categories->addCategory($name, $description, $file_name);
+
+    if($result) {
+        echo 'Category added successfully'
+;    } else {
+        echo 'Category addition failed';
+    }
+}
+
+// ... Rest of your code ...
+
+
+	?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <title>CATEGORIES</title>
+  <style>
+body{
+    background-color: #f8f9fa;
+  padding: 20px;
+}
+.modal-title {
+  font-size: 1.5rem;
+}
+.modal-body {
+  font-size: 1.2rem;
+}
+.modal-footer {
+  justify-content: space-between;
+}
+.table {
+  margin-top: 20px;
+}
+.table th, .table td {
+  padding: 8px 12px;
+}
+.table {
+  border-radius: 10px;
+}
+
+.btn {
+  margin: 5px;
+  
+}
+</style>
+
+</head>
+
+<?php
+// categories
+$categories = new Category();
+?>
+
+
+<body>
+
+<!-- Button trigger modal -->
+<div class="text-center">
+<button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">
+  ADD  CATEGORY
+</button>
 </div>
- </div>
-   <!-- view more -->
-   <div class="viewer">
-  <a href="sub_categories.php">View More</a>
-   </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">CATEGORIES</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- form -->
+        <!-- firstname -->
+        <form action="categories.php" method="POST" enctype="multipart/form-data">
+		<div class="mb-3">
+        <label class="form-label">Image</label>
+        <input type="file" class="form-control" name="image" placeholder="Enter image">
+        </div>
+		<!-- name -->
+        <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" placeholder="Category name">
+        </div>
+        <!-- last name -->
+        <div class="mb-3">
+        <label class="form-label">Description </label>
+        <input type="textarea" class="form-control" name="description" placeholder=" description of the product">
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
+        <button type="submit" class="btn btn-primary">Add User</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+<!-- <table> -->
+<table class="table table-striped">
+  <thead class="bg-dark text-white">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Image</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Created At</th>
+      <th scope="col">Updated At</th>
+      <th scope="col">Actions</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  <?php foreach ($categories->all() as $category): ?>
+      <tr>
+        <td><?php echo $category->id; ?></td>
+        <td style="width:10%">
+        <img src="images/<?php echo $category->image;?>" alt="dp" class="rounded-circle w-50 h-50">
+
+    </td>
+        <td><?php echo $category->name ?></td>
+        <td><?php echo $category->description ?></td>
+        <td><?php echo $category->created_at; ?></td>
+        <td><?php echo $category->updated_at; ?></td>
+
+        <td>
+      <a href="" class="mr-3" title="view"><i class="fas fa-eye"></i></a>
+      <a href="" class="mr-3" title="edit" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-edit"></i></a>
+    <form action="categories.php" method="POST">
+      <button type="submit" name="category_delete" class="btn btn-danger btn-sm"
+      <?php echo $category->id; ?> onclick="return confirm('Are you sure you want to delete user?')">
+        <i class="bi bi-trash3"></i> DELETE
+    </button>
+      
+    </form>
+      
+
+     
+</td>
+      </tr>
+    <?php endforeach; ?>
+  </tbody>
+  
+</table>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

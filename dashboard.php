@@ -121,6 +121,7 @@
    <i class="fas fa-cubes"></i> Product Management
   </a>
   <div class="collapse" id="collapseProduct">
+    <hr>
   <ul class="list-group text-gray">
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>View Products</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i>Add Products</a></li>
@@ -128,12 +129,14 @@
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i>Delete Products</a></li>
 
   </ul>
+  <hr>
 </div>
     <!-- categories -->
     <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapseCategory" role="button" aria-expanded="false" aria-controls="collapseCategory">
     <i class="fas fa-list-alt"></i> Category Management
   </a>
   <div class="collapse" id="collapseCategory">
+    <hr>
   <ul class="list-group text-gray">
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>View Categories</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i>Add Categories</a></li>
@@ -141,39 +144,46 @@
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i>Delete Categories</a></li>
 
   </ul>
+  <hr>
 </div>
  <!--order -->
  <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapseOrder" role="button" aria-expanded="false" aria-controls="collapseOrder">
  <i class="fas fa-shopping-cart"></i> Order Management
   </a>
   <div class="collapse" id="collapseOrder">
+    <hr>
   <ul class="list-group text-gray">
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View Orders</a></li>
   </ul>
+  <hr>
 </div>
     <!-- vendor -->
     <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapseVendor" role="button" aria-expanded="false" aria-controls="collapseVendor">
     <i class="fas fa-truck"></i> Vendor Management
   </a>
   <div class="collapse" id="collapseVendor">
+    <hr>
   <ul class="list-group text-gray">
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View Vendor</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i>Add Vendor</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i>Edit Vendor</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i>Delete Vendor</a></li>
   </ul>
+  <hr>
 </div>
     <!-- inventory  -->
     <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapseInventory" role="button" aria-expanded="false" aria-controls="collapseInventory">
     <i class="fas fa-cogs"></i> Inventory Management
   </a>
   <div class="collapse" id="collapseInventory">
+    <hr>
   <ul class="list-group text-gray">
   <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>View ingredients</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i>Add ingredients</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i>Edit ingredients</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i>Delete ingredients</a></li>
   </ul>
+  <hr>
 </div>
     
     <!-- sales -->
@@ -186,49 +196,58 @@
  <i class="fas fa-calendar-alt"></i> Schedule Management
   </a>
   <div class="collapse" id="collapseSchedule">
+    <hr>
   <ul class="list-group text-gray">
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View schedule</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i> Add schedule</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit schedule</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete schedule</a></li>
   </ul>
+  <hr>
 </div>
  <!-- payment -->
  <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapsePayment" role="button" aria-expanded="false" aria-controls="collapsePayment">
     <i class="fas fa-credit-card"></i> Payment Management
   </a>
   <div class="collapse" id="collapsePayment">
+    <hr>
   <ul class="list-group text-gray">
+
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>View Payment Method</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i>Add Payment Method</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i>Edit Payment Method</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i>Delete Payment Method</a></li>
 
   </ul>
+  <hr>
 </div>
   <!-- feedback -->
   <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapseFeedback" role="button" aria-expanded="false" aria-controls="collapseFeedback">
   <i class="fas fa-comment"></i> Feedback Management
   </a>
   <div class="collapse" id="collapseFeedback">
+    <hr>
   <ul class="list-group text-gray">
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View Feedback</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i> Add Feedback</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Feedback</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Feedback</a></li>
   </ul>
+  <hr>
 </div>
      <!-- promotions -->
      <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapsePromotion" role="button" aria-expanded="false" aria-controls="collapsePromotion">
      <i class="fas fa-gift"></i> Promotions Management
   </a>
   <div class="collapse" id="collapsePromotion">
+    <hr>
   <ul class="list-group text-gray">
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View promotions</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i> Add promotions</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit promotions</a></li>
     <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete promotions</a></li>
   </ul>
+  <hr>
 </div>
     <!-- settings -->
     <a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapseSetting" role="button" aria-expanded="false" aria-controls="collapseSetting">
