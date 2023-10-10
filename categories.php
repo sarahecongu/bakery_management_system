@@ -1,37 +1,34 @@
 <?php
-	include('includes/core.php');
-// Check if form was submitted for adding a category
-if(isset($_POST['add_category'])) {
-    $name = $_POST['name'];
-    $description = $_POST['description'];
+include("includes/core.php");
+?>
+<?php
+$categories = new Category();
 
-    // Check if an image was uploaded
-    if(isset($_FILES['image'])) {
-        $file_name = $_FILES['image']['name'];
-        $file_tmp = $_FILES['image']['tmp_name'];
-        $file_type = $_FILES['image']['type'];
-        $file_error = $_FILES['image']['error'];
-        
-        if($file_error === 0){
-            $destination = 'images/' . $file_name;
-            move_uploaded_file($file_tmp, $destination);
-        }
-    }
+// Create
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $data = [
+      'name' => $_POST['name'],  
+      'description' => $_POST['description']
+  ];
 
-    // Assuming you have a function in your Category class to add a category
-    $result = $categories->addCategory($name, $description, $file_name);
+  // Handle file upload
+  if(isset($_FILES['image']) && $_FILES['image']['error'] == 0){
+      $image_name = $_FILES['image']['name'];
+      $tmp_name = $_FILES['image']['tmp_name'];
+      move_uploaded_file($tmp_name, "images/".$image_name);
+      $data['image'] = $image_name;
+  }
 
-    if($result) {
-        echo 'Category added successfully'
-;    } else {
-        echo 'Category addition failed';
-    }
+  $categories->create($data);
+  header("Location: categories.php");
+  exit();
 }
 
-// ... Rest of your code ...
 
 
-	?>
+?>
+
+  
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,13 +73,6 @@ body{
 </style>
 
 </head>
-
-<?php
-// categories
-$categories = new Category();
-?>
-
-
 <body>
 
 <!-- Button trigger modal -->
@@ -121,8 +111,8 @@ $categories = new Category();
 
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
-        <button type="submit" class="btn btn-primary">Add User</button>
+        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Add Category</button>
       </div>
     </div>
   </div>
@@ -154,21 +144,16 @@ $categories = new Category();
         <td><?php echo $category->description ?></td>
         <td><?php echo $category->created_at; ?></td>
         <td><?php echo $category->updated_at; ?></td>
-
         <td>
-      <a href="" class="mr-3" title="view"><i class="fas fa-eye"></i></a>
-      <a href="" class="mr-3" title="edit" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-edit"></i></a>
-    <form action="categories.php" method="POST">
-      <button type="submit" name="category_delete" class="btn btn-danger btn-sm"
-      <?php echo $category->id; ?> onclick="return confirm('Are you sure you want to delete user?')">
-        <i class="bi bi-trash3"></i> DELETE
+  <a href="" class="btn btn-primary btn-sm mr-3" title="view"><i class="fas fa-eye"></i></a>
+  <a href="" class="btn btn-success btn-sm mr-3" title="edit" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-edit"></i></a>
+  <form action="categories.php" method="POST" class="d-inline-block">
+    <button type="submit" name="category_delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete user?')">
+      <i class="bi bi-trash3"></i>
     </button>
-      
-    </form>
-      
-
-     
+  </form>
 </td>
+
       </tr>
     <?php endforeach; ?>
   </tbody>

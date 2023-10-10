@@ -64,7 +64,8 @@
     ?>
   </div>
 <!-- categories -->
-<?php $categories = new Category();
+<?php
+ $categories = new Category();
 ?>
   <div id="subControls" class="carousel-slide-content-sub mx-auto">
   <h6 class="text-center mt-5">Our Categories</h6>
