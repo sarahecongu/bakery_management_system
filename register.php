@@ -15,10 +15,10 @@ try {
         $password = trim($_POST['pwd']);
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
            
-     $user_id = $user->Register($first_name, $last_name, $email, $hashed_password);
+        $user->Register($first_name, $last_name, $email, $hashed_password);
           
         
-                if ($user_id) {
+                if ($user) {
                     
                     $data = [
                         'first_name' => $first_name,
