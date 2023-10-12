@@ -1,9 +1,10 @@
 
 <?php
-//  $user = new User();
-//  if ($user->checkIsUserLoggedIn()) {
-//    header('Location:my-account.php');
-//  }
+include("includes/core.php");
+ $user = new User();
+ if ($user->checkIsUserLoggedIn()) {
+   header('Location:my-account.php');
+ }
  ?>
 <nav class="navbar navbar-expand-lg navbar-dark">
       <!-- Logo on the left -->
@@ -38,33 +39,33 @@
           </li>
           <?php
           
-        //   try {
+          try {
            
-        //     $_SESSION['user_type'] = 'customer';
-        //     if ($user->checkIsUserLoggedIn()) {
-        //       ?>
-        <!-- //       <li class="nav-item"> -->
-        <!-- //     <a class="nav-link font-weight-bold" href="my-account.php">my account</i></a> -->
+            $_SESSION['user_type'] = 'customer';
+            if ($user->checkIsUserLoggedIn()) {
+               ?>
+           <li class="nav-item"> 
+           <a class="nav-link font-weight-bold" href="my-account.php">my account</i></a> 
             
-        <!-- //   </li> -->
+         </li>
                <?php
           
-        //     }else {
-        //      ?>
-        <!-- //      <li class="nav-item">
-        //     <a class="nav-link font-weight-bold" href="login.php">Login</i></a>
+            }else {
+             ?>
+          <li class="nav-item">
+           <a class="nav-link font-weight-bold" href="login.php">Login</i></a>
             
-        //   </li>
-        //   <li class="nav-item">
-        //     <a class="nav-link font-weight-bold" href="register.php">Register</i></a>
+           </li>
+          <li class="nav-item">
+            <a class="nav-link font-weight-bold" href="register.php">Register</i></a>
             
-        //   </li> -->
+        </li> 
              <?php 
-        //     }
-        //   } catch (PDOException $e) {
-        //  echo $e->getMessage();
-        //   }
-        //   ?>
+            }
+          } catch (PDOException $e) {
+         echo $e->getMessage();
+          }
+          ?>
           
           <li class="nav-item">
             <a class="nav-link font-weight-bold" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>

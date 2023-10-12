@@ -1,44 +1,23 @@
 <?php
-session_start();
-require_once 'includes/core.php'; 
+include ('includes/core.php'); 
 $user = new User();
-class User {
-    public function checkIsEmailValid($email) {
-        // Add your email validation logic here
-        return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
-    }
 
-    public function checkIsLoginFormEmpty($email, $password) {
-        // Check if both email and password are not empty
-        return !empty($email) && !empty($password);
-    }
+if( $user -> checkIsUserLoggedIn()){
 
-    public function Login($email, $password) {
-        // Add your login logic here
-        // Return true if login is successful, or an error message if it fails
+    header('Location:my-account.php');
+    exit();
+}
+try {
+    if(isset($_POST['login'])){
+        $email = $_POST['email'];
+        $password = $_POST['pwd'];
+        $user ->Login($email , $password );
     }
+} catch (PDOException $e) {
+    echo $e -> getMessage();
 }
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim(htmlspecialchars($_POST['email']));
-    $password = trim($_POST['pwd']);
-
-    if (!$user->checkIsEmailValid($email)) {
-        echo "Enter valid email";
-    } else if (!$user->checkIsLoginFormEmpty($email, $password)) {
-        echo "Fill in all fields";
-    } else {
-        $loginResult = $user->Login($email, $password);
-
-        if ($loginResult === true) {
-            header("Location: index.php"); 
-            exit();
-        } else {
-            echo $loginResult;
-        }
-    }
-}
 
 ?>
 
@@ -75,13 +54,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <form action="" class="px-3" method="POST" id="login-form">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email address"
+                                <input type="email" class="form-control" name="email" placeholder="Enter email address"
                                     name="email">
                             </div>
                             <!-- password -->
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="pwd" placeholder="Enter password"
+                                <input type="password" class="form-control" name="pwd" placeholder="Enter password"
                                     name="pwd" >
                             </div>
                             <!-- button -->
@@ -106,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                           
                             <!-- submit button -->
                             <div class="form-group mt-3 ">
-                                <input type="submit" value="Login" id="login-btn"
+                                <input type="submit" value="Login" id="login-btn" name= "login"
                                     class="btn btn-primary w-100">
                             </div>
 
