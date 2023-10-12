@@ -27,7 +27,7 @@
             <a class="nav-link  font-weight-bold" href="#">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  font-weight-bold" href="#">Menus</a>
+            <a class="nav-link  font-weight-bold" href="sub_categories.php">Menus</a>
           </li>
           <li class="nav-item">
             <a class="nav-link font-weight-bold" href="#">Services</a>
