@@ -15,10 +15,10 @@ class Model extends DatabaseConnection
 	 */
 	public function all()
 	{
-		$sql    = "SELECT * FROM " . $this->table;
+		$sql = "SELECT * FROM " . $this->table;
 		$result = $this->connection->query($sql);
 		$result->execute();
-		return	$result->fetchAll(PDO::FETCH_OBJ);
+		return $result->fetchAll(PDO::FETCH_OBJ);
 	}
 
 	/**
@@ -28,7 +28,7 @@ class Model extends DatabaseConnection
 	 */
 	public function find($id)
 	{
-		$sql    = "SELECT * FROM " . $this->table . " WHERE id=" . $id;
+		$sql = "SELECT * FROM " . $this->table . " WHERE id=" . $id;
 		$result = $this->connection->prepare($sql);
 
 		$result->execute();
@@ -44,9 +44,9 @@ class Model extends DatabaseConnection
 	public function create($data)
 	{
 		$columns = implode(", ", array_keys($data));
-		$values  = ":" . implode(", :", array_keys($data));
+		$values = ":" . implode(", :", array_keys($data));
 
-		$sql    = "INSERT INTO " . $this->table . " (" . $columns . ") VALUES (" . $values . ")";
+		$sql = "INSERT INTO " . $this->table . " (" . $columns . ") VALUES (" . $values . ")";
 		$result = $this->connection->prepare($sql);
 
 		return $result->execute($data);
@@ -66,7 +66,7 @@ class Model extends DatabaseConnection
 		}
 		$set = rtrim($set, ", ");
 
-		$sql    = "UPDATE " . $this->table . " SET " . $set . " WHERE id=" . $id;
+		$sql = "UPDATE " . $this->table . " SET " . $set . " WHERE id=" . $id;
 		$result = $this->connection->prepare($sql);
 
 		return $result->execute($data);
@@ -79,7 +79,7 @@ class Model extends DatabaseConnection
 	 */
 	public function delete($id)
 	{
-		$sql    = "DELETE FROM " . $this->table . " WHERE id=" . $id;
+		$sql = "DELETE FROM " . $this->table . " WHERE id=" . $id;
 		$result = $this->connection->prepare($sql);
 
 		return $result->execute();
@@ -91,7 +91,7 @@ class Model extends DatabaseConnection
 	 */
 	public function count()
 	{
-		$sql    = "SELECT COUNT(*) as count FROM " . $this->table;
+		$sql = "SELECT COUNT(*) as count FROM " . $this->table;
 		$result = $this->connection->query($sql);
 
 		$result->execute();
@@ -113,12 +113,12 @@ class Model extends DatabaseConnection
 		}
 		$where = rtrim($where, " AND ");
 
-		$sql    = "SELECT * FROM " . $this->table . " WHERE " . $where;
+		$sql = "SELECT * FROM " . $this->table . " WHERE " . $where;
 		$result = $this->connection->query($sql);
 
 		$result->execute();
 
-		return  $result->fetchAll(PDO::FETCH_OBJ);
+		return $result->fetchAll(PDO::FETCH_OBJ);
 	}
 
 	/**
@@ -129,7 +129,7 @@ class Model extends DatabaseConnection
 	 */
 	public function orderBy($column, $direction = 'DESC')
 	{
-		$sql    = "SELECT * FROM " . $this->table . " ORDER BY " . $column . " " . $direction;
+		$sql = "SELECT * FROM " . $this->table . " ORDER BY " . $column . " " . $direction;
 		$result = $this->connection->query($sql);
 
 		$result->execute();
@@ -149,5 +149,45 @@ class Model extends DatabaseConnection
 		$result->execute();
 
 		return $result->fetchAll(PDO::FETCH_OBJ);
+	}
+	/**
+	 * Get limited records
+	 * @param mixed $limit
+	 * @return object
+	 */
+	public function limit($limit)
+	{
+		$sql = "SELECT * FROM " . $this->table . " LIMIT " . $limit;
+		$result = $this->connection->query($sql);
+		$result->execute();
+		return $result->fetchAll(PDO::FETCH_OBJ);
+	}
+	/**
+	 * Create
+	 * @param array $data
+	 * @return array
+	 */
+	public function createMany($many)
+	{
+		$succes = 0;
+		$failed = 0;
+
+		foreach ($many as $data) {
+			try {
+			$columns = implode(", ", array_keys($data));
+			$values = ":" . implode(", :", array_keys($data));
+
+			$sql = "INSERT INTO " . $this->table . " (" . $columns . ") VALUES (" . $values . ")";
+			$result = $this->connection->prepare($sql);
+			if($result->execute($data)){
+				$succes++;
+			}
+			} catch (PDOException $e) {
+				$failed++;
+			}
+		}
+
+		return ['success'=>$succes, 'failed'=>$failed];
+
 	}
 }

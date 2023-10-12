@@ -1,40 +1,41 @@
-
 <?php
-session_start();
-require_once './includes/classes_autoload.inc.php';
-require_once './config/dbh.php'; 
+include("includes/core.php");
+$sessionManager = new SessionManager();
+$user = new User();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $first_name = trim(htmlspecialchars($_POST['first_name']));
-    $last_name = trim(htmlspecialchars($_POST['last_name']));
-    $email = trim(htmlspecialchars($_POST['email']));
-    $password = trim($_POST['pwd']);
-
-    // Validate the data (you can add more validation as needed)
-    if (empty($first_name) || empty($last_name) || empty($email) || empty($password)) {
-        echo "All fields are required.";
-    } else {
-        // Validate email
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo "Invalid email format";
-        }
-        // Validate password
-        elseif (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $password)) {
-            echo "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character.";
-        } else {
-            $user = new User();
-            if ($user->Register($first_name, $last_name, $email, $password)) {
-                header("Location: login.php");
-                exit();
-            } else {
-                echo "Registration failed.";
-            }
-        }
-    }
+if( $user -> checkIsUserLoggedIn()){
+header('Location:my-account.php');
+    exit();
 }
-
+try {
+    if (isset($_POST['register'])) {
+        $first_name = trim(htmlspecialchars($_POST['first_name']));
+        $last_name = trim(htmlspecialchars($_POST['last_name']));
+        $email = trim($_POST['email']);
+        $password = trim($_POST['pwd']);
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+           
+     $user_id = $user->Register($first_name, $last_name, $email, $hashed_password);
+          
+        
+                if ($user_id) {
+                    
+                    $data = [
+                        'first_name' => $first_name,
+                        'last_name' => $last_name,
+                        'pwd'=> $hashed_password,
+                        'email' => $email,
+                        'user_id' => $user_id
+                    ];
+                    $sessionManager->add($data);
+                    header("Location: login.php");
+                    exit();
+                } 
+            } 
+} catch (PDOException $e) {
+    echo $e -> getMessage();
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>
                                 <input type="email" class="form-control" name="email" placeholder="Enter email address"
-                                    name="email" >
+        >
                             </div>
                             <!-- password -->
                             <div class="mb-3">
@@ -82,17 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <input type="password" class="form-control" name="pwd" placeholder="Enter password"
                                     name="pwd" >
                             </div>
-                               <!-- password -->
-                               <!-- <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" name="cpwd" placeholder="Enter password"
-                                    name="cpwd">
-                            </div> -->
-                            <?php if(isset($error_message)) : ?>
-                            <div class="alert alert-danger" role="alert">
-                                <?php echo $error_message; ?>
-                            </div>
-                        <?php endif; ?>
+                            
                             <div class="have account float-right">
                                 <a href="login.php" name="have account-link">Have Account?</a>
                             </div>
