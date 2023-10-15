@@ -162,6 +162,7 @@ class Model extends DatabaseConnection
 		$result->execute();
 		return $result->fetchAll(PDO::FETCH_OBJ);
 	}
+
 	/**
 	 * Create
 	 * @param array $data
@@ -188,6 +189,19 @@ class Model extends DatabaseConnection
 		}
 
 		return ['success'=>$succes, 'failed'=>$failed];
-
 	}
+
+	// /**
+	//  * Get limited records
+	//  * @param mixed $limit
+	//  * @return object
+	//  */
+	// public function limit($limit)
+	// {
+	// 	$sql = "SELECT * FROM " . $this->table . " LIMIT " . $limit;
+	// 	$result = $this->connection->query($sql);
+	// 	$result->execute();
+	// 	return $result->fetchAll(PDO::FETCH_OBJ);
+	// }
+
 }

@@ -4,7 +4,6 @@ Class Recipe extends Model{
     public $name;
     public $instructions;
     public $author;
-
     public $image;
     public $description;
  

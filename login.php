@@ -1,49 +1,26 @@
 <?php
 include ('includes/core.php'); 
+$error= '';
 $user = new User();
 
-if( $user -> checkIsUserLoggedIn()){
-
-    header('Location:my-account.php');
-    exit();
-}
 try {
     if(isset($_POST['login'])){
-        $email = $_POST['email'];
-        $password = $_POST['pwd'];
-        $user ->Login($email , $password );
+    
+    $user->email = $_POST['email'];
+    $user->pwd = $_POST['pwd'];
+    $error = $user->Login();
     }
 } catch (PDOException $e) {
     echo $e -> getMessage();
+    
 }
-
-
-
 ?>
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  
-    <title>End Of year project</title>
-</head>
-
-
-
-<body>
+<?php
+    include('partials/header.php');
+    ?>
     <div class="container mt-5 w-50 ">
         <div class="row justify-content-center wrapper" id="login-box">
             <div class="col-lg-10 my-auto">
@@ -51,7 +28,7 @@ try {
                     <div class="card rounded-left p-4">
                         <h1 class="text-center font-weight-bold text-primary">Login In</h1>
                         <hr class="my-3">
-                        <form action="" class="px-3" method="POST" id="login-form">
+                        <form action="login.php" class="px-3" method="POST" id="login-form">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>
                                 <input type="email" class="form-control" name="email" placeholder="Enter email address"
@@ -101,24 +78,6 @@ try {
 
 
 
-    <!-- script -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-        <!-- script -->
-        <!-- <script>
-        $(document).ready(function(){
-            alert('hello');
-        });
-        </script> -->
-</body>
-
-</html>
+    <?php
+    include('partials/footer.php');
+    ?>
