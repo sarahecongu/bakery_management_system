@@ -39,7 +39,7 @@ $user = new User();
           </li>
           <?php
 
-        } else {
+        else {
           ?>
           <li class="nav-item">
             <a class="nav-link font-weight-bold" href="login.php">Login</i></a>
