@@ -44,11 +44,14 @@ try {
 
 
 <body>
-    <div class="container mt-5 w-50 ">
-        <div class="row justify-content-center wrapper" id="login-box">
-            <div class="col-lg-10 my-auto">
-                <div class="card-group">
-                    <div class="card rounded-left p-4">
+
+
+
+<div class="container mt-5 w-50  ">
+    <div class="row justify-content-center wrapper" id="login-box">
+        <div class="col-lg-10 my-auto">
+            <div class="card-group">
+                <div class="card rounded-left p-4">
                         <h1 class="text-center font-weight-bold text-primary">Login In</h1>
                         <hr class="my-3">
                         <form action="" class="px-3" method="POST" id="login-form">
@@ -61,7 +64,7 @@ try {
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" name="pwd" placeholder="Enter password"
-                                    name="pwd" >
+                                    name="
                             </div>
                             <!-- button -->
                             <div class="form-group d-flex">
@@ -84,7 +87,7 @@ try {
                            
                           
                             <!-- submit button -->
-                            <div class="form-group mt-3 ">
+                            <div class="form-group mt-3">
                                 <input type="submit" value="Login" id="login-btn" name= "login"
                                     class="btn btn-primary w-100">
                             </div>

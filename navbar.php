@@ -18,6 +18,11 @@ include("includes/core.php");
         <span class="navbar-toggler-icon"></span>
       </button>
 
+      <!-- search  -->
+      <div class="form-group text-center">
+              <input class="form-control mx-auto mt-5"placeholder="Search for Products...">
+      </div>
+
       <!-- Navigation links on the right -->
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">

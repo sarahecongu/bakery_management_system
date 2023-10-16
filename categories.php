@@ -6,8 +6,8 @@ $categories = new Category();
 // Create
 if (isset($_POST['add_category'])) {
   $data = [
-    'name' => $_POST['name'],
-    'description' => $_POST['description']
+    'name' => $_POST['name']
+    
   ];
   if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
     $image_name = $_FILES['image']['name'];
@@ -109,11 +109,7 @@ if (isset($_POST['category_delete'])) {
               <label class="form-label">Name</label>
               <input type="text" class="form-control" name="name" placeholder="Category name">
             </div>
-            <!-- last name -->
-            <div class="mb-3">
-              <label class="form-label">Description </label>
-              <input type="textarea" class="form-control" name="description" placeholder="description of the product">
-            </div>
+                      
             <div class="modal-footer">
               <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
               <button type="submit" class="btn btn-primary" name = "add_category">Add Category</button>
@@ -130,7 +126,6 @@ if (isset($_POST['category_delete'])) {
         <th scope="col">Id</th>
         <th scope="col">Image</th>
         <th scope="col">Name</th>
-        <th scope="col">Description</th>
         <th scope="col">Created At</th>
         <th scope="col">Updated At</th>
         <th scope="col">Actions</th>
@@ -149,9 +144,7 @@ if (isset($_POST['category_delete'])) {
           <td>
             <?php echo $category->name; ?>
           </td>
-          <td>
-            <?php echo $category->description; ?>
-          </td>
+          
           <td>
             <?php echo $category->created_at; ?>
           </td>
