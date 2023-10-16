@@ -1,6 +1,6 @@
 
 <section class="products">
-  <h4 class="text-center mt-4">Our <span class="text-warning">Products</span></h4>
+  <h4 class="text-center mt-4">Our <span class="text-warning">PRODUCTS</span></h4>
   <div class="product">
     <div class="wrapper">
       <?php
@@ -9,6 +9,10 @@
         <div class="product box">
                 <img src="images/bd.jpg" alt="...">
                 <h3>chocolate cake</h3>
+                <div class="cal">
+                <a href="" class="">Calories</a>
+                <a href="" class="">Ingredients</a>
+                </div>
                 <h6 class="price">shs 4500</h6>
                 <div class="stars">
                   <i class="fas fa-star"></i>

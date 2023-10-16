@@ -1,5 +1,4 @@
 <?php
-	include("includes/core.php");
 $categories = new Category();
 
 ?>
