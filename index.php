@@ -1,6 +1,4 @@
-<?php
-include('includes/core.php');
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 

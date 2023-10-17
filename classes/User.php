@@ -8,11 +8,11 @@ class User extends Model
     public $user_type_id;
     public $pwd;
     public $image;
-
-
+    
+   
     public function userLogout()
     {
-        if (isset($_SESSION['logged_in'])) {
+        if (isset($_SESSION['first_name']) && isset($_SESSION['last_name'])) {
             session_destroy();
             header('Location:login.php');
             die();
@@ -85,11 +85,11 @@ class User extends Model
                             return header('Location: 404.php');
                     }
                 } else {
-                    echo 'Wrong email or password . Please try again.2';
+                    echo 'Wrong email or password . Please try again.';
                 }
             }
         } else {
-            echo 'Wrong email or password . Please try again.1';
+            echo 'Wrong email or password . Please try again.';
         }
     }
 

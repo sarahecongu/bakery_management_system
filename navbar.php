@@ -1,4 +1,6 @@
 <?php
+include('includes/core.php');
+
 $user = new User();
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark">

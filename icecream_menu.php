@@ -10,7 +10,6 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./css/styles.css">
   <link rel="stylesheet" href="./css/index.css">
-
     <title>Icecream menu</title>
 </head>
 <body>
