@@ -18,7 +18,7 @@ $categories = new Category();
     </div>
     <div class="caption">
       <h6><?php echo $category->name ?></h6>
-      <h5><?php echo $category->description ?></h5>
+      
     </div>
   </div>
   </div>

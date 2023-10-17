@@ -9,8 +9,8 @@ if(isset($_GET['id']) && !empty($_GET['id'])) {
 }
 if (isset($_POST['update_category'])) {
     $data = [
-        'name' => $_POST['name'],  
-        'description' => $_POST['description']
+        'name' => $_POST['name'] 
+        
     ];
     if(isset($_FILES['image']) && $_FILES['image']['error'] == 0){
         $image_name = $_FILES['image']['name'];
@@ -44,11 +44,7 @@ if (isset($_POST['update_category'])) {
                         <input type="text" class="form-control" name="name" placeholder="Category name"
                             value="<?= $category->name ?>">
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Description</label>
-                        <textarea class="form-control" name="description"
-                            placeholder="Description of the product"><?php echo $category->description ?></textarea>
-                    </div>
+                    
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                         <button type="submit" class="btn btn-primary" name ="update_category">Update Category</button>
