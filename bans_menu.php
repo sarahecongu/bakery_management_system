@@ -76,7 +76,7 @@
             echo '
             <div class="col mx-auto">
                 <div class="product-card text-center">
-                    <img src="./images/bans.jpg" class="product-image" alt="Chocolate Cake">
+                    <img src="./images/pizza-hut.jpg" class="product-image" alt="Chocolate Cake">
                     <h5 class="product-name">Chocolate Cake</h5>
                     <div class="product-price-cart  text-center">
                     <span class="product-price"> 150,000 </span>

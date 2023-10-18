@@ -1,17 +1,91 @@
+.footer {
+  background-color: #361401;
+  color: #fff;
+  padding: 20px 0;
+  margin-top: 40px;
+}
 
+.footer h4 {
+  color: #fff;
+}
+
+.footer p {
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  list-style: none;
+  padding: 0;
+}
+
+.social-icons li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.social-icons a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
+.social-icons a:hover {
+  color: #f8d53e;
+}
+
+
+/* body {
+      background-color: #f8f9fa;
+      padding: 20px;
+    } */
+
+.modal-title {
+  font-size: 1.5rem;
+}
+
+.modal-body {
+  font-size: 1.2rem;
+}
+
+.modal-footer {
+  justify-content: space-between;
+}
+
+.table {
+  margin-top: 20px;
+  width: 70%;
+  margin-left: 350px;
+  border-radius: 10px;
+}
+
+.table th,
+.table td {
+  padding: 8px 12px;
+}
+
+.btn {
+  margin: 5px;
+
+}
+
+/* navbar */
 .navbar {
   background-color: #361401;
   color: white;
+  margin-right: 15px;
 
 }
+
 .navbar-brand img {
   height: 80px;
   width: 120px;
 }
+
 .nav-link {
   color: white;
 
 }
+
 .nav-link:hover {
   color: #be6a0b;
 }
@@ -105,6 +179,7 @@
   height: 180px;
 
 }
+
 .card-content {
   margin: 5px;
   box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
@@ -151,9 +226,10 @@
   outline: none;
 }
 
-.cal{
+.cal {
   border: 5px 0 0 5px solid black;
 }
+
 /* features */
 
 .carousel-slide-features {
@@ -263,10 +339,10 @@
   padding: 20px;
   text-align: center;
   /* background-color: #f9f9f9; */
-  /* border: 1px solid #ccc; */
-  /* border-radius: 10px; */
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-/* } */ 
+/* border: 1px solid #ccc; */
+/* border-radius: 10px; */
+/* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+/* } */
 
 .product-title {
   font-size: 24px;
@@ -275,7 +351,8 @@
 }
 
 .product-highlight {
-  color: #FFA500; /* Orange color for highlight */
+  color: #FFA500;
+  /* Orange color for highlight */
 }
 
 .product-list .col {
@@ -331,26 +408,28 @@
 
 .product-details a {
   margin: 5px;
-  color: #007BFF; 
+  color: #007BFF;
   text-decoration: none;
 }
+
 .product-price-cart {
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
+
 .product-stars {
   margin-top: 10px;
   font-size: 20px;
 }
 
 .product-stars i {
-  color: #FFD700; 
+  color: #FFD700;
 }
 
 .btn-dark {
   background-color: rgb(251, 166, 55);
-  color: #fff; 
+  color: #fff;
   border-color: #fcfdff;
   border-radius: 50px;
   padding: 7px;
@@ -359,14 +438,14 @@
 .btn-dark:hover {
   background-color: #c66515;
   color: #fff;
-  border-color:#fff;
+  border-color: #fff;
 }
 
 .view a {
   /* display: inline-block; */
   font-size: 16px;
   color: #fff;
-  background-color: #007BFF; 
+  background-color: #007BFF;
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 5px;
@@ -377,16 +456,22 @@
 .product-card img:hover {
   transform: scale(1.05);
 }
-.product-card, .btn-dark, .product-details a {
+
+.product-card,
+.btn-dark,
+.product-details a {
   transition: all 0.3s ease;
 }
+
 .product-details a:hover {
   color: #0056b3;
 }
+
 .product-card .btn-dark:hover {
   background-color: #e87815;
   border-color: #e87815;
 }
+
 .product-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
@@ -394,52 +479,61 @@
 
 @keyframes fadeIn {
   0% {
-      opacity: 0;
-      transform: translateY(10px);
+    opacity: 0;
+    transform: translateY(10px);
   }
+
   100% {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 .card-content {
   opacity: 0;
-  animation: fadeIn 1s ease-in-out forwards; 
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 .card-content:nth-child(1) {
-  animation-delay: 0.5s; /* Delay for the first feature */
+  animation-delay: 0.5s;
+  /* Delay for the first feature */
 }
 
 .card-content:nth-child(2) {
-  animation-delay: 1.5s; /* Delay for the second feature */
+  animation-delay: 1.5s;
+  /* Delay for the second feature */
 }
 
 .card-content:nth-child(3) {
-  animation-delay: 2.5s; /* Delay for the third feature */
+  animation-delay: 2.5s;
+  /* Delay for the third feature */
 }
 
 .card-content:nth-child(4) {
-  animation-delay: 3.5s; /* Delay for the fourth feature */
+  animation-delay: 3.5s;
+  /* Delay for the fourth feature */
 }
+
 .card-content:nth-child(5) {
-  animation-delay: 4.5s; /* Delay for the fourth feature */
+  animation-delay: 4.5s;
+  /* Delay for the fourth feature */
 }
+
 .card-content:nth-child(6) {
-  animation-delay: 5.5s; /* Delay for the fourth feature */
+  animation-delay: 5.5s;
+  /* Delay for the fourth feature */
 }
 
 
 .view a:hover {
-  background-color: #0056b3; 
+  background-color: #0056b3;
 }
 
 .viewer a {
   /* display: inline-block; */
   font-size: 16px;
   color: #fff;
-  background-color: #007BFF; 
+  background-color: #007BFF;
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 5px;
@@ -447,7 +541,7 @@
 }
 
 .viewer a:hover {
-  background-color: #0056b3; 
+  background-color: #0056b3;
 }
 
 /* Add this CSS to your existing stylesheet or in a <style> tag in your HTML file */
@@ -486,12 +580,13 @@
 .newsletter button:hover {
   background-color: #0056b3;
 }
+
 .logo-space {
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .logo-space img {
-  max-width: 250px; 
+  max-width: 250px;
 }
 
 

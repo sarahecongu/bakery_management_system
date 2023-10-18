@@ -1,6 +1,6 @@
 <style>
   .form-control{
-    width: 500px;
+    width: 300px;
     border-radius: 50px;
     border: none;
     margin-bottom: .2rem;
@@ -42,7 +42,7 @@ $user = new User();
             <a class="nav-link  font-weight-bold" href="#">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  font-weight-bold" href="sub_categories.php">Menus</a>
+            <a class="nav-link  font-weight-bold" href="bans_menu.php">Menus</a>
           </li>
           <li class="nav-item">
             <a class="nav-link font-weight-bold" href="#">Services</a>

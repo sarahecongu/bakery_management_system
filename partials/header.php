@@ -12,7 +12,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./css/index.css">
   <title>END OF YEAR</title>
-  <style>
+  <!-- <style>
     .footer {
   background-color: #361401;
   color: #fff;
@@ -67,23 +67,23 @@
     }
 
     .table {
-      margin-top: 20px;
+      /* margin-top: 20px; */
+      width: 80%; 
+      margin: 5px auto; 
+      border-radius: 10px;
+      
+
     }
 
     .table th,
     .table td {
       padding: 8px 12px;
     }
-
-    .table {
-      border-radius: 10px;
-    }
-
     .btn {
       margin: 5px;
 
     }
-  </style>
+  </style> -->
 </head>
 
 <body>

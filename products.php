@@ -35,6 +35,6 @@
 
     <!-- View more -->
     <div class="view">
-        <a href="sub_categories.php">View More</a>
+        <a href="bans_menu.php">View More</a>
     </div>
 <!-- </div> -->
