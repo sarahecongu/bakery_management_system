@@ -1,3 +1,15 @@
+<style>
+  .form-control{
+    width: 500px;
+    border-radius: 50px;
+    border: none;
+    margin-bottom: .2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-left: 100px;
+    
+}
+
+</style>
 <?php
 include('includes/core.php');
 
@@ -16,9 +28,9 @@ $user = new User();
   </button>
 
       <!-- search  -->
-      <div class="form-group text-center">
-              <input class="form-control mx-auto mt-5"placeholder="Search for Products...">
-      </div>
+      <div class="form-group">
+    <input class="form-control"placeholder="Search for Products...">
+    </div>
 
       <!-- Navigation links on the right -->
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -41,7 +53,7 @@ $user = new User();
           </li>
           <?php
 
-        else {
+        // else {
           ?>
           <li class="nav-item">
             <a class="nav-link font-weight-bold" href="login.php">Login</i></a>
@@ -52,10 +64,10 @@ $user = new User();
 
           </li>
         <?php
-        }
-      } catch (PDOException $e) {
-        echo $e->getMessage();
-      }
+      //   }
+      // } catch (PDOException $e) {
+      //   echo $e->getMessage();
+      // }
       ?>
 
       <li class="nav-item">

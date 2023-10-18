@@ -45,10 +45,8 @@
   <div class="collapse" id="collapseProduct">
     <hr>
   <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>View Products</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i>Add Products</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i>Edit Products</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i>Delete Products</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>Manage Products</a></li>
+
 
   </ul>
   <hr>
@@ -60,10 +58,7 @@
   <div class="collapse" id="collapseCategory">
     <hr>
   <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="categories.php"><i class="fas fa-eye"></i> View Categories</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i> Add Categories</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Categories</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Categories</a></li>
+    <li><a class="list-group-item text-gray" href="categories.php"><i class="fas fa-eye"></i> Manage Categories</a></li>
 
   </ul>
   <hr>
@@ -75,7 +70,7 @@
   <div class="collapse" id="collapseOrder">
     <hr>
   <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View Orders</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>Manage Orders</a></li>
   </ul>
   <hr>
 </div>
@@ -86,10 +81,7 @@
   <div class="collapse" id="collapseVendor">
     <hr>
   <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View Vendor</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i>Add Vendor</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i>Edit Vendor</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i>Delete Vendor</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>Manage Vendor</a></li>
   </ul>
   <hr>
 </div>
@@ -100,10 +92,10 @@
   <div class="collapse" id="collapseInventory">
     <hr>
   <ul class="list-group text-gray">
-  <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>View ingredients</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i>Add ingredients</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i>Edit ingredients</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i>Delete ingredients</a></li>
+  <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>Manage Ingredients</a></li>
+    <li><a class="list-group-item text-gray" href="recipes.php"><i class="fas fa-plus"></i>Manage Recipes</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i>Manage Equipments</a></li>
+    <!-- <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i>Delete ingredients</a></li> -->
   </ul>
   <hr>
 </div>
@@ -120,10 +112,20 @@
   <div class="collapse" id="collapseSchedule">
     <hr>
   <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View schedule</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i> Add schedule</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit schedule</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete schedule</a></li>
+    <li><a class="list-group-item text-gray" href="schedule.php"><i class="fas fa-eye"></i> Manage schedule</a></li>
+    
+  </ul>
+  <hr>
+</div>
+<!-- shifts -->
+<a class="list-group-item admin-link" data-bs-toggle="collapse" href="#collapseShift" role="button" aria-expanded="false" aria-controls="collapseShift">
+ <i class="fas fa-calendar-alt"></i> Shift Management
+  </a>
+  <div class="collapse" id="collapseShift">
+    <hr>
+  <ul class="list-group text-gray">
+    <li><a class="list-group-item text-gray" href="shift.php"><i class="fas fa-eye"></i>Manage Shifts</a></li>
+
   </ul>
   <hr>
 </div>
@@ -135,10 +137,8 @@
     <hr>
   <ul class="list-group text-gray">
 
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>View Payment Method</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i>Add Payment Method</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i>Edit Payment Method</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i>Delete Payment Method</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>Manage Payments</a></li>
+
 
   </ul>
   <hr>
@@ -150,10 +150,7 @@
   <div class="collapse" id="collapseFeedback">
     <hr>
   <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View Feedback</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i> Add Feedback</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit Feedback</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete Feedback</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>Manage Feedback</a></li>
   </ul>
   <hr>
 </div>
@@ -164,10 +161,7 @@
   <div class="collapse" id="collapsePromotion">
     <hr>
   <ul class="list-group text-gray">
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i> View promotions</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-plus"></i> Add promotions</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-edit"></i> Edit promotions</a></li>
-    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-trash"></i> Delete promotions</a></li>
+    <li><a class="list-group-item text-gray" href="#"><i class="fas fa-eye"></i>Manage promotions</a></li>
   </ul>
   <hr>
 </div>

@@ -47,6 +47,11 @@
   include('products.php');
 
   ?>
+    <!--news  -->
+    <?php
+  // include('news_letter.php');
+
+  ?>
 
    <?php
   include('footer.php');

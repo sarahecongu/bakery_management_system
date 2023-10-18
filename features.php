@@ -3,7 +3,7 @@
   <div class="carousel-inner-features d-flex justify-content-center align-items-center mt-5">
     <!-- items -->
     <div class="carousel-item-features active ">
-      <div class="card-features ">
+      <div class="card-features">
         <div class="image-wrappers">
         <img src="images/delivery.png" class="d-block w-50 mx-auto" alt="...">
         </div>

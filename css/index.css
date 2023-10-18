@@ -1,19 +1,17 @@
+
 .navbar {
   background-color: #361401;
   color: white;
 
 }
-
 .navbar-brand img {
-  height: 70px;
-  width: 100px;
+  height: 80px;
+  width: 120px;
 }
-
 .nav-link {
   color: white;
 
 }
-
 .nav-link:hover {
   color: #be6a0b;
 }
@@ -74,7 +72,7 @@
 }
 
 /* categiories */
-.caption {
+.card-content .caption {
   position: absolute;
   bottom: 0;
   left: 10;
@@ -90,7 +88,7 @@
   border-radius: 10px;
 }
 
-*/ .carousel-item-content {
+.carousel-item-content-sub {
   position: relative;
   padding: 5px;
   box-sizing: border-box;
@@ -104,19 +102,16 @@
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  height: 210px;
+  height: 180px;
 
 }
-
 .card-content {
-  margin: 0 5px;
+  margin: 5px;
   box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
-  /* margin-top: 10px; */
   border-radius: 20px;
-  color: #000;
-  background-color: peachpuff;
+  /* background-color: peachpuff; */
   position: relative;
-  max-height: 250px;
+  max-height: 200px;
 }
 
 .carousel-inner-content {
@@ -141,7 +136,7 @@
   transform: translateY(-50%);
   display: flex;
   justify-content: space-between;
-  z-index: 1;
+  /* z-index: 1; */
 }
 
 .carousel-controls button {
@@ -175,11 +170,12 @@
   border: none;
   border-radius: 5px;
   /* background-color: peachpuff; */
-  margin-right: 0;
+  /* margin-right: 0; */
   flex: 0 0 30%;
   display: block;
-  max-width: 200px;
+  max-width: 300px;
   max-height: 300px;
+  padding: 15px;
 }
 
 
@@ -225,95 +221,6 @@
   border-radius: 30px 30px 0 0;
 }
 
-
-/* Ratings */
-.stars {
-  color: orange;
-  margin-bottom: 5px 0;
-}
-
-/* Cart button */
-a.btn.btn-dark {
-  width: 70%;
-  /* margin-top: auto;  */
-}
-
-/* Products */
-.btn-dark {
-  background-color: #000;
-  border-color: #000;
-}
-
-.btn-dark:hover {
-  background-color: orange;
-  border-color: orange;
-}
-
-
-.price {
-  font-size: 1.2em;
-  color: #007bff;
-  margin: 3px;
-}
-
-.product {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-
-}
-
-.wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  max-width: 1250px;
-  max-height: 1200px;
-  margin: 0 -10px;
-}
-
-.box {
-  flex: 0 0 calc(20% - 20px);
-  display: flex;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 5px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-}
-
-.box img {
-  max-width: 100%;
-  border-radius: 10px;
-}
-
-.box h3 {
-  margin: 8px 0;
-  font-size: 1.3rem;
-  text-align: center;
-}
-
-/* sub categories */
-.carousel-inner-content-sub {
-  /* margin-top: 20px; */
-  padding: 10px;
-}
-
-/* view */
-.viewer {
-  float: right;
-  margin: 0 20px;
-
-}
-
-/* viewer */
-.view {
-  float: right;
-  margin: 0 15px;
-}
-
 /* footer */
 .footer {
   background-color: #361401;
@@ -337,18 +244,272 @@ a.btn.btn-dark {
 
 .social-icons li {
   display: inline-block;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .social-icons a {
   color: #fff;
   text-decoration: none;
-  font-size: 1.5em;
+  font-size: 1em;
 }
 
 .social-icons a:hover {
   color: #f8d53e;
 }
+
+/* .product-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  /* background-color: #f9f9f9; */
+  /* border: 1px solid #ccc; */
+  /* border-radius: 10px; */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+/* } */ 
+
+.product-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.product-highlight {
+  color: #FFA500; /* Orange color for highlight */
+}
+
+.product-list .col {
+  padding: 10px;
+}
+
+.product-card {
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.product-name {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #333;
+}
+
+.text-secondary i {
+  margin-right: 10px;
+}
+
+.product-price {
+  font-size: 16px;
+  margin-top: 5px;
+  color: #2412c6;
+  display: inline-block;
+}
+
+.product-price:before {
+  content: "UGX";
+}
+
+/* .product-price-text {
+  color: #555;
+  display: block;
+  font-size: 14px;
+} */
+
+/* .text-secondary:hover {
+  color: #007BFF;
+} */
+
+.product-details a {
+  margin: 5px;
+  color: #007BFF; 
+  text-decoration: none;
+}
+.product-price-cart {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.product-stars {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.product-stars i {
+  color: #FFD700; 
+}
+
+.btn-dark {
+  background-color: rgb(251, 166, 55);
+  color: #fff; 
+  border-color: #fcfdff;
+  border-radius: 50px;
+  padding: 7px;
+}
+
+.btn-dark:hover {
+  background-color: #c66515;
+  color: #fff;
+  border-color:#fff;
+}
+
+.view a {
+  /* display: inline-block; */
+  font-size: 16px;
+  color: #fff;
+  background-color: #007BFF; 
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  float: right;
+}
+
+/* effects */
+.product-card img:hover {
+  transform: scale(1.05);
+}
+.product-card, .btn-dark, .product-details a {
+  transition: all 0.3s ease;
+}
+.product-details a:hover {
+  color: #0056b3;
+}
+.product-card .btn-dark:hover {
+  background-color: #e87815;
+  border-color: #e87815;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+      transform: translateY(10px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.card-content {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards; 
+}
+
+.card-content:nth-child(1) {
+  animation-delay: 0.5s; /* Delay for the first feature */
+}
+
+.card-content:nth-child(2) {
+  animation-delay: 1.5s; /* Delay for the second feature */
+}
+
+.card-content:nth-child(3) {
+  animation-delay: 2.5s; /* Delay for the third feature */
+}
+
+.card-content:nth-child(4) {
+  animation-delay: 3.5s; /* Delay for the fourth feature */
+}
+.card-content:nth-child(5) {
+  animation-delay: 4.5s; /* Delay for the fourth feature */
+}
+.card-content:nth-child(6) {
+  animation-delay: 5.5s; /* Delay for the fourth feature */
+}
+
+
+.view a:hover {
+  background-color: #0056b3; 
+}
+
+.viewer a {
+  /* display: inline-block; */
+  font-size: 16px;
+  color: #fff;
+  background-color: #007BFF; 
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  float: right;
+}
+
+.viewer a:hover {
+  background-color: #0056b3; 
+}
+
+/* Add this CSS to your existing stylesheet or in a <style> tag in your HTML file */
+.newsletter {
+  /* background-color: #f9f9f9; */
+  padding: 5px;
+  text-align: center;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.newsletter h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.newsletter input[type="email"] {
+  padding: 5px;
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.newsletter button {
+  padding: 5px 10px;
+  border: none;
+  background-color: hsl(38, 100%, 50%);
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.newsletter button:hover {
+  background-color: #0056b3;
+}
+.logo-space {
+  margin-bottom: 20px; 
+}
+
+.logo-space img {
+  max-width: 250px; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

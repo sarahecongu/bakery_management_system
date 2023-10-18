@@ -45,7 +45,10 @@
                         <h5 class="card-title">Chocolate Cake</h5>
                         <p class="card-text">UGX 150,000</p>
                         <div class="card-body text-center mt-0">
-
+    `                
+                            <a href="" class="cal">Calories</a>
+                            <a href="" class="cal">Ingredients</a>
+                     
                             <div class="stars text-warning">
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>

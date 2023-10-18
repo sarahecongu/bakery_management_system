@@ -36,9 +36,7 @@
 
 <div class="container-box">
 <h4 class="text-center mt-5">Our Cupcake Products</h4>
-<div class="form-group text-center">
-<input class="form-control mx-auto mt-5"placeholder="Search for Products...">
-</div>
+
     
         <div class="row row-cols-1 row-cols-md-5 g-2 mt-2">
             <?php 
