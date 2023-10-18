@@ -13,33 +13,38 @@ $user = new User();
     <span class="navbar-toggler-icon"></span>
   </button>
 
-      <!-- search  -->
-      <div class="form-group text-center">
-              <input class="form-control mx-auto mt-5"placeholder="Search for Products...">
-      </div>
+  <!-- Navigation links on the right -->
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold" href="index.php">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link  font-weight-bold" href="#">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link  font-weight-bold" href="#">Menus</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold" href="#">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold" href="#"> Contact Us</i></a>
 
-      <!-- Navigation links on the right -->
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
+      </li>
+      <?php
+
+      try {
+
+        if ($session->checkIsUserLoggedIn()) {
+          ?>
           <li class="nav-item">
-            <a class="nav-link font-weight-bold" href="index.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link  font-weight-bold" href="#">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link  font-weight-bold" href="sub_categories.php">Menus</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link font-weight-bold" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link font-weight-bold" href="#"> Contact Us</i></a>
+            <a class="nav-link font-weight-bold" href="my-account.php">my account</i></a>
 
           </li>
           <?php
 
-        else {
+        } else {
           ?>
           <li class="nav-item">
             <a class="nav-link font-weight-bold" href="login.php">Login</i></a>
