@@ -11,11 +11,29 @@
   <link rel="stylesheet" href="./css/styles.css">
   <link rel="stylesheet" href="./css/index.css">
 
-    <title>Cupcake menu</title>
+  <style>
+        .menu-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            margin-top: 150px; 
+        }
+
+        .menu-button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+
+    <title>Bans menu</title>
 </head>
 <body>
-
-
 <div class="fixed-top">
     <!--Promotions-->
     <?php
@@ -29,48 +47,65 @@
      <!-- navbar -->
   
 </div>
+<div class="menu-buttons">
+    <a href="#" class="menu-button">Bans</a>
+    <a href="#" class="menu-button">Pizza</a>
+    <a href="#" class="menu-button">Milk</a>
+    <a href="#" class="menu-button">Milk</a>
+    <a href="#" class="menu-button">Milk</a>
+    <a href="#" class="menu-button">Milk</a>
+    <a href="#" class="menu-button">Milk</a>
+    <a href="#" class="menu-button">Milk</a>
+    <a href="#" class="menu-button">Milk</a>
+    <a href="#" class="menu-button">Milk</a>
+    <a href="#" class="menu-button">Milk</a>
+    <a href="#" class="menu-button">Milk</a>
+    <a href="#" class="menu-button">Milk</a>
+    <a href="#" class="menu-button">Milk</a>
+    <!-- <a href="#" class="menu-button">Milk</a> -->
 
 
+</div>
+<h4 class="product-title text-center">Our <span class="product-highlight">Menu</span></h4>
 
-
-
-<div class="container-box">
-<h4 class="text-center mt-5">Our Cupcake Products</h4>
-
-    
-        <div class="row row-cols-1 row-cols-md-5 g-2 mt-2">
-            <?php 
-            for ($i = 0; $i < 15; $i++) { 
-                echo '
-                <div class="col  mx-auto m-2">
-                    <div class="card text-center">
-                        <img src="./images/cup.jpg" class="card-img-top" alt="...">
-                        <h5 class="card-title">Chocolate Cake</h5>
-                        <p class="card-text">UGX 150,000</p>
-                        <div class="card-body text-center mt-0">
-
-                            <div class="stars text-warning ">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-half-alt" aria-hidden="true"></i>
-                                </div>
-                            <a href="" class="btn btn-dark text-white mt-2"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to Cart</a>
-                            
+    <div class="product-list row row-cols-2 row-cols-md-5 g-4  mx-auto">
+        <?php 
+        for ($i = 0; $i < 15; $i++) { 
+            echo '
+            <div class="col mx-auto">
+                <div class="product-card text-center">
+                    <img src="./images/bans.jpg" class="product-image" alt="Chocolate Cake">
+                    <h5 class="product-name">Chocolate Cake</h5>
+                    <div class="product-price-cart  text-center">
+                    <span class="product-price"> 150,000 </span>
+                    <a href="#" class="text-secondary">
+                        <i class="fa fa-shopping-cart btn btn-dark" aria-hidden="true"></i>
+                    </a>
+                </div>
+                    <div class="product-details text-center">
+                        <a href="#" class="calories-link">Calories</a>
+                        <a href="#" class="ingredients-link">Ingredients</a>
+                      
+                        <div class="product-stars text-warning">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-half-alt" aria-hidden="true"></i>
                         </div>
                     </div>
-                </div>';
-            }
-            ?>
-        </div>
-       
+                </div>
+            </div>';
+        }
+        ?>
     </div>
 
-    <?php
+    
+   <?php
   include('footer.php');
 
   ?>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
