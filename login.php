@@ -1,22 +1,21 @@
 <?php
-include ('includes/core.php'); 
-$error= '';
+include('includes/core.php');
 $user = new User();
+$error = '';
 
 try {
-    if(isset($_POST['login'])){
-    
+    if (isset($_POST['login']))
+        ;
     $user->email = $_POST['email'];
     $user->pwd = $_POST['pwd'];
     $error = $user->Login();
-    }
+
 } catch (PDOException $e) {
-    echo $e -> getMessage();
-    
+    echo $e->getMessage();
+
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
+
 
 <?php
     include('partials/header.php');
@@ -38,7 +37,7 @@ try {
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" name="pwd" placeholder="Enter password"
-                                    name="
+                                    name="pwd" >
                             </div>
                             <!-- button -->
                             <div class="form-group d-flex">
@@ -61,7 +60,7 @@ try {
                            
                           
                             <!-- submit button -->
-                            <div class="form-group mt-3">
+                            <div class="form-group mt-3 ">
                                 <input type="submit" value="Login" id="login-btn" name= "login"
                                     class="btn btn-primary w-100">
                             </div>
@@ -70,14 +69,16 @@ try {
                     </div>
                     
                 </div>
+
             </div>
         </div>
-
     </div>
-    <!-- forgot password reset -->
+
+</div>
+<!-- forgot password reset -->
 
 
 
-    <?php
-    include('partials/footer.php');
-    ?>
+<?php
+include('partials/footer.php');
+?>

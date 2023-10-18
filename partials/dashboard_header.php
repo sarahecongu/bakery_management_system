@@ -8,31 +8,15 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./css/dashboard.css">
+  <link rel="stylesheet" href="./css/index.css">
+
     <title>Dashboard</title>
-    <style>
+    <!-- <style>
   
-  .navbar-brand img{
-    height: 70px; 
-    width: 100px;
-  }
-  .nav-link {
-    color: white; 
-  }
-  
-  .nav-link:hover {
-    color: #be6a0b; 
-  }
-  
-  .navbar-toggler-icon {
-    background-color: white; 
-  }
-  
-  .navbar-toggler:focus {
-    outline: none;
-  }
-    </style>
+
+    </style> -->
 <?php 
-include ('includes/core.php'); 
+// include ('includes/core.php'); 
 
 ?>
 

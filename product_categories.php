@@ -11,13 +11,13 @@ $categories = new Category();
       
      foreach ($categories->limit(6) as $category):
     ?>
-    <div class="col-md-2 mt-5 g-4 ">
+    <div class="col-md-2 mt-5 g-4">
   <div class="card-content">
     <div class="image-wrapper">
       <img src="images/<?php echo $category->image;?>" alt="dp">
     </div>
     <div class="caption">
-      <h6><?php echo $category->name ?></h6>
+      <h6><?php echo $category->name?></h6>
       
     </div>
   </div>

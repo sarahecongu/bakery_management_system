@@ -1,6 +1,4 @@
-<?php
-include('includes/core.php');
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,6 +45,11 @@ include('includes/core.php');
   <!--products  -->
   <?php
   include('products.php');
+
+  ?>
+    <!--news  -->
+    <?php
+  // include('news_letter.php');
 
   ?>
 

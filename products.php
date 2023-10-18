@@ -1,37 +1,40 @@
+<!-- <div class="product-container"> -->
+    <h4 class="product-title text-center mt-5">Our <span class="product-highlight">Products</span></h4>
 
-<section class="products">
-  <h4 class="text-center mt-4">Our <span class="text-warning">PRODUCTS</span></h4>
-  <div class="product">
-    <div class="wrapper">
-      <?php
-      for ($i = 0; $i < 5; $i++) {
-        echo '
-        <div class="product box">
-                <img src="images/bd.jpg" alt="...">
-                <h3>chocolate cake</h3>
-                <div class="cal">
-                <a href="" class="">Calories</a>
-                <a href="" class="">Ingredients</a>
+    <div class="product-list row row-cols-2 row-cols-md-5 g-4 mt-4 mx-auto">
+        <?php 
+        for ($i = 0; $i < 5; $i++) { 
+            echo '
+            <div class="col mx-auto">
+                <div class="product-card text-center">
+                    <img src="./images/bans.jpg" class="product-image" alt="Chocolate Cake">
+                    <h5 class="product-name">Chocolate Cake</h5>
+                    <div class="product-price-cart  text-center">
+                    <span class="product-price"> 150,000 </span>
+                    <a href="#" class="text-secondary">
+                        <i class="fa fa-shopping-cart btn btn-dark" aria-hidden="true"></i>
+                    </a>
                 </div>
-                <h6 class="price">shs 4500</h6>
-                <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
+                    <div class="product-details text-center">
+                        <a href="#" class="calories-link">Calories</a>
+                        <a href="#" class="ingredients-link">Ingredients</a>
+                      
+                        <div class="product-stars text-warning">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-half-alt" aria-hidden="true"></i>
+                        </div>
+                    </div>
                 </div>
-                <a href="" class="btn btn-dark">Add to Cart</a>
-              </div>
-        ';
-      }
+            </div>';
+        }
+        ?>
+    </div>
 
-      ?>
-
-  </div>
-
-  </div>
-  <div  class="view">
-  <a href="menu.php">View More</a>
-</div>
-</section>
+    <!-- View more -->
+    <div class="view">
+        <a href="bans_menu.php">View More</a>
+    </div>
+<!-- </div> -->
