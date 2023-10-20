@@ -18,7 +18,7 @@
 
 <body>
 
-  <div class=fixed-top>
+  <div class=  fixed-top>
     <!--Promotions-->
     <?php
     include('promotions.php');

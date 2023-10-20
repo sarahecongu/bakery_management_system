@@ -12,7 +12,9 @@
                     <div class="product-price-cart  text-center">
                     <span class="product-price"> 150,000 </span>
                     <a href="#" class="text-secondary">
+                   
                         <i class="fa fa-shopping-cart btn btn-dark" aria-hidden="true"></i>
+                       
                     </a>
                 </div>
                     <div class="product-details text-center">
@@ -32,6 +34,11 @@
         }
         ?>
     </div>
+    
+    <span>+</span>
+
+    
+
 
     <!-- View more -->
     <div class="view">

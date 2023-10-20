@@ -4,11 +4,10 @@ $user = new User();
 $error = '';
 
 try {
-    if (isset($_POST['login']))
-        ;
+    if (isset($_POST['login']));
     $user->email = $_POST['email'];
     $user->pwd = $_POST['pwd'];
-    $error = $user->Login();
+    $user->Login();
 
 } catch (PDOException $e) {
     echo $e->getMessage();
@@ -27,17 +26,15 @@ try {
                     <div class="card rounded-left p-4">
                         <h1 class="text-center font-weight-bold text-primary">Login In</h1>
                         <hr class="my-3">
-                        <form action="login.php" class="px-3" method="POST" id="login-form">
+                        <form action="login.php" class="px-3" method="POST">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" name="email" placeholder="Enter email address"
-                                    name="email">
+                                <input type="email" class="form-control" placeholder="Enter email address" name="email">
                             </div>
                             <!-- password -->
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" name="pwd" placeholder="Enter password"
-                                    name="pwd" >
+                                <input type="password" class="form-control" placeholder="Enter password" name="pwd" >
                             </div>
                             <!-- button -->
                             <div class="form-group d-flex">
