@@ -29,9 +29,9 @@ $user = new User();
   </button>
 
       <!-- search  -->
-      <div class="form-group">
-    <input class="form-control"placeholder="Search for Products...">
-    </div>
+      <div class="form-group text-center">
+              <input class="form-control mx-auto mt-5"placeholder="Search for Products...">
+      </div>
 
       <!-- Navigation links on the right -->
       <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
@@ -43,7 +43,7 @@ $user = new User();
             <a class="nav-link  font-weight-bold" href="#">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  font-weight-bold" href="bans_menu.php">Menus</a>
+            <a class="nav-link  font-weight-bold" href="sub_categories.php">Menus</a>
           </li>
           <li class="nav-item">
             <a class="nav-link font-weight-bold" href="#">Services</a>
@@ -51,10 +51,10 @@ $user = new User();
           <li class="nav-item">
             <a class="nav-link font-weight-bold" href="#"> Contact Us</i></a>
 
-          </li>
-          <?php
+      </li>
+      <?php
 
-        // else {
+        else {
           ?>
           <li class="nav-item">
             <a class="nav-link font-weight-bold" href="login.php">Login</i></a>
