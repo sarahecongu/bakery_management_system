@@ -1,45 +1,52 @@
 
-<div id="carouselImage" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="images/slice.jpg" class="d-block w-100" alt="..." >
-        <div class="carousel-caption d-none d-md-block">
-          <h5 class="text-center">First slide label</h5>
-          <p>Some representative placeholder content for the first slide.</p>
+<section class="home" id="home">
+    <div class="slides-container">
+      <div class="slide active">
+        <div class="content">
+          <span>
+            Have A slice
+          </span>
+          <h3>Upto 50% off</h3>
+          <a href="" class="btn">Shop Now</a>
+        </div>
+        <div class="img">
+          <img src="images/cupcake.png" alt="cupcakes">
         </div>
       </div>
-      <!-- second image -->
-      <div class="carousel-item">
-        <img src="images/bd.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
+
+      <!-- two -->
+      <div class="slide">
+        <div class="content">
+          <span>
+            Have A slice
+          </span>
+          <h3>Upto 50% off</h3>
+          <a href="" class="btn">Shop Now</a>
         </div>
-      </div>
-      <!-- third image -->
-      <div class="carousel-item">
-        <img src="images/slice.jpg " class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
+        <!-- image -->
+        <div class="img">
+          <img src="images/ice-cream.png" alt="cupcakes">
         </div>
+
       </div>
-      <!-- last image -->
-      <div class="carousel-item">
-        <img src="images/bd.jpg" class="d-block w-100 h" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
+
+
+      <!-- three -->
+      <div class="slide">
+        <div class="content">
+          <span>
+            Have A slice
+          </span>
+          <h3>Upto 50% off</h3>
+          <a href="" class="btn">Shop Now</a>
+        </div>
+        <!-- image -->
+        <div class="img">
+          <img src="images/cookie.png" alt="cupcakes">
         </div>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselImage" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselImage" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+    <div id="next-slide" class="fas fa-angle-right" onclick="next()"></div>
+    <div id="prev-slide" class="fas fa-angle-left" onclick="next()"></div>
 
+  </section>

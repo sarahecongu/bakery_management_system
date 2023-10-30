@@ -53,14 +53,14 @@ if (isset($_POST['update_schedule'])) {
       top: 0;
       left: 0;
       bottom: 0;
-      width: 110px;
+      width: 170px;
       height: 100vh;
       padding: 0 1.7rem;
       color: whitesmoke;
       overflow: hidden;
       transition: all 0.5s linear;
-      background-color: brown;
-
+      background-color: #361401;
+      overflow: auto;
     }
 
     .sidebar:hover {
@@ -283,15 +283,14 @@ table{
                     <div class="mb-3">
                         <label class="form-label">Shift Id<label>
                         <input type="text" class="form-control" name="shift_id" placeholder="Update schedule time"
-                            value="<?= $schedule->shift_id; ?>">
+                            value="<?php echo $schedule->shift_id; ?>">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">date</label>
-                        <textarea class="form-control" name="date"
-                            placeholder="date of the schedule"><?php echo $schedule->date; ?></textarea>
+                      <label class="form-label">date </label>
+                      <input type="date" class="form-control" name="date" placeholder="date of the Schedule"><?php echo $schedule->date; ?>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                    <a href="schedule.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
                         <button type="submit" class="btn btn-primary" name ="update_schedule">Update schedule</button>
                     </div>
                 </form>

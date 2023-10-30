@@ -17,7 +17,7 @@
           <div class="card-header">
             <div class="total">
               <span class="title">
-                Users
+              Categories
               <i class="fas fa-tachometer-alt icon"></i>
               </span>
               <span class="value">12</span>
@@ -29,7 +29,7 @@
           <div class="card-header">
             <div class="total">
               <span class="title">
-                Users
+                Products
               <i class="fas fa-tachometer-alt icon"></i>
               </span>
               <span class="value">12</span>
@@ -42,7 +42,7 @@
           <div class="card-header">
             <div class="total">
               <span class="title">
-                Users
+                Orders
               <i class="fas fa-tachometer-alt icon"></i>
               </span>
               <span class="value">12</span>
@@ -56,7 +56,7 @@
           <div class="card-header">
             <div class="total">
               <span class="title">
-                Users
+                Deliveries
               <i class="fas fa-tachometer-alt icon"></i>
               </span>
               <span class="value">12</span>
@@ -64,11 +64,23 @@
           </div>
         </div>
         <!-- three-->
-        <div class="user-card bg-secondary">
+        <div class="user-card bg-info">
           <div class="card-header">
             <div class="total">
               <span class="title">
-                Users
+                Reviews
+              <i class="fas fa-tachometer-alt icon"></i>
+              </span>
+              <span class="value">12</span>
+            </div>
+          </div>
+        </div>
+          <!-- twelve -->
+          <div class="user-card bg-primary">
+          <div class="card-header">
+            <div class="total">
+              <span class="title">
+                Shifts
               <i class="fas fa-tachometer-alt icon"></i>
               </span>
               <span class="value">12</span>
@@ -76,11 +88,11 @@
           </div>
         </div>
  <!-- three-->
- <div class="user-card bg-secondary">
+ <div class="user-card bg-success">
           <div class="card-header">
             <div class="total">
               <span class="title">
-                Users
+              Inventory
               <i class="fas fa-tachometer-alt icon"></i>
               </span>
               <span class="value">12</span>
@@ -89,3 +101,5 @@
         </div>
       </div>
     </div>
+  
+   

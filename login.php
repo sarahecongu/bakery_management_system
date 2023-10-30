@@ -4,21 +4,22 @@ $user = new User();
 $error = '';
 
 try {
-    if (isset($_POST['login']));
+    
+    if (isset($_POST['login'])){
     $user->email = $_POST['email'];
     $user->pwd = $_POST['pwd'];
     $user->Login();
+    }
+   
 
 } catch (PDOException $e) {
-    echo $e->getMessage();
+ $error =  $e->getMessage();
 
 }
 ?>
 
 
-<?php
-    include('partials/header.php');
-    ?>
+
     <div class="container mt-5 w-50 ">
         <div class="row justify-content-center wrapper" id="login-box">
             <div class="col-lg-10 my-auto">
@@ -72,10 +73,6 @@ try {
     </div>
 
 </div>
-<!-- forgot password reset -->
 
 
 
-<?php
-include('partials/footer.php');
-?>

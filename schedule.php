@@ -61,7 +61,7 @@ include('partials/header.php');
       color: whitesmoke;
       overflow: hidden;
       transition: all 0.5s linear;
-      background-color: brown;
+      background-color: #361401;
 
     }
 

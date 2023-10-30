@@ -1,4 +1,5 @@
 <div class="sidebar">
+<img class="logo" src="images/logos.png" alt="Logo">
     <div class="logo">
         <div class="menu">
             <li class="active">
@@ -30,7 +31,7 @@
             </li>
             <!-- products -->
             <li>
-                <a href="products.php">
+                <a href="">
                     <i class="fas fa-box"></i>
                     <span>Manage products</span>
                 </a>

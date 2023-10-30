@@ -1,59 +1,51 @@
 <?php
 	include("includes/core.php");
 	?>
-  <?php
-	include("partials/header.php");
-	?>
+<!DOCTYPE html>
+<html lang="en">
 
-  <div class="fixed-top">
-    <!-- Promotions -->
-    <?php
-    include('promotions.php');
-    ?>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/index.css">
+  <title>Menu Page</title>
+</head>
 
-    <!-- Navbar -->
+<body>
     <?php
-    include('navbar.php');
+    include("navbar.php");
     ?>
-  </div>
-<!-- categories -->
+    <div class="space"></div>
 <?php
  $categories = new Category();
 ?>
-  <div id="subControls" class="carousel-slide-content-sub mx-auto">
-  <h6 class="text-center mt-5">Our Categories</h6>
-    <div class="carousel-inner-content-sub">
-      <div class="carousel-item-content-sub active">
-        <div class="row mt-5">
+<section class="category">
+    <h4 class="title">Our<span>Categories</span><a href=""></a></h4>
+    <div class="box-container">
         <?php
-      
      foreach ($categories->all() as $category):
     ?>
-    <div class="col-md-2 mt-5 g-4 ">
-  <div class="card-content">
-    <div class="image-wrapper">
+       <a href="" class="box">
       <img src="images/<?php echo $category->image;?>" alt="dp">
-    </div>
-    <div class="caption">
-      <h6><?php echo $category->name ?></h6>
-      
-    </div>
-  </div>
-  </div>
+      <h3><?php echo $category->name?></h3>
+      </a>
 <?php
   endforeach;
 ?>
+     </div>
+  </section>
+ <?php
+ include("footer.php");
+ ?>
 
 
          
        
-        </div>
-      </div>
-    </div>
-  </div>
-  <?php
-  include('footer.php');
 
-  ?>
+
+  
 
   

@@ -29,18 +29,19 @@
       top: 0;
       left: 0;
       bottom: 0;
-      width: 110px;
+      width: 170px;
       height: 100vh;
       padding: 0 1.7rem;
       color: whitesmoke;
       overflow: hidden;
       transition: all 0.5s linear;
-      background-color: brown;
+      background-color: #894e3f;
+      overflow: auto;
 
     }
 
     .sidebar:hover {
-      width: 260px;
+      width: 280px;
       transition: 0.5s;
     }
 
@@ -52,10 +53,11 @@
     }
 
     .menu {
-      height: 80%;
+      height: 100%;
       position: relative;
       list-style: none;
       padding: 0;
+     
     }
 
     .menu li {
@@ -98,7 +100,7 @@
     /* main */
     .main-content {
       position: relative;
-      background: gray;
+      background: #f0d7a7;
       width: 100%;
       padding: 1rem;
     }
@@ -115,8 +117,9 @@
       justify-content: space-between;
       flex-wrap: wrap;
       align-items: center;
-      background: white;
-      border-radius: 10px;
+      background-color: #fff;
+      border-radius: 5px;
+      color: white;
       padding: 10px 2rem;
       margin-bottom: 1rem;
     }
@@ -157,7 +160,7 @@
       /* background: red; */
       border-radius: 10px;
       padding: 1.2rem;
-      width: 220px;
+      width: 200px;
       height: 150px;
       display: flex;
       flex-direction: column;

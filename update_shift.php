@@ -85,7 +85,7 @@ body{
                             placeholder="Description of the shift"><?php echo $shift->description ?></textarea>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                    <a href="shift.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
                         <button type="submit" class="btn btn-primary" name ="update_shift">Update shift</button>
                     </div>
                 </form>

@@ -61,13 +61,14 @@ include('partials/header.php');
       top: 0;
       left: 0;
       bottom: 0;
-      width: 110px;
+      width: 170px;
       height: 100vh;
       padding: 0 1.7rem;
       color: whitesmoke;
       overflow: hidden;
       transition: all 0.5s linear;
-      background-color: brown;
+      background-color: #361401;
+      overflow: auto;
 
     }
 
