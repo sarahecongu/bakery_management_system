@@ -3,37 +3,25 @@ include("includes/core.php");
 $sessionManager = new SessionManager();
 $user = new User();
 
-if( $user -> checkIsUserLoggedIn()){
-header('Location:my-account.php');
-    exit();
-}
-try {
+// if( $user -> checkIsUserLoggedIn()){
+// header('Location:my-account.php');
+//     exit();
+// }
+// try {
     if (isset($_POST['register'])) {
+    
+        
         $first_name = trim(htmlspecialchars($_POST['first_name']));
         $last_name = trim(htmlspecialchars($_POST['last_name']));
         $email = trim($_POST['email']);
         $password = trim($_POST['pwd']);
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-           
-     $user_id = $user->Register($first_name, $last_name, $email, $hashed_password);
-          
         
-                if ($user_id) {
-                    
-                    $data = [
-                        'first_name' => $first_name,
-                        'last_name' => $last_name,
-                        'pwd'=> $hashed_password,
-                        'email' => $email,
-                        'user_id' => $user_id
-                    ];
-                    $sessionManager->add($data);
-                    header("Location: login.php");
-                    exit();
-                } 
-            } 
-} catch (PDOException $e) {
-    echo $e -> getMessage();
+        $user->Register();
+     
+       
+// } catch (PDOException $e) {
+    // echo $e -> getMessage();
 }
 ?>
 <!DOCTYPE html>
@@ -57,19 +45,18 @@ try {
                     <div class="card rounded-left p-4">
                         <h1 class="text-center font-weight-bold text-primary">Register</h1>
                         <hr class="my-3">
-                        <form action="" class="px-3" method="POST">
+                        <form action="register.php" class="px-3" method="POST">
                         
                             <!-- name -->
                         <div class="mb-3">
                                 <label for="firstname" class="form-label">First Name</label>
-                                <input type="firstname" class="form-control"  name="first_name" placeholder="Enter firstname "
-                                    name="firstname" >
+                                <input type="firstname" class="form-control"  name="first_name" placeholder="Enter firstname">
                             </div>
                             <!-- second -->
                             <div class="mb-3">
                                 <label for="lastname" class="form-label">Last Name</label>
                                 <input type="lastname" class="form-control" name="last_name" placeholder="Enter lastname address"
-                                    name="lastname" >
+                                 >
                             </div>
                             <!-- email -->
                             <div class="mb-3">
@@ -80,8 +67,7 @@ try {
                             <!-- password -->
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" name="pwd" placeholder="Enter password"
-                                    name="pwd" >
+                                <input type="password" class="form-control" name="pwd" placeholder="Enter password">
                             </div>
                             
                             <div class="have account float-right">

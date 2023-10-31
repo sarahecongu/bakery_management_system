@@ -81,7 +81,7 @@ body{
                             placeholder="Description of the health_benefit"><?php echo $health_benefit->description ?></textarea>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                    <a href="health_benefits.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
                         <button type="submit" class="btn btn-primary" name ="update_health_benefit">Update health_benefit</button>
                     </div>
                 </form>

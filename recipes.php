@@ -1,7 +1,8 @@
 <?php
 include("includes/core.php");
 $recipes = new Recipe();
-$api = new Api;
+$api = new Api();
+
 // Create
 if (isset($_POST['add_recipe'])) {
   $data = [
@@ -10,6 +11,7 @@ if (isset($_POST['add_recipe'])) {
     'author' => $_POST['author'],
     'description' => $_POST['description']
   ];
+
   if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
     $image_name = $_FILES['image']['name'];
     $tmp_name = $_FILES['image']['tmp_name'];
@@ -31,7 +33,7 @@ if (isset($_POST['recipe_delete'])) {
 <?php
     include('partials/header.php');
     ?>
-  <div class="text-center">
+  <div class="text-center m-3">
     <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#completeModal">
       ADD  RECIPE
     </button>
@@ -72,7 +74,8 @@ if (isset($_POST['recipe_delete'])) {
               <input type="textarea" class="form-control" name="instructions" placeholder="description of the recipe">
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+              <!-- <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button> -->
+              <a href="recipes.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
               <button type="submit" class="btn btn-primary" name = "add_recipe">Add recipe</button>
             </div>
         </div>

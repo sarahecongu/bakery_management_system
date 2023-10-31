@@ -8,7 +8,8 @@ class Api
     public function __construct()
     {
         $this->endpoint = "https://the-birthday-cake-db.p.rapidapi.com/";
-
+        
+        
         $this->curl = curl_init();
 
         curl_setopt_array($this->curl, [
