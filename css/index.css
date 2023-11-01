@@ -26,7 +26,7 @@ html {
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color: rgb(9, 9, 9);
+    background-color:rgb(238, 116, 136);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -57,7 +57,7 @@ html {
 }
 
 .header .navbar a:hover {
-    color: orange;
+    color:black;
 
 }
 
@@ -83,7 +83,7 @@ html {
     margin-top: 1rem;
     display: inline-block;
     padding: .8rem 3rem;
-    background: rgb(231, 86, 8);
+    background:rgb(238, 116, 136);
     color: #fff;
     font-size: 1.7rem;
     cursor: pointer;
@@ -118,7 +118,8 @@ html {
 }
 
 .home .slides-container .slide .content span {
-    color: white;
+    color:rgb(238, 116, 136);
+    font-weight: bold;
     font-size: 2.5rem;
 }
 
@@ -150,7 +151,7 @@ html {
     text-align: center;
     font-size: 2rem;
     cursor: pointer;
-    background: rgb(252, 119, 10);
+    background: rgb(238, 116, 136);
     color: #fff;
 
 }
@@ -188,7 +189,7 @@ section {
     grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
     gap: 1.5rem;
     padding-top: 2rem;
-    background: rgb(252, 119, 10);
+    background:wheat;
 }
 
 .banner-container .banner {
@@ -232,7 +233,7 @@ section {
 
 /* category */
 .heading {
-    background: rgb(252, 119, 10);
+    background: wheat;
     padding-top: 2rem;
     font-size: 1.5rem;
 }
@@ -247,7 +248,7 @@ section {
 }
 
 .title span {
-    color: white;
+    color:rgb(238, 116, 136);
     padding-left: .7rem;
 
 }
@@ -284,6 +285,7 @@ section {
     width: 21rem;
     border: .1rem solid white;
     border-radius: 2rem;
+    
 }
 .category .box-container .box img:hover{
     transform: scale(1.2);
@@ -306,7 +308,7 @@ section {
 }
 
 .category .box-container .box:hover h3 {
-    color: orange;
+    color: black;
     /* background: transparent; */
 }
 
@@ -314,7 +316,7 @@ section {
 
 /* products */
 .product{
-    background:  rgb(252, 119, 10);
+    background:  wheat;
 }
 .product .box-container{
     display: grid;
