@@ -38,7 +38,7 @@
         h2{
             font-size: 30px;
             text-align: center;
-            color:rgb(238, 116, 136);
+            color:rgb(76, 9, 9);
 
         }
     </style>

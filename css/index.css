@@ -26,7 +26,7 @@ html {
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color:rgb(238, 116, 136);
+    background-color:rgb(76, 9, 9);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -83,7 +83,7 @@ html {
     margin-top: 1rem;
     display: inline-block;
     padding: .8rem 3rem;
-    background:rgb(238, 116, 136);
+    background:rgb(76, 9, 9);
     color: #fff;
     font-size: 1.7rem;
     cursor: pointer;
@@ -118,7 +118,7 @@ html {
 }
 
 .home .slides-container .slide .content span {
-    color:rgb(238, 116, 136);
+    color:rgb(76, 9, 9);
     font-weight: bold;
     font-size: 2.5rem;
 }
@@ -151,7 +151,7 @@ html {
     text-align: center;
     font-size: 2rem;
     cursor: pointer;
-    background: rgb(238, 116, 136);
+    background: rgb(76, 9, 9);
     color: #fff;
 
 }
@@ -248,7 +248,7 @@ section {
 }
 
 .title span {
-    color:rgb(238, 116, 136);
+    color:rgb(76, 9, 9);
     padding-left: .7rem;
 
 }
@@ -375,7 +375,7 @@ section {
     margin-top: 1rem;
     display: inline-block;
     padding: .8rem 3rem;
-    color: orangered;
+    color:rgb(76, 9, 9);
     font-size: 2.5rem;
     cursor: pointer;  
 }
@@ -582,7 +582,7 @@ h3{
 }
 
 .info-container .info:hover{
-    background: chocolate;
+    background:rgb(76, 9, 9);
 
 }
 .info-container .info .content h3{
@@ -633,7 +633,7 @@ gap: 1.5rem;
 }
 
 .footer .box-container .box a:hover{
-    color: chocolate;
+    color:rgb(76, 9, 9);
 }
 
 .footer .box-container .box a i{
@@ -642,7 +642,7 @@ gap: 1.5rem;
 }
 .footer .box-container .box a:hover i{
     padding-right: 2rem;
-    color: chocolate;
+    color: rgb(76, 9, 9)    ;
 }
 .footer .box-container .box form input[type="email"]{
     width: 100%;

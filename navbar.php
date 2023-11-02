@@ -8,7 +8,7 @@
       <a href="menu.php">Menu</a>
       <a href="">AboutUs</a>
       <a href="services.php">Services</a>
-      <a href="">Contact</a>
+      <a href="contactus.php">Contact</a>
     </nav>
     <div class="icons">
       <div id="menu-btn" class="fas fa-bars"></div>
