@@ -12,70 +12,77 @@
             <li>
                 <a href="users.php">
                     <i class="fas fa-user-alt"></i>
-                    <span>Manage customer</span>
+                    <span>Customers</span>
                 </a>
             </li>
             <!-- users -->
             <li>
                 <a href="roles.php">
                     <i class="fas fa-users"></i>
-                    <span>Manage user</span>
+                    <span>Users</span>
                 </a>
             </li>
             <!-- categories -->
             <li>
                 <a href="categories.php">
                     <i class="fas fa-list"></i>
-                    <span>Manage Categories</span>
+                    <span>Categories</span>
                 </a>
             </li>
             <!-- products -->
             <li>
-                <a href="">
+                <a href="product_table.php">
                     <i class="fas fa-box"></i>
-                    <span>Manage products</span>
+                    <span> products</span>
                 </a>
             </li>
             <!-- shift -->
             <li>
                 <a href="shift.php">
                     <i class="fas fa-clock"></i>
-                    <span>Manage shift</span>
+                    <span>Shift</span>
                 </a>
             </li>
             <!-- schedules -->
             <li>
                 <a href="schedule.php">
                     <i class="fas fa-calendar-alt"></i>
-                    <span>Manage schedules</span>
+                    <span>Schedules</span>
                 </a>
             </li>
             <!-- reviews -->
             <li>
                 <a href="reviews.php">
                     <i class="fas fa-star"></i>
-                    <span>Manage Reviews</span>
+                    <span> Reviews</span>
                 </a>
             </li>
             <!-- orders-->
             <li>
-                <a href="orders.php">
+                <a href="order_table.php">
                     <i class="fas fa-shopping-cart"></i>
-                    <span>Manage Orders</span>
+                    <span> Orders</span>
+                </a>
+            </li>
+            <!-- order details -->
+            <li>
+                <a href="order_details_table.php">
+                    <i class="fas fa-truck"></i>
+                    <span> Order details</span>
                 </a>
             </li>
             <!-- deliveries -->
             <li>
                 <a href="deliveries.php">
                     <i class="fas fa-truck"></i>
-                    <span>Manage Deliveries</span>
+                    <span> Deliveries</span>
                 </a>
             </li>
             <!-- settings -->
             <li>
                 <a href="settings.php">
                     <i class="fas fa-cogs"></i>
-                    <span>Manage settings</span>
+                    <span> Settings</span>
                 </a>
             </li>
             <!-- logout -->

@@ -1,30 +1,40 @@
-
 <?php
 include("includes/core.php");
+$products = new Product();
+
+if(isset($_GET['id']) && !empty($_GET['id'])) {
+  $product_id = $_GET['id'];
+  $product = $products->find($product_id); 
+ 
+}
+if (isset($_POST['update_product'])) {
+
+    $data = [
+        'name' => $_POST['name'] ,
+        'price'=> $_POST['price'],
+        'quantity'=> $_POST['quantity'],
+        'category_id'=> $_POST['category_id'],
+        'health_benefit_id'=> $_POST['health_benefit_id']
+        
+    ];
+    if(isset($_FILES['image']) && $_FILES['image']['error'] == 0){
+        $image_name = $_FILES['image']['name'];
+        $tmp_name = $_FILES['image']['tmp_name'];
+        move_uploaded_file($tmp_name, "images/".$image_name);
+        $data['image'] = $image_name;
+    }
+
+    $products->update($_POST['id'], $data);
+    echo "product updated";
+    header("Location: product_table.php");
+    exit();
+    
+  }
+
 ?>
 <?php
-$shifts = new Shift();
-// Create
-if (isset($_POST['add_shift'])) {
-  $data = [
-    'start_time' => $_POST['start_time'],
-    'end_time' => $_POST['end_time'],
-    'description' => $_POST['description']
-  ];
-  $shifts->create($data);
-  header("Location: shift.php");
-}
-// Delete
-if (isset($_POST['shift_delete'])) {
-  $shift_id = $_POST['shift_delete'];
-  $shifts->delete($shift_id);
-  header("Location: shift.php");
-  exit();
-}
-?>
-<?php 
-include('partials/header.php');
-?>
+	include("partials/header.php");
+	?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +45,7 @@ include('partials/header.php');
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/index.css">
 
   <title>END OF YEAR</title>
   <style>
@@ -251,6 +261,7 @@ table{
 
 
   </style>
+
 </head>
 
 <body>
@@ -284,119 +295,52 @@ table{
  <!-- tabular -->
  <div class="tabular-wrapper">
   <div class="table-container">
-  <div class="text-center m-3">
-    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#completeModal">
-      ADD SHIFT
-    </button>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="completeModal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">SHIFTS</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <!-- form -->
-          <!-- firstname -->
-          <form action="shift.php" method="POST">
-            <div class="mb-3">
-              <label class="form-label">Start Time</label>
-              <input type="text" class="form-control" name="start_time" placeholder="Enter start time">
-            </div>
-            <!-- name -->
-            <div class="mb-3">
-              <label class="form-label">End Time</label>
-              <input type="text" class="form-control" name="end_time" placeholder="Enter end time">
-            </div>
-            <!-- last name -->
-            <div class="mb-3">
-              <label class="form-label">Description </label>
-              <input type="textarea" class="form-control" name="description" placeholder="description of the shift">
-            </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary" name = "add_shift">Add Shift</button>
-            </div>
-        </div>
-      </div>
-    </div>
-    </form>
-  </div>
-  <div class="search-box">
-    <form action="categories.php" method="GET" class="d-flex">
-        <input type="text" class="form-control me-2" name="search" placeholder="Search Categories">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
+  <div class="col-md-9 ml-sm-auto col-md-10 px-md-4">
+<div class="container mt-5">
+    <h2>Edit product</h2>
+                <form action="product_table.php" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<?php echo $product->id;?>">
+                    <div class="mb-3">
+                        <label class="form-label">Image</label>
+                        <input type="file" class="form-control" name="image" placeholder="Enter image"  value="<?php echo $product->image; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="product name"
+                            value="<?php echo $product->name;?>">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        <input type="text" class="form-control" name="price" placeholder="product name"
+                            value="<?php echo $product->price; ?>">
+                    </div> <div class="mb-3">
+                        <label class="form-label">quantity</label>
+                        <input type="number" class="form-control" name="quantity" placeholder="product name"
+                            value="<?php echo $product->quantity;?>">
+                    </div> <div class="mb-3">
+                        <label class="form-label">Category</label>
+                        <input type="text" class="form-control" name="category_id" placeholder="product name"
+                            value="<?php echo $product->category_id;?>">
+                    </div> <div class="mb-3">
+                        <label class="form-label">health</label>
+                        <input type="text" class="form-control" name="health_benefit_id" placeholder="product name"
+                            value="<?php echo $product->health_benefit_id;?>">
+                    
+                    <div class="modal-footer">
+                    <a href="product_table.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+                        <button type="submit" class="btn btn-primary" name ="update_product">Update product</button>
+                    </div>
+                </form>
 </div>
+</div>     
 
-  <!-- <table> -->
-  <table class="table table-striped mt-3">
-    <thead class="bg-dark text-white">
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Start Time</th>
-        <th scope="col">End Time</th>
-        <th scope="col">Description</th>
-        <th scope="col">Created At</th>
-        <th scope="col">Updated At</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php foreach ($shifts->all() as $shift): ?>
-        <tr>
-          <td>
-            <?php echo $shift->id; ?>
-          </td>
-          <td>
-            <?php echo $shift->start_time; ?>
-          </td>
-          <td>
-            <?php echo $shift->end_time;?>
-          </td>
-          <td>
-            <?php echo $shift->description;?>
-          </td>
-          <td>
-            <?php echo $shift->created_at;?>
-          </td>
-          <td>
-            <?php echo $shift->updated_at;?>
-          </td>
-          <td>
-            <a href="shift.php" class="btn btn-primary btn-sm mr-3" title="view"><i class="fas fa-eye"></i></a>
-            <a href="update_shift.php?id=<?php echo $shift->id; ?>" class="btn btn-success btn-sm mr-3" title="edit">
-              <i class="fas fa-edit"></i>
-            </a>
-            <form action="shift.php" method="POST" class="d-inline-block">
-              <button type="submit" name="shift_delete" value="<?php echo $shift->id;?>" class="btn btn-danger btn-sm"
-                onclick="return confirm('Are you sure you want to delete delete shift?')">
-                <i class="bi bi-trash3">del</i>
-              </button>
-            </form>
-          </td>
-        </tr>
-      <?php endforeach; ?>
-    </tbody>
-
-  </table>
-  <?php
+<?php
 	include("partials/footer.php");
 	?>
-
-
-
-
-
-
-
-
-
-
-
+  </div>
+ </div>
+  </div>
+ 
 
 
 

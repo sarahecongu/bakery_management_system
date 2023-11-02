@@ -10,14 +10,6 @@ class SessionManager{
     }
     // adding data
 
-    public function checkIsUserLoggedIn()
-    {
-        if (isset($_SESSION['first_name']) && isset($_SESSION['last_name'])) {
-            return true;
-        } else {
-            return false;
-        }
-    }
     
     public function add($data){
         foreach ($data as $key=> $d) {

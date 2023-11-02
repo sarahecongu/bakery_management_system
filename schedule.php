@@ -55,13 +55,14 @@ include('partials/header.php');
       top: 0;
       left: 0;
       bottom: 0;
-      width: 150px;
+      width: 170px;
       height: 100vh;
       padding: 0 1.7rem;
       color: whitesmoke;
       overflow: hidden;
       transition: all 0.5s linear;
-      background-color: #361401;
+      background-color: #894e3f;
+      overflow: auto;
 
     }
 
@@ -78,14 +79,15 @@ include('partials/header.php');
     }
 
     .menu {
-      height: 80%;
+      height: 100%;
       position: relative;
       list-style: none;
       padding: 0;
+     
     }
 
     .menu li {
-      padding: 1rem;
+      padding:.5rem;
       margin: 8px 0;
       border-radius: 8px;
       transition: all 0.5s ease-in-out;
@@ -124,7 +126,7 @@ include('partials/header.php');
     /* main */
     .main-content {
       position: relative;
-      background: gray;
+      background: #f0d7a7;
       width: 100%;
       padding: 1rem;
     }
@@ -141,8 +143,9 @@ include('partials/header.php');
       justify-content: space-between;
       flex-wrap: wrap;
       align-items: center;
-      background: white;
-      border-radius: 10px;
+      background-color: #fff;
+      border-radius: 5px;
+      color: white;
       padding: 10px 2rem;
       margin-bottom: 1rem;
     }
@@ -183,7 +186,7 @@ include('partials/header.php');
       /* background: red; */
       border-radius: 10px;
       padding: 1.2rem;
-      width: 220px;
+      width: 200px;
       height: 150px;
       display: flex;
       flex-direction: column;
@@ -241,7 +244,12 @@ table{
   width: 100%;
   border-collapse: collapse;
 }
-</style>
+
+
+
+
+
+  </style>
 
 </head>
 
@@ -278,7 +286,7 @@ table{
   <div class="table-container">
 
   
-  <div class="text-center">
+  <div class="text-center m-3">
     <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#completeModal">
       ADD  SCHEDULE
     </button>
@@ -319,8 +327,15 @@ table{
     </div>
     </form>
   </div>
+  <div class="search-box">
+    <form action="categories.php" method="GET" class="d-flex">
+        <input type="text" class="form-control me-2" name="search" placeholder="Search Categories">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+</div>
+
   <!-- <table> -->
-  <table class="table table-striped">
+  <table class="table table-striped mt-3">
     <thead class="bg-dark text-white">
       <tr>
         <th scope="col">Id</th>

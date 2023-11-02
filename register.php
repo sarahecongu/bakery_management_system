@@ -1,43 +1,31 @@
+
 <?php
 include("includes/core.php");
 $sessionManager = new SessionManager();
 $user = new User();
+$error = '';
 
-// if( $user -> checkIsUserLoggedIn()){
-// header('Location:my-account.php');
-//     exit();
-// }
-// try {
+
+try {
     if (isset($_POST['register'])) {
-    
-        
         $first_name = trim(htmlspecialchars($_POST['first_name']));
         $last_name = trim(htmlspecialchars($_POST['last_name']));
         $email = trim($_POST['email']);
         $password = trim($_POST['pwd']);
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        
         $user->Register();
-     
        
-// } catch (PDOException $e) {
-    // echo $e -> getMessage();
-}
-?>
-<!DOCTYPE html>
-<html lang="en">
+     }
+       
+} catch (PDOException $e) {
+    $error = $e ->getMessage();
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>End Of year project</title>
-</head>
-<body>
+}
+
+?>
+<?php
+    include('partials/header.php');
+    ?>
     <div class="container mt-4 w-50">
         <div class="row justify-content-center wrapper">
             <div class="col-lg-10 my-auto">
@@ -76,7 +64,7 @@ $user = new User();
                          
                             <!-- submit button -->
                             <div class="form-group">
-                                <input type="submit" value="Sign Up" name="register"
+                                <input type="submit" value="Register" name="register"
                                     class="btn btn-primary btn-md w-100 mt-4 btn-block myBtn">
                             </div>
 

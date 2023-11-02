@@ -7,9 +7,7 @@
       <div class="content">
         <span>Limited Sales</span>
         <h3>
-        <marquee behavior="" direction="left">
-        Get 50% off on all items above! Use code: SAVE20
-      </marquee>
+chcolate
         </h3>
         <a href="" class="btn">Buy Now</a>
       </div>

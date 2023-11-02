@@ -61,7 +61,7 @@
     }
 
     .menu li {
-      padding: 1rem;
+      padding:.5rem;
       margin: 8px 0;
       border-radius: 8px;
       transition: all 0.5s ease-in-out;

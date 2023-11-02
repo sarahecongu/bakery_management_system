@@ -6,8 +6,8 @@ $error = '';
 try {
     
     if (isset($_POST['login'])){
-    $user->email = $_POST['email'];
-    $user->pwd = $_POST['pwd'];
+     $email = trim($_POST['email']);
+     $password = trim($_POST['pwd']);
     $user->Login();
     }
    
@@ -18,7 +18,9 @@ try {
 }
 ?>
 
-
+<?php
+    include('partials/header.php');
+    ?>
 
     <div class="container mt-5 w-50 ">
         <div class="row justify-content-center wrapper" id="login-box">

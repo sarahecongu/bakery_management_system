@@ -3,22 +3,21 @@
 include("includes/core.php");
 ?>
 <?php
-$shifts = new Shift();
+$recipe_products = new RecipeProduct();
 // Create
-if (isset($_POST['add_shift'])) {
+if (isset($_POST['add_recipe_product'])) {
   $data = [
-    'start_time' => $_POST['start_time'],
-    'end_time' => $_POST['end_time'],
-    'description' => $_POST['description']
+    'recipe_id' => $_POST['recipe_id'],
+    'product_id' => $_POST['product_id']
   ];
-  $shifts->create($data);
-  header("Location: shift.php");
+  $recipe_products->create($data);
+  header("Location: recipe_product.php");
 }
 // Delete
-if (isset($_POST['shift_delete'])) {
-  $shift_id = $_POST['shift_delete'];
-  $shifts->delete($shift_id);
-  header("Location: shift.php");
+if (isset($_POST['recipe_product_delete'])) {
+  $recipe_product_id = $_POST['recipe_product_delete'];
+  $recipe_products->delete($recipe_product_id);
+  header("Location: recipe_product.php");
   exit();
 }
 ?>
@@ -251,6 +250,7 @@ table{
 
 
   </style>
+
 </head>
 
 <body>
@@ -266,27 +266,18 @@ table{
       </div>
       <div class="user-info">
         <div class="search-box">
-          <!-- <li>
-          <a href="">
-            <span>Home</span>
-          </a>
-        </li> -->
         </div>
         <img src="https://lh3.googleusercontent.com/a/ACg8ocKAKz4uG8EXeKwzlQ7lju4lwoVqXWCUqX3Oi6WVexokeDk=s432-c-no"
           alt="pp">
       </div>
     </div>
-    <!-- cards -->
-    <?php
-// include("cards.php");
-
-    ?>
+ 
  <!-- tabular -->
  <div class="tabular-wrapper">
   <div class="table-container">
   <div class="text-center m-3">
     <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#completeModal">
-      ADD SHIFT
+      ADD recipe_product
     </button>
   </div>
 
@@ -295,30 +286,25 @@ table{
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">SHIFTS</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">recipe_products</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <!-- form -->
           <!-- firstname -->
-          <form action="shift.php" method="POST">
+          <form action="recipe_product.php" method="POST">
             <div class="mb-3">
-              <label class="form-label">Start Time</label>
-              <input type="text" class="form-control" name="start_time" placeholder="Enter start time">
+              <label class="form-label">Recipe Id</label>
+              <input type="text" class="form-control" name="recipe_id" placeholder="Enter start time">
             </div>
             <!-- name -->
             <div class="mb-3">
-              <label class="form-label">End Time</label>
-              <input type="text" class="form-control" name="end_time" placeholder="Enter end time">
-            </div>
-            <!-- last name -->
-            <div class="mb-3">
-              <label class="form-label">Description </label>
-              <input type="textarea" class="form-control" name="description" placeholder="description of the shift">
+              <label class="form-label">Product Id</label>
+              <input type="text" class="form-control" name="product_id" placeholder="Enter end time">
             </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary" name = "add_shift">Add Shift</button>
+              <button type="submit" class="btn btn-primary" name = "add_recipe_product">Add recipe_product</button>
             </div>
         </div>
       </div>
@@ -337,43 +323,40 @@ table{
     <thead class="bg-dark text-white">
       <tr>
         <th scope="col">Id</th>
-        <th scope="col">Start Time</th>
-        <th scope="col">End Time</th>
-        <th scope="col">Description</th>
+        <th scope="col">Recipe Id</th>
+        <th scope="col">Product Id</th>
+ 
         <th scope="col">Created At</th>
         <th scope="col">Updated At</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($shifts->all() as $shift): ?>
+      <?php foreach ($recipe_products->all() as $recipe_product): ?>
         <tr>
           <td>
-            <?php echo $shift->id; ?>
+            <?php echo $recipe_product->id; ?>
           </td>
           <td>
-            <?php echo $shift->start_time; ?>
+            <?php echo $recipe_product->recipe_id; ?>
           </td>
           <td>
-            <?php echo $shift->end_time;?>
+            <?php echo $recipe_product->product_id;?>
           </td>
           <td>
-            <?php echo $shift->description;?>
+            <?php echo $recipe_product->created_at;?>
           </td>
           <td>
-            <?php echo $shift->created_at;?>
+            <?php echo $recipe_product->updated_at;?>
           </td>
           <td>
-            <?php echo $shift->updated_at;?>
-          </td>
-          <td>
-            <a href="shift.php" class="btn btn-primary btn-sm mr-3" title="view"><i class="fas fa-eye"></i></a>
-            <a href="update_shift.php?id=<?php echo $shift->id; ?>" class="btn btn-success btn-sm mr-3" title="edit">
+            <a href="recipe_product.php" class="btn btn-primary btn-sm mr-3" title="view"><i class="fas fa-eye"></i></a>
+            <a href="update_recipe_product.php?id=<?php echo $recipe_product->id; ?>" class="btn btn-success btn-sm mr-3" title="edit">
               <i class="fas fa-edit"></i>
             </a>
-            <form action="shift.php" method="POST" class="d-inline-block">
-              <button type="submit" name="shift_delete" value="<?php echo $shift->id;?>" class="btn btn-danger btn-sm"
-                onclick="return confirm('Are you sure you want to delete delete shift?')">
+            <form action="recipe_product.php" method="POST" class="d-inline-block">
+              <button type="submit" name="recipe_product_delete" value="<?php echo $recipe_product->id;?>" class="btn btn-danger btn-sm"
+                onclick="return confirm('Are you sure you want to delete delete recipe_product?')">
                 <i class="bi bi-trash3">del</i>
               </button>
             </form>

@@ -59,12 +59,13 @@ if (isset($_POST['update_schedule'])) {
       color: whitesmoke;
       overflow: hidden;
       transition: all 0.5s linear;
-      background-color: #361401;
+      background-color: #894e3f;
       overflow: auto;
+
     }
 
     .sidebar:hover {
-      width: 260px;
+      width: 280px;
       transition: 0.5s;
     }
 
@@ -76,14 +77,15 @@ if (isset($_POST['update_schedule'])) {
     }
 
     .menu {
-      height: 80%;
+      height: 100%;
       position: relative;
       list-style: none;
       padding: 0;
+     
     }
 
     .menu li {
-      padding: 1rem;
+      padding:.5rem;
       margin: 8px 0;
       border-radius: 8px;
       transition: all 0.5s ease-in-out;
@@ -122,7 +124,7 @@ if (isset($_POST['update_schedule'])) {
     /* main */
     .main-content {
       position: relative;
-      background: gray;
+      background: #f0d7a7;
       width: 100%;
       padding: 1rem;
     }
@@ -139,8 +141,9 @@ if (isset($_POST['update_schedule'])) {
       justify-content: space-between;
       flex-wrap: wrap;
       align-items: center;
-      background: white;
-      border-radius: 10px;
+      background-color: #fff;
+      border-radius: 5px;
+      color: white;
       padding: 10px 2rem;
       margin-bottom: 1rem;
     }
@@ -181,7 +184,7 @@ if (isset($_POST['update_schedule'])) {
       /* background: red; */
       border-radius: 10px;
       padding: 1.2rem;
-      width: 220px;
+      width: 200px;
       height: 150px;
       display: flex;
       flex-direction: column;

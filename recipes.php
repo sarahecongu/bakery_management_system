@@ -2,6 +2,7 @@
 include("includes/core.php");
 $recipes = new Recipe();
 $api = new Api();
+var_dump($api->all());
 
 // Create
 if (isset($_POST['add_recipe'])) {
@@ -83,8 +84,15 @@ if (isset($_POST['recipe_delete'])) {
     </div>
     </form>
   </div>
+  <div class="search-box">
+    <form action="categories.php" method="GET" class="d-flex">
+        <input type="text" class="form-control me-2" name="search" placeholder="Search Categories">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+</div>
+
   <!-- <table> -->
-  <table class="table table-striped">
+  <table class="table table-striped mt-3">
     <thead class="bg-dark text-white">
       <tr>
         <th scope="col">Id</th>

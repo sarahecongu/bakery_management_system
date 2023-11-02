@@ -34,16 +34,18 @@ class User extends Model
 
     }
 
+
     public function Register()
     {
+       
         if (empty($this->first_name) || empty($this->last_name) || empty($this->email) || empty($this->pwd)) {
-            return "All fields are required.";
+            echo "All fields are required.";
         } elseif (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            return "Invalid email format";
+          
+            echo "Invalid email format";
         } elseif (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $this->pwd)) {
-            return "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character.";
+            echo "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character.";
         } else {
-            // Check if the email is already registered
             if ($this->checkIsEmailRegistered() == 0) {
                 $this->pwd = password_hash($this->pwd, PASSWORD_DEFAULT);
 
@@ -54,16 +56,16 @@ class User extends Model
                     'user_type_id' => $this->user_type_id,
                     'pwd' => $this->pwd,
                 ]);
-                return 'Registration successful. Please login.';
+                echo 'Registration successful. Please login.';
             } else {
-                return "Email address is already taken.";
+                echo "Email address is already taken.";
             }
         }
 
 
     }
 
-    // login
+
 
     public function Login()
     {

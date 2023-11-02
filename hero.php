@@ -50,3 +50,4 @@
     <div id="prev-slide" class="fas fa-angle-left" onclick="next()"></div>
 
   </section>
+  <script src="main.js"></script>

@@ -1,3 +1,10 @@
+<?php
+include("includes/core.php");
+?>
+<?php
+$products = new Product();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,18 +32,18 @@
 <section class="product" id="product">
 <h4 class="title">Our<span>Products</span></h4>
 <div class="box-container">
-<?php 
-        for ($i = 0; $i < 30; $i++) { 
-            echo '
+<?php
+     foreach ($products->all() as $product):
+    ?>
 <div class="box">
   <div class="img">
-  <img src="images/ice-cream.png" alt="">
-  <a class="bd-cake-tag" href="#">bd cake</a>
+  <img src="images/<?php echo $product->image;?>" alt="">
+   <!-- <a class="bd-cake-tag" href="#"><?php echo $product->category_id?></a> -->
   </div>
   <div class="content">
-    <h3>Chocolate brown</h3>
-    <a href="details.php" class="btn">Calories</a>
-    <a href="details.php" class="btn">Ingredients</a>
+    <h3><?php echo $product->name?></h3>
+    <a href="details.php" class="btn1">Calories</a>
+    <a href="details.php" class="btn1">Ingredients</a>
      <div class="stars">
       <i class="fas fa-star"></i>
       <i class="fas fa-star"></i>
@@ -44,19 +51,21 @@
       <i class="fas fa-star"></i>
       <i class="far fa-star"></i>
     </div>
-
-    <span class="price">shs 200,000</span>
-    <a href="" class="btns"><i class="fas fa-shopping-cart"></i></a>
+    <span class="price">shs <?php echo $product->price; ?></span>
+    <a href="" class="btn">Add to Cart</a>
   </div>
  
 </div>
-
-';}
+<?php
+  endforeach;
 ?>
+   
+
 </div>
 </section>
 <?php 
 include 'footer.php';
 ?>
+<script src="main.js"></script>
 </body>
 </html>

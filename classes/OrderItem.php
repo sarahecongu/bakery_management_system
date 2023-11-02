@@ -1,6 +1,6 @@
 <?php
 class OrderItem extends Model{
-    protected $table = 'order_item';
+    protected $table = 'order_items';
     public $unit_price;
     public $total_price;
     public $quantity;

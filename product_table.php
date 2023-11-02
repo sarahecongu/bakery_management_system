@@ -3,22 +3,30 @@
 include("includes/core.php");
 ?>
 <?php
-$shifts = new Shift();
+$products = new Product();
 // Create
-if (isset($_POST['add_shift'])) {
+if (isset($_POST['add_product'])) {
   $data = [
-    'start_time' => $_POST['start_time'],
-    'end_time' => $_POST['end_time'],
-    'description' => $_POST['description']
+    'name' => $_POST['name'],
+    'price'=> $_POST['price'],
+    'quantity'=> $_POST['quantity'],
+    'category_id'=> $_POST['category_id'],
+    'health_benefit_id'=> $_POST['health_benefit_id'],
   ];
-  $shifts->create($data);
-  header("Location: shift.php");
+  if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+    $image_name = $_FILES['image']['name'];
+    $tmp_name = $_FILES['image']['tmp_name'];
+    move_uploaded_file($tmp_name, "images/" . $image_name);
+    $data['image'] = $image_name;
+  }
+  $products->create($data);
+  header("Location: product_table.php");
 }
 // Delete
-if (isset($_POST['shift_delete'])) {
-  $shift_id = $_POST['shift_delete'];
-  $shifts->delete($shift_id);
-  header("Location: shift.php");
+if (isset($_POST['product_delete'])) {
+  $product_id = $_POST['product_delete'];
+  $products->delete($product_id);
+  header("Location: product_table.php");
   exit();
 }
 ?>
@@ -251,6 +259,7 @@ table{
 
 
   </style>
+
 </head>
 
 <body>
@@ -284,9 +293,10 @@ table{
  <!-- tabular -->
  <div class="tabular-wrapper">
   <div class="table-container">
+
   <div class="text-center m-3">
     <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#completeModal">
-      ADD SHIFT
+      ADD product
     </button>
   </div>
 
@@ -295,30 +305,46 @@ table{
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">SHIFTS</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">products</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <!-- form -->
           <!-- firstname -->
-          <form action="shift.php" method="POST">
+          <form action="product_table.php" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
-              <label class="form-label">Start Time</label>
-              <input type="text" class="form-control" name="start_time" placeholder="Enter start time">
+              <label class="form-label">Image</label>
+              <input type="file" class="form-control" name="image" placeholder="Enter image">
             </div>
             <!-- name -->
             <div class="mb-3">
-              <label class="form-label">End Time</label>
-              <input type="text" class="form-control" name="end_time" placeholder="Enter end time">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control" name="name" placeholder="product name">
             </div>
-            <!-- last name -->
-            <div class="mb-3">
-              <label class="form-label">Description </label>
-              <input type="textarea" class="form-control" name="description" placeholder="description of the shift">
+              <!-- price -->
+              <div class="mb-3">
+              <label class="form-label">Category Id</label>
+              <input type="text" class="form-control" name="category_id" placeholder="product price">
             </div>
+               <!-- price -->
+               <div class="mb-3">
+              <label class="form-label">Price</label>
+              <input type="text" class="form-control" name="price" placeholder="product price">
+            </div>
+               <!-- quantity-->
+               <div class="mb-3">
+              <label class="form-label">Quantity</label>
+              <input type="number" class="form-control" name="quantity" placeholder="product quantity">
+            </div>
+               <!-- health-->
+               <div class="mb-3">
+              <label class="form-label">health</label>
+              <input type="text" class="form-control" name="health_benefit_id" placeholder="product name">
+            </div>
+                      
             <div class="modal-footer">
               <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary" name = "add_shift">Add Shift</button>
+              <button type="submit" class="btn btn-primary" name = "add_product">Add product</button>
             </div>
         </div>
       </div>
@@ -337,43 +363,56 @@ table{
     <thead class="bg-dark text-white">
       <tr>
         <th scope="col">Id</th>
-        <th scope="col">Start Time</th>
-        <th scope="col">End Time</th>
-        <th scope="col">Description</th>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Price</th>
+        <th scope="col">Qtty</th>
+        <th scope="col">Health</th>
         <th scope="col">Created At</th>
         <th scope="col">Updated At</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($shifts->all() as $shift): ?>
+      <?php foreach ($products->all() as $product): ?>
         <tr>
           <td>
-            <?php echo $shift->id; ?>
+            <?php echo $product->id; ?>
+          </td>
+          <td style="width:5%">
+            <img src="images/<?php echo $product->image; ?>" alt="dp" class="rounded-circle w-50 h-50">
+
           </td>
           <td>
-            <?php echo $shift->start_time; ?>
+            <?php echo $product->name; ?>
           </td>
           <td>
-            <?php echo $shift->end_time;?>
+            <?php echo $product->category_id; ?>
           </td>
           <td>
-            <?php echo $shift->description;?>
+            <?php echo $product->price; ?>
           </td>
           <td>
-            <?php echo $shift->created_at;?>
+            <?php echo $product->quantity; ?>
           </td>
           <td>
-            <?php echo $shift->updated_at;?>
+            <?php echo $product->health_benefit_id; ?>
           </td>
           <td>
-            <a href="shift.php" class="btn btn-primary btn-sm mr-3" title="view"><i class="fas fa-eye"></i></a>
-            <a href="update_shift.php?id=<?php echo $shift->id; ?>" class="btn btn-success btn-sm mr-3" title="edit">
+            <?php echo $product->created_at; ?>
+          </td>
+          <td>
+            <?php echo $product->updated_at; ?>
+          </td>
+          <td>
+            <a href="product_table.php" class="btn btn-primary btn-sm mr-3" title="view"><i class="fas fa-eye"></i></a>
+            <a href="update_product_table.php?id=<?php echo $product->id; ?>" class="btn btn-success btn-sm mr-3" title="edit">
               <i class="fas fa-edit"></i>
             </a>
-            <form action="shift.php" method="POST" class="d-inline-block">
-              <button type="submit" name="shift_delete" value="<?php echo $shift->id;?>" class="btn btn-danger btn-sm"
-                onclick="return confirm('Are you sure you want to delete delete shift?')">
+            <form action="product_table.php" method="POST" class="d-inline-block">
+              <button type="submit" name="product_delete" value="<?php echo $product->id;?>" class="btn btn-danger btn-sm"
+                onclick="return confirm('Are you sure you want to delete product?')">
                 <i class="bi bi-trash3">del</i>
               </button>
             </form>
@@ -383,32 +422,12 @@ table{
     </tbody>
 
   </table>
-  <?php
-	include("partials/footer.php");
-	?>
 
 
+  </div>
+ </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  </div>
+<?php 
+include('partials/footer.php');
+?>

@@ -3,22 +3,30 @@
 include("includes/core.php");
 ?>
 <?php
-$shifts = new Shift();
+$orders = new Order();
 // Create
-if (isset($_POST['add_shift'])) {
+if (isset($_POST['add_order'])) {
   $data = [
-    'start_time' => $_POST['start_time'],
-    'end_time' => $_POST['end_time'],
-    'description' => $_POST['description']
+    'track_no' => $_POST['track_no'],
+    'user_id'=> $_POST['user_id'],
+    'order_date'=> $_POST['order_date'],
+    'status'=> $_POST['status'],
+    'total_amount'=> $_POST['total_amount'],
   ];
-  $shifts->create($data);
-  header("Location: shift.php");
+  if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+    $image_name = $_FILES['image']['name'];
+    $tmp_name = $_FILES['image']['tmp_name'];
+    move_uploaded_file($tmp_name, "images/" . $image_name);
+    $data['image'] = $image_name;
+  }
+  $orders->create($data);
+  header("Location: order_table.php");
 }
 // Delete
-if (isset($_POST['shift_delete'])) {
-  $shift_id = $_POST['shift_delete'];
-  $shifts->delete($shift_id);
-  header("Location: shift.php");
+if (isset($_POST['order_delete'])) {
+  $order_id = $_POST['order_delete'];
+  $orders->delete($order_id);
+  header("Location: order_table.php");
   exit();
 }
 ?>
@@ -251,6 +259,7 @@ table{
 
 
   </style>
+
 </head>
 
 <body>
@@ -284,9 +293,10 @@ table{
  <!-- tabular -->
  <div class="tabular-wrapper">
   <div class="table-container">
+
   <div class="text-center m-3">
     <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#completeModal">
-      ADD SHIFT
+      ADD ORDER
     </button>
   </div>
 
@@ -295,30 +305,41 @@ table{
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">SHIFTS</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">orders</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <!-- form -->
           <!-- firstname -->
-          <form action="shift.php" method="POST">
+          <form action="order_table.php" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
-              <label class="form-label">Start Time</label>
-              <input type="text" class="form-control" name="start_time" placeholder="Enter start time">
+              <label class="form-label">Image</label>
+              <input type="file" class="form-control" name="image" placeholder="Enter image">
             </div>
-            <!-- name -->
-            <div class="mb-3">
-              <label class="form-label">End Time</label>
-              <input type="text" class="form-control" name="end_time" placeholder="Enter end time">
+              <!-- user_id -->
+              <div class="mb-3">
+              <label class="form-label">status</label>
+              <input type="text" class="form-control" name="status" placeholder="order user_id">
             </div>
-            <!-- last name -->
-            <div class="mb-3">
-              <label class="form-label">Description </label>
-              <input type="textarea" class="form-control" name="description" placeholder="description of the shift">
+               <!-- user_id -->
+               <div class="mb-3">
+              <label class="form-label">user_id</label>
+              <input type="text" class="form-control" name="user_id" placeholder="order user_id">
             </div>
+               <!-- order_date-->
+               <div class="mb-3">
+              <label class="form-label">order_date</label>
+              <input type="number" class="form-control" name="order_date" placeholder="order order_date">
+            </div>
+               <!-- health-->
+               <div class="mb-3">
+              <label class="form-label">health</label>
+              <input type="text" class="form-control" name="total_amount" placeholder="order name">
+            </div>
+                      
             <div class="modal-footer">
               <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary" name = "add_shift">Add Shift</button>
+              <button type="submit" class="btn btn-primary" name = "add_order">Add order</button>
             </div>
         </div>
       </div>
@@ -337,43 +358,58 @@ table{
     <thead class="bg-dark text-white">
       <tr>
         <th scope="col">Id</th>
-        <th scope="col">Start Time</th>
-        <th scope="col">End Time</th>
-        <th scope="col">Description</th>
+        <th scope="col">Image</th>
+        <th scope="col">user_id</th>
+        <th scope="col">status</th>
+        <th scope="col">order date</th>
+        <th scope="col">track no</th>
+        <th scope="col">total amount</th>
+
         <th scope="col">Created At</th>
         <th scope="col">Updated At</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($shifts->all() as $shift): ?>
+      <?php foreach ($orders->all() as $order): ?>
         <tr>
           <td>
-            <?php echo $shift->id; ?>
+            <?php echo $order->id; ?>
+          </td>
+          <td style="width:8%">
+            <img src="images/<?php echo $order->image; ?>" alt="dp" class="rounded-circle w-50 h-50">
+
           </td>
           <td>
-            <?php echo $shift->start_time; ?>
+            <?php echo $order->user_id; ?>
           </td>
           <td>
-            <?php echo $shift->end_time;?>
+            <?php echo $order->status; ?>
           </td>
           <td>
-            <?php echo $shift->description;?>
+            <?php echo $order->order_date; ?>
           </td>
           <td>
-            <?php echo $shift->created_at;?>
+            <?php echo $order->track_no; ?>
+          </td>
+          
+          <td>
+            <?php echo $order->total_amount; ?>
           </td>
           <td>
-            <?php echo $shift->updated_at;?>
+            <?php echo $order->created_at; ?>
           </td>
           <td>
-            <a href="shift.php" class="btn btn-primary btn-sm mr-3" title="view"><i class="fas fa-eye"></i></a>
-            <a href="update_shift.php?id=<?php echo $shift->id; ?>" class="btn btn-success btn-sm mr-3" title="edit">
+            <?php echo $order->updated_at; ?>
+          </td>
+          <td>
+            <a href="order_table.php" class="btn btn-primary btn-sm mr-3" title="view"><i class="fas fa-eye"></i></a>
+            <a href="update_order_table.php?id=<?php echo $order->id; ?>" class="btn btn-success btn-sm mr-3" title="edit">
               <i class="fas fa-edit"></i>
             </a>
-            <form action="shift.php" method="POST" class="d-inline-block">
-              <button type="submit" name="shift_delete" value="<?php echo $shift->id;?>" class="btn btn-danger btn-sm"
-                onclick="return confirm('Are you sure you want to delete delete shift?')">
+            <form action="order_table.php" method="POST" class="d-inline-block">
+              <button type="submit" name="order_delete" value="<?php echo $order->id;?>" class="btn btn-danger btn-sm"
+                onclick="return confirm('Are you sure you want to delete order?')">
                 <i class="bi bi-trash3">del</i>
               </button>
             </form>
@@ -383,32 +419,12 @@ table{
     </tbody>
 
   </table>
-  <?php
-	include("partials/footer.php");
-	?>
 
 
+  </div>
+ </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  </div>
+<?php 
+include('partials/footer.php');
+?>

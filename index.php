@@ -14,12 +14,11 @@
 <body>
 
   <div>
-    <!-- navbar -->
     <?php
     include('navbar.php');
     ?>
+  
   </div>
-
   <!-- heroes -->
   <?php
   include('hero.php');
@@ -47,7 +46,7 @@
   include('footer.php');
 
   ?>
-
+<script src="main.js"></script>
 </body>
 
 </html> 
