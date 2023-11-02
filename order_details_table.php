@@ -64,7 +64,7 @@ include('partials/header.php');
       color: whitesmoke;
       overflow: hidden;
       transition: all 0.5s linear;
-      background-color: #894e3f;
+      background-color: rgb(76, 9, 9);
       overflow: auto;
 
     }
@@ -98,7 +98,7 @@ include('partials/header.php');
 
     .menu li:hover,
     .active {
-      background-color: orange;
+      background-color:wheat;
       /* width: 10px; */
     }
 
@@ -154,7 +154,7 @@ include('partials/header.php');
     }
 
     .header-title {
-      color: blue;
+      color: white;
 
     }
 
@@ -277,6 +277,10 @@ table{
         </div>
         <img src="https://lh3.googleusercontent.com/a/ACg8ocKAKz4uG8EXeKwzlQ7lju4lwoVqXWCUqX3Oi6WVexokeDk=s432-c-no"
           alt="pp">
+          <li>
+          <a href="logout.php">logout</a>
+          </li>
+      
       </div>
     </div>
     <!-- cards -->

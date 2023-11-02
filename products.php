@@ -14,7 +14,7 @@ $products = new Product();
 
 <div class="box">
   <div class="img">
-  <img src="images/<?php echo $product->image;?>" alt="dp">
+  <a href="details.php"><img src="images/<?php echo $product->image;?>" alt="dp"></a>
   <!-- <a class="bd-cake-tag" href="#"><?php echo $product->category_id?></a> -->
   </div>
   <div class="content">

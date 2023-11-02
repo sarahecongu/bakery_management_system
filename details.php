@@ -13,15 +13,18 @@
     span{
         color: orangered;
     }
+.spaced{
+  min-height: 25vh;
+}
   </style>
 <body>
 <?php
     include("navbar.php");
     ?>
-    <div class="space"></div>
+    <div class="spaced"></div>
 
 
-    <main>
+   
         <section class="recipe-image">
             <img src="images/pizza-hut.jpg" alt="Delicious Recipe">
         </section>

@@ -14,6 +14,7 @@
     <?php
     include("navbar.php");
     ?>
+    <div class="spac"></div>
     <section class="aboutus">
     <img src="https://www.escoffier.edu/wp-content/uploads/2022/04/Smiling-female-chef-in-a-bakery-with-loaves-of-bread-1400.jpg" alt="Bake Pal Team">
     <div>

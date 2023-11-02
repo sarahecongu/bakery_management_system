@@ -28,7 +28,7 @@ $products = new Product();
     <?php
     include("navbar.php");
     ?>
-    <div class="space"></div>
+        <div class="spaced"></div>
 <section class="product" id="product">
 <h4 class="title">Our<span>Products</span></h4>
 <div class="box-container">
@@ -38,14 +38,21 @@ $products = new Product();
 <div class="box">
   <div class="img">
   <img src="images/<?php echo $product->image;?>" alt="">
-   <a class="bd-cake-tag" href="#"><?php echo $product->category_id?></a>
+   <!-- <a class="bd-cake-tag" href="#"><?php echo $product->category_id?></a> -->
   </div>
   <div class="content">
     <h3><?php echo $product->name?></h3>
-    <a href="details.php" class="btn">Calories</a>
-    <a href="details.php" class="btn">Ingredients</a>
+    <a href="details.php" class="btn1">Calories</a>
+    <a href="details.php" class="btn1">Ingredients</a>
+     <div class="stars">
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="far fa-star"></i>
+    </div>
     <span class="price">shs <?php echo $product->price; ?></span>
-    <a href="" class="btns"><i class="fas fa-shopping-cart"></i></a>
+    <button class="add" data-id="<?php echo $product->id; ?>">Add to Cart</button>
   </div>
  
 </div>
@@ -59,5 +66,6 @@ $products = new Product();
 <?php 
 include 'footer.php';
 ?>
+<script src="main.js"></script>
 </body>
 </html>

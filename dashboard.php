@@ -35,7 +35,7 @@
       color: whitesmoke;
       overflow: hidden;
       transition: all 0.5s linear;
-      background-color: #894e3f;
+      background-color: rgb(76, 9, 9);
       overflow: auto;
 
     }
@@ -69,7 +69,7 @@
 
     .menu li:hover,
     .active {
-      background-color: orange;
+      background-color: wheat;
       /* width: 10px; */
     }
 
@@ -100,7 +100,7 @@
     /* main */
     .main-content {
       position: relative;
-      background: #f0d7a7;
+      background:  rgb(246, 233, 209);
       width: 100%;
       padding: 1rem;
     }
@@ -125,7 +125,7 @@
     }
 
     .header-title {
-      color: blue;
+      color: black;
 
     }
 
@@ -151,7 +151,7 @@
     }
 
     .main-title{
-      color: blue;
+      color: black;
       padding-bottom: 10px;
       font-size: 15px;
     }
@@ -248,6 +248,10 @@ table{
         </div>
         <img src="https://lh3.googleusercontent.com/a/ACg8ocKAKz4uG8EXeKwzlQ7lju4lwoVqXWCUqX3Oi6WVexokeDk=s432-c-no"
           alt="pp">
+          <li>
+          <a href="logout.php">LogOut</a>
+          </li>
+       
       </div>
     </div>
     <!-- cards -->

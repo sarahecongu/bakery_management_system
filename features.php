@@ -16,4 +16,5 @@
 }
 ?>
 </div>
-</section
+</section>
+<script src="main.js"></script>
