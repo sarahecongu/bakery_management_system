@@ -39,7 +39,7 @@ html {
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color:rgb(238, 116, 136);
+    background-color:rgb(76, 9, 9);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -97,7 +97,7 @@ html {
     margin-top: 1rem;
     display: inline-block;
     padding: .8rem 3rem;
-    background:rgb(238, 116, 136);
+    background:rgb(76, 9, 9);
     color: #fff;
     font-size: 1.3rem;
     cursor: pointer;
@@ -142,7 +142,7 @@ button{
 }
 
 .home .slides-container .slide .content span {
-    color:rgb(238, 116, 136);
+    color:rgb(76, 9, 9);
     font-weight: bold;
     font-size: 2.5rem;
 }
@@ -175,7 +175,7 @@ button{
     text-align: center;
     font-size: 2rem;
     cursor: pointer;
-    background: rgb(238, 116, 136);
+    background: rgb(76, 9, 9);
     color: #fff;
 
 }
@@ -272,7 +272,7 @@ section {
 }
 
 .title span {
-    color:rgb(238, 116, 136);
+    color:rgb(76, 9, 9);
     padding-left: .7rem;
 
 }
@@ -397,29 +397,87 @@ section {
     margin-right: 1rem;
 
 }
-.btn1 {
-        display: inline-block;
-        margin: .1rem 0;
-        padding: .8rem 3rem;
-        font-size: 1.5rem;
-        text-align: center;
-        text-decoration: none;
-        border: none;
-        cursor: pointer;
-        color: #4CAF50;
-        transition: background-color 0.3s;
-        
-    }
 
-    .btn1:hover {
-        color: #fff; 
-    }
+.product .box-container .box .content .btns{
+    margin-top: 1rem;
+    display: inline-block;
+    padding: .8rem 3rem;
+    color: orangered;
+    font-size: 2.5rem;
+    cursor: pointer;  
+}
 
 
 
-  
-  /* Cart Items Section */
-  .cart-container {
+
+
+
+
+ h1 {
+    font-size: 2rem;
+    background-color: #333;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.recipe-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.recipe-links {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.recipe-links h2 {
+    font-size: 2.5rem;
+}
+
+.recipe-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.recipe-links li {
+    display: inline;
+    margin: 0 1rem;
+}
+
+.recipe-links a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+
+
+
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
     display: flex;
     padding: 20px;
     justify-content: space-between;
@@ -584,7 +642,7 @@ section {
 }
 
 .info-container .info:hover{
-    background: chocolate;
+    background:rgb(76, 9, 9);
 
 }
 .info-container .info .content h3{
@@ -635,7 +693,7 @@ gap: 1.5rem;
 }
 
 .footer .box-container .box a:hover{
-    color: chocolate;
+    color:rgb(76, 9, 9);
 }
 
 .footer .box-container .box a i{
@@ -644,7 +702,7 @@ gap: 1.5rem;
 }
 .footer .box-container .box a:hover i{
     padding-right: 2rem;
-    color: chocolate;
+    color: rgb(76, 9, 9)    ;
 }
 .footer .box-container .box form input[type="email"]{
     width: 100%;
