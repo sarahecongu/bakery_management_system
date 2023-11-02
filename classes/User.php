@@ -40,15 +40,15 @@ class User extends Model
        
         if (empty($this->first_name) || empty($this->last_name) || empty($this->email) || empty($this->pwd)) {
             echo "All fields are required.";
-        } elseif (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
           
+        } elseif (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             echo "Invalid email format";
+            var_dump($this->email);
         } elseif (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $this->pwd)) {
             echo "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character.";
         } else {
             if ($this->checkIsEmailRegistered() == 0) {
                 $this->pwd = password_hash($this->pwd, PASSWORD_DEFAULT);
-
                 $this->create([
                     'first_name' => $this->first_name,
                     'last_name' => $this->last_name,

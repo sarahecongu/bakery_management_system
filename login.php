@@ -3,6 +3,7 @@ include('includes/core.php');
 $user = new User();
 $error = '';
 
+
 try {
     
     if (isset($_POST['login'])){

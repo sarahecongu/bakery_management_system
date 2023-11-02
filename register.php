@@ -11,6 +11,7 @@ try {
         $first_name = trim(htmlspecialchars($_POST['first_name']));
         $last_name = trim(htmlspecialchars($_POST['last_name']));
         $email = trim($_POST['email']);
+        
         $password = trim($_POST['pwd']);
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $user->Register();

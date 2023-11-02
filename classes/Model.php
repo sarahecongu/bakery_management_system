@@ -150,6 +150,8 @@ class Model extends DatabaseConnection
 
 		return $result->fetchAll(PDO::FETCH_OBJ);
 	}
+
+	
 	/**
 	 * Get limited records
 	 * @param mixed $limit

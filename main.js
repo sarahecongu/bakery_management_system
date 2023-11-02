@@ -36,3 +36,16 @@ function prev() {
     slides[index].classList.add('active');
     
 }
+
+var product_id = document.getElementsByClassName("add");
+for (var i = 0; i < product_id.length; i++) {
+  product_id[i].addEventListener("click",function (event) {
+  var target = event.target;
+  var id = target.getAttribute("data-id"); 
+  
+  
+  alert(id);
+  })
+
+  
+}

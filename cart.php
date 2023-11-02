@@ -19,22 +19,25 @@
     include("navbar.php");
     ?>
         <div class="space"></div>
-   
-        <main>
+   <div class="cart-container">
         <section class="cart-items">
             <h2>Your Cart</h2>
+            <h2>0 Items</h2>
             <ul>
                 <li>
                     <img src="images/pizza-hut.jpg" alt="Product 1">
                     <div class="item-info">
                         <h3>Product 1</h3>
-                        <p>Price: shs 10.00</p>
+                        <p>Price: shs 1000</p>
                         <div class="quantity">
                             <span class="quantity-btn decrease">-</span>
                             <h6 class="quantity-value">1</h6>
                             <span class="quantity-btn increase">+</span>
-                            <button class="remove-item">Remove</button>
+                       
                         </div>
+                        <h2 class="discount"><del>Discount: 20%</del></h2>
+                        <button class="remove-item">Remove</button>
+                          
                  
                     </div>
                 </li>
@@ -43,13 +46,14 @@
                     <img src="images/pizza-hut.jpg" alt="Product 1">
                     <div class="item-info">
                         <h3>Product 1</h3>
-                        <p>Price: shs 10.00</p>
+                        <p>Price: shs 1000</p>
                         <div class="quantity">
                             <span class="quantity-btn decrease">-</span>
                             <h6 class="quantity-value">1</h6>
                             <span class="quantity-btn increase">+</span>
-                            <button class="remove-item">Remove</button>
+                           
                         </div>
+                        <button class="remove-item">Remove</button>
                        
                     </div>
                 </li>
@@ -64,6 +68,6 @@
             <p>Total Price: <span id="total-price">shs 10.00</span></p>
             <button class="btn">Checkout</button>
         </section>
-    </main>
+        </div>
 </body>
 </html>

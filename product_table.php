@@ -12,6 +12,8 @@ if (isset($_POST['add_product'])) {
     'quantity'=> $_POST['quantity'],
     'category_id'=> $_POST['category_id'],
     'health_benefit_id'=> $_POST['health_benefit_id'],
+    'discount'=> $_POST['discount'],
+
   ];
   if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
     $image_name = $_FILES['image']['name'];
@@ -336,6 +338,12 @@ table{
               <label class="form-label">Quantity</label>
               <input type="number" class="form-control" name="quantity" placeholder="product quantity">
             </div>
+               <!-- quantity-->
+               <div class="mb-3">
+              <label class="form-label">discount</label>
+              <input type="number" class="form-control" name="discount" placeholder="product quantity">
+            </div>
+               <!-
                <!-- health-->
                <div class="mb-3">
               <label class="form-label">health</label>
@@ -367,6 +375,8 @@ table{
         <th scope="col">Name</th>
         <th scope="col">Category</th>
         <th scope="col">Price</th>
+        <th scope="col">Discount</th>
+
         <th scope="col">Qtty</th>
         <th scope="col">Health</th>
         <th scope="col">Created At</th>
@@ -392,6 +402,9 @@ table{
           </td>
           <td>
             <?php echo $product->price; ?>
+          </td>
+          <td>
+            <?php echo $product->discount; ?>
           </td>
           <td>
             <?php echo $product->quantity; ?>

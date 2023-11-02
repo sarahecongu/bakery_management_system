@@ -52,7 +52,7 @@ $products = new Product();
       <i class="far fa-star"></i>
     </div>
     <span class="price">shs <?php echo $product->price; ?></span>
-    <a href="" class="btn">Add to Cart</a>
+    <button class="add" data-id="<?php echo $product->id; ?>">Add to Cart</button>
   </div>
  
 </div>

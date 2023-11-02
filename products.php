@@ -20,7 +20,8 @@ $products = new Product();
   <div class="content">
     <h3><?php echo $product->name?></h3>  
     <span class="price">shs <?php echo $product->price; ?></span>
-    <a href="" class="btn">Add to Cart</a>
+    <button class="add" data-id="<?php echo $product->id; ?>">Add to Cart</button>
+
   </div>
   
 </div>
@@ -31,6 +32,8 @@ $products = new Product();
      </div>
   </section>
 
+  
+<script src="main.js"></script>
          
        
 

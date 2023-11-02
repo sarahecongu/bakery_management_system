@@ -26,6 +26,14 @@ if (isset($_POST['category_delete'])) {
   header("Location: categories.php");
   exit();
 }
+// searching
+$searchedCategories = [];
+if (isset($_GET['search'])) {
+    $searchTerm = $_GET['search'];
+    $searchedCategories = $categories->where(['name' => $searchTerm]);
+} else {
+    $searchedCategories = $categories->where([""]);
+}
 ?>
 <?php 
 include('partials/header.php');
@@ -348,7 +356,7 @@ table{
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($categories->all() as $category): ?>
+    <?php foreach ($searchedCategories as $category): ?>
         <tr>
           <td>
             <?php echo $category->id; ?>
@@ -368,7 +376,7 @@ table{
             <?php echo $category->updated_at; ?>
           </td>
           <td>
-            <a href="categories.php" class="btn btn-primary btn-sm mr-3" title="view"><i class="fas fa-eye"></i></a>
+            <a href="view_categories.php?id=<?php echo $category->id; ?>" class="btn btn-primary btn-sm mr-3" title="view"><i class="fas fa-eye"></i></a>
             <a href="update_categories.php?id=<?php echo $category->id; ?>" class="btn btn-success btn-sm mr-3" title="edit">
               <i class="fas fa-edit"></i>
             </a>

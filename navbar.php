@@ -1,5 +1,10 @@
 
   <header class="header">
+  <div class="marquee">
+    <marquee behavior="" direction="left">
+      Get 50% off on all items above! Use code: SAVE20
+    </marquee>
+  </div>
     <a href="" class="logo">
         <!-- <img src="images/logos.png" alt=""> --> BAKE PAL
     </a>
@@ -7,8 +12,8 @@
     <nav class="navbar">
       <a href="index.php">Home</a>
       <a href="menu.php">Menu</a>
-      <a href="">AboutUs</a>
-      <a href="">Services</a>
+      <a href="aboutus.php">AboutUs</a>
+      <a href="services.php">Services</a>
       <a href="">Contact</a>
     </nav>
     <div class="icons">
