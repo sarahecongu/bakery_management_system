@@ -12,26 +12,41 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/index.css">
   <title>Menu Page</title>
+  <style>
+    .spae{
+      min-height: 25vh;
+    }
+    .titles{
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+    span{
+      color: rgb(79, 6,6);
+    }
+  </style>
 </head>
 
 <body>
     <?php
     include("navbar.php");
     ?>
-    <div class="space"></div>
+    <div class="spae"></div>
 <?php
  $categories = new Category();
 ?>
 <section class="category">
-    <h4 class="title">Our<span>Categories</span><a href=""></a></h4>
+    <h4 class="titles">Our<span>  Categories</span><a href=""></a></h4>
     <div class="box-container">
         <?php
      foreach ($categories->all() as $category):
     ?>
        <a href="" class="box">
       <img src="images/<?php echo $category->image;?>" alt="dp">
-      <h3><?php echo $category->name?></h3>
+      <h3><?php echo $category->name ?></h3>
       </a>
+   
+          
 <?php
   endforeach;
 ?>

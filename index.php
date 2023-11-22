@@ -1,4 +1,7 @@
 
+<?php
+include("includes/core.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +44,11 @@
   include('features.php');
 
   ?>
+    <!--news  -->
+  <?php
+  include('reviews.php');
 
+  ?>
    <?php
   include('footer.php');
 

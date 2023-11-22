@@ -134,6 +134,7 @@ class Model extends DatabaseConnection
 
 		$result->execute();
 
+
 		return $result->fetchAll(PDO::FETCH_OBJ);
 	}
 
@@ -192,6 +193,66 @@ class Model extends DatabaseConnection
 
 		return ['success'=>$succes, 'failed'=>$failed];
 	}
+
+	/**
+     * Get related records
+     * @param string $relatedTable
+     * @param int $parentId
+     * @param string $foreignKey
+     * @return object
+     */
+    public function getRelated($relatedTable, $parentId, $foreignKey)
+    {
+        $sql = "SELECT * FROM " . $relatedTable . " WHERE " . $foreignKey . "=" . $parentId;
+        $result = $this->connection->query($sql);
+
+        $result->execute();
+
+        return $result->fetchAll(PDO::FETCH_OBJ);
+    }
+
+	/**
+     * Count related records
+     * @param string $relatedTable
+     * @param int $parentId
+     * @param string $foreignKey
+     * @return int
+     */
+    public function countRelated($relatedTable, $parentId, $foreignKey)
+    {
+        $sql = "SELECT COUNT(*) as count FROM " . $relatedTable . " WHERE " . $foreignKey . "=" . $parentId;
+        $result = $this->connection->query($sql);
+
+        $result->execute();
+
+        $count = $result->fetch(PDO::FETCH_OBJ);
+
+        return $count->count;
+    }
+
+	    /**
+     * Get attributes of the parent from the child
+     * @param string $childTable
+     * @param string $parentTable
+     * @param int $childId
+     * @param string $foreignKey
+     * @return object|null
+     */
+    public function getParentAttributesFromChild($childTable, $parentTable, $childId, $foreignKey)
+    {
+        $sql = "SELECT parent.* FROM $parentTable parent
+                JOIN $childTable child ON parent.id = child.$foreignKey
+                WHERE child.id = :child_id";
+
+        $result = $this->connection->prepare($sql);
+        $result->execute(['child_id' => $childId]);
+
+        return $result->fetch(PDO::FETCH_OBJ);
+    }
+
+
+
+
 
 	// /**
 	//  * Get limited records

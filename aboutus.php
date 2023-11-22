@@ -1,3 +1,6 @@
+<?php require_once('includes/core.php')
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +12,15 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/index.css">
   <title>About Us Page</title>
+  <style>
+    .spac{
+        min-height: 15vh;
+    }
+    p{
+        font-size: 1.5rem;
+        padding-top: 1.5rem;
+    }
+  </style>
 </head>
 <body>
     <?php

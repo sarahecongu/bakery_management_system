@@ -3,7 +3,10 @@
 include("includes/core.php");
 ?>
 <?php
-$products = new Product();
+$products = new Product;
+$category = new Category;
+$health_benefit = new HealthBenefit;
+
 // Create
 if (isset($_POST['add_product'])) {
   $data = [
@@ -32,238 +35,10 @@ if (isset($_POST['product_delete'])) {
   exit();
 }
 ?>
-<?php 
-include('partials/header.php');
+
+<?php
+include("partials/header.php");
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="../css/dashboard.css">
-
-  <title>END OF YEAR</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      border: none;
-      outline: none;
-      box-sizing: border-box;
-    }
-
-    body {
-      display: flex;
-    }
-
-    .sidebar {
-      position: sticky;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: 170px;
-      height: 100vh;
-      padding: 0 1.7rem;
-      color: whitesmoke;
-      overflow: hidden;
-      transition: all 0.5s linear;
-      background-color: #894e3f;
-      overflow: auto;
-
-    }
-
-    .sidebar:hover {
-      width: 280px;
-      transition: 0.5s;
-    }
-
-
-    .logo {
-      height: 80px;
-      padding: 16px;
-
-    }
-
-    .menu {
-      height: 100%;
-      position: relative;
-      list-style: none;
-      padding: 0;
-     
-    }
-
-    .menu li {
-      padding:.5rem;
-      margin: 8px 0;
-      border-radius: 8px;
-      transition: all 0.5s ease-in-out;
-    }
-
-    .menu li:hover,
-    .active {
-      background-color: orange;
-      /* width: 10px; */
-    }
-
-    .menu a {
-      color: white;
-      font-size: 14px;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .menu a span {
-      overflow: hidden;
-    }
-
-    .menu a i {
-      font-size: 1.2rem;
-    }
-
-    .logout {
-      position: absolute;
-      /* bottom: 0; */
-      left: 0;
-      width: 100%;
-    }
-
-    /* main */
-    .main-content {
-      position: relative;
-      background: #f0d7a7;
-      width: 100%;
-      padding: 1rem;
-    }
-
-    .header-wrapper img {
-      width: 50px;
-      height: 50px;
-      cursor: pointer;
-      border-radius: 50%;
-    }
-
-    .header-wrapper {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      align-items: center;
-      background-color: #fff;
-      border-radius: 5px;
-      color: white;
-      padding: 10px 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .header-title {
-      color: blue;
-
-    }
-
-    .user-info {
-      display: flex;
-      align-items: center;
-      gap: 1;
-
-    }
-
-    /* cards */
-    .card-container{
-      background-color: #fff;
-      padding: 2rem;
-      border-radius: 10px;
-
-    }
-
-    .card-wrapper{
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .main-title{
-      color: blue;
-      padding-bottom: 10px;
-      font-size: 15px;
-    }
-
-    .user-card{
-      /* background: red; */
-      border-radius: 10px;
-      padding: 1.2rem;
-      width: 200px;
-      height: 150px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.5s ease-in-out;
-      /* margin: auto; */
-    }
-
-    .payment-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-self: center;
-      margin-bottom: 20px;
-    }
-
-    .total {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .title {
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    .value {
-      font-size: 24px;
-      font-weight: bold;
-    }
- .icon {
-      color: white;
-      padding: 1rem;
-      height: 60px;
-      width: 60px;
-      /* text-align: center; */
-      /* border-radius: 50%; */
-      font-size: 1.5rem;
-      /* background: white; */
-    }
-
-.tabular-wrapper{
-  background: white;
-  margin-top: 1rem;
-  border-radius: 10px;
-  padding: 2rem;
-}
-.table-container{
-  width: 100%;
-}
-table{
-  width: 100%;
-  border-collapse: collapse;
-}
-
-
-
-
-
-  </style>
-
-</head>
-
 <body>
   <?php
   include("sidebar.php");
@@ -285,6 +60,9 @@ table{
         </div>
         <img src="https://lh3.googleusercontent.com/a/ACg8ocKAKz4uG8EXeKwzlQ7lju4lwoVqXWCUqX3Oi6WVexokeDk=s432-c-no"
           alt="pp">
+          <li>
+            <a href="login.php" class="logout-link">logout</a>
+          </li>
       </div>
     </div>
     <!-- cards -->
@@ -297,7 +75,7 @@ table{
   <div class="table-container">
 
   <div class="text-center m-3">
-    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#completeModal">
+    <button type="button" class="btns" data-bs-toggle="modal" data-bs-target="#completeModal">
       ADD product
     </button>
   </div>
@@ -352,7 +130,7 @@ table{
                       
             <div class="modal-footer">
               <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary" name = "add_product">Add product</button>
+              <button type="submit" class="bt" name = "add_product">Add product</button>
             </div>
         </div>
       </div>
@@ -362,69 +140,71 @@ table{
   <div class="search-box">
     <form action="categories.php" method="GET" class="d-flex">
         <input type="text" class="form-control me-2" name="search" placeholder="Search Categories">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="bt" type="submit">Search</button>
     </form>
 </div>
 
   <!-- <table> -->
   <table class="table table-striped mt-3">
-    <thead class="bg-dark text-white">
+    <thead class="text-white">
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Image</th>
         <th scope="col">Name</th>
         <th scope="col">Category</th>
         <th scope="col">Price</th>
-        <th scope="col">Discount</th>
-
+        <!-- <th scope="col">Discount</th> -->
         <th scope="col">Qtty</th>
         <th scope="col">Health</th>
-        <th scope="col">Created At</th>
-        <th scope="col">Updated At</th>
+        <th scope="col">Created</th>
+        <th scope="col">Updated</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($products->all() as $product): ?>
+      <?php foreach ($products->all() as $product): 
+                $category_details = $category->getParentAttributesFromChild('products', 'product_categories', $product->id, 'category_id');
+                $health_details = $health_benefit->getParentAttributesFromChild('products', 'health_benefits', $product->id, 'health_benefit_id');
+
+        ?>
+
         <tr>
           <td>
             <?php echo $product->id; ?>
           </td>
-          <td style="width:5%">
-            <img src="images/<?php echo $product->image; ?>" alt="dp" class="rounded-circle w-50 h-50">
+          <td style="width:15%">
+            <img src="<?php echo $product->image; ?>" alt="dp" class="w-50 h-50 rounded-circle">
 
           </td>
-          <td>
+          <td title="<?php echo $product->name; ?>" class="text-md-truncate" style="max-width:150px">
             <?php echo $product->name; ?>
           </td>
           <td>
-            <?php echo $product->category_id; ?>
+            <?php echo $category_details->name ?? NULL; ?>
           </td>
-          <td>
+          <td> 
             <?php echo $product->price; ?>
           </td>
-          <td>
-            <?php echo $product->discount; ?>
-          </td>
+        
           <td>
             <?php echo $product->quantity; ?>
           </td>
           <td>
-            <?php echo $product->health_benefit_id; ?>
+            <?php echo $health_details->name ?? NULL; ?>
           </td>
           <td>
-            <?php echo $product->created_at; ?>
+            <?php  echo Helper::date($product->created_at); ?>
           </td>
           <td>
-            <?php echo $product->updated_at; ?>
+            <?php  echo Helper::date($product->created_at); ?>
           </td>
           <td>
-            <a href="product_table.php" class="btn btn-primary btn-sm mr-3" title="view"><i class="fas fa-eye"></i></a>
-            <a href="update_product_table.php?id=<?php echo $product->id; ?>" class="btn btn-success btn-sm mr-3" title="edit">
+            <a href="product_table.php" class="btn btn-primary btn-sm mr-2 m-1" title="view"><i class="fas fa-eye"></i></a>
+            <a href="update_product_table.php?id=<?php echo $product->id; ?>" class="btn btn-success btn-sm mr-2" title="edit">
               <i class="fas fa-edit"></i>
             </a>
             <form action="product_table.php" method="POST" class="d-inline-block">
-              <button type="submit" name="product_delete" value="<?php echo $product->id;?>" class="btn btn-danger btn-sm"
+              <button type="submit" name="product_delete" value="<?php echo $product->id;?>" class="btn btn-danger btn-sm m-2"
                 onclick="return confirm('Are you sure you want to delete product?')">
                 <i class="bi bi-trash3">del</i>
               </button>

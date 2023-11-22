@@ -8,8 +8,7 @@ class Api
     public function __construct()
     {
         $this->endpoint = "https://the-birthday-cake-db.p.rapidapi.com/";
-        
-        
+
         $this->curl = curl_init();
 
         curl_setopt_array($this->curl, [
@@ -21,7 +20,7 @@ class Api
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => [
                 "X-RapidAPI-Host: the-birthday-cake-db.p.rapidapi.com",
-                "X-RapidAPI-Key: 0372cd7cbfmshadd6167d443505fp1e67b9jsn52454cd044a5"
+                "X-RapidAPI-Key: 8ae6f1eabbmshf011e0743a53b74p163922jsn805e0f89742e"
             ],
         ]);
 
@@ -64,6 +63,35 @@ class Api
             return "cURL Error #:" . $err;
         } else {
             return $response;
+        }
+    }
+
+    public function apiStoreRecipes()
+    {
+        $prod = new Product;
+        //  ["0"] => array(4) {
+        //     ["id"] => string(1) "1"
+        //     ["title"] => string(29) "Raspberry and custard muffins"
+        //     ["difficulty"] => string(4) "Easy"
+        //     ["image"] => string(48) "https://apipics.s3.amazonaws.com/cakes_api/1.jpg"
+        // }
+
+        foreach ($this->all() as  $product) {
+
+            $product = (object) $product;
+            // var_dump($product);die;
+            if($prod->create([
+                "id"=> $product->id,
+                'name'=> $product->title,
+                'price'=> rand(100000,5000000),
+                'image'=> $product->image,
+                'quantity'=>rand(1,10),
+            ])){
+                echo '+'. $product->id .''. $product->title ;
+            }else{
+                echo '<span style="color:red">'. $product->id .''. $product->title . '</span>';
+            };
+           
         }
     }
 }

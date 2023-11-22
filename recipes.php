@@ -1,9 +1,6 @@
 <?php
 include("includes/core.php");
 $recipes = new Recipe();
-$api = new Api();
-var_dump($api->all());
-
 // Create
 if (isset($_POST['add_recipe'])) {
   $data = [
@@ -31,12 +28,40 @@ if (isset($_POST['recipe_delete'])) {
 }
 ?>
 
-<?php
-    include('partials/header.php');
-    ?>
+<?php include('partials/header.php');?>
+<body>
+  <?php
+  include("sidebar.php");
+  ?>
+  <!-- heasder -->
+  <div class="main-content">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <span>Welcome</span>
+        <?php
+         if (isset($_SESSION['last_name'])) {
+          echo $_SESSION['last_name'];
+        } else {
+          echo "Guest"; 
+        }
+        ?>
+      </div>
+      <div class="user-info">
+        <div class="search-box">
+        </div>
+        <img src="https://lh3.googleusercontent.com/a/ACg8ocKAKz4uG8EXeKwzlQ7lju4lwoVqXWCUqX3Oi6WVexokeDk=s432-c-no"
+          alt="pp">
+          <li>
+            <a href="login.php" class="logout-link">logout</a>
+          </li>
+      </div>
+    </div>
+ <!-- tabular -->
+ <div class="tabular-wrapper">
+  <div class="table-container">
   <div class="text-center m-3">
-    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#completeModal">
-      ADD  RECIPE
+    <button type="button" class="btns" data-bs-toggle="modal" data-bs-target="#completeModal">
+      ADD RECIPE 
     </button>
   </div>
 
@@ -46,7 +71,7 @@ if (isset($_POST['recipe_delete'])) {
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">RECIPES</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <!-- form -->
@@ -77,7 +102,7 @@ if (isset($_POST['recipe_delete'])) {
             <div class="modal-footer">
               <!-- <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button> -->
               <a href="recipes.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
-              <button type="submit" class="btn btn-primary" name = "add_recipe">Add recipe</button>
+              <button type="submit" class="bt" name = "add_recipe">Add recipe</button>
             </div>
         </div>
       </div>
@@ -87,13 +112,13 @@ if (isset($_POST['recipe_delete'])) {
   <div class="search-box">
     <form action="categories.php" method="GET" class="d-flex">
         <input type="text" class="form-control me-2" name="search" placeholder="Search Categories">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="bt" type="submit">Search</button>
     </form>
 </div>
 
   <!-- <table> -->
   <table class="table table-striped mt-3">
-    <thead class="bg-dark text-white">
+    <thead class="text-white">
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Name</th>
@@ -130,10 +155,10 @@ if (isset($_POST['recipe_delete'])) {
             <?php echo $recipe->description;?>
           </td>
           <td>
-            <?php echo $recipe->created_at;?>
+            <?php  echo Helper::date($recipe->created_at);?>
           </td>
           <td>
-            <?php echo $recipe->updated_at;?>
+            <?php  echo Helper::date($recipe->created_at);?>
           </td>
           <td>
             <a href="recipes.php" class="btn btn-primary btn-sm mr-3" title="view"><i class="fas fa-eye"></i></a>

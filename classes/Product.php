@@ -9,7 +9,7 @@ Class Product extends Model{
     public $health_benefit_id;
     public $category_id;
 
-
+  
 
 
 

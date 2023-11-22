@@ -1,4 +1,4 @@
-
+<div class="space"></div>
 <section class="home" id="home">
     <div class="slides-container">
       <div class="slide active">
@@ -10,7 +10,7 @@
           <a href="" class="btn">Shop Now</a>
         </div>
         <div class="img">
-          <img src="images/cupcake.png" alt="cupcakes">
+          <img src="images/11.jpg" alt="cupcakes">
         </div>
       </div>
 
@@ -47,7 +47,7 @@
       </div>
     </div>
     <div id="next-slide" class="fas fa-angle-right" onclick="next()"></div>
-    <div id="prev-slide" class="fas fa-angle-left" onclick="next()"></div>
+    <div id="prev-slide" class="fas fa-angle-left" onclick="prev()"></div>
 
   </section>
   <script src="main.js"></script>

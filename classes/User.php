@@ -37,15 +37,14 @@ class User extends Model
 
     public function Register()
     {
-       
+        $errors = [];
+
         if (empty($this->first_name) || empty($this->last_name) || empty($this->email) || empty($this->pwd)) {
-            echo "All fields are required.";
-          
+            $errors[] = "All fields are required.";
         } elseif (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            echo "Invalid email format";
-            var_dump($this->email);
+            $errors[] = "Invalid email format";
         } elseif (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $this->pwd)) {
-            echo "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character.";
+            $errors[] = "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character.";
         } else {
             if ($this->checkIsEmailRegistered() == 0) {
                 $this->pwd = password_hash($this->pwd, PASSWORD_DEFAULT);
@@ -56,43 +55,59 @@ class User extends Model
                     'user_type_id' => $this->user_type_id,
                     'pwd' => $this->pwd,
                 ]);
-                echo 'Registration successful. Please login.';
+                $_SESSION['status'] = 'success';
+                $_SESSION['message'] = 'Registration successful. Please login.';
             } else {
-                echo "Email address is already taken.";
+                $errors[] = "Email address is already taken.";
             }
         }
 
+        // Store errors in the session
+        if (!empty($errors)) {
+            Helper::statusMessage('error',implode("<br>", $errors));
 
+        }
     }
-
-
 
     public function Login()
     {
-        if ($users = $this->where(['email' => $this->email])) {
+        $session = new SessionManager;
+
+        $users = $this->where(['email' => $this->email]);
+
+        if ($users) {
             foreach ($users as $user) {
                 $hashed_password = $user->pwd;
 
                 if (password_verify($this->pwd, $hashed_password)) {
 
-                    $session = new SessionManager;
-
                     if ($session->add($user)) {
-
                         if ($user->user_type_id == 1 || $user->user_type_id == 2 || $user->user_type_id == 3 || $user->user_type_id == 5 || $user->user_type_id == 6) {
-                            return header('Location: dashboard.php');
+                            $redirect = 'dashboard.php';
                         } elseif ($user->user_type_id == 4) {
-                            return header('Location: index.php');
-                        } else
-                            return header('Location: 404.php');
+                            $redirect = 'index.php';
+                        } else {
+                            $redirect = '404.php';
+                        }
+
+                        header("Location: $redirect");
+                        exit();
                     }
                 } else {
-                    echo 'Wrong email or password . Please try again.';
+                    $errors[] = 'Wrong email or password.';
                 }
             }
         } else {
-            echo 'Wrong email or password . Please try again.';
+            $errors[] = 'Wrong email or password.';
+        }
+
+        // Store errors in the session
+        if (!empty($errors)) {
+        
+            Helper::statusMessage('error',implode("<br>", $errors));
+            // $_SESSION['message'] = implode("<br>", $errors);
         }
     }
-
 }
+
+
