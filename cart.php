@@ -181,8 +181,8 @@ if (isset($_POST['remove'])) {
       <h2>Grand Total:<?php echo $grandTotal ?> </h2>
     </div>
     <div class="buttons">
-      <a href="index.html" class="continue-shopping-button">Continue Shopping</a>
-      <a href="checkout.html" class="checkout-button">Checkout</a>
+      <a href="menu.php" class="continue-shopping-button">Continue Shopping</a>
+      <a href="checkout.php" class="checkout-button">Checkout</a>
     </div>
   </section>
   <script>

@@ -1,4 +1,5 @@
-<?php require_once('includes/core.php')
+<?php require_once('includes/core.php');
+$about_us = new AboutUs;
 ?>
 
 <!DOCTYPE html>
@@ -26,60 +27,37 @@
     <?php
     include("navbar.php");
     ?>
-    <div class="spac"></div>
-    <section class="aboutus">
-    <img src="https://www.escoffier.edu/wp-content/uploads/2022/04/Smiling-female-chef-in-a-bakery-with-loaves-of-bread-1400.jpg" alt="Bake Pal Team">
+  <div class="spac"></div>
+
+<?php 
+$about_us_data = $about_us->all();
+$firstAboutUs = reset($about_us_data); 
+?>
+
+<section class="aboutus">
+    <img src="images/<?php echo $firstAboutUs->image; ?>" alt="Bake Pal Team">
     <div>
-        <h1>About Us</h1>
-        <p>Welcome to Bake Pal! We are a team of passionate bakers dedicated to creating delicious pastries, cakes, and more.</p>
-        <p>Our journey began in a small kitchen, and now we serve our delightful treats to customers all over the city.</p>
-        <p>With quality ingredients and a sprinkle of love, we're committed to making every bite a delightful experience.</p>
+        <h1><?php echo $firstAboutUs->title; ?></h1>
+        <p><?php echo $firstAboutUs->description; ?></p>
     </div>
 </section>
 
-    <section class="company-info">
-    <!-- <div class="info-box">
-        <h2>Profits</h2>
-        <p>Our dedication to quality and customer satisfaction has led to consistent growth and profitability.</p>
-        <img src="profits_image.jpg" alt="Profits Image">
-        <p>Working Hours: Monday-Friday, 9:00 AM - 6:00 PM</p>
-    </div> -->
-    <div class="info-box">
-        <h2>Customers</h2>
-        <div class="image">
-        <img src="https://static.vecteezy.com/system/resources/previews/000/550/535/non_2x/user-icon-vector.jpg" alt="Customers Image">
-        <h2 id="branches-count">10,000</h2>
+<section class="company-info">
+    <?php foreach (array_slice($about_us_data, 1) as $aboutus): ?>
+        <div class="info-box">
+            <h2><?php echo $aboutus->title; ?></h2>
+            <div class="image">
+                <img src="images/<?php echo $aboutus->image; ?>" alt="Customers Image">
+                <h2 id="branches-count"><?php echo $aboutus->total; ?></h2>
+            </div>
+            <p><?php echo $aboutus->description; ?></p>
         </div>
-        <p>We're proud to have served thousands of happy customers, and we look forward to serving even more.</p>
-    </div>
-    <div class="info-box">
-   
-        <h2>Branches</h2>
-        <div class="image">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsdFAYgINZHnkNiW-hKSG5igOGgkYdqY7nFg&usqp=CAU" alt="Branches Image">
-        <h2 id="branches-count">10,000</h2>
-        </div>
-        <p>With multiple locations across the city, we're easily accessible to our customers no matter where they are.</p>
-       
-    </div>
-    <div class="info-box">
-        <h2>Workers</h2>
-        <div class="image">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoWfNapfc39EvWQV6sdZPSPcpvUwfs9JnmMw&usqp=CAU" alt="Workers Image">
-        <h2 id="branches-count">10,000</h2>
-        </div>
-        <p>Our dedicated team of skilled bakers and staff work tirelessly to bring you the best baked goods in town.</p>
-    </div>
+    <?php endforeach; ?>
 </section>
 
-<?php
-    include("footer.php");
-    ?>
+<?php include("footer.php"); ?>
 
 <script src="main.js"></script>
+</body>
 
-
-
-
-
-
+</html>

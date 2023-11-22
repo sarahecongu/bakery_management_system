@@ -24,16 +24,45 @@ if (isset($_POST['add_product'])) {
     move_uploaded_file($tmp_name, "images/" . $image_name);
     $data['image'] = $image_name;
   }
-  $products->create($data);
+  if ($products->create($data)) {
+    // Set success message
+    $_SESSION['status'] = 'success';
+    $_SESSION['message'] = 'Product successfully added';
+  } else {
+    // Set error message
+    $_SESSION['status'] = 'error';
+    $_SESSION['message'] = 'Error adding category';
+  }
+
   header("Location: product_table.php");
+  exit();
+
 }
 // Delete
 if (isset($_POST['product_delete'])) {
   $product_id = $_POST['product_delete'];
-  $products->delete($product_id);
+  if($products->delete($product_id)){
+    
+    Helper::statusMessage('success','Product Deleted');
+  }else{
+   Helper::statusMessage('error','Category Not Deleted');
+  }
   header("Location: product_table.php");
   exit();
 }
+$searchedProducts = [];
+
+if (isset($_GET['search'])) {
+    $searchTerm = $_GET['search'];
+    $searchedProducts = $products->where(['name' => $searchTerm])->orderBy('id', 'DESC')->all();
+} else {
+    $searchedProducts = $products->orderBy('id', 'DESC');
+}
+
+
+
+
+
 ?>
 
 <?php
@@ -74,11 +103,12 @@ include("partials/header.php");
  <div class="tabular-wrapper">
   <div class="table-container">
 
-  <div class="text-center m-3">
+  <div class="text-end m-3 d-flex justify-content-end">
     <button type="button" class="btns" data-bs-toggle="modal" data-bs-target="#completeModal">
-      ADD product
+        ADD PRODUCT
     </button>
-  </div>
+</div>
+
 
   <!-- Modal -->
   <div class="modal fade" id="completeModal" tabindex="-1">
@@ -138,10 +168,10 @@ include("partials/header.php");
     </form>
   </div>
   <div class="search-box">
-    <form action="categories.php" method="GET" class="d-flex">
-        <input type="text" class="form-control me-2" name="search" placeholder="Search Categories">
-        <button class="bt" type="submit">Search</button>
-    </form>
+  <form action="product_table.php" method="GET" class="d-flex">
+    <input type="text" class="form-control text-center" name="search" placeholder="Search products" style="width:350px; margin-right: 10px; ">
+    <button class="bt" type="submit">Search</button>
+</form>
 </div>
 
   <!-- <table> -->
@@ -153,7 +183,7 @@ include("partials/header.php");
         <th scope="col">Name</th>
         <th scope="col">Category</th>
         <th scope="col">Price</th>
-        <!-- <th scope="col">Discount</th> -->
+       
         <th scope="col">Qtty</th>
         <th scope="col">Health</th>
         <th scope="col">Created</th>
@@ -162,7 +192,7 @@ include("partials/header.php");
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($products->all() as $product): 
+      <?php foreach ($searchedProducts as $product): 
                 $category_details = $category->getParentAttributesFromChild('products', 'product_categories', $product->id, 'category_id');
                 $health_details = $health_benefit->getParentAttributesFromChild('products', 'health_benefits', $product->id, 'health_benefit_id');
 

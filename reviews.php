@@ -9,7 +9,7 @@
             echo '
         
             <div class="card">
-                <span><i class="ri-double-quotes-l"></i></span>
+            <span><i class="fas fa-quote-left"></i></span>
                 <p>
                     I\'ve been working with these guys for a long time and I can say that
                     my house is in the perfect hands.

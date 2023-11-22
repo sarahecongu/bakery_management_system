@@ -92,6 +92,13 @@
                     <span>Cart</span>
                 </a>
             </li>
+             <!-- deliveries -->
+             <li>
+                <a href="cart_item_table.php">
+                    <i class="fas fa-truck"></i>
+                    <span>CartItems</span>
+                </a>
+</li>
               <!-- deliveries -->
               <li>
                 <a href="recipes.php">
@@ -108,14 +115,14 @@
             </li>
                <!-- deliveries -->
                <li>
-                <a href="deliveries.php">
+                <a href="aboutus_table.php">
                     <i class="fas fa-truck"></i>
                     <span>About Us</span>
                 </a>
             </li>
                <!-- deliveries -->
                <li>
-                <a href="deliveries.php">
+                <a href="services_table.php">
                     <i class="fas fa-truck"></i>
                     <span>Services</span>
                 </a>
