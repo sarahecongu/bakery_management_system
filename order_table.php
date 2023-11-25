@@ -22,6 +22,7 @@ if (isset($_POST['add_order'])) {
   $orders->create($data);
   header("Location: order_table.php");
 }
+
 // Delete
 if (isset($_POST['order_delete'])) {
   $order_id = $_POST['order_delete'];
@@ -143,7 +144,6 @@ include("partials/header.php");
         <th scope="col">Image</th>
         <th scope="col">user_id</th>
         <th scope="col">status</th>
-        <th scope="col">order date</th>
         <th scope="col">track no</th>
         <th scope="col">total amount</th>
 
@@ -168,9 +168,7 @@ include("partials/header.php");
           <td>
             <?php echo $order->status; ?>
           </td>
-          <td>
-            <?php echo $order->order_date; ?>
-          </td>
+        
           <td>
             <?php echo $order->track_no; ?>
           </td>

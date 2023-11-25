@@ -3,7 +3,7 @@ $products = new Product();
 ?>
 <div class="space"></div>
 <section class="product">
-<h4 class="title">Our<span>Products</span><a href="menu.php" class="btn">View All</a></h4>
+<h4 class="title">OUR<span> PRODUCTS</span><a href="menu.php" class="btn">VIEW ALL</a></h4>
     <div class="box-container">
         <?php foreach ($products->limit(3) as $product): ?>
             <div class="box">
@@ -13,11 +13,11 @@ $products = new Product();
                 </div>
                 <div class="content">
                     <h3><?php echo $product->name ?></h3>
-                    <span class="price">shs <?php echo $product->price; ?></span>
+                    <span class="price">shs <?php echo Helper::formatNumber($product->price); ?></span>
                     <button class="add_cart" data-id="<?php echo $product->id; ?>"
                             data-name="<?php echo $product->name; ?>"
                             data-image="<?php echo $product->image; ?>"
-                            data-price="<?php echo $product->price; ?>">
+                            data-price="<?php echo Helper::formatNumber($product->price); ?>">
                         Add to Cart
                     </button>
                 </div>

@@ -1,6 +1,7 @@
 <?php
-	include("includes/core.php");
-	?>
+include("includes/core.php");
+$categories = new CakeCategory;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +24,6 @@
     }
     span{
       color: rgb(79, 6,6);
-    
     }
   </style>
 </head>
@@ -33,11 +33,9 @@
     include("navbar.php");
     ?>
     <div class="spae"></div>
-<?php
- $categories = new Category();
-?>
+
 <section class="category">
-    <h4 class="titles">OUR<span>  CATEGORIES</span><a href=""></a></h4>
+    <h4 class="titles">OUR<span>  CAKE  CATEGORIES</span><a href=""></a></h4>
     <div class="box-container">
         <?php
      foreach ($categories->all() as $category):

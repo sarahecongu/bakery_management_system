@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2023 at 09:03 AM
+-- Generation Time: Nov 23, 2023 at 10:34 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -24,6 +24,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `about_us`
+--
+
+CREATE TABLE `about_us` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `total` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `about_us`
+--
+
+INSERT INTO `about_us` (`id`, `title`, `description`, `image`, `total`) VALUES
+(1, 'About Us', 'Welcome to Bake Pal! We are a team of passionate bakers dedicated to creating delicious pastries, cakes, and more. Our journey began in a small kitchen, and now we serve our delightful treats to customers all over the city. With quality ingredients and a sprinkle of love, we\'re committed to making every bite a delightful experience.', 'ezgif.com-webp-to-png.png', 0),
+(2, 'Branches', 'We have now expanded to more branches', 'branches.png', 12),
+(3, 'Profits', 'We make beyond what  we expected', 'profits.png', 230),
+(4, 'Customers', 'We now have more customers', 'customers.png', 240);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `carts`
 --
 
@@ -33,6 +57,15 @@ CREATE TABLE `carts` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `carts`
+--
+
+INSERT INTO `carts` (`id`, `user_id`, `created_at`, `updated_at`) VALUES
+(4, 36, '2023-11-19 14:58:50', '2023-11-19 14:58:50'),
+(5, 37, '2023-11-19 15:27:12', '2023-11-19 15:27:12'),
+(6, 38, '2023-11-20 19:48:24', '2023-11-20 19:48:24');
 
 -- --------------------------------------------------------
 
@@ -44,8 +77,22 @@ CREATE TABLE `cart_items` (
   `id` int(11) NOT NULL,
   `cart_id` int(11) DEFAULT NULL,
   `product_id` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
   `promotions_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart_items`
+--
+
+INSERT INTO `cart_items` (`id`, `cart_id`, `product_id`, `quantity`, `promotions_id`) VALUES
+(18, 4, 1, 1, NULL),
+(21, 5, 2, 1, NULL),
+(22, 5, 3, 1, NULL),
+(23, 6, 2, 3, NULL),
+(24, 6, 3, 1, NULL),
+(26, 6, 7, 1, NULL),
+(27, 6, 11, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -64,6 +111,28 @@ CREATE TABLE `deliveries` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `features`
+--
+
+CREATE TABLE `features` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `features`
+--
+
+INSERT INTO `features` (`id`, `name`, `image`, `description`) VALUES
+(1, 'Delivery Services', 'delivery.png', 'Fastest Delivery Within 30mins'),
+(2, 'Payment Methods', 'digital-payment.webp', 'Payments at your Convience'),
+(3, 'Know your Health', 'health2.jpg', 'Your Health at Hand');
 
 -- --------------------------------------------------------
 
@@ -120,12 +189,13 @@ INSERT INTO `health_benefits` (`id`, `name`, `description`) VALUES
 --
 
 CREATE TABLE `ingredients` (
-  `id` int(12) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `quantity` decimal(10,2) NOT NULL,
-  `unit` varchar(50) NOT NULL,
-  `product_id` int(11) DEFAULT NULL,
-  `recipe_id` int(11) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `unit` varchar(50) DEFAULT NULL,
+  `recipe_product_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -230,10 +300,10 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `category_id`, `price`, `quantity`, `image`, `created_at`, `updated_at`, `health_benefit_id`, `discount`) VALUES
-(1, 'Raspberry and custard muffins', NULL, '3767868', 2, 'https://apipics.s3.amazonaws.com/cakes_api/1.jpg', '2023-11-12 17:56:29', '2023-11-12 17:56:29', NULL, NULL),
-(2, 'Lemon and blackberry stripe cake', NULL, '3924277', 3, 'https://apipics.s3.amazonaws.com/cakes_api/2.jpg', '2023-11-12 17:56:29', '2023-11-12 17:56:29', NULL, NULL),
-(3, 'Paul Hollywood’s chocolate fudge cake', NULL, '3534819', 5, 'https://apipics.s3.amazonaws.com/cakes_api/3.jpg', '2023-11-12 17:56:29', '2023-11-12 17:56:29', NULL, NULL),
-(4, 'Lemon and strawberry meringue cake', NULL, '3242414', 7, 'https://apipics.s3.amazonaws.com/cakes_api/4.jpg', '2023-11-12 17:56:29', '2023-11-12 17:56:29', NULL, NULL),
+(1, 'Raspberry and custard muffins', 14, '3767868', 77, 'https://apipics.s3.amazonaws.com/cakes_api/1.jpg', '2023-11-12 17:56:29', '2023-11-19 16:19:55', 2, NULL),
+(2, 'Lemon and blackberry stripe cake', 13, '3924277', 3, 'https://apipics.s3.amazonaws.com/cakes_api/2.jpg', '2023-11-12 17:56:29', '2023-11-19 16:19:43', 2, NULL),
+(3, 'Paul Hollywood’s chocolate fudge cake', 26, '3534819', 5, 'https://apipics.s3.amazonaws.com/cakes_api/3.jpg', '2023-11-12 17:56:29', '2023-11-19 16:28:25', 1, NULL),
+(4, 'Lemon and strawberry meringue cake', 127, '3242414', 7, 'https://apipics.s3.amazonaws.com/cakes_api/4.jpg', '2023-11-12 17:56:29', '2023-11-19 16:28:37', 1, NULL),
 (5, 'Vegan chocolate cake', NULL, '1736571', 7, 'https://apipics.s3.amazonaws.com/cakes_api/5.jpg', '2023-11-12 17:56:30', '2023-11-12 17:56:30', NULL, NULL),
 (6, 'Spiced plum cake with swiss meringue frosting', NULL, '4270492', 1, 'https://apipics.s3.amazonaws.com/cakes_api/6.jpg', '2023-11-12 17:56:30', '2023-11-12 17:56:30', NULL, NULL),
 (7, 'Lemon and courgette cake with white chocolate cream cheese frosting', NULL, '4678713', 8, 'https://apipics.s3.amazonaws.com/cakes_api/7.jpg', '2023-11-12 17:56:30', '2023-11-12 17:56:30', NULL, NULL),
@@ -282,13 +352,13 @@ INSERT INTO `products` (`id`, `name`, `category_id`, `price`, `quantity`, `image
 (50, 'Red velvet cake', NULL, '2359426', 2, 'https://apipics.s3.amazonaws.com/cakes_api/50.jpg', '2023-11-12 17:56:32', '2023-11-12 17:56:32', NULL, NULL),
 (51, 'Paul Hollywood’s ultimate carrot cake', NULL, '460752', 1, 'https://apipics.s3.amazonaws.com/cakes_api/51.jpg', '2023-11-12 17:56:32', '2023-11-12 17:56:32', NULL, NULL),
 (52, 'Mary Berry’s very best chocolate and orange cake', NULL, '3386299', 8, 'https://apipics.s3.amazonaws.com/cakes_api/52.jpg', '2023-11-12 17:56:33', '2023-11-12 17:56:33', NULL, NULL),
-(53, 'Classic sponge cake', NULL, '585812', 1, 'https://apipics.s3.amazonaws.com/cakes_api/53.jpg', '2023-11-12 17:56:33', '2023-11-12 17:56:33', NULL, NULL),
-(54, 'Gluten-free birthday cake sponge', NULL, '216071', 8, 'https://apipics.s3.amazonaws.com/cakes_api/54.jpg', '2023-11-12 17:56:33', '2023-11-12 17:56:33', NULL, NULL),
-(55, 'Ultimate chocolate mousse cake', NULL, '3031589', 3, 'https://apipics.s3.amazonaws.com/cakes_api/55.jpg', '2023-11-12 17:56:33', '2023-11-12 17:56:33', NULL, NULL),
-(56, 'Lavender cupcakes', NULL, '1797027', 5, 'https://apipics.s3.amazonaws.com/cakes_api/56.jpg', '2023-11-12 17:56:33', '2023-11-12 17:56:33', NULL, NULL),
-(57, 'Chocolate and berry traybake', NULL, '539123', 6, 'https://apipics.s3.amazonaws.com/cakes_api/57.jpg', '2023-11-12 17:56:33', '2023-11-12 17:56:33', NULL, NULL),
-(58, 'Easy coconut and chocolate cake', NULL, '4290635', 9, 'https://apipics.s3.amazonaws.com/cakes_api/58.jpg', '2023-11-12 17:56:33', '2023-11-12 17:56:33', NULL, NULL),
-(59, 'Lemon and coconut cake', NULL, '675798', 8, 'https://apipics.s3.amazonaws.com/cakes_api/59.jpg', '2023-11-12 17:56:33', '2023-11-12 17:56:33', NULL, NULL);
+(53, 'Classic sponge cake', 127, '585812', 1, 'https://apipics.s3.amazonaws.com/cakes_api/53.jpg', '2023-11-12 17:56:33', '2023-11-22 19:31:36', 1, NULL),
+(54, 'Gluten-free birthday cake sponge', 26, '216071', 8, 'https://apipics.s3.amazonaws.com/cakes_api/54.jpg', '2023-11-12 17:56:33', '2023-11-22 19:31:18', 1, NULL),
+(55, 'Ultimate chocolate mousse cake', 23, '3031589', 3, 'https://apipics.s3.amazonaws.com/cakes_api/55.jpg', '2023-11-12 17:56:33', '2023-11-22 19:31:05', 1, NULL),
+(56, 'Lavender cupcakes', 23, '1797027', 5, 'https://apipics.s3.amazonaws.com/cakes_api/56.jpg', '2023-11-12 17:56:33', '2023-11-22 19:30:51', 1, NULL),
+(57, 'Chocolate and berry traybake', 23, '539123', 6, 'https://apipics.s3.amazonaws.com/cakes_api/57.jpg', '2023-11-12 17:56:33', '2023-11-22 19:30:32', 1, NULL),
+(58, 'Easy coconut and chocolate cake', 13, '4290635', 9, 'https://apipics.s3.amazonaws.com/cakes_api/58.jpg', '2023-11-12 17:56:33', '2023-11-22 19:30:05', 1, NULL),
+(59, 'Lemon and coconut cake', 13, '675798', 8, 'https://apipics.s3.amazonaws.com/cakes_api/59.jpg', '2023-11-12 17:56:33', '2023-11-22 19:29:55', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -310,34 +380,17 @@ CREATE TABLE `product_categories` (
 --
 
 INSERT INTO `product_categories` (`id`, `name`, `description`, `image`, `created_at`, `updated_at`) VALUES
-(13, 'Ring Dougnuts', 'black in color', 'ring-doughnut.jpeg', '2023-10-10 11:12:43', '2023-10-17 17:38:58'),
-(14, 'Biscuits', 'milk', 'Biscuits.jpg', '2023-10-10 11:19:02', '2023-10-10 11:19:02'),
-(18, 'cake', 'slice', 'slice.jpg', '2023-10-11 08:01:14', '2023-10-11 08:01:14'),
-(22, 'muffins', NULL, 'cup.jpg', '2023-10-17 13:28:10', '2023-10-17 13:28:10'),
-(23, 'pizza', NULL, 'pizza-hut.jpg', '2023-10-17 13:30:38', '2023-10-17 13:30:38'),
-(24, 'orange', NULL, 'orange.jpg', '2023-10-20 14:13:05', '2023-10-20 14:13:05'),
-(25, 'wedding cakes', NULL, '11.jpg', '2023-11-03 06:43:04', '2023-11-08 09:12:17'),
+(13, 'Cakes', 'black in color', 'chris.jpg', '2023-10-10 11:12:43', '2023-11-22 19:12:42'),
+(14, 'Pizza', 'milk', 'pizza.jpg', '2023-10-10 11:19:02', '2023-11-22 19:13:42'),
+(18, 'slices', 'slice', 'WeddingCakeSlice.jpg', '2023-10-11 08:01:14', '2023-11-22 18:58:58'),
+(22, 'Scones', NULL, 'scones.jpg', '2023-10-17 13:28:10', '2023-11-22 19:17:49'),
+(23, 'Cupcakes', NULL, 'cupcake.jpg', '2023-10-17 13:30:38', '2023-11-22 19:19:17'),
+(24, 'Muffins', NULL, 'pumpkin-muffins-1200-60.jpg', '2023-10-20 14:13:05', '2023-11-22 19:21:19'),
 (26, 'birthday cakes', NULL, '2.jpg', '2023-11-08 09:04:04', '2023-11-08 09:11:13'),
 (27, 'buns', NULL, 'buns.jpg', '2023-11-08 09:05:24', '2023-11-08 09:11:34'),
 (28, 'loaf of bread', NULL, 'bread.jpg', '2023-11-08 09:12:52', '2023-11-08 09:12:52'),
-(61, 'tinned icecream', NULL, 'icecream.jpg', '2023-11-12 13:02:22', '2023-11-12 16:59:28'),
-(62, 'garnish brown', NULL, '7.jpg', '2023-11-12 13:09:46', '2023-11-12 17:00:02'),
-(64, 'master', NULL, NULL, '2023-11-12 13:46:06', '2023-11-12 13:46:06'),
-(65, 'master', NULL, NULL, '2023-11-12 13:46:16', '2023-11-12 13:46:16'),
-(66, 'master', NULL, NULL, '2023-11-12 13:49:53', '2023-11-12 13:49:53'),
-(67, 'lenovo', NULL, NULL, '2023-11-12 13:50:01', '2023-11-12 13:50:01'),
-(68, 'master', NULL, NULL, '2023-11-12 13:50:35', '2023-11-12 13:50:35'),
-(69, 'master', NULL, NULL, '2023-11-12 13:51:34', '2023-11-12 13:51:34'),
-(70, 'master', NULL, NULL, '2023-11-12 13:56:28', '2023-11-12 13:56:28'),
-(71, 'master', NULL, NULL, '2023-11-12 13:57:10', '2023-11-12 13:57:10'),
-(72, 'master', NULL, NULL, '2023-11-12 14:05:28', '2023-11-12 14:05:28'),
-(73, 'master', NULL, NULL, '2023-11-12 14:10:05', '2023-11-12 14:10:05'),
-(74, 'ddd', NULL, NULL, '2023-11-12 14:16:54', '2023-11-12 14:16:54'),
-(75, 'master', NULL, NULL, '2023-11-12 14:17:35', '2023-11-12 14:17:35'),
-(76, 'master', NULL, NULL, '2023-11-12 14:17:54', '2023-11-12 14:17:54'),
-(77, 'master', NULL, NULL, '2023-11-12 14:19:10', '2023-11-12 14:19:10'),
-(78, 'sss', NULL, NULL, '2023-11-12 14:27:19', '2023-11-12 14:27:19'),
-(79, 'master', NULL, NULL, '2023-11-12 14:28:31', '2023-11-12 14:28:31');
+(124, 'Ice Cream', NULL, 'ice-Cream.jpg', '2023-11-16 10:02:24', '2023-11-22 18:43:43'),
+(127, 'family cake', NULL, '5.jpg', '2023-11-16 10:11:07', '2023-11-20 20:23:34');
 
 -- --------------------------------------------------------
 
@@ -347,7 +400,6 @@ INSERT INTO `product_categories` (`id`, `name`, `description`, `image`, `created
 
 CREATE TABLE `promotions` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
   `description` text DEFAULT NULL,
@@ -394,7 +446,7 @@ CREATE TABLE `recipes` (
 
 INSERT INTO `recipes` (`id`, `name`, `description`, `instructions`, `author`, `image`, `created_at`, `updated_at`) VALUES
 (2, 'lenovo', 'Milk', 'sugar', 'Anita', 'bans.jpg', '2023-10-12 16:28:55', '2023-10-12 19:20:57'),
-(3, 'cupcakes', 'white in color', 'weemm', 'anna maria', 'cup.jpg', '2023-10-12 16:29:54', '2023-10-12 19:22:46'),
+(3, 'cupcakes', 'white in color', 'wee', 'anna maria', 'cup.jpg', '2023-10-12 16:29:54', '2023-11-21 18:39:00'),
 (5, 'k', 's', 's', 'm', NULL, '2023-10-17 10:30:08', '2023-10-17 10:30:08');
 
 -- --------------------------------------------------------
@@ -435,6 +487,31 @@ CREATE TABLE `schedules` (
   `shift_id` int(11) DEFAULT NULL,
   `date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `services`
+--
+
+CREATE TABLE `services` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `services`
+--
+
+INSERT INTO `services` (`id`, `name`, `image`, `description`) VALUES
+(3, 'Bread Varieties', 'bread.jpg', 'For salt,Milk,banana bread,we got you covered'),
+(4, 'Delivery Services', 'delivery.png', 'Best Deliveries at your Service ,we have got better discounts'),
+(5, 'Customer Orders', 'ezgif.com-gif-maker.png', 'Order at ypour convience ,from all aound the world .Please feel free to call us'),
+(6, 'Pastries', 'cupcake.jpg', 'cupcxakes,daddies,cookies,biscuits'),
+(7, 'Events', '9.jpg', 'For wedding cakes,birthdays,baby showers,graduation cakes we gat you covered'),
+(8, 'Cakes', '11.jpg', 'wedding cakes,birthday cakes,graduation,cakes,baby shower cakes and moore');
 
 -- --------------------------------------------------------
 
@@ -486,7 +563,10 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `created_at`, `up
 (32, 'Atim', 'Sarah', 'atim3@gmail.com', '2023-11-02 21:01:56', '2023-11-12 16:15:37', 4, '$2y$10$MDttlSWreZm4FJ1XHq9mQ.PUA..ArTJIeiEXPaAc7TPCah7hYzfAK', NULL),
 (33, 'Anita', 'Nyinamasiko', 'anitan@gmail.com', '2023-11-03 05:41:35', '2023-11-03 05:41:35', 4, '$2y$10$KgNJAvCTgmUAceqovCccR.4TBMMbg7Yw4S5a51OEzWHuHDSll.3sW', NULL),
 (34, 'atim', 'sam', 'sam@gmail.com', '2023-11-03 07:02:34', '2023-11-03 07:02:34', 4, '$2y$10$n9EHwR0FUZd1UepIfCufPuhqzottxtYlpZhhBzvrtkoucsyLT1Ox2', NULL),
-(35, 'anita', 'sarah', 'anita12@gmail.com', '2023-11-12 16:16:52', '2023-11-12 16:17:28', 1, '$2y$10$qDnopKTy6l/gzW9ic/6ZqeAnt4Zp1l0/zuAps46dlrvuC0x0VtBfi', NULL);
+(35, 'anita', 'sarah', 'anita12@gmail.com', '2023-11-12 16:16:52', '2023-11-12 16:17:28', 1, '$2y$10$qDnopKTy6l/gzW9ic/6ZqeAnt4Zp1l0/zuAps46dlrvuC0x0VtBfi', NULL),
+(36, 'onen', 'sam', 'samonen@gmail.com', '2023-11-19 11:50:01', '2023-11-19 11:50:01', 4, '$2y$10$hO2oxZUdqLEGLkHVTZWRq.1a.sIs.M9aqo7NlDQnOcyAVsrrM5JLq', NULL),
+(37, 'Isabelle', 'Conley', 'me@gmail.com', '2023-11-19 15:25:04', '2023-11-19 15:25:04', 4, '$2y$10$SFr4THp1WbmXuiVSPfl8OOlfBHPUasKyXNUMPi.zatY8EgcR3JCBK', NULL),
+(38, 'sarah', 'woods', 'woods@gmail.com', '2023-11-20 14:32:55', '2023-11-20 14:32:55', 4, '$2y$10$F9g6AbWqW2fRteoUbq3Smu5WKe5pBByJtekpoe3YbgHcWmUSxa0c6', NULL);
 
 -- --------------------------------------------------------
 
@@ -514,6 +594,12 @@ INSERT INTO `user_types` (`id`, `user_type`) VALUES
 --
 
 --
+-- Indexes for table `about_us`
+--
+ALTER TABLE `about_us`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `carts`
 --
 ALTER TABLE `carts`
@@ -534,6 +620,12 @@ ALTER TABLE `cart_items`
 ALTER TABLE `deliveries`
   ADD PRIMARY KEY (`id`),
   ADD KEY `order_id` (`order_id`);
+
+--
+-- Indexes for table `features`
+--
+ALTER TABLE `features`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `feedbacks`
@@ -561,8 +653,7 @@ ALTER TABLE `health_benefits`
 --
 ALTER TABLE `ingredients`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `recipe_id` (`recipe_id`);
+  ADD KEY `recipe_product_id` (`recipe_product_id`);
 
 --
 -- Indexes for table `inventory`
@@ -663,6 +754,12 @@ ALTER TABLE `schedules`
   ADD KEY `shift_id` (`shift_id`);
 
 --
+-- Indexes for table `services`
+--
+ALTER TABLE `services`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `shifts`
 --
 ALTER TABLE `shifts`
@@ -688,22 +785,34 @@ ALTER TABLE `user_types`
 --
 
 --
+-- AUTO_INCREMENT for table `about_us`
+--
+ALTER TABLE `about_us`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `cart_items`
 --
 ALTER TABLE `cart_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `deliveries`
 --
 ALTER TABLE `deliveries`
   MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `features`
+--
+ALTER TABLE `features`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `feedbacks`
@@ -727,7 +836,7 @@ ALTER TABLE `health_benefits`
 -- AUTO_INCREMENT for table `ingredients`
 --
 ALTER TABLE `ingredients`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `notifications`
@@ -757,13 +866,13 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `product_categories`
 --
 ALTER TABLE `product_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT for table `promotions`
@@ -802,6 +911,12 @@ ALTER TABLE `schedules`
   MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `services`
+--
+ALTER TABLE `services`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `shifts`
 --
 ALTER TABLE `shifts`
@@ -811,7 +926,7 @@ ALTER TABLE `shifts`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `user_types`
@@ -860,8 +975,7 @@ ALTER TABLE `feedback_responses`
 -- Constraints for table `ingredients`
 --
 ALTER TABLE `ingredients`
-  ADD CONSTRAINT `ingredients_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
-  ADD CONSTRAINT `ingredients_ibfk_2` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`);
+  ADD CONSTRAINT `ingredients_ibfk_1` FOREIGN KEY (`recipe_product_id`) REFERENCES `recipe_product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `inventory`

@@ -1,5 +1,6 @@
-<?php require_once('includes/core.php'); ?>
-
+<?php require_once('includes/core.php'); 
+$contactUs = new ContactUs();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +13,10 @@
     <link rel="stylesheet" href="./css/index.css">
     <title>Contact Us</title>
     <style>
+        .contact-form input[type="email"] {
+    text-transform: none;
+}
+
         .spac {
             min-height: 25vh;
         }
@@ -51,7 +56,7 @@
             color: black;
             text-align: center;
             font-size: 35px;
-            text-transform: uppercase;
+            /* text-transform: uppercase; */
             margin-bottom: 30px;
         }
 
@@ -79,7 +84,7 @@
         }
 
         .contact-form textarea {
-            color: white;
+            color: inherit;
             border: none;
             width: 100%;
             padding: 12px;
@@ -101,7 +106,7 @@
             height: 40px;
             font-size: 15px;
             font-weight: 600;
-            text-transform: uppercase;
+            /* text-transform: uppercase; */
             letter-spacing: 2px;
             border-radius: 5px;
             margin-bottom: 20px;
@@ -137,7 +142,7 @@
 
     <div class="contact-section">
         <div class="contact-info">
-            <div><i class="fas fa-map-marker-alt"></i> Address, City</div>
+            <div><i class="fas fa-map-marker-alt"></i> Najjera, Kampala</div>
             <div><i class="fas fa-envelope"></i> sarahanita@gmail.com</div>
             <div><i class="fas fa-phone"></i> 0772979732</div>
             <div><i class="far fa-clock"></i> Mon - Fri 8:00AM-5:00PM</div>
@@ -145,14 +150,37 @@
         <div class="contact-form">
             <h2>Contact Us</h2>
             <form action="" class="contact" method="POST">
-                <input type="text" name="name" class="text-box" placeholder="Enter Username......">
-                <input type="email" name="email" class="text-box" placeholder="Enter Email.......">
-                <textarea name="message" rows="5" cols="80" placeholder="Your Message"></textarea>
+                <input type="text" name="username" id="userName" class="text-box " placeholder="Enter Username......">
+                <input type="email" name="email" id="userEmail" class="text-box " placeholder="Enter Email.......">
+                <input type="subject" name="subject" id="subject" class="text-box " placeholder="Enter Subject.......">
+                <textarea name="message" id="message" rows="5" cols="80" class="" placeholder="Your Message"></textarea>
+                <?php if ($responses): ?>
+                    <p class="responses"><?php echo implode('<br>', $responses); ?></p>
+                    <?php endif; ?>
                 <input type="submit" name="submit" class="send-btn " value="Send">
             </form>
         </div>
     </div>
-    <?php include("footer.php"); ?>
+    
+   >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+ <?php include("footer.php"); ?>
 </body>
 
 </html>

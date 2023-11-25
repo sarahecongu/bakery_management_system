@@ -201,6 +201,7 @@ class Model extends DatabaseConnection
      * @param string $foreignKey
      * @return object
      */
+
     public function getRelated($relatedTable, $parentId, $foreignKey)
     {
         $sql = "SELECT * FROM " . $relatedTable . " WHERE " . $foreignKey . "=" . $parentId;
@@ -249,10 +250,6 @@ class Model extends DatabaseConnection
 
         return $result->fetch(PDO::FETCH_OBJ);
     }
-
-
-
-
 
 	// /**
 	//  * Get limited records

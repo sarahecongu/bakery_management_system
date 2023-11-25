@@ -1,24 +1,23 @@
 <div class="sidebar">
-         
-            <div class="logo">
+    <div class="logo">
         <div class="menu">
-        <li>
-            <a href="dashboard.php">
-            <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+            <li>
+                <a href="dashboard.php">
+                    <i class="fas fa-birthday-cake"></i>
                     <span>BAKE PAL</span>
                 </a>
             </li>
             <hr class="hr">
             <li class="active">
                 <a href="dashboard.php">
-                    <i class="fas fa-tachometer-alt"></i>
+                    <i class="fas fa-chart-line"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
             <!-- customer -->
             <li>
                 <a href="customers.php">
-                    <i class="fas fa-user-alt"></i>
+                    <i class="fas fa-user-friends"></i>
                     <span>Customers</span>
                 </a>
             </li>
@@ -32,15 +31,23 @@
             <!-- categories -->
             <li>
                 <a href="categories.php">
-                    <i class="fas fa-list"></i>
+                    <i class="fas fa-th-list"></i>
                     <span>Categories</span>
                 </a>
             </li>
+              <!-- categories -->
+              <li>
+                <a href="cake_category_table.php">
+                    <i class="fas fa-tags"></i>
+                    <span>Cake Categories</span>
+                </a>
+            </li>
+
             <!-- products -->
             <li>
                 <a href="product_table.php">
                     <i class="fas fa-box"></i>
-                    <span> products</span>
+                    <span>Products</span>
                 </a>
             </li>
             <!-- shift -->
@@ -61,104 +68,104 @@
             <li>
                 <a href="reviews.php">
                     <i class="fas fa-star"></i>
-                    <span> Reviews</span>
+                    <span>Reviews</span>
                 </a>
             </li>
             <!-- orders-->
             <li>
                 <a href="order_table.php">
                     <i class="fas fa-shopping-cart"></i>
-                    <span> Orders</span>
+                    <span>Orders</span>
                 </a>
             </li>
             <!-- order details -->
             <li>
                 <a href="order_details_table.php">
                     <i class="fas fa-truck"></i>
-                    <span> Order details</span>
+                    <span>Order details</span>
                 </a>
             </li>
             <!-- deliveries -->
             <li>
                 <a href="deliveries.php">
                     <i class="fas fa-truck"></i>
-                    <span> Deliveries</span>
+                    <span>Deliveries</span>
                 </a>
             </li>
-             <!-- deliveries -->
-             <li>
+            <!-- cart -->
+            <li>
                 <a href="cart_table.php">
-                    <i class="fas fa-truck"></i>
+                    <i class="fas fa-shopping-cart"></i>
                     <span>Cart</span>
                 </a>
             </li>
-             <!-- deliveries -->
-             <li>
+            <!-- cart items -->
+            <li>
                 <a href="cart_item_table.php">
-                    <i class="fas fa-truck"></i>
-                    <span>CartItems</span>
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cart Items</span>
                 </a>
-</li>
-              <!-- deliveries -->
-              <li>
+            </li>
+            <!-- recipes -->
+            <li>
                 <a href="recipes.php">
-                    <i class="fas fa-truck"></i>
-                    <span> Recipes</span>
+                    <i class="fas fa-book"></i>
+                    <span>Recipes</span>
                 </a>
             </li>
-              <!-- deliveries -->
-              <li>
+            <!-- recipe products -->
+            <li>
                 <a href="recipe_product_table.php">
-                    <i class="fas fa-truck"></i>
-                    <span> Recipes Products</span>
+                    <i class="fas fa-utensils"></i>
+                    <span>Recipes Products</span>
                 </a>
             </li>
-               <!-- deliveries -->
-               <li>
+            <!-- about us -->
+            <li>
                 <a href="aboutus_table.php">
-                    <i class="fas fa-truck"></i>
+                    <i class="fas fa-info-circle"></i>
                     <span>About Us</span>
                 </a>
             </li>
-               <!-- deliveries -->
-               <li>
+            <!-- services -->
+            <li>
                 <a href="services_table.php">
-                    <i class="fas fa-truck"></i>
+                    <i class="fas fa-concierge-bell"></i>
                     <span>Services</span>
                 </a>
             </li>
-               <!-- deliveries -->
-               <li>
-                <a href="deliveries.php">
-                    <i class="fas fa-truck"></i>
+            <!-- contact us -->
+            <li>
+                <a href="contactus.php">
+                    <i class="fas fa-envelope"></i>
                     <span>Contact Us</span>
                 </a>
             </li>
-               <!-- deliveries -->
-               <li>
-                <a href="deliveries.php">
-                    <i class="fas fa-truck"></i>
+            <!-- promotions -->
+            <li>
+                <a href="promotions.php">
+                    <i class="fas fa-bullhorn"></i>
                     <span>Promotions</span>
                 </a>
             </li>
-               <!-- deliveries -->
-               <li>
-                <a href="deliveries.php">
-                    <i class="fas fa-truck"></i>
+            <!-- hero -->
+            <li>
+                <a href="hero.php">
+                    <i class="fas fa-user-secret"></i>
                     <span>Hero</span>
                 </a>
             </li>
-               <!-- deliveries -->
-               <li>
-                <a href="deliveries.php">
-                    <i class="fas fa-truck"></i>
+            <!-- features -->
+            <li>
+                <a href="features_table.php">
+                    <i class="fas fa-cogs"></i>
                     <span>Features</span>
                 </a>
             </li>
-               <!-- deliveries -->
-               <li>
-                <a href="deliveries.php">
-                    <i class="fas fa-truck"></i>
+            <!-- health benefits -->
+            <li>
+                <a href="health_benefits.php">
+                    <i class="fas fa-heart"></i>
                     <span>Health Benefits</span>
                 </a>
             </li>
@@ -166,7 +173,7 @@
             <li>
                 <a href="settings.php">
                     <i class="fas fa-cogs"></i>
-                    <span> Settings</span>
+                    <span>Settings</span>
                 </a>
             </li>
             <!-- logout -->

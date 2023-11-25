@@ -4,6 +4,9 @@ include("includes/core.php");
 ?>
 <?php
 $recipe_products = new RecipeProduct();
+$products = new Product();
+$recipes = new Recipe();
+
 // Create
 if (isset($_POST['add_recipe_product'])) {
   $data = [
@@ -24,6 +27,7 @@ if (isset($_POST['recipe_product_delete'])) {
 
 <?php
 include("partials/header.php");
+
 ?>
 
 <body>
@@ -117,7 +121,8 @@ include("partials/header.php");
       <?php foreach ($recipe_products->all() as $recipe_product): ?>
         <tr>
           <td>
-            <?php echo $recipe_product->id; ?>
+          <?php 
+            echo $recipe_product->id; ?>
           </td>
           <td>
             <?php echo $recipe_product->recipe_id; ?>

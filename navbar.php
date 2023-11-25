@@ -50,7 +50,7 @@
         </span></div>
     </a>
     <div id="login-btn" class="fas fa-user"></div>
-<a href="action.php?logout=1">
+    <a href="action.php?logout=1">
     <div id="logout" class="fas fa-sign-out-alt .logout"></div></a>
   </div>
 </header>

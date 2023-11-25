@@ -87,7 +87,7 @@ include("partials/header.php");
     <tbody>
       <?php foreach ($cart_items->all() as $cart_item): 
                 $cart_details = $products->getParentAttributesFromChild('cart_items', 'products', $cart_item->id, 'product_id');
-
+        // var_dump($cart_details->name);die;
         ?>
 
         <tr>
@@ -95,13 +95,14 @@ include("partials/header.php");
             <?php echo $cart_item->id; ?>
           </td>
           <td style="width:15%">
-            <img src="<?php echo $cart_item->image; ?>" alt="dp" class="w-50 h-50 rounded-circle">
+            <img src="<?php echo $cart_details->image; ?>" alt="dp" class="w-50 h-50 rounded-circle">
 
           </td>
-          <td title="<?php echo $products->name; ?>" class="text-md-truncate" style="max-width:150px">
-          </td>
+          <td title="<?php echo $cart_details->name; ?>" class="text-md-truncate" style="max-width:150px">
+          <?php echo $cart_details->name; ?>
+        </td>
           <td>
-            <?php echo $products->price ?? NULL; ?>
+            <?php echo Helper::formatNumber($cart_details->price) ?? NULL; ?>
           </td>
          
         

@@ -46,4 +46,8 @@ class Helper{
         return null;
     }
 
+    public static function formatNumber($number){
+        return number_format($number,0,'.',',');
+    }
+
 }

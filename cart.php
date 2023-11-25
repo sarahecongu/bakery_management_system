@@ -32,12 +32,10 @@ if (isset($_POST['remove'])) {
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/index.css">
   <title>Menu Page</title>
-
-<head>
 <style>
 
 .cart {
-    width: 80%;
+    width: 100%;
     /* margin: 0 auto; */
     border-collapse: collapse;
     margin-top: 5rem;
@@ -55,11 +53,11 @@ if (isset($_POST['remove'])) {
 
 
 .cart img {
-    max-width: 80px;
+    max-width: 100px;
     border-radius: 1rem;
 }
 
-.remove {
+#remove {
     background-color: red; 
     color: white; 
     padding: 10px 15px; 
@@ -79,7 +77,8 @@ if (isset($_POST['remove'])) {
 .checkout-button {
     display: inline-block;
     padding: 5px 10px;
-    background-color: #007bff;
+    background-color: rgb(76,9,9);
+    box-shadow: 0 0.5rem 1rem rgba(134, 44, 44, 0.1);
     color: #fff;
     text-decoration: none;
     font-size: 16px;
@@ -89,8 +88,9 @@ if (isset($_POST['remove'])) {
     
 }
 .cart button {
-    background-color: rgb(76,9,9);
-    color: #fff; 
+    background-color: wheat;
+    box-shadow: 0 0.5rem 1rem rgba(134, 44, 44, 0.1);
+    color: #000; 
     border: none; 
     padding: 5px 10px;
     border-radius: 5px;
@@ -107,6 +107,48 @@ if (isset($_POST['remove'])) {
 .space{
     min-height: 15vh;
 }
+
+
+
+  @media screen and (max-width: 768px) {
+    .cart {
+      font-size: 14px; 
+    }
+
+    .cart td,
+    .cart th {
+      padding: 8px; 
+    }
+
+    .cart img {
+      max-width: 30px; 
+    }
+
+    .total h2 {
+      font-size: 1.2rem; 
+    }
+
+    .buttons {
+      margin: 5px; 
+    }
+
+    .continue-shopping-button,
+    .checkout-button {
+      font-size: 14px; 
+    }
+
+    #remove {
+      padding: 8px 12px; 
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    /* Additional styles for screens with maximum width of 600px */
+  }
+
+  /* Add more media queries as needed */
+
+
 
  </style>
 </head>
@@ -130,51 +172,52 @@ if (isset($_POST['remove'])) {
         <th>Actions</th>
       </tr>
 
-      <?php foreach ($cart_items as $data) : ?>
-        <?php
+      <?php
+$cartItemCount = count($cart_items);
 
-        $childTable = 'cart_items';
-        $parentTable = 'products';
-        $foreignKey = 'product_id';
-        $childId = $data->id;
+for ($i = $cartItemCount - 1; $i >= 0; $i--) {
+    $data = $cart_items[$i];
 
-        $product = $cart_item->getParentAttributesFromChild($childTable, $parentTable, $childId, $foreignKey);
-        ?>
-        <tr class="item">
-          <td>
+    $childTable = 'cart_items';
+    $parentTable = 'products';
+    $foreignKey = 'product_id';
+    $childId = $data->id;
+
+    $product = $cart_item->getParentAttributesFromChild($childTable, $parentTable, $childId, $foreignKey);
+    ?>
+    <tr class="item">
+        <td>
             <img src="<?php echo $product->image; ?>" style="width: 50px;" alt="<?php echo $product->name; ?>">
-          </td>
-          <td  title="<?php echo $product->name; ?>">
-          
+        </td>
+        <td title="<?php echo $product->name; ?>">
             <?php
-              
-              echo substr($product->name, 0, 20);
-            
-              if (strlen($product->name) > 20) {
+            echo substr($product->name, 0, 20);
+
+            if (strlen($product->name) > 20) {
                 echo '...';
-              }
-              ?>
-            
-          </td>
-          <td><?php echo $product->price; ?></td>
-          <td>
+            }
+            ?>
+        </td>
+        <td><?php echo $product->price; ?></td>
+        <td>
             <button class="increment">+</button>
             <button class="quantity"><?php echo $data->quantity ?></button>
             <button class="decrement">-</button>
-          </td>
-          <td><?php echo $total =  $data->quantity * $product->price;
-          ?></td>
-          <td>
-          <form action="cart.php" method="POST" class="d-inline-block">
-              <button type="submit" class = "remove" name="remove" value="<?php echo $data->id;?>"
-                onclick="return confirm('Are you sure you want to delete cart item?')">
-                remove
-              </button>
+        </td>
+        <td><?php echo $total = $data->quantity * $product->price; ?></td>
+        <td>
+            <form action="cart.php" method="POST" class="d-inline-block">
+                <button type="submit" id="remove" name="remove" value="<?php echo $data->id; ?>"
+                        onclick="return confirm('Are you sure you want to delete cart item?')">
+                    remove
+                </button>
             </form>
-          </td>
-        </tr>
-        <?php $grandTotal += $total; 
-       endforeach; ?>
+        </td>
+    </tr>
+    <?php $grandTotal += $total;
+}
+?>
+
 
     </table>
     <div class="total">
@@ -182,7 +225,11 @@ if (isset($_POST['remove'])) {
     </div>
     <div class="buttons">
       <a href="menu.php" class="continue-shopping-button">Continue Shopping</a>
-      <a href="checkout.php" class="checkout-button">Checkout</a>
+     <form id="checkoutForm" action="checkout.php" method="POST">
+    <input type="hidden" name="grand_total" value="<?php echo $grandTotal ?>">
+    <button type="button" id="checkoutButton" class="checkout-button">Checkout</button>
+</form>
+
     </div>
   </section>
   <script>
@@ -206,6 +253,19 @@ if (isset($_POST['remove'])) {
       });
     });
   });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    // Find the form and button elements
+    var form = document.getElementById("checkoutForm");
+    var checkoutButton = document.getElementById("checkoutButton");
+
+    // Add a click event listener to the button
+    checkoutButton.addEventListener("click", function() {
+        // Submit the form
+        form.submit();
+    });
+});
+
 </script>
 
 

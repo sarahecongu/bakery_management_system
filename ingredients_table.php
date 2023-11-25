@@ -3,9 +3,8 @@
 include("includes/core.php");
 ?>
 <?php
-$products = new Product;
-$category = new Category;
-$health_benefit = new HealthBenefit;
+$ingredients = new Ingredient;
+$recipe_product = new RecipeProduct;
 
 // Create
 if (isset($_POST['add_product'])) {
@@ -206,10 +205,9 @@ include("partials/header.php");
             <img src="<?php echo $product->image; ?>" alt="dp" class="w-50 h-50 rounded-circle">
 
           </td>
-        <td title="<?php echo $product->name; ?>" class="text-md-truncate" style="max-width:150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          <td title="<?php echo $product->name; ?>" class="text-md-truncate" style="max-width:150px">
             <?php echo $product->name; ?>
-        </td>
-
+          </td>
           <td>
             <?php echo $category_details->name ?? NULL; ?>
           </td>

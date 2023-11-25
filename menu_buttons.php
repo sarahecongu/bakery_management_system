@@ -41,7 +41,7 @@
     <a href="birthday.php" class="menu-button">Birthday Cakes</a>
     <a href="wedding_cakes.php" class="menu-button">Wedding Cakes</a>
     <a href="christmas.php" class="menu-button">Christmas Cakes</a>
-    <a href="bans_menu.php" class="menu-button">Bans</a>
+    <a href="bans_menu.php" class="menu-button">Fatless Cakes</a>
     <a href="bread_menu.php" class="menu-button">Loaves</a>
     <a href="doughnuts_menu.php" class="menu-button">Doughnuts</a>
     <a href="cupcakes.php" class="menu-button">Muffins</a>

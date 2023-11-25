@@ -363,6 +363,7 @@ section {
     position: relative;
     overflow: hidden;
     text-align: center;
+    align-items: center;
     /* margin: 1rem; */
 }
 .product .box-container .box .img{
@@ -382,16 +383,19 @@ section {
 }
 .product .box-container .box .content{
     padding: 1rem;
+    text-align: center;
     /* padding-top: 0; */
 }
 .product .box-container .box .content h3{
     color: black;
     font-size: 1.6rem;
+    text-align: center;
 }
 .product .box-container .box .content .stars i{
     font-size: 1.5rem;
     letter-spacing: 1rem;
     color: orange;
+    text-align: center;
 }
 .product .box-container .box .content .price{
     font-size: 1.7rem;
@@ -440,38 +444,6 @@ main {
     padding: 2rem;
 }
 
-.recipe-image img {
-    max-width: 50%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-.recipe-links {
-    text-align: center;
-    margin: 2rem 0;
-}
-
-.recipe-links h2 {
-    font-size: 2.5rem;
-}
-
-.recipe-links ul {
-    list-style: none;
-    padding: 0;
-}
-
-.recipe-links li {
-    display: inline;
-    margin: 0 1rem;
-}
-
-.recipe-links a {
-    color: #333;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.5rem;
-}
 
 
 
@@ -671,95 +643,7 @@ gap: 1.5rem;
 }
 
 
-.space {
-    min-height: 5vh;
-}
 
-.titles {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: rgb(79, 6, 6);
-}
-
-.heading {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-.section__container {
-    background-color: wheat;
-    width: 100%;
-    max-width: 1000px;
-    margin: auto;
-    padding: 1rem;
-    text-align: center;
-
-}
-
-
-
-.testimonials__grid {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-bottom: 2rem;
-
-}
-
-.card {
-    padding: 2rem;
-    display: grid;
-    gap: 1rem;
-    background: white;
-    border-radius: 5px;
-    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    /* width: 200px; */
-   
-
-}
-
-.card i {
-    font-size: 1rem;
-    color: gold;
-}
-
-.card p {
-    font-size: 1.2rem;
-    font-weight: 500;
-}
-
-.card hr {
-    width: 40px;
-    margin: auto;
-    color: var(--text-light);
-}
-
-.card img {
-    width: 60px;
-    height: 60px;
-    margin: auto;
-    border-radius: 100%;
-    border: 1px solid black;
-}
-
-.card .name {
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: black;
-    transition: 0.3s;
-}
-
-.card .name:hover {
-    color: black;
-}
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2); 
-}
 
 @media (width < 900px) {
     .testimonials__grid {
@@ -856,9 +740,9 @@ gap: 1.5rem;
         top: 99%;
         left: 0;
         right: 0;
-        background: rgb(231, 86, 8);
-        border-top: o.1rem solid rgba(0, 0, 0, 0.1);
-        border-bottom: o.1rem solid rgba(0, 0, 0, 0.1);
+        background: rgb(76, 6, 6);
+        border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+        border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
         clip-path: polygon(0 0, 100% 0, 0 0);
 
     }
@@ -866,7 +750,7 @@ gap: 1.5rem;
     .header .navbar a {
         margin: 1.5rem;
         padding: 2.5rem;
-        background: rgb(231, 86, 8);
+        background: rgb(76, 6, 6);
         font-size: 2rem;
         display: block;
         border-radius: .5rem;
@@ -892,4 +776,4 @@ gap: 1.5rem;
 
 }
 
-/* reviews */
+

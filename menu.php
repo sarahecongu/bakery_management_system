@@ -24,7 +24,7 @@ $products = new Product();
   include("menu_buttons.php");
   ?>
   <section class="product" id="product">
-    <h4 class="titles">Our Products</h4>
+    <h4 class="titles">Our PRODUCTS</h4>
     <div class="box-container">
       <?php
       $count = 0;
@@ -37,16 +37,10 @@ $products = new Product();
             <!-- <a class="bd-cake-tag" href="#"><?php echo $product->category_id ?></a> -->
           </div>
           <div class="content">
-          <h3 title="<?php echo $product->name; ?>">
-            <?php
-              
-              echo substr($product->name, 0, 20);
-            
-              if (strlen($product->name) > 20) {
-                echo '...';
-              }
-              ?>
-            </h3>
+          <h3 title="<?php echo $product->name; ?>" class="text-md-truncate" style="max-width:150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              <?php echo $product->name; ?>
+          </h3>
+
             <a href="details.php" class="btn1">Calories</a>
             <a href="details.php" class="btn1">Ingredients</a>
             <div class="stars">
@@ -56,11 +50,14 @@ $products = new Product();
               <i class="fas fa-star"></i>
               <i class="far fa-star"></i>
             </div>
-            <span class="price">shs 270,000</span>
+            <span class="price">shs <?php echo Helper::formatNumber($product->price); ?></span>
+
+
             <button class="add_cart" data-id="<?php echo $product->id; ?>"
                             data-name="<?php echo $product->name; ?>"
                             data-image="<?php echo $product->image; ?>"
-                            data-price="<?php echo $product->price; ?>">
+                            data-price="<?php echo Helper::formatNumber($product->price); ?>
+">
                         Add to Cart
                     </button>
           </div>
@@ -110,6 +107,7 @@ $products = new Product();
         });
     });
 </script>
+<script src="main.js"></script>
 </body>
 
 </html>
