@@ -3,19 +3,19 @@
 include("includes/core.php");
 ?>
 <?php
-$products = new Product;
-$category = new Category;
-$health_benefit = new HealthBenefit;
+$one_hour_cakes = new OneHourCake;
+$cake_categories = new CakeCategory;
+$health_benefits = new HealthBenefit;
 
 // Create
-if (isset($_POST['add_product'])) {
+if (isset($_POST['add_one_hour_cake'])) {
   $data = [
     'name' => $_POST['name'],
     'price'=> $_POST['price'],
     'quantity'=> $_POST['quantity'],
-    'category_id'=> $_POST['category_id'],
+    'cake_category_id'=> $_POST['cake_category_id'],
     'health_benefit_id'=> $_POST['health_benefit_id'],
-    'discount'=> $_POST['discount'],
+    
 
   ];
   if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
@@ -24,39 +24,39 @@ if (isset($_POST['add_product'])) {
     move_uploaded_file($tmp_name, "images/" . $image_name);
     $data['image'] = $image_name;
   }
-  if ($products->create($data)) {
+  if ($one_hour_cakes->create($data)) {
     // Set success message
     $_SESSION['status'] = 'success';
-    $_SESSION['message'] = 'Product successfully added';
+    $_SESSION['message'] = 'one_hour_cake successfully added';
   } else {
     // Set error message
     $_SESSION['status'] = 'error';
-    $_SESSION['message'] = 'Error adding category';
+    $_SESSION['message'] = 'Error adding cake_category';
   }
 
-  header("Location: product_table.php");
+  header("Location: one_hour_cake_table.php");
   exit();
 
 }
 // Delete
-if (isset($_POST['product_delete'])) {
-  $product_id = $_POST['product_delete'];
-  if($products->delete($product_id)){
+if (isset($_POST['one_hour_cake_delete'])) {
+  $one_hour_cake_id = $_POST['one_hour_cake_delete'];
+  if($one_hour_cakes->delete($one_hour_cake_id)){
     
-    Helper::statusMessage('success','Product Deleted');
+    Helper::statusMessage('success','one_hour_cake Deleted');
   }else{
-   Helper::statusMessage('error','Category Not Deleted');
+   Helper::statusMessage('error','cake_category Not Deleted');
   }
-  header("Location: product_table.php");
+  header("Location: one_hour_cake_table.php");
   exit();
 }
-$searchedProducts = [];
+$searched_one_hour_cakes = [];
 
 if (isset($_GET['search'])) {
     $searchTerm = $_GET['search'];
-    $searchedProducts = $products->where(['name' => $searchTerm])->orderBy('id', 'DESC')->all();
+    $searched_one_hour_cakes = $one_hour_cakes->where(['name' => $searchTerm])->orderBy('id', 'DESC')->all();
 } else {
-    $searchedProducts = $products->orderBy('id', 'DESC');
+    $searched_one_hour_cakes = $one_hour_cakes->orderBy('id', 'DESC');
 }
 
 
@@ -105,7 +105,7 @@ include("partials/header.php");
 
   <div class="text-end m-3 d-flex justify-content-end">
     <button type="button" class="btns" data-bs-toggle="modal" data-bs-target="#completeModal">
-        ADD PRODUCT
+        ADD one_hour_cake
     </button>
 </div>
 
@@ -115,13 +115,13 @@ include("partials/header.php");
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">products</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">one_hour_cakes</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <!-- form -->
           <!-- firstname -->
-          <form action="product_table.php" method="POST" enctype="multipart/form-data">
+          <form action="one_hour_cake_table.php" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
               <label class="form-label">Image</label>
               <input type="file" class="form-control" name="image" placeholder="Enter image">
@@ -129,38 +129,40 @@ include("partials/header.php");
             <!-- name -->
             <div class="mb-3">
               <label class="form-label">Name</label>
-              <input type="text" class="form-control" name="name" placeholder="product name">
+              <input type="text" class="form-control" name="name" placeholder="one_hour_cake name">
             </div>
               <!-- price -->
-              <div class="mb-3">
-              <label class="form-label">Category Id</label>
-              <input type="text" class="form-control" name="category_id" placeholder="product price">
-            </div>
+             <!-- cake_category dropdown -->
+                <div class="mb-3">
+                <label class="form-label">Cake Category</label>
+                <select class="form-select" name="cake_category_id">
+                    <option value="" selected disabled>Select a Category</option>
+                    <?php foreach ($cake_categories->all() as $cake): ?>
+                    <option value="<?php echo $cake->id; ?>"><?php echo $cake->name; ?></option>
+                   
+                    <?php endforeach; ?>
+                </select>
+                </div>
+
                <!-- price -->
                <div class="mb-3">
               <label class="form-label">Price</label>
-              <input type="text" class="form-control" name="price" placeholder="product price">
+              <input type="text" class="form-control" name="price" placeholder="one_hour_cake price">
             </div>
                <!-- quantity-->
                <div class="mb-3">
               <label class="form-label">Quantity</label>
-              <input type="number" class="form-control" name="quantity" placeholder="product quantity">
+              <input type="number" class="form-control" name="quantity" placeholder="one_hour_cake quantity">
             </div>
-               <!-- quantity-->
-               <div class="mb-3">
-              <label class="form-label">discount</label>
-              <input type="number" class="form-control" name="discount" placeholder="product quantity">
-            </div>
-               <!-
                <!-- health-->
                <div class="mb-3">
               <label class="form-label">health</label>
-              <input type="text" class="form-control" name="health_benefit_id" placeholder="product name">
+              <input type="text" class="form-control" name="health_benefit_id" placeholder="one_hour_cake name">
             </div>
                       
             <div class="modal-footer">
               <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" class="bt" name = "add_product">Add product</button>
+              <button type="submit" class="bt" name = "add_one_hour_cake">Add one_hour_cake</button>
             </div>
         </div>
       </div>
@@ -168,8 +170,8 @@ include("partials/header.php");
     </form>
   </div>
   <div class="search-box">
-  <form action="product_table.php" method="GET" class="d-flex">
-    <input type="text" class="form-control text-center" name="search" placeholder="Search products" style="width:350px; margin-right: 10px; ">
+  <form action="one_hour_cake_table.php" method="GET" class="d-flex">
+    <input type="text" class="form-control text-center" name="search" placeholder="Search one_hour_cakes" style="width:350px; margin-right: 10px; ">
     <button class="bt" type="submit">Search</button>
 </form>
 </div>
@@ -181,7 +183,7 @@ include("partials/header.php");
         <th scope="col">Id</th>
         <th scope="col">Image</th>
         <th scope="col">Name</th>
-        <th scope="col">Category</th>
+        <th scope="col">cake_category</th>
         <th scope="col">Price</th>
         <th scope="col">Qtty</th>
         <th scope="col">Health</th>
@@ -191,51 +193,50 @@ include("partials/header.php");
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($searchedProducts as $product): 
-                $category_details = $category->getParentAttributesFromChild('products', 'product_categories', $product->id, 'category_id');
-                $health_details = $health_benefit->getParentAttributesFromChild('products', 'health_benefits', $product->id, 'health_benefit_id');
+      <?php foreach ($searched_one_hour_cakes as $one_hour_cake): 
+                $cake_category_details = $cake_categories->getParentAttributesFromChild('one_hour_cakes', 'cake_categories', $one_hour_cake->id, 'cake_category_id');
+                $health_details = $health_benefits->getParentAttributesFromChild('one_hour_cakes', 'health_benefits', $one_hour_cake->id, 'health_benefit_id');
 
         ?>
 
         <tr>
           <td>
-            <?php echo $product->id; ?>
+            <?php echo $one_hour_cake->id; ?>
           </td>
           <td style="width:15%">
-            <img src="<?php echo $product->image; ?>" alt="dp" class="w-50 h-50 rounded-circle">
+            <img src="images/<?php echo $one_hour_cake->image; ?>" alt="dp" class="w-50 h-50 rounded-circle">
 
           </td>
-        <td title="<?php echo $product->name; ?>" class="text-md-truncate" style="max-width:150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-            <?php echo $product->name; ?>
+        <td title="<?php echo $one_hour_cake->name; ?>" class="text-md-truncate" style="max-width:150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            <?php echo $one_hour_cake->name; ?>
         </td>
-
-          <td>
-            <?php echo $category_details->name ?? NULL; ?>
-          </td>
+            <td>
+            <?php echo $cake_category_details->name; ?>
+            </td>
           <td> 
-            <?php echo $product->price; ?>
+            <?php echo $one_hour_cake->price; ?>
           </td>
         
           <td>
-            <?php echo $product->quantity; ?>
+            <?php echo $one_hour_cake->quantity; ?>
           </td>
           <td>
             <?php echo $health_details->name ?? NULL; ?>
           </td>
           <td>
-            <?php  echo Helper::date($product->created_at); ?>
+            <?php  echo Helper::date($one_hour_cake->created_at); ?>
           </td>
           <td>
-            <?php  echo Helper::date($product->created_at); ?>
+            <?php  echo Helper::date($one_hour_cake->created_at); ?>
           </td>
           <td>
-            <a href="product_table.php" class="btn btn-primary btn-sm mr-2 m-1" title="view"><i class="fas fa-eye"></i></a>
-            <a href="update_product_table.php?id=<?php echo $product->id; ?>" class="btn btn-success btn-sm mr-2" title="edit">
+            <a href="one_hour_cake_table.php" class="btn btn-primary btn-sm mr-2 m-1" title="view"><i class="fas fa-eye"></i></a>
+            <a href="update_one_hour_cake_table.php?id=<?php echo $one_hour_cake->id; ?>" class="btn btn-success btn-sm mr-2" title="edit">
               <i class="fas fa-edit"></i>
             </a>
-            <form action="product_table.php" method="POST" class="d-inline-block">
-              <button type="submit" name="product_delete" value="<?php echo $product->id;?>" class="btn btn-danger btn-sm m-2"
-                onclick="return confirm('Are you sure you want to delete product?')">
+            <form action="one_hour_cake_table.php" method="POST" class="d-inline-block">
+              <button type="submit" name="one_hour_cake_delete" value="<?php echo $one_hour_cake->id;?>" class="btn btn-danger btn-sm m-2"
+                onclick="return confirm('Are you sure you want to delete one_hour_cake?')">
                 <i class="bi bi-trash3">del</i>
               </button>
             </form>

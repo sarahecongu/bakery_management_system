@@ -36,7 +36,7 @@
   ?>
   <div class="spaces"></div>
   <div class="menu-buttons">
-    <a href="cake_menu.php" class="menu-button">One Hour Cakes</a>
+    <a href="cakes_hour.php" class="menu-button">One Hour Cakes</a>
     <a href="slices.php" class="menu-button">Slices</a>
     <a href="birthday.php" class="menu-button">Birthday Cakes</a>
     <a href="wedding_cakes.php" class="menu-button">Wedding Cakes</a>

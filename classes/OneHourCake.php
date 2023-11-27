@@ -1,6 +1,6 @@
 <?php
-Class Product extends Model{
-    protected  $table  = "products";
+Class OneHourCake extends Model{
+    protected  $table  = "one_hour_cakes";
     public $name;
     public $price;
     public $quantity;

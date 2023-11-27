@@ -11,6 +11,10 @@
     border-radius: 50%;
     font-size: 12px;
   }
+  .user-icon {
+    text-transform: lowercase;
+}
+
 </style>
 <header class="header">
   <div class="marquee">
@@ -54,13 +58,18 @@
           ?>
         </span></div>
     </a>
-    <div id="login-btn" class="fas fa-user"><?php 
+    <div id="login-btn" class="fas fa-user user-icon">
+    <?php 
     $user = new User;
-    if($session->checkLoginStatus())
-    echo $user->find($session->get('id'))->last_name ;
-  else echo '--';
-    
-    ?></div>
+    if ($session->checkLoginStatus()) {
+      echo strtolower($user->find($session->get('id'))->last_name);
+        
+    } else {
+      echo '--';
+    }
+    ?>
+</div>
+
     <a href="action.php?logout=1">
     <div id="logout" class="fas fa-sign-out-alt .logout"></div></a>
   </div>

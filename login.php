@@ -40,6 +40,7 @@ try {
     #login-btn {
         background: rgb(76, 9, 9);
         border-color: rgb(76, 9, 9);
+        text-transform: lowercase;
     }
 
     .container {
@@ -129,7 +130,7 @@ include('partials/header.php');
                         <!-- submit button -->
                         <div class="form-group mt-3 ">
                             <input type="submit" value="Login" id="login-btn" name="login"
-                                class="btn btn-primary w-100">
+                                class="btn btn-primary w-50">
                         </div>
 
                     </form>

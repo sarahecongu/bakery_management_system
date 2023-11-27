@@ -42,7 +42,13 @@
                     <span>Cake Categories</span>
                 </a>
             </li>
-
+            <!-- categories -->
+            <li>
+                            <a href="one_hour_cake_table.php">
+                                <i class="fas fa-tags"></i>
+                                <span>One Hour Cakes</span>
+                            </a>
+                        </li>
             <!-- products -->
             <li>
                 <a href="product_table.php">

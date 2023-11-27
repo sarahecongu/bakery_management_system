@@ -12,14 +12,8 @@ include('includes/core.php');
     <link rel="stylesheet" href="./css/index.css">
     <title>Checkout Success</title>
     <style>
-        body {
-            background: wheat;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
+        .spa {
+            min-height: 25vh;
         }
 
         .success-message {
@@ -27,7 +21,6 @@ include('includes/core.php');
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 20px;
-            text-align: center;
         }
 
         .order-details {
@@ -53,70 +46,84 @@ include('includes/core.php');
         .thank-you-message {
             font-size: 18px;
             margin-top: 20px;
-            text-align: center;
-        }
-
-        .home-link, .view-order-details-button {
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin-top: 20px;
-            font-size: 1.5rem;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+             text-align: center;
         }
 
         .home-link {
+            display: inline-block;
+            padding: 10px 20px;
             background-color: #4CAF50;
             color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 1.5rem;
+         text-align: center;
         }
-
+        .home-link-container {
+            text-align: center;
+        }
         .view-order-details-button {
-            background-color: #3498db;
-            color: #fff;
-        }
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: Red;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 20px;
+        font-size: 1.5rem;
+        transition: background-color 0.3s ease;
+    }
 
-        .home-link:hover, .view-order-details-button:hover {
-            background-color: #2980b9;
-        }
-
+    .view-order-details-button:hover {
+        background-color: #2980b9;
+    }
+   
         @media only screen and (max-width: 600px) {
-            .view-order-details-button {
-                font-size: 1.2rem;
-            }
-
-            .order-details {
-                padding: 10px;
-                max-width: 100%;
-                margin: auto;
-                text-align: center;
-            }
-
-            .order-details h2 {
-                font-size: 24px;
-            }
-
-            .order-details p {
-                font-size: 14px;
-            }
-
-            .thank-you-message {
-                font-size: 16px;
-            }
-
-            .home-link, .view-order-details-button {
-                font-size: 1.2rem;
-            }
+            .spa {
+            min-height: 25vh;
         }
+        .view-order-details-button {
+            font-size: 1.2rem;
+        }
+
+        .order-details {
+            padding: 10px;
+            max-width: 100%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .order-details h2 {
+            font-size: 24px;
+           
+        }
+
+        .order-details p {
+            font-size: 14px;
+        }
+
+        .thank-you-message {
+            font-size: 16px;
+        }
+
+        .home-link {
+            font-size: 1.2rem;
+        }
+    }
     </style>
 </head>
-<body>
+<body style="background:wheat">
     <?php include("navbar.php"); ?>
-
-    <div class="success-message"><i class="fas fa-check-circle"></i> Payment Successful! </div>
+    <div class="spa"></div>
     <section class="container-success">
+
+    <div class="order-details">
+        <h2>Your Order Details</h2>
+        <p>Order Number: <span id="order-number">123456</span></p>
+        <p>Date: <span id="order-date">November 27, 2023</span></p>
+        <p>Total Amount: $<span id="order-total">50.00</span></p>
+    </div>
 
     <div class="thank-you-message">
         <p>Thank you for your purchase!</p>
@@ -125,7 +132,8 @@ include('includes/core.php');
 
     <div class="home-link-container">
         <a href="menu.php" class="home-link">Continue Shopping</a>
-        <a href="order_details.php" class="view-order-details-button">View Order Details</a>
+        <a href="cancel.php" class="view-order-details-button">Cancel</a>
+        
     </div>
 </section>
 </body>
