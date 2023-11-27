@@ -46,10 +46,21 @@
             } catch (\Throwable $th) {
               echo 0;
             }
-          }?>
+          }else{
+            if(isset($_SESSION['cart']))
+              echo count($_SESSION['cart']);
+            else echo 0;
+          }
+          ?>
         </span></div>
     </a>
-    <div id="login-btn" class="fas fa-user"></div>
+    <div id="login-btn" class="fas fa-user"><?php 
+    $user = new User;
+    if($session->checkLoginStatus())
+    echo $user->find($session->get('id'))->last_name ;
+  else echo '--';
+    
+    ?></div>
     <a href="action.php?logout=1">
     <div id="logout" class="fas fa-sign-out-alt .logout"></div></a>
   </div>

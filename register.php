@@ -27,29 +27,56 @@ try {
 
 ?>
 <style>
-    
-body {
-    background-image: url("images/slice.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-}
+    body {
+        background-image: url("images/slice.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+    }
 
-     
-    
-.register{
-    color: rgb(76, 9, 9);
-}
-#reg{
-    background: rgb(76, 9, 9);
-    border-color: rgb(76, 9, 9);
-}
+    .register {
+        color: rgb(76, 9, 9);
+    }
+
+    #reg {
+        background: rgb(76, 9, 9);
+        border-color: rgb(76, 9, 9);
+    }
+
+    .container {
+        margin-top: 4vh;
+        width: 700px !important;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .wrapper {
+            width: 90%;
+        }
+
+        .card-group {
+            flex-direction: column;
+        }
+
+        .card {
+            border-radius: 0;
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        .wrapper {
+            width: 100%;
+        }
+        .container {
+        width: 70%;  
+    }
+    }
 </style>
+
 <?php
     include('partials/header.php');
     ?>
     
-    <div class="container mt-4 w-50">
+    <div class="container mt-4">
         <div class="row justify-content-center wrapper">
             <div class="col-lg-10 my-auto">
                 <div class="card-group">
@@ -96,6 +123,10 @@ body {
                             <div class="have account float-right">
                                 <a href="login.php" name="have account-link">Have Account?</a>
                             </div>
+
+                            <?php if(isset( $_POST['cart_token'])): ?>
+                            <input type="hidden" name="cart_token" value="<?php echo $_POST['cart_token'] ?>">
+                            <?php endif ?>
                          
                             <!-- submit button -->
                             <div class="form-group">

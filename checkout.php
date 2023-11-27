@@ -1,7 +1,14 @@
 <?php
 include('includes/core.php');
+$carts = new Cart;
+$cart_items = new CartItem;
 
-$grandTotal = $_POST['grand_total'];
+$grandTotal = $_POST['grand_total'] ?? $_SESSION['grand_total'];
+
+if (isset($_SESSION['cart_token'])) {
+
+    $carts->addToCart($cart_items);
+}
 
 if (isset($_POST['place_order'])) {
     $carts = new Cart;
@@ -9,6 +16,8 @@ if (isset($_POST['place_order'])) {
 
     $orders = new Order;
     $order_items = new OrderItem;
+
+  
 
     $cart_id = $carts->getUserCart($session->get('id'));
 
@@ -24,7 +33,7 @@ if (isset($_POST['place_order'])) {
 
     // TODO::Redirect to the order completed view, Display the Order number.
 
-    header("Location: cart.php");
+    header("Location: checkout_success.php");
 
 
 

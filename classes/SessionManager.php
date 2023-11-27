@@ -54,5 +54,15 @@ class SessionManager
         } else
             return false;
     }
+    public function addCookie(array $data, $expiration = 0, $path = '/') {
+        foreach ($data as $key => $value) {
+            setcookie($key, $value, $expiration, $path);
+        }
+    }
 
+    public function unsetCookie(array $cookieNames, $path = '/') {
+        foreach ($cookieNames as $name) {
+            setcookie($name, '', time() - 3600, $path); // Set the cookie to expire in the past to delete it
+        }
+    }
 }

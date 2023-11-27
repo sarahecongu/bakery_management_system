@@ -77,58 +77,6 @@ include("partials/header.php");
  <div class="tabular-wrapper">
   <div class="table-container">
 
-  <div class="text-center m-3">
-    <button type="button" class="btns" data-bs-toggle="modal" data-bs-target="#completeModal">
-      ADD ORDER
-    </button>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="completeModal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">orders</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <!-- form -->
-          <!-- firstname -->
-          <form action="order_table.php" method="POST" enctype="multipart/form-data">
-            <div class="mb-3">
-              <label class="form-label">Image</label>
-              <input type="file" class="form-control" name="image" placeholder="Enter image">
-            </div>
-              <!-- user_id -->
-              <div class="mb-3">
-              <label class="form-label">status</label>
-              <input type="text" class="form-control" name="status" placeholder="order user_id">
-            </div>
-               <!-- user_id -->
-               <div class="mb-3">
-              <label class="form-label">user_id</label>
-              <input type="text" class="form-control" name="user_id" placeholder="order user_id">
-            </div>
-               <!-- order_date-->
-               <div class="mb-3">
-              <label class="form-label">order_date</label>
-              <input type="number" class="form-control" name="order_date" placeholder="order order_date">
-            </div>
-               <!-- health-->
-               <div class="mb-3">
-              <label class="form-label">health</label>
-              <input type="text" class="form-control" name="total_amount" placeholder="order name">
-            </div>
-                      
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" class="bt" name = "add_order">Add order</button>
-            </div>
-        </div>
-      </div>
-    </div>
-    </form>
-  </div>
   <div class="search-box">
     <form action="categories.php" method="GET" class="d-flex">
         <input type="text" class="form-control me-2" name="search" placeholder="Search Categories">
@@ -141,12 +89,10 @@ include("partials/header.php");
     <thead class="text-white">
       <tr>
         <th scope="col">Id</th>
-        <th scope="col">Image</th>
         <th scope="col">user_id</th>
         <th scope="col">status</th>
         <th scope="col">track no</th>
         <th scope="col">total amount</th>
-
         <th scope="col">Created At</th>
         <th scope="col">Updated At</th>
         <th scope="col">Actions</th>
@@ -157,10 +103,6 @@ include("partials/header.php");
         <tr>
           <td>
             <?php echo $order->id; ?>
-          </td>
-          <td style="width:8%">
-            <img src="images/<?php echo $order->image; ?>" alt="dp" class="rounded-circle w-50 h-50">
-
           </td>
           <td>
             <?php echo $order->user_id; ?>

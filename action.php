@@ -11,45 +11,8 @@ $cart_items = new CartItem;
  */
 if (isset($_POST['add_to_cart'])) {
 
-    /**
-     * Check if there is a logged in user
-     * True: Use model create record  in cart add cart items
-     * False: Initialize cart in session
-     *  */
-
-    // var_dump($session->get('id'));die;
-
-    if ($session->checkLoginStatus()) {
-        // Check if cart exist
-        if ($cart->checkUserCart($session->get('id')) == false) {
-            // Initialize Cart
-            $cart->create(['user_id'=>$session->get('id')]);
-        }
-        try {
-            $cart_id = $cart->getUserCart($session->get('id')); // Getting the cart item
-            
-            // Check if product is already there for that user
-            $existingCartItem = $cart_items->where(['cart_id' => $cart_id, 'product_id' => $_POST['product_id']]);
-
-            if ($existingCartItem) {
-                // Product already exists in the cart, increment the quantity
-                $newQuantity = $existingCartItem[0]->quantity + 1;
-                $cart_items->update($existingCartItem[0]->id, ['quantity' => $newQuantity]);
-
-            } else {
-                // Product is not in the cart, create a new cart item
-                $cart_items->create(['cart_id' => $cart_id, 'product_id' => $_POST['product_id'], 'quantity' => 1]);
-            }
-
-            // Count the number of items in cart
-          echo  $cart->countRelated('cart_items', $cart_id, 'cart_id');
-
-        } catch (PDOException $error) {
-            // echo $error->message;
-        }
-    } else { // When user is not logged in
-
-    }
+    echo $cart->addToCart($cart_items);
+    
 } elseif (isset($_GET['action'])) {
     $action = $_GET['action'];
 

@@ -1,5 +1,7 @@
 <?php
 include("includes/core.php");
+include("includes/sessionLimit.php");
+
 $users = new User();
 $categories = new Category();
 $products = new Product();

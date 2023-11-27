@@ -27,7 +27,7 @@ include("includes/core.php");
       height: 80vh;
       margin-top: 5%;
       background: white;
-      box-shadow: 5px 5px 5 px 5px rgba(0, 0, 0, 0.1);
+      /* box-shadow: 5px 5px 5 px 5px rgba(0, 0, 0, 0.1); */
       display: flex;
     }
 
@@ -39,17 +39,21 @@ include("includes/core.php");
 
     .flex {
       display: flex;
-      justify-content: space-between;
+      /* justify-content: space-between; */
     }
 
     .flex1 {
       display: flex;
       align-items: center;
     }
-
-    .main_image {
+    .main_image{
+      display: flex;
+      justify-content: center;
+    }
+    .main_image img {
       width: 60%;
-      height: auto;
+    
+
     }
 
     .option img {
@@ -118,9 +122,7 @@ include("includes/core.php");
         <img src="images/chris.jpg" alt="">
       </div>
       <div class="option flex">
-        <img src="images/chris.jpg" alt="" onclick="img('images/chris.jpg')">
-        <img src="images/chris.jpg" alt="" onclick="img('images/chris.jpg')">
-        <img src="images/chris.jpg" alt="" onclick="img('images/chris.jpg')">
+
       </div>
     </div>
     <div class="right">

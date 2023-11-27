@@ -4,18 +4,8 @@ include("includes/core.php");
 ?>
 <?php
 $order_details = new OrderItem();
-// Create
-if (isset($_POST['add_order_item'])) {
-  $data = [
-    'order_id' => $_POST['order_id'],
-    'product_id'=> $_POST['product_id'],
-    'quantity'=> $_POST['quantity'],
-    'unit_price'=> $_POST['unit_price'],
-    'total_price'=> $_POST['total_price'],
-  ];
-  $order_details->create($data);
-  header("Location: order_details_table.php");
-}
+$orders = new Order();
+$products = new Product();
 // Delete
 if (isset($_POST['order_delete'])) {
   $order_id = $_POST['order_delete'];
@@ -71,63 +61,12 @@ include("partials/header.php");
  <div class="tabular-wrapper">
   <div class="table-container">
 
-  <div class="text-center m-3">
-    <button type="button" class="btns" data-bs-toggle="modal" data-bs-target="#completeModal">
-      ADD ORDER
-    </button>
-  </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="completeModal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">order_details</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <!-- form -->
-          <!-- firstname -->
-          <form action="order_table.php" method="POST" enctype="multipart/form-data">
-            <div class="mb-3">
-              <label class="form-label">order id</label>
-              <input type="text" class="form-control" name="order_id" placeholder="Enter image">
-            </div>
-            
-              <!-- product_id -->
-              <div class="mb-3">
-              <label class="form-label">unit_price</label>
-              <input type="text" class="form-control" name="unit_price" placeholder="order product_id">
-            </div>
-               <!-- product_id -->
-               <div class="mb-3">
-              <label class="form-label">product_id</label>
-              <input type="text" class="form-control" name="product_id" placeholder="order product_id">
-            </div>
-               <!-- quantity-->
-               <div class="mb-3">
-              <label class="form-label">quantity</label>
-              <input type="number" class="form-control" name="quantity" placeholder="order quantity">
-            </div>
-               <!-- health-->
-               <div class="mb-3">
-              <label class="form-label">Total Price</label>
-              <input type="text" class="form-control" name="total_price" placeholder="order name">
-            </div>
-                      
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" class="bt" name = "add_order">Add order</button>
-            </div>
-        </div>
-      </div>
-    </div>
-    </form>
-  </div>
+
   <!-- <table> -->
   <div class="search-box">
-    <form action="categories.php" method="GET" class="d-flex">
-        <input type="text" class="form-control me-2" name="search" placeholder="Search Categories">
+    <form action="order_details_table.php" method="GET" class="d-flex">
+        <input type="text" class="form-control me-2" name="search" placeholder="Search Order Item">
         <button class="bt" type="submit">Search</button>
     </form>
 </div>
@@ -137,38 +76,35 @@ include("partials/header.php");
       <tr>
         <th scope="col">Id</th>
         <th scope="col">order id</th>
-        <th scope="col">product_id</th>
-        <th scope="col">unit_price</th>
+        <th scope="col">product</th>
         <th scope="col">quantity</th>
-        <th scope="col">total amount</th>
         <th scope="col">Created At</th>
         <th scope="col">Updated At</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($order_details->all() as $order): ?>
+      <?php foreach ($order_details->all() as $order):
+                $order_detail = $products->getParentAttributesFromChild('order_items', 'products', $order->id, 'product_id');
+                $order_na = $orders->getParentAttributesFromChild('order_items', 'orders', $order->id, 'order_id');
+
+
+         ?>
+        
         <tr>
           <td>
             <?php echo $order->id; ?>
           </td>
-       
           <td>
-            <?php echo $order->product_id; ?>
+            <?php echo $order_na->id; ?>
           </td>
-          <td>
-            <?php echo $order->unit_price; ?>
-          </td>
+          <td class="text-md-truncate" style="max-width:150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            <?php echo $order_detail->name; ?>
+        </td>
           <td>
             <?php echo $order->quantity; ?>
           </td>
-          <td>
-            <?php echo $order->order_id; ?>
-          </td>
-          
-          <td>
-            <?php echo $order->total_price; ?>
-          </td>
+        
           <td>
             <?php  echo Helper::date($order->created_at); ?>
           </td>

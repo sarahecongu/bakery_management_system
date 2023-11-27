@@ -8,8 +8,8 @@ class User extends Model
     public $user_type_id;
     public $pwd;
     public $image;
-    
-   
+
+
     public function userLogout()
     {
         if (isset($_SESSION['first_name']) && isset($_SESSION['last_name'])) {
@@ -20,7 +20,7 @@ class User extends Model
 
     }
 
-   
+
     public function checkIsEmailRegistered()
     {
         $sql = 'SELECT email FROM users WHERE email = :email ';
@@ -57,6 +57,8 @@ class User extends Model
                 ]);
                 $_SESSION['status'] = 'success';
                 $_SESSION['message'] = 'Registration successful. Please login.';
+
+                header('location: login.php');
             } else {
                 $errors[] = "Email address is already taken.";
             }
@@ -64,14 +66,13 @@ class User extends Model
 
         // Store errors in the session
         if (!empty($errors)) {
-            Helper::statusMessage('error',implode("<br>", $errors));
+            Helper::statusMessage('error', implode("<br>", $errors));
 
         }
     }
 
-    public function Login()
+    public function Login(SessionManager $session)
     {
-        $session = new SessionManager;
 
         $users = $this->where(['email' => $this->email]);
 
@@ -90,6 +91,10 @@ class User extends Model
                             $redirect = '404.php';
                         }
 
+                        if (isset($_SESSION['cart_token'])) {
+                           $redirect = 'checkout.php';
+                        }
+
                         header("Location: $redirect");
                         exit();
                     }
@@ -103,8 +108,8 @@ class User extends Model
 
         // Store errors in the session
         if (!empty($errors)) {
-        
-            Helper::statusMessage('error',implode("<br>", $errors));
+
+            Helper::statusMessage('error', implode("<br>", $errors));
             // $_SESSION['message'] = implode("<br>", $errors);
         }
     }
