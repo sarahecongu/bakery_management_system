@@ -3,9 +3,6 @@ include("includes/core.php");
 ?>
 <?php
 $one_hour_cake_products = new OneHourCake();
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

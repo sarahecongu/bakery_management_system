@@ -1,14 +1,4 @@
 
-<?php
-// $userCount->getCount('users');
-// $categoryCount-> getCount('categories');
-// $productCount-> getCount('products');
-// $orderCount-> getCount('orders');
-// $deliveryCount-> getCount('deliveries');
-// $reviewCount-> getCount('reviews');
-// $shiftCount-> getCount('shifts');
-// $inventoryCount-> getCount('inventory');
-?>
 <div class="card-container">
       <h1 class="main-title text-center">Today's Data Summary</h1>
       <div class="card-wrapper">
