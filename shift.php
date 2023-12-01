@@ -65,11 +65,11 @@ if (isset($_POST['shift_delete'])) {
  <!-- tabular -->
  <div class="tabular-wrapper">
   <div class="table-container">
-  <div class="text-center m-3">
-    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#completeModal">
-      ADD SHIFT
+  <div class="text-end m-3 d-flex justify-content-end">
+    <button type="button" class="btns" data-bs-toggle="modal" data-bs-target="#completeModal">
+        ADD A SHIFT
     </button>
-  </div>
+</div>
 
   <!-- Modal -->
   <div class="modal fade" id="completeModal" tabindex="-1">
@@ -108,7 +108,7 @@ if (isset($_POST['shift_delete'])) {
   </div>
   <div class="search-box">
     <form action="categories.php" method="GET" class="d-flex">
-        <input type="text" class="form-control me-2" name="search" placeholder="Search Categories">
+        <input type="text" class="form-control" name="search" placeholder="Search Shifts"  style="width:350px; margin-right: 10px; ">
         <button class="bt" type="submit">Search</button>
     </form>
 </div>

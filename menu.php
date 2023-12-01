@@ -37,7 +37,7 @@ $products = new Product();
             <!-- <a class="bd-cake-tag" href="#"><?php echo $product->category_id ?></a> -->
           </div>
           <div class="content">
-          <h3 title="<?php echo $product->name; ?>" class="text-md-truncate" style="max-width:150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          <h3 title="<?php echo $product->name; ?>" class="text-md-truncate" style="max-width:250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
               <?php echo $product->name; ?>
           </h3>
 

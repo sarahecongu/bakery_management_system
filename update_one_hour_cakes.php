@@ -1,21 +1,21 @@
 <?php
 include("includes/core.php");
-$products = new Product();
-
-$categories = new Category;
+$one_hour_cakes = new OneHourCake;
+$cake_categories = new CakeCategory;
 $health_benefits = new HealthBenefit;
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
-  $product_id = $_GET['id'];
-  $product = $products->find($product_id);
+  $one_hour_cake_id = $_GET['id'];
+  $one_hour_cake = $one_hour_cakes->find($one_hour_cake_id);
+
 }
 
-if (isset($_POST['product_update'])) {
+if (isset($_POST['one_hour_cake_update'])) {
   $data = [
     'name' => $_POST['name'],
     'price' => $_POST['price'],
     'quantity' => $_POST['quantity'],
-    'category_id' => $_POST['category_id'],
+    'cake_category_id' => $_POST['cake_category_id'],
     'health_benefit_id' => $_POST['health_benefit_id']
   ];
 
@@ -28,14 +28,14 @@ if (isset($_POST['product_update'])) {
 
   // Use try-catch to handle exceptions, if any, during the update process
   try {
-    if ($products->update($_POST['id'], $data)) {
-      Helper::statusMessage('success', 'Product updated successfully');
+    if ($one_hour_cakes->update($_POST['id'], $data)) {
+      Helper::statusMessage('success', 'one_hour_cake updated successfully');
     } else {
-      Helper::statusMessage('error', 'Failed to update product');
+      Helper::statusMessage('error', 'Failed to update one_hour_cake');
     }
 
     // Redirect only after processing the update, not inside the if-else block
-    header("Location: product_table.php");
+    header("Location: one_hour_cake_table.php");
     exit();
   } catch (Exception $e) {
     // Handle exceptions, log them, or display an error message as needed
@@ -81,54 +81,39 @@ if (isset($_POST['product_update'])) {
       </div>
     </div>
     <!-- cards -->
-    <?php
-    // Include cards.php if needed
-    // include("cards.php");
-    ?>
+   
     <!-- tabular -->
     <div class="tabular-wrapper">
       <div class="table-container">
         <div class="col-md-9 ml-sm-auto col-md-10 px-md-4">
           <div class="container mt-5">
-            <h2>Edit product</h2>
-            <form action="update_product_table.php" method="POST" enctype="multipart/form-data">
-              <?php
-              // Commented out the following block since it's not clear why it's here.
-              // You were iterating over promotions, but it seems unrelated to updating a product.
-              /*
-              foreach ($promotions->all() as $promotion): 
-                $promotions_details = $products->getParentAttributesFromChild('promotions', 'products', $promotion->id, 'product_id');
-              ?>;
-              */
-
-              // The code below assumes that you are fetching categories and health benefits related to the product.
-              // If you don't need this, you can remove it.
-              ?>
-              <input type="hidden" name="id" value="<?php echo $product->id; ?>">
+            <h2>Edit one_hour_cake</h2>
+            <form action="update_one_hour_cakes.php" method="POST" enctype="multipart/form-data">
+              <input type="hidden" name="id" value="<?php echo $one_hour_cake->id; ?>">
               <div class="mb-3">
                 <label class="form-label">Image</label>
                 <input type="file" class="form-control" name="image" placeholder="Upload image">
               </div>
               <div class="mb-3">
                 <label class="form-label">Name</label>
-                <input type="text" class="form-control" name="name" placeholder="Product name"
-                  value="<?php echo $product->name; ?>">
+                <input type="text" class="form-control" name="name" placeholder="one$one_hour_cake name"
+                  value="<?php echo $one_hour_cake->name; ?>">
               </div>
               <div class="mb-3">
                 <label class="form-label">Price</label>
-                <input type="text" class="form-control" name="price" placeholder="Product price"
-                  value="<?php echo $product->price; ?>">
+                <input type="text" class="form-control" name="price" placeholder="one$one_hour_cake price"
+                  value="<?php echo $one_hour_cake->price; ?>">
               </div>
               <div class="mb-3">
                 <label class="form-label">Quantity</label>
-                <input type="number" class="form-control" name="quantity" placeholder="Product quantity"
-                  value="<?php echo $product->quantity; ?>">
+                <input type="number" class="form-control" name="quantity" placeholder="one$one_hour_cake quantity"
+                  value="<?php echo $one_hour_cake->quantity; ?>">
               </div>
               <div class="mb-3">
                 <label for="category_id">Category:</label>
-                <select id="category_id" name="category_id">
-                  <?php foreach ($categories->all() as $data): ?>
-                    <option value="<?php echo $data->id ?>" <?php if ($data->id == $product->category_id) echo "selected"; ?>>
+                <select id="category_id" name="cake_category_id">
+                  <?php foreach ($cake_categories->all() as $data): ?>
+                    <option value="<?php echo $data->id ?>" <?php if ($data->id == $one_hour_cake->cake_category_id) echo "selected"; ?>>
                       <?php echo $data->name ?>
                     </option>
                   <?php endforeach ?>
@@ -138,15 +123,15 @@ if (isset($_POST['product_update'])) {
                 <label for="health_benefit_id">Health Benefit:</label>
                 <select id="health_benefit_id" name="health_benefit_id">
                   <?php foreach ($health_benefits->all() as $data): ?>
-                    <option value="<?php echo $data->id ?>" <?php if ($data->id == $product->health_benefit_id) echo "selected"; ?>>
+                    <option value="<?php echo $data->id ?>" <?php if ($data->id == $one_hour_cake->health_benefit_id) echo "selected"; ?>>
                       <?php echo $data->name ?>
                     </option>
                   <?php endforeach ?>
                 </select>
               </div>
               <div class="modal-footer">
-                <a href="product_table.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
-                <button type="submit" class="bt" name="product_update">Update product</button>
+                <a href="one_hour_cake_table.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+                <button type="submit" class="bt" name="one_hour_cake_update">Update</button>
               </div>
             </form>
           </div>

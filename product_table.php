@@ -133,8 +133,12 @@ include("partials/header.php");
             </div>
               <!-- price -->
               <div class="mb-3">
-              <label class="form-label">Category Id</label>
-              <input type="text" class="form-control" name="category_id" placeholder="product price">
+              <select class="form-select" name="category_id">
+                    <option value="" selected disabled>Select a Category</option>
+                    <?php foreach ($category->all() as $cat): ?>
+                    <option value="<?php echo $cat->id; ?>"><?php echo $cat->name; ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
                <!-- price -->
                <div class="mb-3">
@@ -154,8 +158,12 @@ include("partials/header.php");
                <!-
                <!-- health-->
                <div class="mb-3">
-              <label class="form-label">health</label>
-              <input type="text" class="form-control" name="health_benefit_id" placeholder="product name">
+               <select class="form-select" name="product_id">
+                    <option value="" selected disabled>Nutrient Value</option>
+                    <?php foreach ($health_benefit->all() as $prod): ?>
+                    <option value="<?php echo $prod->id; ?>"><?php echo $prod->name; ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
                       
             <div class="modal-footer">

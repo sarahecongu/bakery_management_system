@@ -68,11 +68,11 @@ include("partials/header.php");
   <div class="table-container">
 
   
-  <div class="text-center m-3">
-    <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#completeModal">
-      ADD  SCHEDULE
+  <div class="text-end m-3 d-flex justify-content-end">
+    <button type="button" class="btns" data-bs-toggle="modal" data-bs-target="#completeModal">
+        ADD A SCHEDULE
     </button>
-  </div>
+</div>>
 
   <!-- Modal -->
   <div class="modal fade" id="completeModal" tabindex="-1">
@@ -110,8 +110,8 @@ include("partials/header.php");
     </form>
   </div>
   <div class="search-box">
-    <form action="categories.php" method="GET" class="d-flex">
-        <input type="text" class="form-control me-2" name="search" placeholder="Search Categories">
+    <form action="schedule.php" method="GET" class="d-flex" style="width:350px; margin-right:10px;">
+        <input type="text" class="form-control me-2" name="search" placeholder="Search Schedule">
         <button class="bt" type="submit">Search</button>
     </form>
 </div>

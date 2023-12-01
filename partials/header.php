@@ -266,6 +266,85 @@
       background-color: #cc0000;
       color: white;
     }
+
+
+
+
+  /* Mobile-first styles */
+  @media only screen and (max-width: 600px) {
+    .sidebar {
+      width: 100%;
+      padding: 0.5rem;
+    }
+
+    .sidebar:hover {
+      width: 100%;
+    }
+
+    .main-content {
+      padding: 1rem;
+    }
+
+    .header-wrapper {
+      padding: 5px;
+      flex-direction: column;
+    }
+
+    .header-title {
+      font-size: 18px;
+    }
+
+    .card-wrapper {
+      flex-direction: column;
+    }
+
+    .user-card {
+      width: 100%;
+    }
+
+    .card-header {
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .btns {
+      margin-top: 0.5rem;
+    }
+
+    .bt {
+      padding: 5px;
+      font-size: 0.8rem;
+    }
+
+    .tabular-wrapper {
+      margin-top: 0.5rem;
+    }
+  }
+
+  /* Tablet styles */
+  @media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .sidebar {
+      width: 200px;
+    }
+
+    .sidebar:hover {
+      width: 200px;
+    }
+
+    .main-content {
+      padding: 1rem;
+    }
+
+    /* Add any additional styles for tablets here */
+  }
+
+  /* Desktop styles */
+  @media only screen and (min-width: 1025px) {
+    /* Your existing styles for desktop screens */
+  }
+
+
   </style>
 
 </head>

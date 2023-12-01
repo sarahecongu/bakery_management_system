@@ -22,12 +22,12 @@
 
       <span id="marqueeText">BLACK FRIDAY DEALS COMING SOON</span>
     </marquee>
+
   </div>
   <a href="" class="logo">
-    <!-- <img src="images/anita.png"  alt="" srcset=""> -->
+    <!-- <img src="images/log.png"  alt="" srcset=""> -->
     BAKE PAL
   </a>
-
   <nav class="navbar">
     <a href="index.php">Home</a>
     <a href="menu.php">Menu</a>

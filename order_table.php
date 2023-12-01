@@ -79,7 +79,7 @@ include("partials/header.php");
 
   <div class="search-box">
     <form action="categories.php" method="GET" class="d-flex">
-        <input type="text" class="form-control me-2" name="search" placeholder="Search Categories">
+        <input type="text" class="form-control me-2" name="search" placeholder="Search Order" style="width:350px; margin-right:10px;">
         <button class="bt" type="submit">Search</button>
     </form>
 </div>

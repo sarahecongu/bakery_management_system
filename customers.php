@@ -58,8 +58,8 @@ include("partials/header.php");
  <div class="tabular-wrapper">
   <div class="table-container">
   <div class="search-box">
-    <form action="categories.php" method="GET" class="d-flex">
-        <input type="text" class="form-control me-2" name="search" placeholder="Search Categories">
+    <form action="customers.php" method="GET" class="d-flex">
+        <input type="text" class="form-control me-2" name="search" placeholder="Search Customers" style="width:350px; margin-right:10px;">
         <button class="bt" type="submit">Search</button>
     </form>
 </div>

@@ -59,11 +59,11 @@ if (isset($_POST['recipe_delete'])) {
  <!-- tabular -->
  <div class="tabular-wrapper">
   <div class="table-container">
-  <div class="text-center m-3">
+  <div class="text-end m-3 d-flex justify-content-end">
     <button type="button" class="btns" data-bs-toggle="modal" data-bs-target="#completeModal">
-      ADD RECIPE 
+        ADD A RECIPE
     </button>
-  </div>
+</div>>
 
   <!-- Modal -->
   <div class="modal fade" id="completeModal" tabindex="-1">
@@ -110,8 +110,8 @@ if (isset($_POST['recipe_delete'])) {
     </form>
   </div>
   <div class="search-box">
-    <form action="categories.php" method="GET" class="d-flex">
-        <input type="text" class="form-control me-2" name="search" placeholder="Search Categories">
+    <form action="recipes.php" method="GET" class="d-flex">
+        <input type="text" class="form-control me-2" name="search" placeholder="Search recipe" style="width:350px;margin-right:10px;">
         <button class="bt" type="submit">Search</button>
     </form>
 </div>

@@ -126,6 +126,13 @@
                     <span>Recipes Products</span>
                 </a>
             </li>
+             <!-- recipe products -->
+             <li>
+                <a href="ingredients_table.php">
+                    <i class="fas fa-utensils"></i>
+                    <span>Ingredients</span>
+                </a>
+            </li>
             <!-- about us -->
             <li>
                 <a href="aboutus_table.php">
@@ -149,7 +156,7 @@
             </li>
             <!-- promotions -->
             <li>
-                <a href="promotions.php">
+                <a href="promotion_table.php">
                     <i class="fas fa-bullhorn"></i>
                     <span>Promotions</span>
                 </a>

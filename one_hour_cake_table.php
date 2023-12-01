@@ -105,7 +105,7 @@ include("partials/header.php");
 
   <div class="text-end m-3 d-flex justify-content-end">
     <button type="button" class="btns" data-bs-toggle="modal" data-bs-target="#completeModal">
-        ADD one_hour_cake
+        ADD A CAKE
     </button>
 </div>
 
@@ -162,7 +162,7 @@ include("partials/header.php");
                       
             <div class="modal-footer">
               <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" class="bt" name = "add_one_hour_cake">Add one_hour_cake</button>
+              <button type="submit" class="bt" name = "add_one_hour_cake">Add Cake</button>
             </div>
         </div>
       </div>
@@ -171,7 +171,7 @@ include("partials/header.php");
   </div>
   <div class="search-box">
   <form action="one_hour_cake_table.php" method="GET" class="d-flex">
-    <input type="text" class="form-control text-center" name="search" placeholder="Search one_hour_cakes" style="width:350px; margin-right: 10px; ">
+    <input type="text" class="form-control  me-2" name="search" placeholder="Search one_hour_cakes" style="width:350px; margin-right: 10px; ">
     <button class="bt" type="submit">Search</button>
 </form>
 </div>
@@ -231,7 +231,7 @@ include("partials/header.php");
           </td>
           <td>
             <a href="one_hour_cake_table.php" class="btn btn-primary btn-sm mr-2 m-1" title="view"><i class="fas fa-eye"></i></a>
-            <a href="update_one_hour_cake_table.php?id=<?php echo $one_hour_cake->id; ?>" class="btn btn-success btn-sm mr-2" title="edit">
+            <a href="update_one_hour_cakes.php?id=<?php echo $one_hour_cake->id; ?>" class="btn btn-success btn-sm mr-2" title="edit">
               <i class="fas fa-edit"></i>
             </a>
             <form action="one_hour_cake_table.php" method="POST" class="d-inline-block">

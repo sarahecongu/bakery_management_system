@@ -1,3 +1,8 @@
+<?php
+$promotions= new Promotion();
+$products= new Product();
+
+?>
 <style>
     .spae{
       min-height: 5vh;
@@ -20,28 +25,24 @@
 <div class="spae"></div>
 <div class="heading"><span class="titles">Our  Weekly Offers</span></div>
 <section class="banner-container">
-
-  <?php 
-    
-        for ($i = 0; $i < 3; $i++) { 
-            echo '
+<?php foreach ($promotions->limit(3) as $promotion): 
+ $promotions_details = $products->getParentAttributesFromChild('promotions', 'products', $promotion->id, 'product_id');
+  ?>
     <div class="banner">
-      <img src="images/bd.jpg" alt="">
+  
+      <img src="<?php echo $promotions_details->image; ?>" alt="<?php echo $promotions_details->name; ?>">
       <div class="content">
-        <span>Limited Sales</span>
+        <span><?php echo $promotion->description; ?></span>
 
         <h3>
-      chcolate
+        <?php echo $promotions_details->name; ?>
         </h3>
   
-        <span>shs 120,000</span>
-        <a href="" class="btn">Buy Now</a>
+        <span>shs <?php echo $promotions_details->price; ?></span>
+        <a href="details.php" class="btn">Buy Now</a>
       </div>
     </div>
-  ';
-}
-?>
+    <?php endforeach; ?>
 </section>
 <div class="heading">
-  
   </div>

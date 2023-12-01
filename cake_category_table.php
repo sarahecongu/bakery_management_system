@@ -100,11 +100,11 @@ include("partials/header.php");
  <div class="tabular-wrapper">
   <div class="table-container">
 
-  <div class="text-center m-3">
+  <div class="text-end m-3 d-flex justify-content-end">
     <button type="button" class="btns" data-bs-toggle="modal" data-bs-target="#completeModal">
-      ADD CAKE CATEGORY
+        ADD A CAKE
     </button>
-  </div>
+</div>
 
   <!-- Modal -->
   <div class="modal fade" id="completeModal" tabindex="-1">
@@ -139,7 +139,7 @@ include("partials/header.php");
   </div>
   <div class="search-box">
     <form action="cake_category_table.php" method="GET" class="d-flex">
-        <input type="text" class="form-control me-2" name="search" placeholder="Search Categories">
+        <input type="text" class="form-control" name="search" placeholder="Search Categories"  style="width:350px; margin-right: 10px; ">
         <button class="bt" type="submit">Search</button>
     </form>
 </div>
@@ -161,7 +161,7 @@ include("partials/header.php");
             <?php echo $category->id; ?>
           </td>
           <td style="width:15%; height:5%">
-            <img src="images/<?php echo $category->image; ?>" alt="dp" class="w-50">
+            <img src="images/<?php echo $category->image; ?>" alt="dp" class="w-50 rounded-circle">
 
           </td>
           <td>
@@ -172,9 +172,9 @@ include("partials/header.php");
             <a href="update_cake_categories.php?id=<?php echo $category->id; ?>" class="btn btn-success btn-sm mr-3" title="edit">
               <i class="fas fa-edit"></i>
             </a>
-            <form action="cake_categories.php" method="POST" class="d-inline-block">
+            <form action="cake_category_table.php" method="POST" class="d-inline-block">
               <button type="submit" name="cake_category_delete" value="<?php echo $category->id;?>" class="btn btn-danger btn-sm"
-                onclick="return confirm('Are you sure you want to delete user?')">
+                onclick="return confirm('Are you sure you want to delete this cake category?')">
                 <i class="bi bi-trash3">del</i>
               </button>
             </form>

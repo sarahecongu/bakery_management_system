@@ -100,11 +100,11 @@ include("partials/header.php");
  <div class="tabular-wrapper">
   <div class="table-container">
 
-  <div class="text-center m-3">
+  <div class="text-end m-3 d-flex justify-content-end">
     <button type="button" class="btns" data-bs-toggle="modal" data-bs-target="#completeModal">
-      ADD CATEGORY
+        ADD A CAKE
     </button>
-  </div>
+</div>
 
   <!-- Modal -->
   <div class="modal fade" id="completeModal" tabindex="-1">
@@ -139,7 +139,7 @@ include("partials/header.php");
   </div>
   <div class="search-box">
     <form action="categories.php" method="GET" class="d-flex">
-        <input type="text" class="form-control me-2" name="search" placeholder="Search Categories">
+        <input type="text" class="form-control me-2" name="search" placeholder="Search Categories" style="width:350px;margin-right:10px;">
         <button class="bt" type="submit">Search</button>
     </form>
 </div>
@@ -163,7 +163,7 @@ include("partials/header.php");
             <?php echo $category->id; ?>
           </td>
           <td style="width:15%; height:5%">
-            <img src="images/<?php echo $category->image; ?>" alt="dp" class="w-50">
+            <img src="images/<?php echo $category->image; ?>" alt="dp" class="w-50 rounded-circle">
 
           </td>
           <td>

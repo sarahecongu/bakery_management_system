@@ -66,7 +66,7 @@ include("partials/header.php");
   <!-- <table> -->
   <div class="search-box">
     <form action="order_details_table.php" method="GET" class="d-flex">
-        <input type="text" class="form-control me-2" name="search" placeholder="Search Order Item">
+        <input type="text" class="form-control me-2" name="search" placeholder="Search Order Item" style="width:350px;margin-right:10px;">
         <button class="bt" type="submit">Search</button>
     </form>
 </div>

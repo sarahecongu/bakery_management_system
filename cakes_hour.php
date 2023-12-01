@@ -38,7 +38,7 @@ $one_hour_cake_products = new OneHourCake();
             <!-- <a class="bd-cake-tag" href="#"><?php echo $product->category_id ?></a> -->
           </div>
           <div class="content">
-            <h3>
+          <h3 title="<?php echo $product->name; ?>" class="text-md-truncate" style="max-width:250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
               <?php echo $product->name ?>
             </h3>
             <a href="details.php" class="btn1">Calories</a>
@@ -50,7 +50,7 @@ $one_hour_cake_products = new OneHourCake();
               <i class="fas fa-star"></i>
               <i class="far fa-star"></i>
             </div>
-            <span class="price">shs 270,000</span>
+            <span class="price">shs <?php echo $product->price ?></span>
             <button class="add_cart" data-id="">Add to Cart</button>
           </div>
 

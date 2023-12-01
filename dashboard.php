@@ -9,7 +9,7 @@ $orders = new Order();
 $deliveries = new Delivery();
 $reviews = new Review();
 $shifts = new Shift();
-$inventory = new Inventory();
+// $inventory = new Inventory();
 
 
 ?>
@@ -17,14 +17,14 @@ $inventory = new Inventory();
 include("partials/header.php");
 ?>
 <?php
-$users->count();
-$categories->count();
-$products->count();
-$orders->count();
-$deliveries->count();
-$reviews->count();
-$shifts->count();
-$inventory->count();
+// $users->count();
+// $categories->count();
+// $products->count();
+// $orders->count();
+// $deliveries->count();
+// $reviews->count();
+// $shifts->count();
+// $inventory->count();
 
 $usersCount = $users->count();
 $categoryCount= $categories->count();
@@ -33,7 +33,7 @@ $orderCount= $orders->count();
 $deliveryCount=$deliveries->count();
 $reviewCount=$reviews->count();
 $shiftCount=$shifts->count();
-$inventoryCount=$inventory->count(); 
+// $inventoryCount=$inventory->count(); 
 ?>
 <body>
   <?php
@@ -161,10 +161,12 @@ $inventoryCount=$inventory->count();
           <div class="card-header">
             <div class="total">
               <span class="title">
-              Inventory
+              <!-- Inventory -->
               <i class="fas fa-boxes icon"></i>
               </span>
-              <span class="value"><?php echo $inventoryCount; ?></span>
+              <span class="value"><?php 
+              // echo $inventoryCount;
+               ?></span>
             </div>
           </div>
         </div>
