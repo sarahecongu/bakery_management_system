@@ -1,8 +1,31 @@
+<style>
+    .marquee {
+        overflow: hidden;
+        white-space: nowrap;
+    }
 
+    marquee {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        /* animation: marquee-animation 20s linear infinite; */
+    }
+
+    #marqueeText {
+        display: flex;
+        align-items: center;
+        gap: 20px; /* Adjust the gap between the image and text */
+    }
+
+    #marqueeText img {
+        max-height: 50px; /* Adjust the maximum height of the image */
+        max-width: 100%; /* Ensure the image doesn't exceed the container width */
+    }
+</style>
 <header class="header">
   <div class="marquee">
     <marquee behavior="" direction="left">
-      <span id="marqueeText">BLACK FRIDAY DEALS COMING SOON</span>
+      <span id="marqueeText"><img  src="images/images.png" alt="">Merry Christmas and A  Happy New Year</span>
     </marquee>
   </div>
   <a href="" class="logo">
@@ -58,10 +81,19 @@
             </a>
           </li>
           <li>
-            <a class="dropdown-item" href="#">
-              <a href="action.php?logout=1">
-                <div id="logout" class="fas fa-sign-out-alt .logout"></div>
-              </a>
+        <a class="dropdown-item" href="#">
+            <i class="fas fa-user"></i> My Account
+        </a>
+        </li>
+        <li>
+        <a class="dropdown-item" href="view_orders.php">
+            <i class="fas fa-shopping-cart"></i> My Orders
+        </a>
+        </li>
+          <li>
+            <a class="dropdown-item" href="action.php?logout=1">
+                <i id="logout" class="fas fa-sign-out-alt .logout"> LOGOUT</i>
+              
             </a>
           </li>
         </ul>

@@ -225,6 +225,7 @@
    }
     thead{
       background-color: rgb(76, 9, 9);
+     
     }
 
     .icon {

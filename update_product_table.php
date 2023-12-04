@@ -67,12 +67,7 @@ if (isset($_POST['product_update'])) {
       </div>
       <div class="user-info">
         <div class="search-box">
-          <!-- Uncomment the home link if needed -->
-          <!-- <li>
-              <a href="">
-                  <span>Home</span>
-              </a>
-          </li> -->
+      
         </div>
         <img src="https://lh3.googleusercontent.com/a/ACg8ocKAKz4uG8EXeKwzlQ7lju4lwoVqXWCUqX3Oi6WVexokeDk=s432-c-no" alt="pp">
         <li>
@@ -80,11 +75,7 @@ if (isset($_POST['product_update'])) {
         </li>
       </div>
     </div>
-    <!-- cards -->
-    <?php
-    // Include cards.php if needed
-    // include("cards.php");
-    ?>
+
     <!-- tabular -->
     <div class="tabular-wrapper">
       <div class="table-container">
@@ -92,18 +83,6 @@ if (isset($_POST['product_update'])) {
           <div class="container mt-5">
             <h2>Edit product</h2>
             <form action="update_product_table.php" method="POST" enctype="multipart/form-data">
-              <?php
-              // Commented out the following block since it's not clear why it's here.
-              // You were iterating over promotions, but it seems unrelated to updating a product.
-              /*
-              foreach ($promotions->all() as $promotion): 
-                $promotions_details = $products->getParentAttributesFromChild('promotions', 'products', $promotion->id, 'product_id');
-              ?>;
-              */
-
-              // The code below assumes that you are fetching categories and health benefits related to the product.
-              // If you don't need this, you can remove it.
-              ?>
               <input type="hidden" name="id" value="<?php echo $product->id; ?>">
               <div class="mb-3">
                 <label class="form-label">Image</label>

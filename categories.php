@@ -108,7 +108,7 @@ include("partials/header.php");
     </form>
 </div>
     <button type="button" class="btns" data-bs-toggle="modal" data-bs-target="#completeModal">
-        ADD A CAKE
+        ADD A CATEGORY
     </button>
 </div>
 

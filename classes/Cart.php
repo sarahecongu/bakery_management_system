@@ -35,9 +35,7 @@ class Cart extends Model
         }
     }
 
-    public function sessionCart(){
-
-    }
+ 
 
     public function addToCart(CartItem $cart_items){
 
