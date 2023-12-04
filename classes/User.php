@@ -8,6 +8,9 @@ class User extends Model
     public $user_type_id;
     public $pwd;
     public $image;
+    public $address;
+    public $tel;
+
 
 
     public function userLogout()

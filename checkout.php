@@ -63,7 +63,18 @@ if (isset($_POST['place_order'])) {
 
         h2 {
             font-size: 2rem;
+            font-weight: bold;
         }
+        h4 {
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        p{
+            display: flex;
+            font-size: 1.5rem; 
+        }
+
 
         header {
             color: white;
@@ -87,6 +98,7 @@ if (isset($_POST['place_order'])) {
 
         .right-column {
             flex: 1;
+            margin-left: 35px;
         }
 
         table {
@@ -111,14 +123,16 @@ if (isset($_POST['place_order'])) {
         }
 
         label {
-            font-weight: bold;
+           
             font-size: 1.5rem;
         }
 
         input,
+        textarea,
         select {
             width: 100%;
-            padding: 10px;
+            padding: 20px;
+            border-radius: 10px;
             box-sizing: border-box;
             color: rgb(79, 9, 9);
         }
@@ -132,6 +146,9 @@ if (isset($_POST['place_order'])) {
             border-radius: 4px;
             width: 200px;
 
+        }
+        img{
+            border-radius: 10px;
         }
     </style>
     <title>Checkout Page</title>
@@ -176,20 +193,21 @@ if (isset($_POST['place_order'])) {
 
         <div class="right-column">
             <h2>Order</h2>
-            <!-- Display the selected items, quantities, and prices here -->
-            <table class="cart">
-                <tr>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                 
-                </tr>
-                <!-- Add your PHP code to populate table rows here -->
-               
-            </table>
-            <a href="view_order.php" class="btn">View Order</a>
+           
+                <div class="cart">
+                        <div class="cart-item">
+                            <img src="images/cake1.jpg" alt="Product Image">
+                            <div class="item-details">
+                                <h4>Red Velvet</h4>
+                                <p>shs 200,00</p>
+                                <p>1</p>
+                                <p>Total: shs 145000</p>
+                            </div>
+                        </div>
+                  
+                </div>
+
+
         </div>
     </div>
 

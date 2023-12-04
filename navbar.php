@@ -81,7 +81,7 @@
             </a>
           </li>
           <li>
-        <a class="dropdown-item" href="#">
+        <a class="dropdown-item" href="account.php">
             <i class="fas fa-user"></i> My Account
         </a>
         </li>
@@ -92,7 +92,7 @@
         </li>
           <li>
             <a class="dropdown-item" href="action.php?logout=1">
-                <i id="logout" class="fas fa-sign-out-alt .logout"> LOGOUT</i>
+                <i id="logout" class="fas fa-sign-out-alt .logout"> Logout</i>
               
             </a>
           </li>

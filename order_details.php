@@ -129,7 +129,7 @@ include('includes/core.php');
    
 
         <div class="order-details">
-            <h2>Your Order Details</h2>
+            <h2 class="text-center">Your Order Details</h2>
             <table>
                 <thead>
                     <tr>
