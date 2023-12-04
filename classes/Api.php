@@ -77,7 +77,6 @@ class Api
         // }
 
         foreach ($this->all() as  $product) {
-
             $product = (object) $product;
             // var_dump($product);die;
             if($prod->create([

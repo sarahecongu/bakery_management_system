@@ -1,31 +1,11 @@
-<style>
-  .cart-counter {
-    position: absolute;
-    top: 10;
-    right: 10;
-    background-color: #ff0000;
-    /* Red background */
-    color: #ffffff;
-    /* White text */
-    padding: 3px 6px;
-    border-radius: 50%;
-    font-size: 12px;
-  }
-  .user-icon {
-    text-transform: lowercase;
-}
 
-</style>
 <header class="header">
   <div class="marquee">
     <marquee behavior="" direction="left">
-
       <span id="marqueeText">BLACK FRIDAY DEALS COMING SOON</span>
     </marquee>
-
   </div>
   <a href="" class="logo">
-    <!-- <img src="images/log.png"  alt="" srcset=""> -->
     BAKE PAL
   </a>
   <nav class="navbar">
@@ -34,46 +14,62 @@
     <a href="aboutus.php">AboutUs</a>
     <a href="services.php">Services</a>
     <a href="contactus.php">Contact</a>
-  </nav>
-  <div class="icons">
-    <div id="menu-btn" class="fas fa-bars"></div>
-    <div id="search-btn" class="fas fa-search"></div>
-    <a href="cart.php" style="margin:0px 12px ">
-      <div id="cart-btn" class="fas fa-shopping-cart"> <span class="cart-counter">
-          <?php
-          $cart = new Cart;
-          // If user is logged in: Get from database, else get from session
-          if ($session->checkLoginStatus()) {
-            try {
-              $cart_id = $cart->getUserCart($session->get('id'));
-              echo $cart->countRelated('cart_items', $cart_id, 'cart_id');
-            } catch (\Throwable $th) {
-              echo 0;
+    
+      <a href="cart.php">
+        <div id="cart-btn" class="fas fa-shopping-cart">
+          <span class="cart-counter">
+            <?php
+            $cart = new Cart;
+            // If user is logged in: Get from database, else get from session
+            if ($session->checkLoginStatus()) {
+              try {
+                $cart_id = $cart->getUserCart($session->get('id'));
+                echo $cart->countRelated('cart_items', $cart_id, 'cart_id');
+              } catch (\Throwable $th) {
+                echo 0;
+              }
+            } else {
+              if (isset($_SESSION['cart']))
+                echo count($_SESSION['cart']);
+              else echo 0;
             }
-          }else{
-            if(isset($_SESSION['cart']))
-              echo count($_SESSION['cart']);
-            else echo 0;
-          }
-          ?>
-        </span></div>
-    </a>
-    <div id="login-btn" class="fas fa-user user-icon">
-    <?php 
-    $user = new User;
-    if ($session->checkLoginStatus()) {
-      echo strtolower($user->find($session->get('id'))->last_name);
-        
-    } else {
-      echo '--';
-    }
-    ?>
-</div>
-
-    <a href="action.php?logout=1">
-    <div id="logout" class="fas fa-sign-out-alt .logout"></div></a>
-  </div>
+            ?>
+          </span>
+        </div>
+      </a>
+      <div class="icons">
+      <div class="dropdown">
+        <div class=" dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-user user-icon"></i>
+          </div>
+        <ul class="dropdown-menu">
+          <li>
+            <a class="dropdown-item" href="#">
+              <div id="login-btn">
+                <?php
+                $user = new User;
+                if ($session->checkLoginStatus()) {
+                  echo strtolower($user->find($session->get('id'))->last_name);
+                } else {
+                  echo '--';
+                }
+                ?>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <a href="action.php?logout=1">
+                <div id="logout" class="fas fa-sign-out-alt .logout"></div>
+              </a>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </header>
+
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {

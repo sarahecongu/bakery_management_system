@@ -5,6 +5,7 @@ include("includes/core.php");
 <html lang="en">
 
 <head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -13,99 +14,111 @@ include("includes/core.php");
   <link rel="stylesheet" href="./css/index.css">
   <title>Menu Page</title>
   <style>
-    span {
-      color: orangered;
-    }
-
-    .spaced {
-      min-height: 25vh;
-    }
-
     .container {
-      max-width: 75%;
-      margin: auto;
-      height: 80vh;
-      margin-top: 5%;
-      background: white;
-      /* box-shadow: 5px 5px 5 px 5px rgba(0, 0, 0, 0.1); */
+      width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    main {
+      padding: 40px 0;
+    }
+
+    .product-details {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-right: 10px;
+      
     }
 
-    .left,
-    .right {
-      width: 80%;
-      padding: 30px;
+  #product-image {
+  margin-top: 15px;
+  flex: 1;
+  width: 100%;
+  margin-bottom: 1rem;
+  margin-left: -10px;
+  margin-right: 70px; /* Add margin to the right */
+}
+
+#product-image img {
+  width: 100%;
+  height: 80%;
+  border-radius: 1rem;
+}
+
+    .product-description {
+    margin-top: 15px;
+      flex: 1;
+      width: 100%;
+      
     }
 
-    .flex {
-      display: flex;
-      /* justify-content: space-between; */
-    }
-
-    .flex1 {
-      display: flex;
-      align-items: center;
-    }
-    .main_image{
-      display: flex;
-      justify-content: center;
-    }
-    .main_image img {
-      width: 60%;
-    
-
-    }
-
-    .option img {
-      width: 55px;
-      height: 55px;
-      padding: 10px;
-      cursor: pointer;
-    }
-
-    .right {
-      padding: 50px;
-    }
-
-    h3 {
-      color: #af827d;
-      margin: 20px 0;
-      font-size: 25px;
-    }
-
-    h2,
-    h4 {
-      margin: 10px 0;
-    }
-
-    p {
-      font-size: 16px;
-      color: #555;
-    }
-
-    h6 {
-      font-size: 18px;
+    .product-title {
+      font-size: 24px;
+      font-weight: bold;
       margin-bottom: 10px;
     }
 
-    .add span {
+    .product-price {
       font-size: 20px;
-      margin: 0 10px;
-      cursor: pointer;
+      color: #e8491d;
+      margin-bottom: 15px;
     }
 
-    .btn {
-      background-color: #ff6600;
-      color: white;
+    .product-summary {
+      margin-bottom: 20px;
+    }
+
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+    }
+
+    .quantity-btn {
+      background-color: wheat;
+      box-shadow: 0 0.5rem 1rem rgba(134, 44, 44, 0.1);
+      color: #000;
       border: none;
-      padding: 10px 20px;
+      padding: 5px 10px;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 18px;
+      
     }
 
-    .btn:hover {
-      background-color: #e55300;
+    .quantity-input {
+      width: 40px;
+      text-align: center;
+      margin: 0 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 5px;
+    }
+
+    .additional-details {
+      width: 100%;
+      display: flex;
+    }
+
+    .details-column {
+      width: 30%;
+      margin-right: 2rem;
+      /* margin-bottom: 2rem; */
+    }
+
+    .details-column h3 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .details-column p {
+      margin-bottom: 15px;
+    }
+
+  
+    .come{
+      min-height: 15vh;
     }
   </style>
 </head>
@@ -114,53 +127,54 @@ include("includes/core.php");
   <?php
   include("navbar.php");
   ?>
-  <div class="spaced"></div>
+  <div class="come"></div>
 
-  <div class="container">
-    <div class="left">
-      <div class="main_image">
-        <img src="images/chris.jpg" alt="">
-      </div>
-      <div class="option flex">
-
+  <main>
+    <div class="container">
+      <div class="product-details">
+        <div id="product-image">
+          <img src="images/cake1.jpg" alt="Product Image">
+        </div>
+        <div class="product-description">
+          <h2 class="product-title">Product Name</h2>
+          <p class="product-price">$19.99</p>
+          <p class="product-summary">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum vehicula turpis, eget sodales augue facilisis id.
+          </p>
+          <div class="quantity-selector">
+            <button class="quantity-btn" onclick="decrementQuantity()">-</button>
+            <input type="text" class="quantity-input" id="quantity" value="1" readonly>
+            <button class="quantity-btn" onclick="incrementQuantity()">+</button>
+          </div>
+          <a href="#" class="btn">Add to Cart</a>
+        </div>
+        <!-- Additional details row -->
+        <div class="additional-details">
+          <div class="details-column">
+            <h3>Ingredients</h3>
+            <p>Ingredient 1</p>
+            <p>Ingredient 2</p>
+            <p>Ingredient 3</p>
+            <!-- Add more ingredients as needed -->
+          </div>
+          <div class="details-column">
+            <h3>Recipes</h3>
+            <p>Recipe Step 1</p>
+            <p>Recipe Step 2</p>
+            <p>Recipe Step 3</p>
+            <!-- Add more recipe steps as needed -->
+          </div>
+          <div class="details-column">
+            <h3>Instructions</h3>
+            <p>Instruction 1</p>
+            <p>Instruction 2</p>
+            <p>Instruction 3</p>
+            <!-- Add more instructions as needed -->
+          </div>
+        </div>
       </div>
     </div>
-    <div class="right">
-      <h2>ChristMas Cake</h2>
-      <h4><small>shs</small>230,000</h4>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo rerum dolor recusandae optio est architecto
-        quibusdam distinctio consequuntur libero incidunt eveniet reprehenderit impedit ut qui deserunt repellat
-        molestias, nisi atque!</p>
-      <h6>Quantity</h6>
-      <div class="add flex1">
-        <span onclick="updateQuantity(-1)">-</span>
-        <span id="quantity">1</span>
-        <span onclick="updateQuantity(1)">+</span>
-      </div>
-      <button class="btn" onclick="addToCart()">Add To Cart</button>
-    </div>
-  </div>
-
-  <script>
-    function img(anything) {
-      document.querySelector('.main_image img').src = anything;
-    }
-
-    let quantity = 1; // Initial quantity
-
-    function updateQuantity(value) {
-      quantity += value;
-      if (quantity < 1) {
-        quantity = 1;
-      }
-      document.getElementById('quantity').innerText = quantity;
-    }
-
-    function addToCart() {
-      // You can add your addToCart logic here
-      alert(`Product added to cart. Quantity: ${quantity}`);
-    }
-  </script>
+  </main>
 </body>
 
 </html>

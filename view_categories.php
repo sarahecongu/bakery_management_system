@@ -43,7 +43,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     <div class="tabular-wrapper text-center">
       <div class="table-container">
         <div class="mb-3">
-          <img src="images/<?php echo $category->image; ?>" alt="<?php echo $category->name; ?>" class="w-50%">
+          <img src="images/<?php echo $category->image; ?>" alt="<?php echo $category->name; ?>" class="rounded" width="400" >
         </div>
         <div class="mb-3">
           <strong>Category Name:</strong> <?php echo $category->name; ?>

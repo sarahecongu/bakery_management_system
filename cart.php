@@ -39,6 +39,7 @@ if (isset($_POST['remove'])) {
 <html lang="en">
 
 <head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -189,7 +190,7 @@ if (isset($_POST['remove'])) {
       <?php
 
       $cartItemCount = $session->checkLoginStatus() ? count($cart_items) : count($_SESSION['cart']);
-      //  var_dump($cartItemCount);die;
+     
       
       foreach ($cartItemCount > 0 ? $session->checkLoginStatus() ? $cart_items : $_SESSION['cart'] : [] as $key => $data) {
         $childTable = 'cart_items';
@@ -201,9 +202,9 @@ if (isset($_POST['remove'])) {
           $product = $cart_item->getParentAttributesFromChild($childTable, $parentTable, $childId, $foreignKey);
         } else {
           $product = $products->find($childId);
-          // var_dump($product);die;
+         
         }
-        // var_dump($product);die;
+        
         ?>
         <tr class="item">
           <td>
@@ -223,19 +224,19 @@ if (isset($_POST['remove'])) {
             <?php echo $product->price; ?>
           </td>
           <td>
-            <button class="increment">+</button>
+            <button class="increment" data-id=''>+</button>
             <button class="quantity">
               <?php echo $session->checkLoginStatus() ? $data->quantity : $data['quantity']; ?>
             </button>
             <button class="decrement">-</button>
           </td>
           <td>
-            <?php echo $total = $session->checkLoginStatus() ? $data->quantity : $data['quantity'] * $product->price; ?>
+            <?php echo $total = $session->checkLoginStatus() ? $data->quantity  * $product->price: $data['quantity'] * $product->price; ?>
           </td>
           <td>
             <form action="cart.php" method="POST" class="d-inline-block">
               <button type="submit" id="remove" name="remove"
-                value="<?php echo $session->checkLoginStatus() ? $data->quantity : $data['product_id']; ?>"
+                value="<?php echo $session->checkLoginStatus() ? $data->id : $data['product_id']; ?>"
                 onclick="return confirm('Are you sure you want to delete cart item?')">
                 remove
               </button>
@@ -276,6 +277,25 @@ if (isset($_POST['remove'])) {
       const quantityElements = document.querySelectorAll(".quantity");
 
       incrementButtons.forEach((button, index) => {
+
+        $.ajax({
+                url: "action.php",
+                type: "post",
+                data: {
+                    add_to_cart: 1,
+                    product_id: id,
+                    product_name: name,
+                    product_image: image,
+                    product_price: price,
+                    quantity: 10
+                },
+                success: function (response) {
+                    // alert(response);
+                    $(".cart-counter").text(response);
+                    // Optionally, update a cart icon or counter
+                }
+            });
+
         button.addEventListener("click", function () {
           quantityElements[index].innerText = parseInt(quantityElements[index].innerText) + 1;
         });
@@ -302,6 +322,8 @@ if (isset($_POST['remove'])) {
         form.submit();
       });
     });
+
+    
 
   </script>
 

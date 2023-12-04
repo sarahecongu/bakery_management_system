@@ -1,93 +1,103 @@
+<style>
+ 
+ .carousel-caption {
+    /* background-color: rgba(0, 0, 0, 0.7); */
+    border-radius: 0 0 15px 15px;
+    padding: 20px;
+    margin-bottom: 300px;
+  }
 
-<div class="sp"></div>
-<div class="home" id="home">
-  <div class="slides-container">
-    <div class="slide active">
-      <div class="content">
-        <span>Have A slice</span>
-        <h3>Upto 50% off</h3>
-        <a href="" class="btn">Shop Now</a>
-      </div>
-      <div class="img">
-      <img src="images/cake1.jpg">
-      <div class="overlay"></div>
-      </div>
-    </div>
+  .carousel-caption h5 {
+    color: rgb(76,9,9);
+    font-size: 24px;
+    margin-bottom: 5px; 
+  }
 
-    <!-- two -->
-    <div class="slide">
-      <div class="content">
-        <span>Have A slice</span>
-        <h3>Upto 50% off</h3>
-        <a href="" class="btn">Shop Now</a>
-      </div>
-      <!-- image -->
-      <div class="img">
-        <img src="images/cake3.jpg"  alt="">
-        <div class="overlay"></div>
-      </div>
-    </div>
+  .carousel-caption p {
+    color: #000;
+    font-size: 16px;
+    margin: 0;
+  }
 
-    <!-- three -->
-    <div class="slide">
-      <div class="content">
-        <span>Have A slice</span>
-        <h3>Upto 50% off</h3>
-        <a href="" class="btn">Shop Now</a>
-      </div>
-      <!-- image -->
-      <div class="img">
-        <img src="images/cake5.jpg"  alt="">
-        <div class="overlay"></div>
-      </div>
-    </div>
+  /* Style the carousel controls */
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 5%;
+    font-size: 2rem;
+    color: #fff;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    border-radius: 50%;
+    padding: 10px;
+  }
 
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: #333;
+    border-radius: 50%;
+    padding: 10px;
+  }
+
+  /* Style the carousel indicators (dots) */
+  .carousel-indicators button {
+    background-color: #999;
+    border-radius: 50%;
+    margin: 0 5px;
+  }
+
+  .carousel-indicators .active {
+    background-color: #333;
+  }
+</style>
 
 
-    <!-- Navigation buttons -->
-  <div id="next-slide" class="fas fa-angle-right" onclick="plusSlides(1)"></div>
-  <div id="prev-slide" class="fas fa-angle-left" onclick="plusSlides(-1)"></div>
 
-  <!-- Dot navigation -->
-  <div style="text-align:center">
-    <span class="dot" onclick="currentSlide(1)"></span> 
-    <span class="dot" onclick="currentSlide(2)"></span> 
-    <span class="dot" onclick="currentSlide(3)"></span> 
+<!-- <div class="sp"></div> -->
+
+
+
+
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
-  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="images/cupcake.jpg" class=" w-100 align-items-center mt-2" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+        <a href="menu.php" class="btn">Shop Now</a>
 
-  
+      </div>
+    </div>
+    <div class="carousel-item w-100">
+      <img src="images/doughnuts.jpg" class="w-100 align-items-center roundeds  mt-2" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the second slide.</p>
+        <a href="menu.php" class="btn">Shop Now</a>
+
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="images/pizza.jpg" class="w-100 align-items-center rounded mt-2" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Some representative placeholder content for the third slide.</p>
+        <a href="menu.php" class="btn">Shop Now</a>
+
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
-
-<script>
-  let slideIndex = 1;
-  showSlides(slideIndex);
-
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
-
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
-
-  function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("slide");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) { slideIndex = 1 }    
-    if (n < 1) { slideIndex = slides.length }
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-    }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "flex";  
-    dots[slideIndex-1].className += " active";
-  }
-
-  setInterval(function() {
-    plusSlides(1);
-  }, 3000);
-</script>

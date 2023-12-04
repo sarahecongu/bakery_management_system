@@ -6,11 +6,11 @@ $users = new User;
 $cart = new Cart;
 $cart_items = new CartItem;
 
+
 /**
  * Cart Actions
  */
 if (isset($_POST['add_to_cart'])) {
-
     echo $cart->addToCart($cart_items);
     
 } elseif (isset($_GET['action'])) {
