@@ -50,4 +50,13 @@ class Helper{
         return number_format($number,0,'.',',');
     }
 
+    public static function sentenceCase(string $string){
+      $string =   str_replace('_',' ',$string);
+       return ucfirst($string);
+    }
+
+    public static function fullname($first_name , $last_name) {
+       return  Helper::sentenceCase($first_name) . ' '. Helper::sentenceCase($last_name); 
+    }
+
 }

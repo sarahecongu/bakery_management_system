@@ -36,12 +36,12 @@
                 </a>
             </li>
               <!-- categories -->
-              <!-- <li>
-                <a href="cake_category_table.php">
+              <li>
+                <a href="product_sub_categories.php">
                     <i class="fas fa-tags"></i>
-                    <span>Cake Categories</span>
+                    <span>Sub Categories</span>
                 </a>
-            </li> -->
+            </li>
             <!-- categories -->
             <!-- <li>
                             <a href="one_hour_cake_table.php">

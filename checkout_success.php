@@ -126,7 +126,7 @@ include('includes/core.php');
 
     <div class="home-link-container">
         <a href="menu.php" class="home-link">Continue Shopping</a>
-        <a href="order_details.php" class="view-order-details-button">View Order Details</a>
+        <a href="view_orders.php" class="view-order-details-button">View Orders</a>
     </div>
 </section>
 </body>

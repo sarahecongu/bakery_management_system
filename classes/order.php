@@ -2,10 +2,7 @@
 class Order extends Model{
     protected $table = 'orders';
     public $status;
-    public $total_amount;
     public $user_id;
-
-
 
     public function getLatestOrder($user_id)
     {
@@ -15,6 +12,12 @@ class Order extends Model{
         return $result->fetch(PDO::FETCH_OBJ);
     }
     
-   
+  
+  
+    public function getUser($user_id){
+        foreach ($this->where(['user_id' => $user_id]) as $order) {
+            return $order->id;
+        }
+    }
 
 }

@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <?php
 include('includes/core.php');
+$order = new Order;
+$order_items = new OrderItem;
+$grandTotal = 0;
+
+$order_details = $order->getRelated("order_items", $_GET['id'], 'order_id');
+$order = $order->find($_GET['id']);
+
+// var_dump($order_details);die;
+
 ?>
 <html lang="en">
 
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -14,12 +24,32 @@ include('includes/core.php');
     <link rel="stylesheet" href="./css/index.css">
     <title>Checkout Success</title>
     <style>
+          .quantity {
+        background-color: wheat;
+        box-shadow: 0 0.5rem 1rem rgba(134, 44, 44, 0.1);
+        color: #000;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 1rem;
+    }
+        #remove {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            border-color: red;
+            font-size: 1.4rem;
+        }
+
         .spa {
             min-height: 25vh;
         }
 
         th {
-            background-color: rgb(76, 9, 9);
+            /* background-color: rgb(76, 9, 9); */
             color: white;
             font-size: 15px;
         }
@@ -44,7 +74,7 @@ include('includes/core.php');
             padding: 12px;
             text-align: center;
             font-size: 12px;
-            border: 1px solid gray;
+            /* border: 1px solid gray; */
         }
 
         .order-details th {
@@ -126,54 +156,91 @@ include('includes/core.php');
 <body style="background:wheat">
     <?php include("navbar.php"); ?>
     <div class="spa"></div>
-   
 
-        <div class="order-details">
-            <h2 class="text-center">Your Order Details</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Order Number</th>
-                        <th>Status</th>
-                        <th>Quantity</th>
-                        <th>Date</th>
-                        <th>Payment Method</th>
-                        <th>Address</th>
-                        <th>Total Amount</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>123456</td>
-                        <td>November 27, 2023</td>
-                        <td>$50.00</td>
-                        <td>123456</td>
-                        <td>November 27, 2023</td>
-                        <td>$50.00</td>
-                        <td>123456</td>
-                        <td>November 27, 2023</td>
-                        <td>$50.00</td>
-                        <td><a href="cancel.php" class="view-order-details-button">Cancel</a></td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="my-4">
+        <h2 class='h2 fw-bold'>ORDER NO: #
+            <?php echo $order->track_no ?>
+        </h2>
+    </div>
+
+
+    <section class="order-details">
+
+        <table class="cart">
+            <!-- <h1>Your Shopping Cart</h1> -->
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+
+            </tr>
+            <?php
+
+            foreach ($order_details as $order_detail) {
+                $childTable = 'order_items';
+                $parentTable = 'products';
+                $foreignKey = 'product_id';
+                $childId = $order_detail->id;
+
+                $product = $order_items->getParentAttributesFromChild($childTable, $parentTable, $childId, $foreignKey);
+
+                ?>
+                <tr class="item">
+                    <td>
+                        <img src="<?php echo $product->image; ?>" style="width: 50px;" alt="<?php echo $product->name; ?>">
+                    </td>
+                    <td title="<?php echo $product->name; ?>">
+                        <?php
+
+                        echo substr($product->name, 0, 20);
+
+                        if (strlen($product->name) > 20) {
+                            echo '...';
+                        }
+                        ?>
+                    </td>
+                    <td>
+                        <?php echo $product->price; ?>
+                    </td>
+                    <td>
+                        <button class="quantity">
+                            <?php echo $order_detail->quantity ?>
+                        </button>
+                    </td>
+                    <td>
+                        <?php echo $total = $product->quantity * $product->price; ?>
+                    </td>
+
+                </tr>
+                <?php $grandTotal += $total;
+            }
+            ?>
+        </table>
+        <div class="total">
+            <h2>Grand Total:
+                <?php echo $grandTotal ?>
+            </h2>
         </div>
 
-        <div class="thank-you-message">
-            <p>Thank you for your purchase!</p>
-            <p>Your order has been successfully processed.</p>
-        </div>
 
-        <div class="home-link-container">
-            <a href="menu.php" class="home-link">Continue Shopping</a>
-        </div>
-    
-        <?php
-        include('footer.php');
-        ?>
+    </section>
+
+    <div class="home-link-container">
+        <a href="menu.php" class="home-link">Continue Shopping</a>
+        <form action="order_details.php" method="POST" class="d-inline-block">
+            <button type="submit" id="remove" name="remove" value="<?php echo $order_details ?>"
+                onclick="return confirm('Are you sure you want to Cancel Order?')">
+                Cancel
+            </button>
+        </form>
+    </div>
+
+
+    <?php
+    include('footer.php');
+    ?>
 </body>
 
 </html>

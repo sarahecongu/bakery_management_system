@@ -92,8 +92,8 @@
         </li>
           <li>
             <a class="dropdown-item" href="action.php?logout=1">
-                <i id="logout" class="fas fa-sign-out-alt .logout"> Logout</i>
-              
+                <i id="logout" class="fas fa-sign-out-alt .logout"></i>
+                Logout
             </a>
           </li>
         </ul>
@@ -115,9 +115,9 @@
       if (currentDate >= startDate && currentDate <= endDate) {
         var formattedStartDate = startDate.toDateString();
         var formattedEndDate = endDate.toDateString();
-        marqueeText.innerHTML = 'BLACK FRIDAY DEALS from ' + formattedStartDate + ' to ' + formattedEndDate;
+        marqueeText.innerHTML = '<img src="images/images.png" alt="">HOLIDAY SALE: ' + formattedStartDate + ' to ' + formattedEndDate;
       } else {
-        marqueeText.innerHTML = 'BLACK FRIDAY DEALS COMING SOON';
+        marqueeText.innerHTML = '<img src="images/images.png" alt="">HOLIDAY SALE COMING SOON';
       }
     }
     setInterval(updateMarqueeText, 1000);

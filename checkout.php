@@ -35,15 +35,45 @@ if (isset($_POST['place_order'])) {
     // TODO::Redirect to the order completed view, Display the Order number.
 
     header("Location: checkout_success.php");
-
-
-
-    // var_dump($cart);
-    // die;
 }
 
+$cart = new Cart;
+$cart_item = new CartItem;
+$products = new Product;
+$grandTotal = 0;
+// $carts = 0;
+try {
+  $cart_items = $cart->getRelated('cart_items', $cart->getUserCart($session->get('id')), 'cart_id');
+} catch (\Throwable $th) {
+  $cart_items = [];
+}
 
+// <!-- delete function -->
+if (isset($_POST['remove'])) {
+  $cart_id = $_POST['remove'];
+
+  if ($session->checkLoginStatus()) {
+    // If the user is logged in, remove the cart item from the database
+    $cart_item->delete($cart_id);
+  } else {
+    // If the user is not logged in, remove the cart item from the session
+    if (isset($_SESSION['cart'])) {
+      foreach ($_SESSION['cart'] as $key => $item) {
+        if ($item['product_id'] == $cart_id) {
+          unset($_SESSION['cart'][$key]);
+          break; // Stop iterating once the item is removed
+        }
+      }
+    }
+  }
+
+  header("Location: cart.php");
+  exit();
+}
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,64 +104,34 @@ if (isset($_POST['place_order'])) {
             display: flex;
             font-size: 1.5rem; 
         }
-
-
-        header {
-            color: white;
-            text-align: center;
-            padding: 10px;
-        }
-
         .container {
-            max-width: 1200px;
-            margin: 20px auto;
+            /* margin: 20px auto; */
             display: flex;
-            gap: 20px;
-            padding: 20px;
+            gap: 15px;
+            padding: 15px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
         .left-column {
             flex: 1;
         }
-
         .right-column {
             flex: 1;
-            margin-left: 35px;
+            /* margin-left: 35px; */
         }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
         form {
             display: grid;
             gap: 10px;
         }
-
         label {
            
             font-size: 1.5rem;
         }
-
         input,
         textarea,
         select {
-            width: 100%;
-            padding: 20px;
+            /* width: 100%; */
+            padding: 15px;
             border-radius: 10px;
             box-sizing: border-box;
             color: rgb(79, 9, 9);
@@ -150,6 +150,48 @@ if (isset($_POST['place_order'])) {
         img{
             border-radius: 10px;
         }
+        .cart {
+            width: 100%;
+            border-collapse: collapse;
+     
+
+    }
+
+    .cart td,
+    .cart th {
+      text-align: center;
+      padding: 5px;
+      font-size: 1.5rem;
+      background-color: wheat;
+    }
+    .cart img {
+      max-width: 100px;
+      border-radius: 1rem;
+    }
+    .total {
+      margin-top: 20px;
+      text-align: right;
+      font-size: 1.5rem;
+    }
+    .cart button {
+      background-color: wheat;
+      box-shadow: 0 0.5rem 1rem rgba(134, 44, 44, 0.1);
+      color: #000;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 1rem;
+    }
+    .increment{
+        width: 30%;
+    }
+    .decrement{
+        width: 30%;
+    }
+    .quantity{
+        width: 30%;
+    }
     </style>
     <title>Checkout Page</title>
 </head>
@@ -157,7 +199,6 @@ if (isset($_POST['place_order'])) {
 <body style="background:wheat">
     <?php include("navbar.php"); ?>
     <div class="spa"></div>
-
     <div class="container">
         <div class="left-column">
             <form action="checkout.php" method="post">
@@ -187,25 +228,132 @@ if (isset($_POST['place_order'])) {
 
                 <button type="submit" name="place_order" class="btn">Place Order</button>
             </form>
-             <!-- View Order Button -->
-        
         </div>
-
+<!-- cart -->
         <div class="right-column">
-            <h2>Order</h2>
-           
-                <div class="cart">
-                        <div class="cart-item">
-                            <img src="images/cake1.jpg" alt="Product Image">
-                            <div class="item-details">
-                                <h4>Red Velvet</h4>
-                                <p>shs 200,00</p>
-                                <p>1</p>
-                                <p>Total: shs 145000</p>
-                            </div>
-                        </div>
-                  
-                </div>
+            <h2>Your Cart</h2>
+  <div class="space"></div>
+  <section class="shopping_cart">
+    <table class="cart">
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+      </tr>
+      <?php
+      $cartItemCount = $session->checkLoginStatus() ? count($cart_items) : count($_SESSION['cart']);
+      foreach ($cartItemCount > 0 ? $session->checkLoginStatus() ? $cart_items : $_SESSION['cart'] : [] as $key => $data) {
+        $childTable = 'cart_items';
+        $parentTable = 'products';
+        $foreignKey = 'product_id';
+        $childId = $session->checkLoginStatus() ? $data->id : $data['product_id'];
+        if ($session->checkLoginStatus()) {
+          $product = $cart_item->getParentAttributesFromChild($childTable, $parentTable, $childId, $foreignKey);
+        } else {
+          $product = $products->find($childId);
+        }
+        ?>
+        <tr class="item">
+          <td>
+            <img src="<?php echo $product->image; ?>" style="width: 50px;" alt="<?php echo $product->name; ?>">
+          </td>
+          <td title="<?php echo $product->name; ?>">
+            <?php
+
+            echo substr($product->name, 0, 20);
+
+            if (strlen($product->name) > 20) {
+              echo '...';
+            }
+            ?>
+          </td>
+          <td>
+            <?php echo $product->price; ?>
+          </td>
+          <td>
+            <button class="increment" data-id=''>+</button>
+            <button class="quantity">
+              <?php echo $session->checkLoginStatus() ? $data->quantity : $data['quantity']; ?>
+            </button>
+            <button class="decrement">-</button>
+          </td>
+          <td>
+            <?php echo $total = $session->checkLoginStatus() ? $data->quantity  * $product->price: $data['quantity'] * $product->price; ?>
+          </td>
+        </tr>
+        <?php $grandTotal += $total;
+      }
+      ?>
+    </table>
+    <div class="total">
+      <h2>Grand Total:
+        <?php echo $grandTotal ?>
+      </h2>
+    </div>
+
+   
+
+  </section>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const incrementButtons = document.querySelectorAll(".increment");
+      const decrementButtons = document.querySelectorAll(".decrement");
+      const quantityElements = document.querySelectorAll(".quantity");
+
+      incrementButtons.forEach((button, index) => {
+
+        $.ajax({
+                url: "action.php",
+                type: "post",
+                data: {
+                    add_to_cart: 1,
+                    product_id: id,
+                    product_name: name,
+                    product_image: image,
+                    product_price: price,
+                    quantity: 10
+                },
+                success: function (response) {
+                    // alert(response);
+                    $(".cart-counter").text(response);
+                    // Optionally, update a cart icon or counter
+                }
+            });
+
+        button.addEventListener("click", function () {
+          quantityElements[index].innerText = parseInt(quantityElements[index].innerText) + 1;
+        });
+      });
+
+      decrementButtons.forEach((button, index) => {
+        button.addEventListener("click", function () {
+          const currentQuantity = parseInt(quantityElements[index].innerText);
+          if (currentQuantity > 1) {
+            quantityElements[index].innerText = currentQuantity - 1;
+          }
+        });
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Find the form and button elements
+      var form = document.getElementById("checkoutForm");
+      var checkoutButton = document.getElementById("checkoutButton");
+
+      // Add a click event listener to the button
+      checkoutButton.addEventListener("click", function () {
+        // Submit the form
+        form.submit();
+      });
+    });
+
+    
+
+  </script>
+
+
 
 
         </div>

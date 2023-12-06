@@ -3,7 +3,7 @@ class DatabaseConnection
 {
 	private $db_username = 'root';
 	private $db_password = '';
-	private $database = "bake_pal";
+	private $database = "bakers_pal";
 	protected $conn;
 
 	protected function connect_db()

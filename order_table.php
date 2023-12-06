@@ -122,8 +122,6 @@ include("partials/header.php");
         <th class="text-white" scope="col">status</th>
         <th class="text-white" scope="col">track no</th>
         <th class="text-white" scope="col">Payment Method</th>
-        <th class="text-white" scope="col">Address</th>
-        <th class="text-white" scope="col">Total Amount</th>
         <th class="text-white" scope="col">Created At</th>
         <th class="text-white" scope="col">Updated At</th>
         <th class="text-white" scope="col">Actions</th>
@@ -141,15 +139,13 @@ include("partials/header.php");
           </td>
                   <td>
             <?php
-            $formattedFirstName = ucfirst($user_details->first_name);
-            $formattedLastName = ucfirst($user_details->last_name);
-            echo $formattedFirstName . ' ' . $formattedLastName;
+            echo Helper::fullname($user_details->first_name ,$user_details->last_name );
             ?>
         </td>
 
 
           <td>
-            <?php echo $order->status; ?>
+            <?php echo Helper::sentenceCase($order->status); ?>
           </td>
         
           <td>
@@ -158,13 +154,7 @@ include("partials/header.php");
           <td>
             <?php echo $order->payment_method; ?>
           </td>
-          <td>
-            <?php echo $order->address; ?>
-          </td>
-          
-          <td>
-            <?php echo $order->total_amount; ?>
-          </td>
+         
           <td>
             <?php  echo Helper::date($order->created_at); ?>
           </td>
@@ -184,7 +174,7 @@ include("partials/header.php");
             </form>
           </td>
         </tr>
-      <?php endforeach; ?>
+        <?php endforeach; ?>
     </tbody>
 
   </table>

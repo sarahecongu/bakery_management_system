@@ -10,12 +10,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
 if (isset($_POST['order_update'])) {
   $data = [
-    'track_no' => $_POST['track_no'],
-    'user_id'=> $_POST['user_id'],
-    'status'=> $_POST['status'],
-    'payment_method'=> $_POST['payment_method'],
-    'address'=> $_POST['address'],
-    'total_amount'=> $_POST['total_amount'],
+    'status' => $_POST['status'],
   ];
 
   try {
@@ -58,9 +53,10 @@ if (isset($_POST['order_update'])) {
       </div>
       <div class="user-info">
         <div class="search-box">
-      
+
         </div>
-        <img src="https://lh3.googleusercontent.com/a/ACg8ocKAKz4uG8EXeKwzlQ7lju4lwoVqXWCUqX3Oi6WVexokeDk=s432-c-no" alt="pp">
+        <img src="https://lh3.googleusercontent.com/a/ACg8ocKAKz4uG8EXeKwzlQ7lju4lwoVqXWCUqX3Oi6WVexokeDk=s432-c-no"
+          alt="pp">
         <li>
           <a href="login.php" class="logout-link">Logout</a>
         </li>
@@ -75,16 +71,19 @@ if (isset($_POST['order_update'])) {
             <h2>Edit order</h2>
             <form action="update_order.php" method="POST" enctype="multipart/form-data">
               <input type="hidden" name="id" value="<?php echo $order->id; ?>">
-            
+
+
               <div class="mb-3">
-              <select class="form-select" name="status">
-                    <option value="" selected disabled>Select a status</option>
-                    <?php foreach ($orders->all() as $cat): ?>
-                    <option value="<?php echo $cat->id; ?>"><?php echo $cat->status; ?></option>
-                    <?php endforeach; ?>
+                <select class="form-select" name="status">
+                  <option value='pending' <?php $order->status == 'pending' ? "selected" : ''; ?>>Pending</option>
+                  <option value='accepted' <?php $order->status == 'accepted' ? "selected" : ''; ?>>Accepted</option>
+                  <option value='rejected' <?php $order->status == 'rejected' ? "selected" : ''; ?>>Rejected</option>
+                  <option value='in_delivery' <?php $order->status == 'in_delivery' ? "selected" : ''; ?>>In delivery</option>
+                  <option value='delivered' <?php $order->status == 'delivered' ? "selected" : ''; ?>>Delivered</option>
+                  <option value='canceled' <?php $order->status == 'canceled' ? "selected" : ''; ?>>Canceled</option>
                 </select>
               </div>
-             
+
               <div class="modal-footer">
                 <a href="order_table.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
                 <button type="submit" class="bt" name="order_update">Update order</button>

@@ -1,11 +1,10 @@
 <?php
 include('includes/core.php');
-
-// var_dump($_SESSION['cart']);
 $cart = new Cart;
 $cart_item = new CartItem;
 $products = new Product;
 $grandTotal = 0;
+// $carts = 0;
 try {
   $cart_items = $cart->getRelated('cart_items', $cart->getUserCart($session->get('id')), 'cart_id');
 } catch (\Throwable $th) {
@@ -37,7 +36,6 @@ if (isset($_POST['remove'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <meta charset="UTF-8">
@@ -175,6 +173,7 @@ if (isset($_POST['remove'])) {
   ?>
 
   <div class="space"></div>
+  
   <section class="shopping_cart">
 
     <table class="cart">
@@ -188,9 +187,10 @@ if (isset($_POST['remove'])) {
         <th>Actions</th>
       </tr>
       <?php
-
+ if(isset($_SESSION['cart']) || $session->checkLoginStatus())
       $cartItemCount = $session->checkLoginStatus() ? count($cart_items) : count($_SESSION['cart']);
-     
+     else
+     $cartItemCount = 0;
       
       foreach ($cartItemCount > 0 ? $session->checkLoginStatus() ? $cart_items : $_SESSION['cart'] : [] as $key => $data) {
         $childTable = 'cart_items';
@@ -252,6 +252,7 @@ if (isset($_POST['remove'])) {
         <?php echo $grandTotal ?>
       </h2>
     </div>
+
     <div class="buttons">
       <a href="menu.php" class="continue-shopping-button">Continue Shopping</a>
       <?php if ($session->checkLoginStatus()): ?>
@@ -269,6 +270,7 @@ if (isset($_POST['remove'])) {
 
 
     </div>
+
   </section>
   <script>
     document.addEventListener("DOMContentLoaded", function () {

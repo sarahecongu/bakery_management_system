@@ -3,16 +3,13 @@ include("includes/core.php");
 $orders = new Order();
 $users = new User();
 
-try {
-    $user_orders = $orders->getRelated('users', $orders->getUser($session->get('id')), 'user_id');
-  } catch (\Throwable $th) {
-    $user_orders = [];
-  }
+
+// $orders->where(['user_id' => $session->get('id')]);
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <meta charset="UTF-8">
@@ -23,6 +20,7 @@ try {
   <link rel="stylesheet" href="./css/index.css">
   <title>Order Page</title>
   <style> 
+  
        .ma{
         min-height:15vh;
        }
@@ -34,7 +32,7 @@ try {
        }
        
         table, th, td {
-            border: 1px solid #ddd;
+            /* border: 1px solid #ddd; */
         }
         th, td {
             padding: 12px;
@@ -42,8 +40,8 @@ try {
             font-size: 12px;
         }
         th {
-            background-color: rgb(76,9,9);
-            color: white;
+            /* background-color: rgb(76,9,9); */
+            color: black;
             font-size: 15px;
         }
         .view-button {
@@ -69,29 +67,30 @@ try {
     <table class="order">
       <thead>
         <tr>
-          <th>Order ID</th>
-          <th>Product</th>
-          <th>Quantity</th>
-          <th>Total Price</th>
+          <th>Order No. </th>
+          <th>Payment Method</th>
           <th>Status</th>
-          <th>Delivery Date</th>
+          <th>Order Date</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($user_orders as $order) : ?>
-          <tr>
-            <td><?php echo $order->id; ?></td>
-            <td><?php echo $order->name; ?></td>
-            <td><?php echo $order->quantity; ?></td>
-            <td><?php echo $order->price; ?></td>
+      <?php foreach ($orders->where(['user_id' => $session->get('id')]) as $order) : ?>
+    <tr>
+        <?php if ($order): ?>
+            <td><?php echo $order->track_no; ?></td>
+            <td><?php echo $order->payment_method; ?></td>
             <td><?php echo $order->status; ?></td>
-            <td><?php echo $order->order_date; ?></td>
+            <td><?php echo Helper::date($order->created_at); ?></td>
             <td>
-              <a href="order_details.php"><button class="view-button">View Details</button></a>
+                <a href="order_details.php?id=<?php echo $order->id ?>"><button class="view-button">View Details</button></a>
             </td>
-          </tr>
-        <?php endforeach; ?>
+        <?php else: ?>
+            <!-- <td colspan="7">No orders found.</td> -->
+        <?php endif; ?>
+    </tr>
+<?php endforeach; ?>
+
       </tbody>
     </table>
   </section>
