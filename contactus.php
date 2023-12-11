@@ -1,6 +1,32 @@
 <?php require_once('includes/core.php'); 
 $contactUs = new ContactUs();
 ?>
+<?php
+
+$errors = [];
+
+if (!empty($_POST)) {
+   $name = $_POST['name'];
+   $email = $_POST['email'];
+   $subject = $_POST['subject'];
+   $message = $_POST['message'];
+
+  
+   if (empty($name)) {
+       $errors[] = 'Name is empty';
+   }
+
+   if (empty($email)) {
+       $errors[] = 'Email is empty';
+   } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+       $errors[] = 'Email is invalid';
+   }
+
+   if (empty($message)) {
+       $errors[] = 'Message is empty';
+   }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -150,18 +176,64 @@ $contactUs = new ContactUs();
         </div>
         <div class="contact-form">
             <h2>Contact Us</h2>
-            <form action="" class="contact" method="POST">
-                <input type="text" name="username" id="userName" class="text-box " placeholder="Enter Username......">
+            <form action="contactus.php" id="contact" method="POST">
+            <?php
+                if (!empty($errors)) {
+                $allErrors = join('<br/>', $errors);
+                $errorMessage = "<p style='color: red;'>{$allErrors}</p>";
+                }
+                ?>
+                <input type="text" name="name" id="userName" class="text-box " placeholder="Enter Username......">
                 <input type="email" name="email" id="userEmail" class="text-box " placeholder="Enter Email.......">
                 <input type="subject" name="subject" id="subject" class="text-box " placeholder="Enter Subject.......">
                 <textarea name="message" id="message" rows="5" cols="80" class="" placeholder="Your Message"></textarea>
                
-                <input type="submit" name="submit" class="send-btn " value="Send">
+                <input type="submit" class="send-btn " value="Send">
             </form>
         </div>
     </div>
     
-   >
+    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+    <script>
+   const constraints = {
+       name: {
+           presence: { allowEmpty: false }
+       },
+       email: {
+           presence: { allowEmpty: false },
+           email: true
+       },
+       message: {
+           presence: { allowEmpty: false }
+       }
+       subject: {
+           presence: { allowEmpty: false }
+       }
+   };
+
+   const form = document.getElementById('contact');
+
+   form.addEventListener('submit', function (event) {
+     const formValues = {
+         name: form.elements.name.value,
+         email: form.elements.email.value,
+         subject: form.elements.subject.value,
+         message: form.elements.message.value
+     };
+
+     const errors = validate(formValues, constraints);
+
+     if (errors) {
+       event.preventDefault();
+       const errorMessage = Object
+           .values(errors)
+           .map(function (fieldValues) { return fieldValues.join(', ')})
+           .join("\n");
+
+       alert(errorMessage);
+     }
+   }, false);
+</script>
 
 
 

@@ -19,7 +19,7 @@ $about_us = new AboutUs;
         min-height: 15vh;
     }
     p{
-        font-size: 1.5rem;
+        font-size: 2.5rem;
         padding-top: 1.5rem;
     }
   </style>
@@ -43,18 +43,26 @@ $firstAboutUs = reset($about_us_data);
     </div>
 </section>
 
-<section class="company-info">
+<!-- <section class="company-info">
     <?php foreach (array_slice($about_us_data, 1) as $aboutus): ?>
         <div class="info-box">
-            <h2><?php echo $aboutus->title; ?></h2>
-            <div class="image">
-                <img src="images/<?php echo $aboutus->image; ?>" alt="Customers Image">
-                <h2 id="branches-count"><?php echo $aboutus->total; ?></h2>
+            <h2><?php 
+            // echo $aboutus->title; 
+            ?></h2>
+            <div class="image"  class="w-100">
+                <img src="images/<?php 
+                // echo $aboutus->image; 
+                ?>" alt="Customers Image">
+                <h2 id="branches-count"><?php
+                //  echo $aboutus->total;
+                  ?></h2>
             </div>
-            <p><?php echo $aboutus->description; ?></p>
+            <p><?php
+            //  echo $aboutus->description;
+              ?></p>
         </div>
     <?php endforeach; ?>
-</section>
+</section> -->
 
 <?php include("footer.php"); ?>
 

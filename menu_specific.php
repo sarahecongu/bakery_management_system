@@ -10,7 +10,7 @@ $product_categories = new Category;
 if (isset($_GET['sub_category_id']))
   $products = $products->where(['product_sub_category_id' => $_GET['sub_category_id']]);
 else
-  // $products = $products->where(['product_category_id'=> $_GET['category_id']]);
+  // $products = $products->where(['product_category_id'=> $_GET['category_id']]
   $products = $products->getProductsByCategory($_GET['category_id'])
     ?>
 
@@ -66,13 +66,13 @@ include("navbar.php");
               <i class="far fa-star"></i>
             </div>
             <span class="price">shs
-              <?php echo Helper::formatNumber($product->price); ?>
+              <?php echo $product->price; ?>
             </span>
 
 
             <button class="add_cart" data-id="<?php echo $product->id; ?>" data-name="<?php echo $product->name; ?>"
-              data-image="<?php echo $product->image; ?>" data-price="<?php echo Helper::formatNumber($product->price); ?>
-">
+              data-image="<?php echo $product->image; ?>"  >
+
               Add to Cart
             </button>
           </div>

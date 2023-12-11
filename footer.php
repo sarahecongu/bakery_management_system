@@ -31,10 +31,10 @@
 
     <div class="box">
       <h3>Follow Us</h3>
-      <a href=""><i class="fab fa-facebook"></i>Facebook</a>
+      <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i>Facebook</a>
       <a href="https://twitter.com/"><i class="fab fa-twitter"></i>Twitter</a>
-      <a href=""><i class="fab fa-instagram"></i>Instagram</a>
-      <a href=""><i class="fab fa-pinterest"></i>Pinterest</a>
+      <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i>Instagram</a>
+      <a href="https://www.pinterest.com/"><i class="fab fa-pinterest"></i>Pinterest</a>
       <a href="https://web.whatsapp.com/"><i class="fab fa-whatsapp"></i>Whatsapp</a>
     </div>
 

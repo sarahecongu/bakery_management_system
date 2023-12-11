@@ -112,6 +112,13 @@
                     <span>Cart Items</span>
                 </a>
             </li>
+            <!-- checout -->
+            <li>
+                <a href="checkout_table.php">
+                    <i class="fas fa-user"></i>
+                    <span>Checkout</span>
+                </a>
+            </li>
             <!-- recipes -->
             <li>
                 <a href="recipes.php">

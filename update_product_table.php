@@ -2,7 +2,7 @@
 include("includes/core.php");
 $products = new Product();
 
-$categories = new Category;
+$product_category = new ProductSubCategory;
 $health_benefits = new HealthBenefit;
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
@@ -15,7 +15,7 @@ if (isset($_POST['product_update'])) {
     'name' => $_POST['name'],
     'price' => $_POST['price'],
     'quantity' => $_POST['quantity'],
-    'category_id' => $_POST['category_id'],
+    'product_sub_category_id' => $_POST['product_sub_category_id'],
     'health_benefit_id' => $_POST['health_benefit_id']
   ];
 
@@ -86,7 +86,7 @@ if (isset($_POST['product_update'])) {
               <input type="hidden" name="id" value="<?php echo $product->id; ?>">
               <div class="mb-3">
                 <label class="form-label">Image</label>
-                <input type="file" class="form-control" name="image" placeholder="Upload image">
+                <input type="file" class="form-control" name="image" placeholder="Upload image" value="<?php echo $product->image; ?>">
               </div>
               <div class="mb-3">
                 <label class="form-label">Name</label>
@@ -104,10 +104,10 @@ if (isset($_POST['product_update'])) {
                   value="<?php echo $product->quantity; ?>">
               </div>
               <div class="mb-3">
-                <label for="category_id">Category:</label>
-                <select id="category_id" name="category_id">
-                  <?php foreach ($categories->all() as $data): ?>
-                    <option value="<?php echo $data->id ?>" <?php if ($data->id == $product->category_id) echo "selected"; ?>>
+                <label for="product_sub_category_id">Category:</label>
+                <select  name="product_sub_category_id">
+                  <?php foreach ($product_category->all() as $data): ?>
+                    <option value="<?php echo $data->id ?>" <?php if ($data->id == $product->product_sub_category_id) echo "selected"; ?>>
                       <?php echo $data->name ?>
                     </option>
                   <?php endforeach ?>

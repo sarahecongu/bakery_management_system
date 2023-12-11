@@ -1,121 +1,94 @@
+<?php
+include('includes/core.php');
+?>
 <!DOCTYPE html>
 <html>
-<?php
-require_once('includes/core.php');
-$services = new Service;
-?>
-
 <head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Our Services</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/index.css">
+  <title>Menu Page</title>
+</head>
     <style>
-        .spa {
-            min-height: 25vh;
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 2rem;
-        }
-
+        /* Add your CSS styles here */
         .services-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            background: wheat;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+            padding: 30px;
         }
-
         .service-card {
-            width: calc(33.33% - 20px);
-            /* Adjust the width to fit three cards in a row with spacing */
-            /* margin: 10px; */
+            background-color: wheat;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             text-align: center;
-            position: relative;
-            margin-top: 25px;
         }
-
-        .service-card img {
-            /* width: 100%; */
-            margin-top: 2rem;
-            /* height: auto; */
-            object-fit: cover;
-            max-height: 45vh
-        }
-
-        .service-card hr,
-        .service-card p {
-            margin: 5px 0;
-            font-size: 1.2rem;
-
-        }
-
-        h3 {
-            font-size: 1.5rem;
-
-        }
-
-        h2 {
-            background: wheat;
-            color: rgb(76, 9, 9);
-
-        }
-
-        @media (width < 900px) {
-            .services-container {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-            .service-card img {
-            width: 100%;
-            margin-top: 2rem;
+        .service-image {
+            max-width: 100%;
             height: auto;
-            object-fit: cover;
-            max-height: 200px;
+            border-radius: 50px;
         }
+        .spaced{
+            background: white;
+            height: 15vh;
         }
+        h2{
+            font-size: 30px;
+            text-align: center;
+            color:rgb(76, 9, 9);
 
-        @media (width < 600px) {
-            .services-container {
-                grid-template-columns: repeat(1, 1fr);
-            }
-            .service-card img {
-            width: 100%;
-            margin-top: 2rem;
-            height: auto;
-            object-fit: cover;
-            max-height: 200px;
         }
+        p{
+            font-size: 15px;
         }
     </style>
 </head>
-
 <body>
+    
 
-    <?php include("navbar.php"); ?>
-    <div class="spa"></div>
-    <!-- <h2>OUR SERVICES</h2> -->
-    <section class="services-container">
-        <?php foreach ($services->all() as $service): ?>
-            <div class="service-card">
-                <img src="images/<?php echo $service->image; ?>" alt="user" class="w-100"/>
-                <hr>
-                <h3>
-                    <?php echo $service->name; ?>
-                </h3>
-                <p class="name">
-                    <?php echo $service->description; ?>
-                </p>
-            </div>
-        <?php endforeach; ?>
-    </section>
+    <?php
+    include("navbar.php");
+    ?>
 
-    <?php include("footer.php"); ?>
+    
+
+
+    <div class="spaced"></div>
+        <h2>Our Services</h2>
+        <section class="services-container">
+            
+            <?php
+            // Sample array of services with information and images
+            $services = [
+                ["Delivery Services", "Door to Door Derlivery.We do 24 hour delivery of orders to wherever you want.", "images/deliveryman.png"],
+                ["Cupcakes,all pastries", "Delicious and decorative pastries such as cupcakes for birthdays and events.", "images/cupcake.jpg"],
+                ["Cakes For All Occassions", "A selection of sweet and savory cakes to satisfy your cravings.", "images/chris.jpg"],
+                ["Customer Orders", "We welcome customer orders to fulfill your unique bakery needs.", "images/customers.png"],
+        
+            ];
+
+            // Loop to display service cards with images
+            foreach ($services as $service) {
+                echo '<div class="service-card">';
+                echo '<img class="service-image w-50" src="' . $service[2] . '" alt="' . $service[0] . '">';
+                echo '<h2>' . $service[0] . '</h2>';
+                echo '<p>' . $service[1] . '</p>';
+                echo '</div>';
+            }
+            ?>
+        </section>
+    
+
+    <?php
+ include("footer.php");
+ ?>
 </body>
-
 </html>

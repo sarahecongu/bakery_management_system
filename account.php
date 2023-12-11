@@ -1,6 +1,39 @@
 <?php
 include("includes/core.php");
-$user_details = new User();
+$user_details = new User;
+
+
+if(isset($_GET['id']) && !empty($_GET['id'])) {
+  $user_id = $_GET['id'];
+  $user_detail = $user_details->find($user_id); 
+ 
+}
+if (isset($_POST['update_account'])) {
+    $data = [
+        'first_name' => $_POST['first_name'],
+        'last_name' => $_POST['last_name'], 
+        'email' => $_POST['email'], 
+        'tel' => $_POST['tel'], 
+        'address' => $_POST['address'], 
+
+        
+    ];
+   
+
+    if($user_details->update($_POST['id'], $data)){
+    Helper::statusMessage('success','user_detail updated sucessfully');
+    }
+    else {
+      Helper::statusMessage('success','user_detail failed to update');
+        
+      }
+      header("Location: account.php");
+      exit();
+    };
+  
+    
+  
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -86,9 +119,11 @@ $user_details = new User();
 
     <section class="container">
         <h2>My Account Details</h2>
-        <form action="update_account.php" method="post">
+        <form action="account.php" method="post">
+        <input type="hidden" name="id" value="<?php echo $user_details->id?>">
         <fieldset>
         <legend>User Information:</legend>
+    
         <div class="flex-row">
           <div>
             <label for="first_name">First Name:</label>
@@ -102,16 +137,16 @@ $user_details = new User();
               required>
           </div>
         </div>
-        <label for="email">Address:</label>
-        <input type="email" id="email" name="address" value="<?php echo $user_details->address; ?>" required>
+        <label for="text">Address:</label>
+        <input type="text" name="address" value="<?php echo $user_details->address; ?>" required>
       </fieldset>
 
       <fieldset>
         <legend>Contact Information:</legend>
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" value="<?php echo $user_details->email; ?>" required>
-        <label for="email">Phone No:</label>
-        <input type="email" id="email" name="tel" value="<?php echo $user_details->tel; ?>" required>
+        <label for="tel">Phone No:</label>
+        <input type="tel"  name="tel" value="<?php echo $user_details->tel; ?>" required>
       </fieldset>
 
 

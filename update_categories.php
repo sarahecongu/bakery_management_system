@@ -1,6 +1,6 @@
 <?php
 include("includes/core.php");
-$categories = new Category();
+$categories = new Category;
 
 if(isset($_GET['id']) && !empty($_GET['id'])) {
   $category_id = $_GET['id'];

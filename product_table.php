@@ -209,6 +209,9 @@ include("partials/header.php");
           <td>
             <?php echo $product->id; ?>
           </td>
+
+
+          </td>
           <td style="width:15%">
             <img src="<?php echo $product->image; ?>" alt="dp" class="w-50 h-50 rounded-circle">
 

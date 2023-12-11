@@ -3,6 +3,7 @@ class User extends Model
 {
     protected $table = "users";
     public $first_name;
+    public $id;
     public $last_name;
     public $email;
     public $user_type_id;

@@ -30,6 +30,7 @@
   </div>
   <a href="" class="logo">
     BAKE PAL
+    <!-- <img src="images/log.png" class="w-50" alt=""> -->
   </a>
   <nav class="navbar">
     <a href="index.php">Home</a>

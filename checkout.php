@@ -138,11 +138,11 @@ if (isset($_POST['remove'])) {
     input,
     textarea,
     select {
-      /* width: 100%; */
-      padding: 15px;
+      padding: 10px;
       border-radius: 10px;
       box-sizing: border-box;
       color: rgb(79, 9, 9);
+      font-size: 1.5rem;
     }
 
     button {
@@ -196,17 +196,8 @@ if (isset($_POST['remove'])) {
       cursor: pointer;
       margin-bottom: 1rem;
     }
-
-    .increment {
-      width: 30%;
-    }
-
-    .decrement {
-      width: 30%;
-    }
-
     .quantity {
-      width: 30%;
+      width: 50%;
     }
   </style>
   <title>Checkout Page</title>
@@ -237,9 +228,8 @@ if (isset($_POST['remove'])) {
         <h2>Payment Information</h2>
         <label for="payment-method">Payment Method:</label>
         <select id="payment-method" name="payment-method" required>
-          <option value="mobile-money">50% Initial</option>
-          <option value="mobile-money">Mobile Money</option>
-          <option value="cash">Cash</option>
+          <option value="mobile-money">50% After Order Placement</option>
+          <option value="cash">Cash On Delivery</option>
         </select>
 
         <button type="submit" name="place_order" class="btn">Place Order</button>
@@ -290,11 +280,11 @@ if (isset($_POST['remove'])) {
                 <?php echo $product->price; ?>
               </td>
               <td>
-                <button class="increment add_cart" data-id="<?php echo $session->checkLoginStatus() ? $data->quantity : $data['quantity'];  ?>">+</button>
+            
                 <button class="quantity">
                   <?php echo $session->checkLoginStatus() ? $data->quantity : $data['quantity']; ?>
                 </button>
-                <button class="decrement">-</button>
+               
               </td>
               <td>
                 <?php echo $total = $session->checkLoginStatus() ? $data->quantity * $product->price : $data['quantity'] * $product->price; ?>
@@ -313,63 +303,6 @@ if (isset($_POST['remove'])) {
 
 
       </section>
-
-      <script>
-        // document.addEventListener("DOMContentLoaded", function () {
-        //   const incrementButtons = document.querySelectorAll(".increment");
-        //   const decrementButtons = document.querySelectorAll(".decrement");
-        //   const quantityElements = document.querySelectorAll(".quantity");
-
-        //   incrementButtons.forEach((button, index) => {
-
-        //     $.ajax({
-        //       url: "action.php",
-        //       type: "post",
-        //       data: {
-        //         add_to_cart: 1,
-        //         product_id: id,
-        //         product_name: name,
-        //         product_image: image,
-        //         product_price: price,
-        //         quantity: 10
-        //       },
-        //       success: function (response) {
-        //         // alert(response);
-        //         $(".cart-counter").text(response);
-        //         // Optionally, update a cart icon or counter
-        //       }
-        //     });
-
-        //     button.addEventListener("click", function () {
-        //       quantityElements[index].innerText = parseInt(quantityElements[index].innerText) + 1;
-        //     });
-        //   });
-
-        //   decrementButtons.forEach((button, index) => {
-        //     button.addEventListener("click", function () {
-        //       const currentQuantity = parseInt(quantityElements[index].innerText);
-        //       if (currentQuantity > 1) {
-        //         quantityElements[index].innerText = currentQuantity - 1;
-        //       }
-        //     });
-        //   });
-        // });
-
-        document.addEventListener("DOMContentLoaded", function () {
-          // Find the form and button elements
-          var form = document.getElementById("checkoutForm");
-          var checkoutButton = document.getElementById("checkoutButton");
-
-          // Add a click event listener to the button
-          checkoutButton.addEventListener("click", function () {
-            // Submit the form
-            form.submit();
-          });
-        });
-
-
-
-      </script>
 
 
     </div>
