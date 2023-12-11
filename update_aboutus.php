@@ -1,15 +1,20 @@
 <?php
 include("includes/core.php");
-$categories = new Category();
+$about = new  AboutUs;
+
 
 if(isset($_GET['id']) && !empty($_GET['id'])) {
-  $category_id = $_GET['id'];
-  $category = $categories->find($category_id); 
+  $aboutus_id = $_GET['id'];
+  $about_us = $about->find($aboutus_id); 
+  
  
 }
-if (isset($_POST['update_category'])) {
+if (isset($_POST['update_about_us'])) {
     $data = [
-        'name' => $_POST['name'] 
+        'title' => $_POST['title'] ,
+        'description' => $_POST['description'] ,
+        'total' => $_POST['total'] 
+
         
     ];
     if(isset($_FILES['image']) && $_FILES['image']['error'] == 0){
@@ -19,14 +24,14 @@ if (isset($_POST['update_category'])) {
         $data['image'] = $image_name;
     }
 
-    if($categories->update($_POST['id'], $data)){
-    Helper::statusMessage('success','category updated sucessfully');
+    if($about->update($_POST['id'], $data)){
+    Helper::statusMessage('success','about_us updated sucessfully');
     }
     else {
-      Helper::statusMessage('success','category failed to update');
+      Helper::statusMessage('success','about_us failed to update');
         
       }
-      header("Location: categories.php");
+      header("Location: about.php");
       exit();
     };
   
@@ -78,22 +83,31 @@ if (isset($_POST['update_category'])) {
   <div class="table-container">
   <div class="col-md-9 ml-sm-auto col-md-10 px-md-4">
 <div class="container mt-5">
-    <h2>Edit Category</h2>
-                <form action="update_categories.php" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="id" value="<?php echo $category->id?>">
+    <h2>Edit <h2>
+                <form action="update_aboutus.php" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<?php echo $about_us->id;?>">
                     <div class="mb-3">
                         <label class="form-label">Image</label>
-                        <input type="file" class="form-control" name="image" placeholder="Enter image"  value="<?php echo $category->image; ?>">
+                        <input type="file" class="form-control" name="image" placeholder="Enter image"  value="<?php echo $about_us->image; ?>">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="Category name"
-                            value="<?= $category->name ?>">
+                        <input type="text" class="form-control" name="title" placeholder="about_us name"
+                            value="<?= $about_us->title ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <input type="text" class="form-control" name="description" placeholder="Description"
+                            value="<?= $about_us->description ?>">
+                    </div><div class="mb-3">
+                        <label class="form-label">Total</label>
+                        <input type="number" class="form-control" name="total" placeholder="Total"
+                            value="<?= $about_us->total ?>">
                     </div>
                     
                     <div class="modal-footer">
-                    <a href="categories.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
-                        <button type="submit" class="bt" name ="update_category">Update Category</button>
+                    <a href="aboutus_table.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+                        <button type="submit" class="bt" name ="update_about_us">Update about_us</button>
                     </div>
                 </form>
 </div>

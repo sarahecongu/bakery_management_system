@@ -177,7 +177,7 @@
             </li>
             <!-- health benefits -->
             <li>
-                <a href="health_benefits.php">
+                <a href="health_benefit.php">
                     <i class="fas fa-heart"></i>
                     <span>Health Benefits</span>
                 </a>

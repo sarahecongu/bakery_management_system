@@ -10,7 +10,7 @@ $category = new Category;
 if (isset($_POST['add_product_category'])) {
   $data = [
     'name' => $_POST['name'],
-    'product_product_category_id'=> $_POST['product_category_id'],
+    'product_category_id'=> $_POST['product_category_id'],
 
   ];
   if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
@@ -35,8 +35,8 @@ if (isset($_POST['add_product_category'])) {
 }
 // Delete
 if (isset($_POST['product_sub_delete'])) {
-  $product_category_id = $_POST['product_sub_delete'];
-  if($product_sub_categories->delete($product_category_id)){
+  $product_sub_category_id = $_POST['product_sub_delete'];
+  if($product_sub_categories->delete($product_sub_category_id)){
     
     Helper::statusMessage('success','Product Deleted');
   }else{
@@ -128,7 +128,7 @@ include("partials/header.php");
             </div>
               <!-- price -->
               <div class="mb-3">
-              <select class="form-select" name="category_id">
+              <select class="form-select" name="product_category_id">
                     <option value="" selected disabled>Select a Category</option>
                     <?php foreach ($category->all() as $cat): ?>
                     <option value="<?php echo $cat->id; ?>"><?php echo $cat->name; ?></option>
@@ -166,6 +166,7 @@ include("partials/header.php");
     <tbody>
       <?php foreach ($searchedProduct_sub_category as $product): 
                 $category_details = $category->getParentAttributesFromChild('product_sub_categories', 'product_categories', $product->id, 'product_category_id');
+                
         ?>
 
         <tr>

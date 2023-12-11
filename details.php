@@ -1,11 +1,20 @@
 <?php
 include("includes/core.php");
+
+$products = new Product;
+$product = $products->find($_GET['id']);
+$health_benefits = new HealthBenefit;
+
+$recipe = $products->getRecipy($_GET['id']);
+$health_details = $health_benefits->getParentAttributesFromChild('products', 'health_benefits', $_GET['id'], 'health_benefit_id');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -29,29 +38,30 @@ include("includes/core.php");
       flex-wrap: wrap;
       justify-content: space-between;
       margin-right: 10px;
-      
+
     }
 
-  #product-image {
-  margin-top: 15px;
-  flex: 1;
-  width: 100%;
-  margin-bottom: 1rem;
-  margin-left: -10px;
-  margin-right: 70px; /* Add margin to the right */
-}
-
-#product-image img {
-  width: 100%;
-  height: 80%;
-  border-radius: 1rem;
-}
-
-    .product-description {
-    margin-top: 15px;
+    #product-image {
+      margin-top: 15px;
       flex: 1;
       width: 100%;
-      
+      margin-bottom: 1rem;
+      margin-left: -10px;
+      margin-right: 70px;
+      /* Add margin to the right */
+    }
+
+    #product-image img {
+      width: 100%;
+      height: 80%;
+      border-radius: 1rem;
+    }
+
+    .product-description {
+      margin-top: 15px;
+      flex: 1;
+      width: 100%;
+
     }
 
     .product-title {
@@ -83,7 +93,7 @@ include("includes/core.php");
       padding: 5px 10px;
       border-radius: 5px;
       cursor: pointer;
-      
+
     }
 
     .quantity-input {
@@ -116,8 +126,8 @@ include("includes/core.php");
       margin-bottom: 15px;
     }
 
-  
-    .come{
+
+    .come {
       min-height: 15vh;
     }
   </style>
@@ -133,45 +143,50 @@ include("includes/core.php");
     <div class="container">
       <div class="product-details">
         <div id="product-image">
-          <img src="images/cake1.jpg" alt="Product Image">
+          <img src="<?php echo $product->image ?>" alt="Product Image">
         </div>
         <div class="product-description">
-          <h2 class="product-title">Product Name</h2>
-          <p class="product-price">$19.99</p>
-          <p class="product-summary">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum vehicula turpis, eget sodales augue facilisis id.
+          <h2 class="product-title">
+            <?php echo $product->name ?>
+          </h2>
+          <p class="product-price">Ugx.
+            <?php echo Helper::formatNumber($product->price) ?>
           </p>
+          <!-- <p class="product-summary">
+          <?php
+          // foreach($health_benefits as $benefit){
+          echo $health_details->name;
+          // }
+          ?>
+          </p> -->
           <div class="quantity-selector">
             <button class="quantity-btn" onclick="decrementQuantity()">-</button>
             <input type="text" class="quantity-input" id="quantity" value="1" readonly>
             <button class="quantity-btn" onclick="incrementQuantity()">+</button>
           </div>
           <a href="#" class="btn">Add to Cart</a>
+          <div class="d-flex justify-content-between gap-4 mt-4">
+            <div class="">
+              <h3 class="fw-bold"> Ingredients</h3>
+              <p>
+                <?php
+                foreach ($recipe as $recip) {
+                  echo $recip->description;
+                }
+                ?>
+              </p>
+              <!-- Add more ingredients as needed -->
+            </div>
+            <div class="">
+              <h3 class="fw-bold">Recipes</h3>
+              <?php foreach ($recipe as $recip) {
+                echo $recip->instructions;
+              } ?>
+              <!-- Add more recipe steps as needed -->
+            </div>
+          </div>
         </div>
         <!-- Additional details row -->
-        <div class="additional-details">
-          <div class="details-column">
-            <h3>Ingredients</h3>
-            <p>Ingredient 1</p>
-            <p>Ingredient 2</p>
-            <p>Ingredient 3</p>
-            <!-- Add more ingredients as needed -->
-          </div>
-          <div class="details-column">
-            <h3>Recipes</h3>
-            <p>Recipe Step 1</p>
-            <p>Recipe Step 2</p>
-            <p>Recipe Step 3</p>
-            <!-- Add more recipe steps as needed -->
-          </div>
-          <div class="details-column">
-            <h3>Instructions</h3>
-            <p>Instruction 1</p>
-            <p>Instruction 2</p>
-            <p>Instruction 3</p>
-            <!-- Add more instructions as needed -->
-          </div>
-        </div>
       </div>
     </div>
   </main>

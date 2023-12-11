@@ -4,7 +4,7 @@ include("includes/core.php");
 ?>
 <?php
 $products = new Product;
-$category = new Category;
+$product_category = new ProductSubCategory;
 $health_benefit = new HealthBenefit;
 
 // Create
@@ -13,7 +13,7 @@ if (isset($_POST['add_product'])) {
     'name' => $_POST['name'],
     'price'=> $_POST['price'],
     'quantity'=> $_POST['quantity'],
-    'category_id'=> $_POST['category_id'],
+    'product_sub_category_id'=> $_POST['product_sub_category_id'],
     'health_benefit_id'=> $_POST['health_benefit_id'],
     'discount'=> $_POST['discount'],
 
@@ -31,7 +31,7 @@ if (isset($_POST['add_product'])) {
   } else {
     // Set error message
     $_SESSION['status'] = 'error';
-    $_SESSION['message'] = 'Error adding category';
+    $_SESSION['message'] = 'Error adding product_category';
   }
 
   header("Location: product_table.php");
@@ -45,7 +45,7 @@ if (isset($_POST['product_delete'])) {
     
     Helper::statusMessage('success','Product Deleted');
   }else{
-   Helper::statusMessage('error','Category Not Deleted');
+   Helper::statusMessage('error','product_Category Not Deleted');
   }
   header("Location: product_table.php");
   exit();
@@ -133,9 +133,9 @@ include("partials/header.php");
             </div>
               <!-- price -->
               <div class="mb-3">
-              <select class="form-select" name="category_id">
-                    <option value="" selected disabled>Select a Category</option>
-                    <?php foreach ($category->all() as $cat): ?>
+              <select class="form-select" name="product_sub_category_id">
+                    <option value="" selected disabled>Select a product_Category</option>
+                    <?php foreach ($product_category->all() as $cat): ?>
                     <option value="<?php echo $cat->id; ?>"><?php echo $cat->name; ?></option>
                     <?php endforeach; ?>
                 </select>
@@ -155,7 +155,7 @@ include("partials/header.php");
               <label class="form-label">discount</label>
               <input type="number" class="form-control" name="discount" placeholder="product quantity">
             </div>
-               <!-
+              
                <!-- health-->
                <div class="mb-3">
                <select class="form-select" name="product_id">
@@ -189,7 +189,7 @@ include("partials/header.php");
         <th scope="col">Id</th>
         <th scope="col">Image</th>
         <th scope="col">Name</th>
-        <th scope="col">Category</th>
+        <th scope="col">product_Category</th>
         <th scope="col">Price</th>
         <th scope="col">Qtty</th>
         <th scope="col">Health</th>
@@ -200,7 +200,7 @@ include("partials/header.php");
     </thead>
     <tbody>
       <?php foreach ($searchedProducts as $product): 
-                $category_details = $category->getParentAttributesFromChild('products', 'product_categories', $product->id, 'category_id');
+                $product_category_details = $product_category->getParentAttributesFromChild('products', 'product_sub_categories', $product->id, 'product_sub_category_id');
                 $health_details = $health_benefit->getParentAttributesFromChild('products', 'health_benefits', $product->id, 'health_benefit_id');
 
         ?>
@@ -218,7 +218,7 @@ include("partials/header.php");
         </td>
 
           <td>
-            <?php echo $category_details->name ?? NULL; ?>
+            <?php echo $product_category_details->name ?? NULL; ?>
           </td>
           <td> 
             <?php echo $product->price; ?>

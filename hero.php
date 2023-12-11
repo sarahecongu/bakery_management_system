@@ -8,15 +8,15 @@
   }
 
   .carousel-caption h5 {
-    color: rgb(76,9,9);
-    font-size: 24px;
+    color: white;
+    font-size: 105px;
     margin-bottom: 5px; 
   }
 
   .carousel-caption p {
     color: #000;
-    font-size: 16px;
-    margin: 0;
+    font-size: 30px;
+    margin: 0 10px;
   }
 
   /* Style the carousel controls */
@@ -47,6 +47,7 @@
   .carousel-indicators .active {
     background-color: #333;
   }
+
 </style>
 
 
@@ -67,26 +68,26 @@
     <div class="carousel-item active">
       <img src="images/cupcake.jpg" class=" w-100 align-items-center mt-2" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Some representative placeholder content for the first slide.</p>
+        <h5 class="text">CupCakes For Christmas</h5>
+        <p>Christmas comes with Yummy</p>
         <a href="menu.php" class="btn">Shop Now</a>
 
       </div>
     </div>
     <div class="carousel-item w-100">
-      <img src="images/doughnuts.jpg" class="w-100 align-items-center roundeds  mt-2" alt="...">
+      <img src="images/slice.jpg" class="w-100 align-items-center roundeds  mt-2" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
+        <h5 class="text">Christmas comes with cake</h5 >
+        <p>Cake it always</p>
         <a href="menu.php" class="btn">Shop Now</a>
 
       </div>
     </div>
     <div class="carousel-item">
-      <img src="images/pizza.jpg" class="w-100 align-items-center rounded mt-2" alt="...">
+      <img src="images/pizza-hut.jpg" class="w-100 align-items-center rounded mt-2" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
+        <h5 class="text">One Lage</h5 >
+        <p>Share A pizza share a smile.</p>
         <a href="menu.php" class="btn">Shop Now</a>
 
       </div>

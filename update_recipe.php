@@ -14,12 +14,6 @@ if (isset($_POST['update_recipe'])) {
         'author' => $_POST['author'],
         'description' => $_POST['description']
       ];
-      if(isset($_FILES['image']) && $_FILES['image']['error'] == 0){
-        $image_name = $_FILES['image']['name'];
-        $tmp_name = $_FILES['image']['tmp_name'];
-        move_uploaded_file($tmp_name, "images/".$image_name);
-        $data['image'] = $image_name;
-    };
     $recipes->update($_POST['id'], $data);
     echo "recipe updated";
     header("Location: recipes.php");
@@ -43,10 +37,6 @@ if (isset($_POST['update_recipe'])) {
                         <label class="form-label">Author</label>
                         <input type="text" class="form-control" name="author" placeholder="Update recipe time"
                             value="<?= $recipe->author ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Image</label>
-                        <input type="file" class="form-control" name="image" alt="img" placeholder="Enter image"  value="<?php echo $recipe->image; ?>">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Instructions</label>

@@ -4,6 +4,7 @@ include("includes/core.php");
 ?>
 <?php
 $recipe_products = new RecipeProduct();
+
 $products = new Product();
 $recipes = new Recipe();
 
@@ -14,13 +15,13 @@ if (isset($_POST['add_recipe_product'])) {
     'product_id' => $_POST['product_id']
   ];
   $recipe_products->create($data);
-  header("Location: recipe_product.php");
+  header("Location: recipe_product_table.php");
 }
 // Delete
 if (isset($_POST['recipe_product_delete'])) {
   $recipe_product_id = $_POST['recipe_product_delete'];
   $recipe_products->delete($recipe_product_id);
-  header("Location: recipe_product.php");
+  header("Location: recipe_product_table.php");
   exit();
 }
 ?>
@@ -63,7 +64,7 @@ include("partials/header.php");
   <div class="table-container">
   <div class="text-end m-3 d-flex justify-content-end">
     <button type="button" class="btns" data-bs-toggle="modal" data-bs-target="#completeModal">
-        ADD A  Recipe Product
+        ADD Recipe Product
     </button>
 </div>
 
@@ -78,19 +79,28 @@ include("partials/header.php");
         <div class="modal-body">
           <!-- form -->
           <!-- firstname -->
-          <form action="recipe_product.php" method="POST">
+          <form action="recipe_product_table.php" method="POST">
+          <div class="mb-3">
+               <select class="form-select" name="recipe_id">
+                    <option value="" selected disabled>recipe</option>
+                    <?php foreach ($recipes->all() as $prod): ?>
+                    <option value="<?php echo $prod->id; ?>"><?php echo $prod->name; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
             <div class="mb-3">
-              <label class="form-label">Recipe Id</label>
-              <input type="text" class="form-control" name="recipe_id" placeholder="Enter start time">
+               <select class="form-select" name="product_id">
+                    <option value="" selected disabled>Product</option>
+                    <?php foreach ($products->all() as $prod): ?>
+                    <option value="<?php echo $prod->id; ?>"><?php echo $prod->name; ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
             <!-- name -->
-            <div class="mb-3">
-              <label class="form-label">Product Id</label>
-              <input type="text" class="form-control" name="product_id" placeholder="Enter end time">
-            </div>
+
             <div class="modal-footer">
               <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary" name = "add_recipe_product">Add recipe_product</button>
+              <button type="submit" class="btn" name = "add_recipe_product">Add Recipe</button>
             </div>
         </div>
       </div>
@@ -98,7 +108,7 @@ include("partials/header.php");
     </form>
   </div>
   <div class="search-box">
-    <form action="categories.php" method="GET" class="d-flex">
+    <form action="recipe_product_table.php" method="GET" class="d-flex">
         <input type="text" class="form-control me-2" name="search" placeholder="Search Recipe product" style="width:350px; margin-right:10px;">
         <button class="bt" type="submit">Search</button>
     </form>
@@ -109,33 +119,35 @@ include("partials/header.php");
     <thead class="text-white">
       <tr>
         <th scope="col">Id</th>
-        <th scope="col">Recipe Id</th>
-        <th scope="col">Product Id</th>
- 
-        <th scope="col">Created At</th>
-        <th scope="col">Updated At</th>
+        <th scope="col">Recipe Name</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Instructions</th>
+
+
         <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($recipe_products->all() as $recipe_product): ?>
+      <?php foreach ($recipe_products->all() as $recipe_product): 
+       $details = $products->getParentAttributesFromChild('recipe_product', 'products', $recipe_product->id, 'product_id');
+      //  var_dump($details);die;
+       $recipe_details = $recipes->getParentAttributesFromChild('recipe_product', 'recipes', $recipe_product->id, 'recipe_id');
+        ?>
         <tr>
           <td>
           <?php 
             echo $recipe_product->id; ?>
           </td>
           <td>
-            <?php echo $recipe_product->recipe_id; ?>
+            <?php echo $recipe_details->name; ?>
           </td>
           <td>
-            <?php echo $recipe_product->product_id;?>
+            <?php echo $details->name;?>
           </td>
-          <td>
-            <?php  echo Helper::date($recipe_product->created_at);?>
+           <td>
+            <?php echo $recipe_details->instructions; ?>
           </td>
-          <td>
-            <?php  echo Helper::date($recipe_product->created_at);?>
-          </td>
+       
           <td>
             <a href="recipe_product.php" class="btn btn-primary btn-sm mr-3" title="view"><i class="fas fa-eye"></i></a>
             <a href="update_recipe_product.php?id=<?php echo $recipe_product->id; ?>" class="btn btn-success btn-sm mr-3" title="edit">

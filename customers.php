@@ -73,6 +73,8 @@ include("partials/header.php");
         <th scope="col">First Name</th>
         <th scope="col">Last Name</th>
         <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Tel</th>
         <th scope="col">Created At</th>
         <th scope="col">Updated At</th>
         <th scope="col">Actions</th>
@@ -96,6 +98,12 @@ include("partials/header.php");
           </td>
           <td>
             <?php echo $user->email; ?>
+          </td>
+          <td>
+            <?php echo $user->address; ?>
+          </td>
+          <td>
+            <?php echo $user->tel; ?>
           </td>
           <td>
             <?php  echo Helper::date($user->created_at); ?>

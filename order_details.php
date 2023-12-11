@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-include('includes/core.php');
+require_once('includes/core.php');
 $order = new Order;
 $order_items = new OrderItem;
 $grandTotal = 0;

@@ -36,8 +36,10 @@ if (isset($_POST['remove'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -173,7 +175,7 @@ if (isset($_POST['remove'])) {
   ?>
 
   <div class="space"></div>
-  
+
   <section class="shopping_cart">
 
     <table class="cart">
@@ -187,11 +189,11 @@ if (isset($_POST['remove'])) {
         <th>Actions</th>
       </tr>
       <?php
- if(isset($_SESSION['cart']) || $session->checkLoginStatus())
-      $cartItemCount = $session->checkLoginStatus() ? count($cart_items) : count($_SESSION['cart']);
-     else
-     $cartItemCount = 0;
-      
+      if (isset($_SESSION['cart']) || $session->checkLoginStatus())
+        $cartItemCount = $session->checkLoginStatus() ? count($cart_items) : count($_SESSION['cart']);
+      else
+        $cartItemCount = 0;
+
       foreach ($cartItemCount > 0 ? $session->checkLoginStatus() ? $cart_items : $_SESSION['cart'] : [] as $key => $data) {
         $childTable = 'cart_items';
         $parentTable = 'products';
@@ -202,9 +204,7 @@ if (isset($_POST['remove'])) {
           $product = $cart_item->getParentAttributesFromChild($childTable, $parentTable, $childId, $foreignKey);
         } else {
           $product = $products->find($childId);
-         
         }
-        
         ?>
         <tr class="item">
           <td>
@@ -212,26 +212,28 @@ if (isset($_POST['remove'])) {
           </td>
           <td title="<?php echo $product->name; ?>">
             <?php
-
             echo substr($product->name, 0, 20);
-
             if (strlen($product->name) > 20) {
               echo '...';
             }
             ?>
           </td>
-          <td>
+          <td class="price" data-price='<?php echo $product->price; ?>'
+            data-id='<?php echo $session->checkLoginStatus() ? $product->id : $data['product_id']; ?>'>
             <?php echo $product->price; ?>
           </td>
           <td>
-            <button class="increment" data-id=''>+</button>
-            <button class="quantity">
+            <button class="increment"
+              data-id='<?php echo $session->checkLoginStatus() ? $product->id : $data['product_id']; ?>'>+</button>
+            <button class="quantity"
+              data-id='<?php echo $session->checkLoginStatus() ? $product->id : $data['product_id']; ?>'>
               <?php echo $session->checkLoginStatus() ? $data->quantity : $data['quantity']; ?>
             </button>
-            <button class="decrement">-</button>
+            <button class="decrement"
+              data-id='<?php echo $session->checkLoginStatus() ? $product->id : $data['product_id']; ?>'>-</button>
           </td>
-          <td>
-            <?php echo $total = $session->checkLoginStatus() ? $data->quantity  * $product->price: $data['quantity'] * $product->price; ?>
+          <td class="total" data-id='<?php echo $session->checkLoginStatus() ? $product->id : $data['product_id']; ?>'>
+            <?php echo $total = $session->checkLoginStatus() ? $data->quantity * $product->price : $data['quantity'] * $product->price; ?>
           </td>
           <td>
             <form action="cart.php" method="POST" class="d-inline-block">
@@ -248,8 +250,8 @@ if (isset($_POST['remove'])) {
       ?>
     </table>
     <div class="total">
-      <h2>Grand Total:
-        <?php echo $grandTotal ?>
+      <h2 >Grand Total:
+        <span id="grandTotal"> <?php echo $grandTotal ?></span>
       </h2>
     </div>
 
@@ -267,51 +269,77 @@ if (isset($_POST['remove'])) {
           <button type="submit" id="checkoutButton" class="checkout-button">Checkout</button>
         </form>
       <?php endif ?>
-
-
     </div>
 
   </section>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const incrementButtons = document.querySelectorAll(".increment");
       const decrementButtons = document.querySelectorAll(".decrement");
       const quantityElements = document.querySelectorAll(".quantity");
+      const priceElements = document.querySelectorAll(".price");
+      let totalElements = document.querySelectorAll(".total");
+      const grandTotalElement = document.getElementById("grandTotal");
 
-      incrementButtons.forEach((button, index) => {
-
-        $.ajax({
-                url: "action.php",
-                type: "post",
-                data: {
-                    add_to_cart: 1,
-                    product_id: id,
-                    product_name: name,
-                    product_image: image,
-                    product_price: price,
-                    quantity: 10
-                },
-                success: function (response) {
-                    // alert(response);
-                    $(".cart-counter").text(response);
-                    // Optionally, update a cart icon or counter
-                }
-            });
-
+      incrementButtons.forEach((button) => {
         button.addEventListener("click", function () {
-          quantityElements[index].innerText = parseInt(quantityElements[index].innerText) + 1;
+          const productId = button.getAttribute("data-id");
+          updateQuantityAndTotal(productId, 'increment');
         });
       });
 
-      decrementButtons.forEach((button, index) => {
+      decrementButtons.forEach((button) => {
         button.addEventListener("click", function () {
-          const currentQuantity = parseInt(quantityElements[index].innerText);
-          if (currentQuantity > 1) {
-            quantityElements[index].innerText = currentQuantity - 1;
+          const productId = button.getAttribute("data-id");
+          updateQuantityAndTotal(productId, 'decrement');
+        });
+      });
+
+        function updateQuantityAndTotal(productId, action) {
+          let quantityIndex = Array.from(quantityElements).findIndex((element) => element.getAttribute("data-id") === productId);
+          const priceIndex = Array.from(priceElements).findIndex((element) => element.getAttribute("data-id") === productId);
+          let totalIndex = Array.from(totalElements).findIndex((element) => element.getAttribute("data-id") === productId);
+
+          if (quantityIndex !== -1 && priceIndex !== -1 && totalIndex !== -1) {
+            let currentQuantity = parseInt(quantityElements[quantityIndex].innerText) || 0;
+            let price = parseFloat(priceElements[priceIndex].getAttribute("data-price")) || 0;
+
+            if (action === 'increment') {
+              quantityElements[quantityIndex].innerText = currentQuantity + 1;
+            } else if (action === 'decrement' && currentQuantity > 1) {
+              quantityElements[quantityIndex].innerText = currentQuantity - 1;
+            }
+
+            // Calculate the new total directly based on the updated quantity
+            let newQuantity = parseInt(quantityElements[quantityIndex].innerText) || 0;
+            let newTotal = (newQuantity > 0) ? (newQuantity * price).toFixed(2) : '0.00';
+            totalElements[totalIndex].innerText = newTotal;
+
+
+            // Update the grand total
+            updateGrandTotal();
           }
+        }
+
+
+
+      function updateGrandTotal() {
+        let sum = 0;
+        
+        totalElements.forEach((element) => {
+          const value = parseFloat(element.innerText) || 0;
+          sum += value;
         });
-      });
+
+        grandTotalElement.innerText = sum.toFixed(2);
+      }
     });
+
+
+
+
 
     document.addEventListener("DOMContentLoaded", function () {
       // Find the form and button elements
@@ -325,9 +353,61 @@ if (isset($_POST['remove'])) {
       });
     });
 
-    
+    $(document).ready(function () {
+      $('.increment').on("click", function (e) {
+        e.preventDefault();
 
+        var id = $(this).data("id");
+        var productId = $(this).data('id');
+
+        console.log(productId);
+
+        $.ajax({
+          url: "action.php",
+          type: "post",
+          data: {
+            add_to_cart: 1,
+            product_id: productId,
+          },
+
+          success: function (response) {
+            // alert(response);
+            $(".cart-counter").text(response);
+
+            $()
+            // Optionally, update a cart icon or counter
+          }
+        });
+      });
+
+      $('.decrement').on("click", function (e) {
+        e.preventDefault();
+
+        var id = $(this).data("id");
+        var productId = $(this).data('id');
+
+        console.log(productId);
+
+        $.ajax({
+          url: "action.php",
+          type: "post",
+          data: {
+            action: "reduce",
+            product_id: productId,
+          },
+
+          success: function (response) {
+            // alert(response);
+            // $(".cart-counter").text(response);
+
+            $()
+            // Optionally, update a cart icon or counter
+          }
+        });
+      });
+    });
   </script>
+
 
 
 </body>

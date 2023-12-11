@@ -68,15 +68,10 @@ $users = new User();
         <form action="update_account.php" method="post">
             <label for="first_name">First Name:</label>
             <input type="text" id="first_name" name="first_name" value="<?php echo $user_details->first_name; ?>" required>
-
             <label for="last_name">Last Name:</label>
             <input type="text" id="last_name" name="last_name" value="<?php echo $user_details->last_name; ?>" required>
-
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" value="<?php echo $user_details->email; ?>" required>
-
- 
-
             <button type="submit" name="update_account">Update Account</button>
         </form>
     </section>

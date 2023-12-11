@@ -34,17 +34,18 @@ $services = new Service;
         .service-card {
             width: calc(33.33% - 20px);
             /* Adjust the width to fit three cards in a row with spacing */
-            margin: 10px;
+            /* margin: 10px; */
             text-align: center;
             position: relative;
+            margin-top: 25px;
         }
 
         .service-card img {
-            width: 100%;
+            /* width: 100%; */
             margin-top: 2rem;
-            height: auto;
+            /* height: auto; */
             object-fit: cover;
-            max-height: 200px;
+            max-height: 45vh
         }
 
         .service-card hr,
@@ -98,11 +99,11 @@ $services = new Service;
 
     <?php include("navbar.php"); ?>
     <div class="spa"></div>
-    <h2>OUR SERVICES</h2>
+    <!-- <h2>OUR SERVICES</h2> -->
     <section class="services-container">
         <?php foreach ($services->all() as $service): ?>
             <div class="service-card">
-                <img src="images/<?php echo $service->image; ?>" alt="user" />
+                <img src="images/<?php echo $service->image; ?>" alt="user" class="w-100"/>
                 <hr>
                 <h3>
                     <?php echo $service->name; ?>

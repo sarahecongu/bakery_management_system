@@ -11,24 +11,12 @@ $cart_items = new CartItem;
  * Cart Actions
  */
 if (isset($_POST['add_to_cart'])) {
-    echo $cart->addToCart($cart_items);
-    
-} elseif (isset($_GET['action'])) {
-    $action = $_GET['action'];
 
-    switch ($action) {
-        case 'remove':
-            removeFromCart();
-            break;
-        case 'update_qty':
-            updateQuantity();
-            break;
-        case 'get_cart':
-            getCart();
-            break;
-        default:
-            echo "Invalid action";
-    }
+    // var_dump($_POST['product_id']);die;
+    echo $cart->addToCart($cart_items);
+
+} elseif (isset($_POST['action']) && $_POST['action'] == 'reduce') {
+    echo $cart->reduceCartItemQuantity($cart_items);
 }
 
 function removeFromCart()
@@ -88,9 +76,9 @@ function getCart()
  * Logout
  */
 if (isset($_GET['logout'])) {
-$session->clear();
+    $session->clear();
 
-header('Location:login.php');
+    header('Location:login.php');
 
 }
 

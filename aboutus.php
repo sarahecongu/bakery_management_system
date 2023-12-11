@@ -36,7 +36,7 @@ $firstAboutUs = reset($about_us_data);
 ?>
 
 <section class="aboutus">
-    <img src="images/<?php echo $firstAboutUs->image; ?>" alt="Bake Pal Team">
+    <img src="images/<?php echo $firstAboutUs->image; ?>" alt="Bake Pal Team" class="w-100">
     <div>
         <h1><?php echo $firstAboutUs->title; ?></h1>
         <p><?php echo $firstAboutUs->description; ?></p>

@@ -10,12 +10,6 @@ if (isset($_POST['add_recipe'])) {
     'description' => $_POST['description']
   ];
 
-  if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-    $image_name = $_FILES['image']['name'];
-    $tmp_name = $_FILES['image']['tmp_name'];
-    move_uploaded_file($tmp_name, "images/" . $image_name);
-    $data['image'] = $image_name;
-  };
   $recipes->create($data);
   header("Location: recipes.php");
 }
@@ -63,7 +57,7 @@ if (isset($_POST['recipe_delete'])) {
     <button type="button" class="btns" data-bs-toggle="modal" data-bs-target="#completeModal">
         ADD A RECIPE
     </button>
-</div>>
+</div>
 
   <!-- Modal -->
   <div class="modal fade" id="completeModal" tabindex="-1">
@@ -80,10 +74,6 @@ if (isset($_POST['recipe_delete'])) {
             <div class="mb-3">
               <label class="form-label">Name</label>
               <input type="text" class="form-control" name="name" placeholder="Enter start time">
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Image</label>
-              <input type="file" class="form-control" name="image" alt="img" placeholder="Enter image">
             </div>
             <!-- name -->
             <div class="mb-3">
@@ -122,10 +112,9 @@ if (isset($_POST['recipe_delete'])) {
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Name</th>
-        <th scope="col">Image</th>
         <th scope="col">Author</th>
         <th scope="col">Instructions</th>
-        <th scope="col">Description</th>
+        <th scope="col">Ingredients</th>
         
         <th scope="col">Created At</th>
         <th scope="col">Updated At</th>
@@ -140,10 +129,6 @@ if (isset($_POST['recipe_delete'])) {
           </td>
           <td>
             <?php echo $recipe->name; ?>
-          </td>
-          <td style="width:10%">
-            <img src="images/<?php echo $recipe->image; ?>" alt="dp" class="rounded-circle w-50 h-50">
-
           </td>
           <td>
             <?php echo $recipe->author;?>

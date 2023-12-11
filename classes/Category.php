@@ -6,6 +6,6 @@ class Category extends Model{
     public $image;
 
     
-   
+    
 
 }

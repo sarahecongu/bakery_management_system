@@ -158,7 +158,7 @@ include("partials/header.php");
           </td>
           <td>
             <a href="aboutus_table.php" class="btn btn-primary btn-sm mr-2 m-1" title="view"><i class="fas fa-eye"></i></a>
-            <a href="update_about_us_table.php?id=<?php echo $about_us->id; ?>" class="btn btn-success btn-sm mr-2" title="edit">
+            <a href="update_aboutus.php?id=<?php echo $about_us->id; ?>" class="btn btn-success btn-sm mr-2" title="edit">
               <i class="fas fa-edit"></i>
             </a>
             <form action="aboutus_table.php" method="POST" class="d-inline-block">

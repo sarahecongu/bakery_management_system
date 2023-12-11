@@ -202,6 +202,12 @@ class Model extends DatabaseConnection
      * @return object
      */
 
+	 /**
+	  *  Get related attributes to a parent
+	  *	 @param string $relatedTable  Table that you want to	 get data from
+	  *  @param int $parentId Id of the parent
+	  *  @param string $foreignKey The foreign Key attribute to look out for 
+	  */
     public function getRelated($relatedTable, $parentId, $foreignKey)
     {
         $sql = "SELECT * FROM " . $relatedTable . " WHERE " . $foreignKey . "=" . $parentId;

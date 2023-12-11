@@ -103,7 +103,7 @@ $user_details = new User();
           </div>
         </div>
         <label for="email">Address:</label>
-        <input type="email" id="email" name="email" value="<?php echo $user_details->address; ?>" required>
+        <input type="email" id="email" name="address" value="<?php echo $user_details->address; ?>" required>
       </fieldset>
 
       <fieldset>
@@ -111,8 +111,7 @@ $user_details = new User();
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" value="<?php echo $user_details->email; ?>" required>
         <label for="email">Phone No:</label>
-        <input type="email" id="email" name="email" value="<?php echo $user_details->tel; ?>" required>
-        <
+        <input type="email" id="email" name="tel" value="<?php echo $user_details->tel; ?>" required>
       </fieldset>
 
 

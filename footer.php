@@ -26,33 +26,29 @@
       <a href="menu.php"><i class="fas fa-utensils"></i>Menu</a>
       <a href="aboutus.php"><i class="fas fa-info-circle"></i>About Us</a>
       <a href="services.php"><i class="fas fa-cogs"></i>Services</a>
-      <a href="contact.php"><i class="fas fa-envelope"></i>Contact</a>
+      <a href="contactus.php"><i class="fas fa-envelope"></i>Contact</a>
     </div>
 
     <div class="box">
       <h3>Follow Us</h3>
       <a href=""><i class="fab fa-facebook"></i>Facebook</a>
-      <a href=""><i class="fab fa-twitter"></i>Twitter</a>
+      <a href="https://twitter.com/"><i class="fab fa-twitter"></i>Twitter</a>
       <a href=""><i class="fab fa-instagram"></i>Instagram</a>
       <a href=""><i class="fab fa-pinterest"></i>Pinterest</a>
-      <a href=""><i class="fab fa-whatsapp"></i>Whatsapp</a>
+      <a href="https://web.whatsapp.com/"><i class="fab fa-whatsapp"></i>Whatsapp</a>
     </div>
 
     <div class="box">
       <h3>Extra Links</h3>
-      <a href="checkout.php"><i class="fas fa-shopping-cart"></i>My Order</a>
-      <a href="index.php"><i class="fas fa-user"></i>My Account</a>
-      <a href="#"><i class="fas fa-file-contract"></i>Terms And Conditions</a>
+      <a href="view_orders.php"><i class="fas fa-shopping-cart"></i>My Order</a>
+      <a href="account.php"><i class="fas fa-user"></i>My Account</a>
+      <!-- <a href="#"><i class="fas fa-file-contract"></i>Terms And Conditions</a> -->
     </div>
 
     <div class="box">
-      <h3>News Letter</h3>
-      <p>Subscribe For Latest Updates</p>
-      <form action="">
-        <input type="email" placeholder="Enter your email address">
-        <input type="submit" value="subscribe" class="bt">
-      </form>
-      <!-- <img src="images/payme.jpg" class="payments" alt=""> -->
+      <h3>CASH ON DELIVERY</h3>
+      <p>50% DEPOSIT AFTER ORDER PLACEMENT</p>
+
     </div>
   </div>
 </section>

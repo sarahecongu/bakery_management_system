@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-include('includes/core.php');
+require_once('includes/core.php');
 ?>
 <html lang="en">
 <head>

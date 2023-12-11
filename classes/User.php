@@ -10,6 +10,8 @@ class User extends Model
     public $image;
     public $address;
     public $tel;
+    
+
 
 
 

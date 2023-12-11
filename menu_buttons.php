@@ -1,3 +1,15 @@
+<?php
+$product_category = new Category;
+$product_sub_category = new ProductSubCategory;
+
+// Check if 'category_id' is set in the URL parameters
+if (!isset($_GET['category_id'])) {
+  echo "Error: 'category_id' not set in URL parameters.";
+  exit;
+}
+
+?>
+
 <style>
   .spaces {
     min-height: 25vh;
@@ -7,22 +19,24 @@
     text-align: center;
     font-size: 2.5rem;
   }
+
   .menu-container {
-    overflow-y: hidden; 
+    overflow-y: hidden;
     position: relative;
-    
-    }
+
+  }
+
   .menu-buttons {
-    overflow: hidden; 
-    white-space: nowrap; 
+    overflow: hidden;
+    white-space: nowrap;
     display: flex;
     gap: 10px;
     padding: 10px;
     font-size: 15px;
-    overflow-x: scroll ; 
-    scrollbar-color: wheat rgb(76, 9, 9); 
+    overflow-x: scroll;
+    scrollbar-color: wheat rgb(76, 9, 9);
     scrollbar-width: thin;
-   
+
   }
 
   .menu-button {
@@ -32,7 +46,7 @@
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-   
+
   }
 
   .menu-button:hover {
@@ -40,6 +54,7 @@
     color: white;
 
   }
+
   .active-menu-button {
     background-color: wheat;
     color: rgb(76, 9, 9);
@@ -49,10 +64,8 @@
     color: white;
     background-color: rgb(76, 9, 9);
   }
-  
-  .menu-buttons::-webkit-scrollbar {
- 
-  }
+
+  .menu-buttons::-webkit-scrollbar {}
 
   .menu-buttons::-webkit-scrollbar-thumb {
     background-color: rgb(76, 9, 9);
@@ -72,6 +85,7 @@
       transform: translateX(0);
     }
   }
+
   .arrow {
     position: absolute;
     top: 30%;
@@ -90,52 +104,45 @@
   }
 </style>
 
-
-  <?php
-  include("navbar.php");
-  $currentPage = basename($_SERVER['PHP_SELF']);
-  ?>
-  <div class="spaces"></div>
-  <div class="menu-container">
-
+<?php
+include("navbar.php");
+?>
+<div class="spaces"></div>
+<div class="menu-container">
   <div class="menu-buttons">
-  <a href="cakes_hour.php" class="menu-button <?php echo ($currentPage == 'cakes_hour.php') ? 'active-menu-button' : ''; ?>">One Hour Cakes</a>
-  <a href="menu.php" class="menu-button <?php echo ($currentPage == 'menu.php') ? 'active-menu-button' : ''; ?>">Birthday Cakes</a>
-  <a href="wedding_cakes.php" class="menu-button <?php echo ($currentPage == 'wedding_cakes.php') ? 'active-menu-button' : ''; ?>">Wedding Cakes</a>
-<a href="christmas.php" class="menu-button <?php echo ($currentPage == 'christmas.php') ? 'active-menu-button' : ''; ?>">Christmas Cakes</a>
-<a href="Fatless_menu.php" class="menu-button <?php echo ($currentPage == 'Fatless_menu.php') ? 'active-menu-button' : ''; ?>">Fatless Cakes</a>
-<a href="vegan_menu.php" class="menu-button <?php echo ($currentPage == 'vegan_menu.php') ? 'active-menu-button' : ''; ?>">Vegan Cakes</a>
-<a href="slices.php" class="menu-button <?php echo ($currentPage == 'slices.php') ? 'active-menu-button' : ''; ?>">Slices</a>
-<a href="cupcakes_menu.php" class="menu-button <?php echo ($currentPage == 'cupcakes_menu.php') ? 'active-menu-button' : ''; ?>">Cup Cakes</a>
-<a href="muffins.php" class="menu-button <?php echo ($currentPage == 'muffins.php') ? 'active-menu-button' : ''; ?>">Muffins</a>
-<a href="doughnuts_menu.php" class="menu-button <?php echo ($currentPage == 'doughnuts_menu.php') ? 'active-menu-button' : ''; ?>">Doughnuts</a>
-<a href="bans_menu.php" class="menu-button <?php echo ($currentPage == 'bans_menu.php') ? 'active-menu-button' : ''; ?>">Bans</a>
-<a href="biscuits.php" class="menu-button <?php echo ($currentPage == 'biscuits.php') ? 'active-menu-button' : ''; ?>">Biscuits</a>
-<a href="cookie_menu.php" class="menu-button <?php echo ($currentPage == 'cookie_menu.php') ? 'active-menu-button' : ''; ?>">Cookies</a>
-<a href="pizza.php" class="menu-button <?php echo ($currentPage == 'pizza.php') ? 'active-menu-button' : ''; ?>">Pizza</a>
-</div>
+    <a href="menu_specific.php?category_id=<?php echo $_GET['category_id'] ?>"
+      class="menu-button <?php echo !isset($_GET['sub_category_id']) ? 'active-menu-button' : ''; ?>">All</a>
+    <?php foreach ($product_sub_category->where(['product_category_id' => $_GET['category_id']]) as $sub_category):
+      ?>
+      <a href="menu_specific.php?category_id=<?php echo $_GET['category_id'] ?>&sub_category_id=<?php echo $sub_category->id ?>"
+        class="menu-button <?php echo isset($_GET['sub_category_id']) && $_GET['sub_category_id'] == $sub_category->id ? 'active-menu-button' : ''; ?>">
+        <?php echo $sub_category->name ?>
+      </a>
+    <?php endforeach ?>
+
+  </div>
 
 </div>
 
 <script>
-    // JavaScript for scrolling menu
-    document.addEventListener("DOMContentLoaded", function () {
-      // Get the menu container
-      var menuContainer = document.querySelector('.menu-container');
+  // JavaScript for scrolling menu
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get the menu container
+    var menuContainer = document.querySelector('.menu-container');
 
-      // Function to scroll the menu
-      function scrollMenu(direction) {
-        var scrollAmount = direction === 'left' ? -300 : 300;
-        menuContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      }
+    // Function to scroll the menu
+    function scrollMenu(direction) {
+      var scrollAmount = direction === 'left' ? -300 : 300;
+      menuContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
 
-      // Add event listeners for the arrow buttons
-      document.querySelector('.prev-arrow').addEventListener('click', function () {
-        scrollMenu('left');
-      });
-
-      document.querySelector('.next-arrow').addEventListener('click', function () {
-        scrollMenu('right');
-      });
+    // Add event listeners for the arrow buttons
+    document.querySelector('.prev-arrow').addEventListener('click', function () {
+      scrollMenu('left');
     });
-  </script>
+
+    document.querySelector('.next-arrow').addEventListener('click', function () {
+      scrollMenu('right');
+    });
+  });
+</script>
